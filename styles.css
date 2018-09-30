@@ -1,8 +1,12 @@
-.twitter-timeline{
-   float: right;
+.nytimes {
+    padding-top: 40px;
 }
 
-.news-card{
+.twitter-timeline {
+    float: right;
+}
+  
+.news-card {
     float: left;
     margin-left: 2%;
     margin-right: 2%;
@@ -10,11 +14,16 @@
 }
 
 .card-img-top {
-  width: 100%!important;
-  height: 40%!important;
-  object-fit: contain;
+    width: 100%!important;
+    height: 40%!important;
+    object-fit: contain;
 }
 
-.card-body{
-  object-fit: contain;
+.list-group {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.card-body {
+    object-fit: contain;
 }
