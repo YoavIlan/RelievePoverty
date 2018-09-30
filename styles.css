@@ -5,7 +5,7 @@
 .twitter-timeline {
     float: right;
 }
-  
+
 .news-card {
     float: left;
     margin-left: 2%;
@@ -15,7 +15,7 @@
 
 .card-img-top {
     width: 100%!important;
-    height: 40%!important;
+    height: auto!important;
     object-fit: contain;
 }
 
