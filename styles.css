@@ -38,3 +38,14 @@
 .card-body {
     object-fit: contain;
 }
+
+.specific-charity-img{
+    height: 100%;
+    width: 200%;
+    text-align: left;
+}
+
+.specific-charity-info{
+    height: 100%;
+    width: 400%;
+}
