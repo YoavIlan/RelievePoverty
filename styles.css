@@ -1,8 +1,24 @@
-.twitter-timeline{
-   float: right;
+.nytimes {
+    padding-top: 40px;
 }
 
-.news-card{
+.twitter-timeline {
+    float: right;
+}
+
+.h2 {
+  text-decoration: underline;
+}
+.jumbotron {
+    padding-top: 0px;
+    padding-bottom:0px;
+    width: 100%;
+    height: 100px;
+    max-width:1400px;
+}
+
+
+.news-card {
     float: left;
     margin-left: 2%;
     margin-right: 2%;
@@ -10,13 +26,18 @@
 }
 
 .card-img-top {
-  width: 100%!important;
-  height: 40%!important;
-  object-fit: contain;
+    width: 100%!important;
+    height: auto!important;
+    object-fit: contain;
 }
 
-.card-body{
-  object-fit: contain;
+.list-group {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.card-body {
+    object-fit: contain;
 }
 
 .specific-charity-img{

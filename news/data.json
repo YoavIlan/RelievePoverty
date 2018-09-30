@@ -1,0 +1,31 @@
+{
+    "articles":[
+        {
+            "title": "Benefits, Work, and Poverty",
+            "img": "Benefits, Work, and Poverty .jpg",
+            "author": {
+                "name": "Paul Krugman",
+                "profile": "https://www.nytimes.com/by/paul-krugman"
+            },
+            "id": 1
+        },
+        {
+            "title": "The U.S. Can No Longer Hide From Its Deep Poverty Problem",
+            "img": "The U.S. Can No Longer Hide From Its Deep Poverty Problem .jpg",
+            "author": {
+                "name": "Angus Deaton",
+                "profile": "https://scholar.princeton.edu/deaton/home"
+            },
+            "id": 2
+        },
+        {
+            "title": "U.S. Recovery Eludes Many Living Below Poverty Level, Census Suggests",
+            "img": "U.S. Recovery Eludes Many Living Below Poverty Level, Census Suggests .jpg",
+            "author": {
+                "name": "Glenn Thrush",
+                "profile": "https://www.nytimes.com/by/glenn-thrush"
+            },
+            "id": 3
+        }
+    ]
+}

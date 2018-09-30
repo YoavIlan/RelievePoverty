@@ -94,8 +94,16 @@ function getIssues() {
 }
 
 /**
- * 
+ * We weren't able to find documentation for unit tests. Since we won't be making any
+ * for the first project anyways we have decided to just hardcode them as zero
  */
 function getTests() {
+	document.getElementById('albert_tests').innerHTML = 0;
+	document.getElementById('colin_tests').innerHTML = 0;
+	document.getElementById('daniel_tests').innerHTML = 0;
+	document.getElementById('evan_tests').innerHTML = 0;
+	document.getElementById('uri_tests').innerHTML = 0;
+	document.getElementById('yoav_tests').innerHTML = 0;
+	document.getElementById('total_tests').innerHTML = 0;
 }
 
