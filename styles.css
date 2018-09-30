@@ -8,3 +8,13 @@
     margin-right: 2%;
     width: 20%;
 }
+
+.card-img-top {
+  width: 100%!important;
+  height: 40%!important;
+  object-fit: contain;
+}
+
+.card-body{
+  object-fit: contain;
+}
