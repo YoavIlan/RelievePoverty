@@ -1,0 +1,50 @@
+.twitter-timeline{
+   float: right;
+}
+
+.news-card{
+    float: left;
+    margin-left: 2%;
+    margin-right: 2%;
+    width: 20%;
+}
+
+.card-img-top {
+  margin-top: 20px;
+  width: 100%!important;
+  height: 30%!important;
+  object-fit: contain;
+}
+
+#developer-img {
+    height: auto!important;
+    margin-top: 0;
+}
+
+.card-body{
+  object-fit: contain;
+}
+
+body{
+  background-color: #DCDCDC;
+}
+
+.jumbotron{
+  background-color: #cccccc;
+}
+
+.card{
+  background-color: #FFFFFF;
+}
+
+.navbar{
+  background-color: #201F1D;
+}
+
+.navbar.sticky-top.navbar-expand-lg.navbar-light{
+  color: #DE8D47;
+}
+
+nav .navbar-nav li a{
+  color: white !important;
+}
