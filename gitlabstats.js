@@ -35,20 +35,20 @@ function getCommits() {
 			if (obj.name == 'Albert Luu') {
 				albert_commits = obj.commits;
 			} 
-			else if (obj.name == 'Colin Frick') {
-				colin_commits = obj.commits;
+			else if (obj.name == 'cfrick16') {
+				colin_commits += obj.commits;
 			} 
 			else if (obj.name == 'Daniel Chruscielski') {
-				daniel_commits = obj.commits;
+				daniel_commits += obj.commits;
 			} 
-			else if (obj.name == 'Evan Weiss') {
-				evan_commits = obj.commits;
+			else if (obj.name == 'Evan Weiss' || obj.name == 'eweiss97') {
+				evan_commits += obj.commits;
 			} 
 			else if (obj.name == 'Uriel Kugelmass') {
-				uri_commits = obj.commits;
+				uri_commits += obj.commits;
 			} 
 			else if (obj.name == 'Yoav Ilan') {
-				yoav_commits = obj.commits;
+				yoav_commits += obj.commits;
 			}
 		});
 		document.getElementById('albert_commits').innerHTML = albert_commits;
