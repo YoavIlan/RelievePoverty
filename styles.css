@@ -16,6 +16,11 @@
   object-fit: contain;
 }
 
+#developer-img {
+    height: auto!important;
+    margin-top: 0;
+}
+
 .card-body{
   object-fit: contain;
 }
