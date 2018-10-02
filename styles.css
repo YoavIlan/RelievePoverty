@@ -21,23 +21,23 @@
 }
 
 body{
-  background-color: #87A85C;
+  background-color: #DCDCDC;
 }
 
 .jumbotron{
-  background-color: #87A85C;
+  background-color: #868685;
 }
 
 .card{
-  background-color: #434428;
+  background-color: #FFFFFF;
 }
 
 .navbar{
-  background-color: #6A6A68;
+  background-color: #201F1D;
 }
 
 .navbar.sticky-top.navbar-expand-lg.navbar-light{
-  color: blue;
+  color: #DE8D47;
 }
 
 nav .navbar-nav li a{
