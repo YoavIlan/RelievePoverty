@@ -19,3 +19,27 @@
 .card-body{
   object-fit: contain;
 }
+
+body{
+  background-color: #87A85C;
+}
+
+.jumbotron{
+  background-color: #87A85C;
+}
+
+.card{
+  background-color: #434428;
+}
+
+.navbar{
+  background-color: #6A6A68;
+}
+
+.navbar.sticky-top.navbar-expand-lg.navbar-light{
+  color: blue;
+}
+
+nav .navbar-nav li a{
+  color: white !important;
+  }
