@@ -8,7 +8,7 @@ Evan Weiss - EAW2732 - @eweiss97
 Uriel Kugelmass - UK626 - @urielkugelmass  
 Yoav Ilan - YI637 - @YoavIlan  
 
-## GitSha
+## Git SHA
 Phase 1: 5e93483a681e01f3cce91f96e257ead1e3d01a30
 
 ## Website
