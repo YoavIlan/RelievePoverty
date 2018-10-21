@@ -16,7 +16,7 @@ db = flask_sqlalchemy.SQLAlchemy(app)
 
 class States(db.Model):
     name = db.Column(db.String(255))
-    rank = db.Column(db.Integer)
+    rank = db.Column(db.Integer, primary_key=True)
     below_poverty_rate = db.Column(db.String(255))
     child_poverty_rate = db.Column(db.String(255))
     median_income = db.Column(db.String(255))
