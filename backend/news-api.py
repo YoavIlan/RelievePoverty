@@ -4,9 +4,6 @@ import flask
 import flask_sqlalchemy
 import flask_restless
 
-
-# http://127.0.0.1:5000/api/v1/news
-
 # Create the Flask application and the Flask-SQLAlchemy object.
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
@@ -43,8 +40,12 @@ def add_states_to_table():
         articles = find_articles_for_state(state)
         for article in articles:
             pprint.pprint(article)
-            curr_article = News(title=article['title'], summary=article['description'], source=article['source']['name'], state=state, author=article['author'], published_date=article['publishedAt'], url=article['url'], image=article['urlToImage'])
-            db.session.add(curr_article)            
+            try:
+                if ('poverty' in article['title']) or ('Poverty' in article['title']) or ('poverty' in article['description']) or ('Poverty' in article['description']):
+                    curr_article = News(title=article['title'], summary=article['description'], source=article['source']['name'], state=state, author=article['author'], published_date=article['publishedAt'], url=article['url'], image=article['urlToImage'])
+                    db.session.add(curr_article)   
+            except:
+                pass         
         db.session.commit()
 
 if __name__ == "__main__":
