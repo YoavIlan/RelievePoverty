@@ -54,7 +54,7 @@ def add_state_information():
     for s in states:
         pprint.pprint(s)
         print(type(rates))
-        curr_state = States(name=s['NAME'], rank=(rates.index(s['SAEPOVRTALL_PT']) + 1), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=None, flag=None)
+        curr_state = States(name=s['NAME'], rank=50-(rates.index(s['SAEPOVRTALL_PT']) + 1), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=None, flag=None)
         db.session.add(curr_state)
         db.session.commit()
 
