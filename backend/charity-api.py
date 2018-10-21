@@ -30,30 +30,46 @@ class Charities(db.Model):
 db.create_all()
 
 url = "https://api.data.charitynavigator.org/v2/Organizations"
-parameters = {"app_key":"0efb8566aac6ae0816327eb85748219a", "app_id":"6c538fc3", "categoryID": "6"}
 state_dict = {'AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'California','CO':'Colorado','CT':'Connecticut','DE':'Delaware','FL':'Florida','GA':'Georgia','HI':'Hawaii','ID':'Idaho','IL':'Illinois','IN':'Indiana','IA':'Iowa','KS':'Kansas','KY':'Kentucky','LA':'Louisiana','ME':'Maine','MD':'Maryland','MA':'Massachusetts','MI':'Michigan','MN':'Minnesota','MS':'Mississippi','MO':'Missouri','MT':'Montana','NE':'Nebraska','NV':'Nevada','NH':'New Hampshire','NJ':'New Jersey','NM':'New Mexico','NY':'New York','NC':'North Carolina','ND':'North Dakota','OH':'Ohio','OK':'Oklahoma','OR':'Oregon','PA':'Pennsylvania','RI':'Rhode Island','SC':'South Carolina','SD':'South Dakota','TN':'Tennessee','TX':'Texas','UT':'Utah','VT':'Vermont','VA':'Virginia','WA':'Washington','WV':'West Virginia','WI':'Wisconsin','WY':'Wyoming'}
 
-def get_charities():
+def build_address(address_fields):
+    builder = StringIO()
+    builder.write(address_fields["streetAddress1"])
+    builder.write("\n")
+    if address_fields["streetAddress2"] != None:
+        builder.write(address_fields["streetAddress2"])
+        builder.write("\n")
+    builder.write(address_fields["city"])
+    builder.write(", ")
+    builder.write(address_fields["stateOrProvince"])
+    builder.write(" ")
+    builder.write(address_fields["postalCode"])
+    return builder.getvalue()
+
+def get_charities_by_category():
+    parameters = {"app_key":"0efb8566aac6ae0816327eb85748219a", "app_id":"6c538fc3", "categoryID": "6"}
     response = requests.get(url, params=parameters)
     charities = response.json()
     for charity in charities:
         # build complete address from separate fields
-        address = charity["mailingAddress"]
-        builder = StringIO()
-        builder.write(address["streetAddress1"])
-        builder.write("\n")
-        if address["streetAddress2"] != None:
-            builder.write(address["streetAddress2"])
-            builder.write("\n")
-        builder.write(address["city"])
-        builder.write(", ")
-        builder.write(address["stateOrProvince"])
-        builder.write(" ")
-        builder.write(address["postalCode"])
+        address = build_address(charity["mailingAddress"])
 
-        charity_row = Charities(name=charity["charityName"], mission=charity["mission"], affiliation=charity["irsClassification"]["affiliation"], tax_classification=charity["irsClassification"]["subsection"], state=state_dict[address["stateOrProvince"]], address=builder.getvalue(), img=charity["cause"]["image"], cause_name=charity["cause"]["causeName"])
+        charity_row = Charities(name=charity["charityName"], mission=charity["mission"], affiliation=charity["irsClassification"]["affiliation"], tax_classification=charity["irsClassification"]["subsection"], state=state_dict[charity["mailingAddress"]["stateOrProvince"]], address=address, img=charity["cause"]["image"], cause_name=charity["cause"]["causeName"])
+        db.session.add(charity_row)
+    db.session.commit()
+
+def get_charities_by_query():
+    parameters = {"app_key":"0efb8566aac6ae0816327eb85748219a", "app_id":"6c538fc3", "search":"poverty"}
+    response = requests.get(url, params=parameters)
+    charities = response.json()
+    for charity in charities:
+        # build complete address from separate fields
+        address = build_address(charity["mailingAddress"])
+
+        charity_row = Charities(name=charity["charityName"], mission=charity["mission"], affiliation=charity["irsClassification"]["affiliation"], tax_classification=charity["irsClassification"]["subsection"], state=state_dict[charity["mailingAddress"]["stateOrProvince"]], address=address, img=charity["cause"]["image"], cause_name=charity["cause"]["causeName"])
         db.session.add(charity_row)
     db.session.commit()
 
 if __name__ == "__main__":
-    get_charities()
+    get_charities_by_category()
+    get_charities_by_query()
