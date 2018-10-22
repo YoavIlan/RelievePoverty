@@ -16,13 +16,12 @@ db = flask_sqlalchemy.SQLAlchemy(app)
 
 class States(db.Model):
     name = db.Column(db.String(255))
-    rank = db.Column(db.String(255))
+    rank = db.Column(db.Integer, primary_key=True)
     below_poverty_rate = db.Column(db.String(255))
     child_poverty_rate = db.Column(db.String(255))
     median_income = db.Column(db.String(255))
     counties = db.Column(db.String(255))
     flag = db.Column(db.String(255))
-    id = db.Column(db.Integer, primary_key=True)
 
     #image = db.Column(db.String(255))
 
@@ -55,7 +54,7 @@ def add_state_information():
     for s in states:
         pprint.pprint(s)
         print(type(rates))
-        curr_state = States(name=s['NAME'], rank=(rates.index(s['SAEPOVRTALL_PT']) + 1), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=None, flag=None)
+        curr_state = States(name=s['NAME'], rank=50-(rates.index(s['SAEPOVRTALL_PT']) + 1), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=None, flag=None)
         db.session.add(curr_state)
         db.session.commit()
 
