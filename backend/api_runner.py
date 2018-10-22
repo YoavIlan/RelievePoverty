@@ -80,12 +80,12 @@ class States(db.Model):
 db.create_all()
 
 # Gets a specific news article by its primary key
-@app.route("/api/v1/news/<id>", methods=['GET'])
+@app.route("/v1/news/<id>", methods=['GET'])
 def getNewsById(id):
     return flask.jsonify(News.serialize(News.query.get(id)))
 
 # Gets all news articles. Supports pagination and filtering by states.
-@app.route("/api/v1/news", methods=['GET'])
+@app.route("/v1/news", methods=['GET'])
 def getAllNews():
     if 'state' in request.args:
         return flask.jsonify([News.serialize(news) for news in News.query.filter_by(state=request.args['state'])])
@@ -99,12 +99,12 @@ def getAllNews():
     return flask.jsonify([News.serialize(news) for news in News.query.all()])
 
 # Gets a specific charity by its primary key
-@app.route("/api/v1/charities/<id>", methods=['GET'])
+@app.route("/v1/charities/<id>", methods=['GET'])
 def getCharityById(id):
     return flask.jsonify(Charities.serialize(Charities.query.get(id)))
 
 # Gets all charities. Supports pagination and filtering by states.
-@app.route("/api/v1/charities", methods=['GET'])
+@app.route("/v1/charities", methods=['GET'])
 def getAllCharities():
     if 'state' in request.args:
         return flask.jsonify([Charities.serialize(charity) for charity in Charities.query.filter_by(state=request.args['state'])])
@@ -118,12 +118,12 @@ def getAllCharities():
     return flask.jsonify([Charities.serialize(charity) for charity in Charities.query.all()])
 
 # Gets a specific state by its name
-@app.route("/api/v1/states/<state>", methods=['GET'])
+@app.route("/v1/states/<state>", methods=['GET'])
 def getStateByName(state):
     return flask.jsonify(States.serialize(States.query.filter_by(name=state)[0]))
 
 # Gets all states. Supports pagination.
-@app.route("/api/v1/states", methods=['GET'])
+@app.route("/v1/states", methods=['GET'])
 def getAllStates():
     if 'page' in request.args:
         result = list();
