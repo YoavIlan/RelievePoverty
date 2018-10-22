@@ -3,7 +3,7 @@ import pprint
 import flask
 import flask_sqlalchemy
 import flask_restless
-from cStringIO import StringIO
+from io import StringIO
 
 
 # http://127.0.0.1:5000/api/v1/news
@@ -35,8 +35,8 @@ state_dict = {'AL':'Alabama','AK':'Alaska','AZ':'Arizona','AR':'Arkansas','CA':'
 def build_address(address):
     # build complete address from separate fields
     for element in address:
-        print address[element]
-    print "\n"
+        print (address[element])
+    print ("\n")
     builder = StringIO()
     builder.write(address["streetAddress1"])
     builder.write("\n")
