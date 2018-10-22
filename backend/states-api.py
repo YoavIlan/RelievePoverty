@@ -29,7 +29,33 @@ class States(db.Model):
 db.create_all()
 
 url = "https://api.census.gov/data/timeseries/poverty/saipe/"
-parameters = {"get":"NAME,SAEPOVRTALL_PT,SAEPOVRT0_17_PT,SAEMHI_PT", "for":"state:*", "time":2016}
+parameters = {"get":"NAME,STATE,SAEPOVRTALL_PT,SAEPOVRT0_17_PT,SAEMHI_PT", "for":"state:*", "time":2016}
+
+
+def get_county(state) :
+    state_param = "state:" + state
+    parameters = {"get":"NAME,COUNTY,SAEPOVRTALL_PT,SAEPOVRT0_17_PT,SAEMHI_PT", "for":"county:*", "in":state_param, "time":2016}
+
+    response = requests.get(url, params=parameters)
+    lists = response.json()
+    keys = lists[0]
+    lists.remove(keys)
+    counties = []
+    for l in lists :
+        it = iter(keys)
+        c = {}
+        for i in l :
+            c[next(it)] = i
+        counties.append(c)
+
+    max_poverty_rate = 0
+    poorest_county_name = ""
+    for county in counties:
+        if county["SAEPOVRTALL_PT"] is not None and float(county["SAEPOVRTALL_PT"]) > float(max_poverty_rate):
+            max_poverty_rate = county["SAEPOVRTALL_PT"]
+            poorest_county_name = county["NAME"]
+    print(poorest_county_name)
+    return poorest_county_name
 
 
 
@@ -42,22 +68,24 @@ def add_state_information():
     for l in lists :
         it = iter(keys)
         state = {}
-        for i in l :
-            state[next(it)] = i
-        states.append(state)
+        if(l[0] != 'District of Columbia') :
+            for i in l :
+                state[next(it)] = i
+            states.append(state)
 
     for i in states :
         print(i)
     #states = [state for state in response.json()['NAME']]
-    rates = [state['SAEPOVRTALL_PT'] for state in states]
+    rates = [state['SAEPOVRTALL_PT']*100 + state['SAEPOVRT0_17_PT']  for state in states]
     rates.sort()
+    ranks  = []
     for s in states:
+
         pprint.pprint(s)
-        print(type(rates))
-        curr_state = States(name=s['NAME'], rank=50-(rates.index(s['SAEPOVRTALL_PT']) + 1), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=None, flag=None)
+        curr_state = States(name=s['NAME'], rank=50-(rates.index(s['SAEPOVRTALL_PT']*100 + s['SAEPOVRT0_17_PT'])), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=get_county(s["STATE"]), flag='http://www.theus50.com/images/state-flags/' + s['NAME'].lower().replace(" ", "") + '-flag.jpg')
+        print(curr_state)
         db.session.add(curr_state)
         db.session.commit()
-
 
 if __name__ == "__main__":
     add_state_information()
