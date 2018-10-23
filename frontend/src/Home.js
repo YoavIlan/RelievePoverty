@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Navbar from './shared-components/Navbar'
 import Jumbotron from './shared-components/Jumbotron'
 import  Carousel  from "./shared-components/Carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";

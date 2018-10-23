@@ -1,0 +1,31 @@
+nav.navbar, .navbar-default {
+  background-color: black !important;
+}
+.navbar-nav{
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    margin-right: -150px;
+}
+
+.navitem{
+    margin: 0px 15px;
+}
+
+.navbar-default {
+  background-image: none;
+  border: none;
+  border-radius: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: white;
+}
+
+.navbar-default .navbar-brand {
+  color: orange;
+}
+
+.navbar-header{
+    margin-left: -100px;
+}
