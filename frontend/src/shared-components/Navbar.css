@@ -5,7 +5,6 @@ nav.navbar, .navbar-default {
     -webkit-flex-direction: row;
     -ms-flex-direction: row;
     flex-direction: row;
-    margin-right: -150px;
 }
 
 .navitem{
@@ -24,8 +23,4 @@ nav.navbar, .navbar-default {
 
 .navbar-default .navbar-brand {
   color: orange;
-}
-
-.navbar-header{
-    margin-left: -100px;
 }
