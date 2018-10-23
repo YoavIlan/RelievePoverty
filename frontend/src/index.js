@@ -7,5 +7,3 @@ import Jumbotron from './shared-components/Jumbotron';
 import './index.css';
 
 ReactDOM.render(<Home />, document.getElementById('root'));
-// ReactDOM.render(<Navbar />, document.getElementById('root'));
-// ReactDOM.render(<Jumbotron title={'This is a test'} description={'Another test'} />, document.getElementById('root'));
