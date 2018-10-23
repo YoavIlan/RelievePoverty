@@ -87,16 +87,17 @@ def getNewsById(id):
 # Gets all news articles. Supports pagination and filtering by states.
 @app.route("/v1/news", methods=['GET'])
 def getAllNews():
+    total = len(News.query.all())
     if 'state' in request.args:
-        return flask.jsonify([News.serialize(news) for news in News.query.filter_by(state=request.args['state'])])
+        filtered = News.query.filter_by(state=request.args['state'])
+        return flask.jsonify({'data': [News.serialize(news) for news in filtered], 'total': filtered.count()})
     if 'page' in request.args:
-        result = list();
-        total = len(News.query.all())    
+        result = list();  
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
             result.append(News.query.get(i))
-        return flask.jsonify([News.serialize(news) for news in result])
-    return flask.jsonify([News.serialize(news) for news in News.query.all()])
+        return flask.jsonify({'data': [News.serialize(news) for news in result], 'total': total})
+    return flask.jsonify({'data': [News.serialize(news) for news in News.query.all()], 'total': total})
 
 # Gets a specific charity by its primary key
 @app.route("/v1/charities/<id>", methods=['GET'])
@@ -106,16 +107,17 @@ def getCharityById(id):
 # Gets all charities. Supports pagination and filtering by states.
 @app.route("/v1/charities", methods=['GET'])
 def getAllCharities():
+    total = len(Charities.query.all())
     if 'state' in request.args:
-        return flask.jsonify([Charities.serialize(charity) for charity in Charities.query.filter_by(state=request.args['state'])])
+        filtered = Charities.query.filter_by(state=request.args['state'])
+        return flask.jsonify({'data': [Charities.serialize(charity) for charity in filtered], 'total': filtered.count()})
     if 'page' in request.args:
         result = list();
-        total = len(Charities.query.all())    
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
             result.append(Charities.query.get(i))
-        return flask.jsonify([Charities.serialize(charity) for charity in result])
-    return flask.jsonify([Charities.serialize(charity) for charity in Charities.query.all()])
+        return flask.jsonify({'data': [Charities.serialize(charity) for charity in result], 'total': total})
+    return flask.jsonify({'data': [Charities.serialize(charity) for charity in Charities.query.all()], 'total': total})
 
 # Gets a specific state by its name
 @app.route("/v1/states/<state>", methods=['GET'])
@@ -125,14 +127,14 @@ def getStateByName(state):
 # Gets all states. Supports pagination.
 @app.route("/v1/states", methods=['GET'])
 def getAllStates():
+    total = len(States.query.all())
     if 'page' in request.args:
-        result = list();
-        total = len(States.query.all())    
+        result = list();   
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
             result.append(States.query.get(i))
-        return flask.jsonify([States.serialize(state) for state in result])
-    return flask.jsonify([States.serialize(state) for state in States.query.all()])
+        return flask.jsonify({'data': [States.serialize(state) for state in result], 'total': total})
+    return flask.jsonify({'data': [States.serialize(state) for state in States.query.all()], 'total': total})
 
 @app.route("/")
 def home():
