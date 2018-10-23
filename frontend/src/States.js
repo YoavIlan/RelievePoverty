@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import StatesCard from './shared-components/StatesCard';
 
 class States extends Component{
     render(){
         return(
-            <p>States page</p>
+            <StatesCard image={'http://www.theus50.com/images/state-flags/california-flag.jpg'} state={'California'} rank={1}/>
         )
     }
 }
