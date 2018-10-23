@@ -1,0 +1,9 @@
+.carousel .slide iframe {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+.legend {
+    background: none !important;
+    font-size: 150% !important;
+}
