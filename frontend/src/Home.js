@@ -17,7 +17,6 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <Navbar/>
                 <Jumbotron title={'Learn more about poverty in the U.S.'}/>
                 <Carousel/>
             </div>
