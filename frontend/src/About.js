@@ -51,7 +51,6 @@ class About extends Component{
     render(){
     	return(
     		<>
-    		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
 			<Jumbotron title={'About Our Site'} description={'Our mission is to educate citizens of the United States about the issues concerning poverty within the country by providing articles and information about it in each state. We then provide information about charities that readers can donate to in order to help fight against poverty. An interesting result of integrating articles, charities, and state statistics concerning poverty is that we were able to make a connection between them even though they were previously three distinct mediums.'}/>
 			<main role="main">
 		      <div class="album py-5">
@@ -81,6 +80,7 @@ class About extends Component{
 		            <ul class="list-group list-group-flush">
 		              <li class="list-group-item"><a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_poverty_rate" target="_blank">Wikipedia (State Poverty)</a> - Scraped by using Wikipedia's REST API then parsing the data tables</li>
 		              <li class="list-group-item"><a href="https://developer.nytimes.com/article_search_v2.json" target="_blank">NYTimes</a> - Scraped by using their article search API with queries</li>
+		              <li class="list-group-item"><a href="https://newsapi.org/" target="_blank">NewsAPI</a> - Scraped by using their API with states as filters</li>
 		              <li class="list-group-item"><a href="https://charity.3scale.net/docs/data-api/reference" target="_blank">Charity Navigator</a> - Scraped by using their API by searching for poverty related charities</li>
 		            </ul>
 		          </div>

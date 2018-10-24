@@ -43,8 +43,8 @@ class States extends Component{
                     </div>
                 </div>
                 <ReactPaginate className='pagination'
-                        previousLabel={"previous"}
-                           nextLabel={"next"}
+                        previousLabel={"Previous"}
+                           nextLabel={"Next"}
                            breakLabel={<a href="">...</a>}
                            breakClassName={"break-me"}
                            pageCount={Math.ceil(this.state.total / pageSize)}
