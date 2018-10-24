@@ -1,0 +1,24 @@
+.pagination{
+    display: block;
+    text-align:center !important;
+}
+
+.pagination ul {
+    display: inline-block;
+    text-align: center !important;
+}
+
+.pagination li {
+    display: inline-block;
+    text-align: center !important;
+    cursor: pointer;
+}
+
+.pagination a {
+    color: black;
+    display: inline-block;
+    text-align: center !important;
+    padding: 8px 16px;
+    text-decoration: none;
+    outline: none;
+}
