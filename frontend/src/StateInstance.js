@@ -22,9 +22,9 @@ class StateInstance extends Component {
            news: [{author: "", id: 0, image: "", published_date: "", source: "", state: "", summary: "", title: "", url: ""},
                   {author: "", id: 0, image: "", published_date: "", source: "", state: "", summary: "", title: "", url: ""},
                   {author: "", id: 0, image: "", published_date: "", source: "", state: "", summary: "", title: "", url: ""}],
-          charities: [{address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""},
-                 {address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""},
-                 {address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""}]
+           charities: [{address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""},
+                  {address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""},
+                  {address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""}]
 
        }
    }
@@ -68,13 +68,9 @@ class StateInstance extends Component {
        });
    }
    render() {
-     console.log(this.state.news[0]);
-     console.log(this.state.news[0].title);
-     console.log(this.state.news[1].title);
 
        return (
          <>
-            <p> NEWS: {this.state.news[0].title}</p>
            <h1 class="my-4"> {this.state.name} </h1>
            <div class="row">
              <div class="col-md-8">
@@ -90,17 +86,29 @@ class StateInstance extends Component {
              <h3 class="my-4">Related Articles</h3>
            </div>
            <div class="row">
-              <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary}/>
-              <NewsCard image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary}/>
-              <NewsCard image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary}/>
+              { this.state.news[0] != undefined &&
+                <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary}/>
+              }
+              { this.state.news[1] != undefined &&
+                <NewsCard image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary}/>
+              }
+              { this.state.news[2] != undefined &&
+                <NewsCard image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary}/>
+              }
           </div>
           <div>
             <h3 class="my-4">Related Charities {this.state.charities[0].mission}</h3>
           </div>
           <div class="row">
-             <CharitiesCard image={this.state.charities[0].img} title={this.state.charities[0].name} description={this.state.charities[0].mission}/>
-             <CharitiesCard image={this.state.charities[1].img} title={this.state.charities[1].name} description={this.state.charities[1].mission}/>
-             <CharitiesCard image={this.state.charities[2].img} title={this.state.charities[2].name} description={this.state.charities[2].mission}/>
+             { this.state.charities[0] != undefined &&
+               <CharitiesCard image={this.state.charities[0].img} title={this.state.charities[0].name} description={this.state.charities[0].mission}/>
+             }
+             { this.state.charities[1] != undefined &&
+               <CharitiesCard image={this.state.charities[1].img} title={this.state.charities[1].name} description={this.state.charities[1].mission}/>
+             }
+             { this.state.charities[2] != undefined &&
+               <CharitiesCard image={this.state.charities[2].img} title={this.state.charities[2].name} description={this.state.charities[2].mission}/>
+             }
           </div>
           </>
 
