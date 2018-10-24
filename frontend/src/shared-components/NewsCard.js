@@ -2,22 +2,6 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-function getRank(rank) {
-    if (rank == 11 || rank == 12 || rank == 13)
-        return 'th'
-    switch(rank%10){
-        case 1:
-            return 'st'
-        case 2:
-            return 'nd'
-        case 3:
-            return 'rd'
-        default:
-            return 'th'
-    }
-}
-
 class NewsCard extends Component {
     
     render() {
