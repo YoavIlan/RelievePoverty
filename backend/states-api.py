@@ -76,13 +76,11 @@ def add_state_information():
     for i in states :
         print(i)
     #states = [state for state in response.json()['NAME']]
-    rates = [state['SAEPOVRTALL_PT']*100 + state['SAEPOVRT0_17_PT']  for state in states]
-    rates.sort()
-    ranks  = []
+    states.sort(key=lambda obj: float(obj['SAEPOVRTALL_PT']))
     for s in states:
 
         pprint.pprint(s)
-        curr_state = States(name=s['NAME'], rank=50-(rates.index(s['SAEPOVRTALL_PT']*100 + s['SAEPOVRT0_17_PT'])), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=get_county(s["STATE"]), flag='http://www.theus50.com/images/state-flags/' + s['NAME'].lower().replace(" ", "") + '-flag.jpg')
+        curr_state = States(name=s['NAME'], rank=50-(states.index(s)), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=get_county(s["STATE"]), flag='http://www.theus50.com/images/state-flags/' + s['NAME'].lower().replace(" ", "") + '-flag.jpg')
         print(curr_state)
         db.session.add(curr_state)
         db.session.commit()
