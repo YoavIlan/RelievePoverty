@@ -10,7 +10,7 @@
 
 .img-fluid {
   position:relative;
-    left: 10%;
+    left: 6%;
     width: 80%;
     height: 80%;
 }
@@ -22,7 +22,7 @@
 
 .my-4 {
   position:relative;
-  left: 6%;
+  left: 4%;
 }
 
 .twitter-timeline{
@@ -62,6 +62,10 @@ body{
 
 .card{
   background-color: #FFFFFF;
+  width: 70%;
+
+  margin-left: 12%;
+  margin-bottom: 5%
 }
 
 .navbar{
