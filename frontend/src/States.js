@@ -34,27 +34,29 @@ class States extends Component{
     render(){
         let pageSize = 12.0;
         return(
-            <div>
-                <div className='album py-5 bg-light listingPage'>
-                    <div className='row'>
-                        {this.state.data.map(obj =>
-                            <StatesCard image={obj.flag} state={obj.name} rank={obj.rank}/>
-                        )}
-                    </div>
+            <>
+              <div className='album py-5 bg-light listingPage'>
+                <div class="container">
+                  <div className='row'>
+                    {this.state.data.map(obj =>
+                      <StatesCard image={obj.flag} state={obj.name} rank={obj.rank}/>
+                    )}
+                  </div>
                 </div>
                 <ReactPaginate className='pagination'
-                        previousLabel={"Previous"}
-                           nextLabel={"Next"}
-                           breakLabel={<a href="">...</a>}
-                           breakClassName={"break-me"}
-                           pageCount={Math.ceil(this.state.total / pageSize)}
-                           marginPagesDisplayed={2}
-                           pageRangeDisplayed={5}
-                           onPageChange={this.handlePageClick}
-                           containerClassName={"pagination"}
-                           subContainerClassName={"pages pagination"}
-                           activeClassName={"active"} />
-            </div>
+                  previousLabel={"Previous"}
+                  nextLabel={"Next"}
+                  breakLabel={<a href="">...</a>}
+                  breakClassName={"break-me"}
+                  pageCount={Math.ceil(this.state.total / pageSize)}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  onPageChange={this.handlePageClick}
+                  containerClassName={"pagination"}
+                  subContainerClassName={"pages pagination"}
+                  activeClassName={"active"} />
+              </div>
+            </>
         )
     }
 }

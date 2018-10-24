@@ -23,16 +23,18 @@ class StatesCard extends Component {
         let image = this.props.image;
         let state = this.props.state;
         let rank = this.props.rank;
-        return <div className="col-md-4 state-card d-flex">
-            <div className="card state-card">
-            <img className="card-img-top" src={image} alt={state}/>
-            <div className="card-body d-flex flex-column">
-                <h5 className="card-title">{state}</h5>
-                <p className="card-text">{state} is ranked {rank}{getRank(rank)} out of 50 states for its poverty rates</p>
-                <Link to={`/states/california`}  className="btn btn-primary mt-auto">More Information</Link>
+        return(
+            <div class="col-md-4 d-flex">
+              <div class="card mb-4 box-shadow">
+                <img class="card-img-top" id="developer-img" src={image} alt="Card image cap" styles="height: 212px !important; width:320px !important"></img>
+                <div class="card-body">
+                  <h5 class="card-title">{state}</h5>
+                  <p className="card-text">{state} is ranked {rank}{getRank(rank)} out of 50 states for its poverty rates</p>
+                  <Link to={`/states/${state}`}  className="btn btn-primary mt-auto">More Information</Link>
+                </div>
+              </div>
             </div>
-            </div>
-        </div>
+            )
     }
 }
 
