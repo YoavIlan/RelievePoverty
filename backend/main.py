@@ -4,12 +4,14 @@ import flask_restless
 from flask import request
 
 INSTANCES_PER_PAGE = 12
+DATABASE_URI = 'mysql+pymysql://relievepoverty:SWEpoverty6@relievepoverty.cdbjmfurziio.us-east-2.rds.amazonaws.com/RelievePovertyDB'
 
 # Create the Flask application and the Flask-SQLAlchemy object.
 app = flask.Flask(__name__)
 app.config['DEBUG'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://relievepoverty:SWEpoverty6@relievepoverty.cdbjmfurziio.us-east-2.rds.amazonaws.com/RelievePovertyDB'
+app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
 db = flask_sqlalchemy.SQLAlchemy(app)
+
 
 class News(db.Model):
     title = db.Column(db.String(255))
@@ -21,6 +23,7 @@ class News(db.Model):
     url = db.Column(db.String(255))
     image = db.Column(db.String(255))
     id = db.Column(db.Integer, primary_key=True)
+
     def serialize(self):
         return {
             "id": self.id,
@@ -34,6 +37,7 @@ class News(db.Model):
             "image": self.image
         }
 
+
 class Charities(db.Model):
     name = db.Column(db.String(255))
     mission = db.Column(db.String(255))
@@ -44,6 +48,7 @@ class Charities(db.Model):
     img = db.Column(db.String(255))
     cause_name = db.Column(db.String(255))
     id = db.Column(db.Integer, primary_key=True)
+
     def serialize(self):
         return {
             "id": self.id,
@@ -66,6 +71,7 @@ class States(db.Model):
     median_income = db.Column(db.String(255))
     counties = db.Column(db.String(255))
     flag = db.Column(db.String(255))
+
     def serialize(self):
         return {
             "name": self.name,
@@ -80,11 +86,15 @@ class States(db.Model):
 db.create_all()
 
 # Gets a specific news article by its primary key
+
+
 @app.route("/v1/news/<id>", methods=['GET'])
 def getNewsById(id):
     return flask.jsonify(News.serialize(News.query.get(id)))
 
 # Gets all news articles. Supports pagination and filtering by states.
+
+
 @app.route("/v1/news", methods=['GET'])
 def getAllNews():
     total = len(News.query.all())
@@ -92,7 +102,7 @@ def getAllNews():
         filtered = News.query.filter_by(state=request.args['state'])
         return flask.jsonify({'data': [News.serialize(news) for news in filtered], 'total': filtered.count()})
     if 'page' in request.args:
-        result = list();  
+        result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
             result.append(News.query.get(i))
@@ -100,11 +110,15 @@ def getAllNews():
     return flask.jsonify({'data': [News.serialize(news) for news in News.query.all()], 'total': total})
 
 # Gets a specific charity by its primary key
+
+
 @app.route("/v1/charities/<id>", methods=['GET'])
 def getCharityById(id):
     return flask.jsonify(Charities.serialize(Charities.query.get(id)))
 
 # Gets all charities. Supports pagination and filtering by states.
+
+
 @app.route("/v1/charities", methods=['GET'])
 def getAllCharities():
     total = len(Charities.query.all())
@@ -112,7 +126,7 @@ def getAllCharities():
         filtered = Charities.query.filter_by(state=request.args['state'])
         return flask.jsonify({'data': [Charities.serialize(charity) for charity in filtered], 'total': filtered.count()})
     if 'page' in request.args:
-        result = list();
+        result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
             result.append(Charities.query.get(i))
@@ -120,21 +134,26 @@ def getAllCharities():
     return flask.jsonify({'data': [Charities.serialize(charity) for charity in Charities.query.all()], 'total': total})
 
 # Gets a specific state by its name
+
+
 @app.route("/v1/states/<state>", methods=['GET'])
 def getStateByName(state):
     return flask.jsonify(States.serialize(States.query.filter_by(name=state)[0]))
 
 # Gets all states. Supports pagination.
+
+
 @app.route("/v1/states", methods=['GET'])
 def getAllStates():
     total = len(States.query.all())
     if 'page' in request.args:
-        result = list();   
+        result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
             result.append(States.query.get(i))
         return flask.jsonify({'data': [States.serialize(state) for state in result], 'total': total})
     return flask.jsonify({'data': [States.serialize(state) for state in States.query.all()], 'total': total})
+
 
 @app.route("/")
 def home():
@@ -144,7 +163,9 @@ def home():
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add(
+        'Access-Control-Allow-Headers',
+        'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET')
     return response
 
