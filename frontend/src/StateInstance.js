@@ -85,7 +85,7 @@ class StateInstance extends Component {
            <div>
              <h3 class="my-4">Related Articles</h3>
            </div>
-           <div class="row">
+           <div class="row related-instances">
               { this.state.news[0] != undefined &&
                 <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary}/>
               }
@@ -99,7 +99,7 @@ class StateInstance extends Component {
           <div>
             <h3 class="my-4">Related Charities {this.state.charities[0].mission}</h3>
           </div>
-          <div class="row">
+          <div class="row related-instances">
              { this.state.charities[0] != undefined &&
                <CharitiesCard image={this.state.charities[0].img} title={this.state.charities[0].name} description={this.state.charities[0].mission}/>
              }

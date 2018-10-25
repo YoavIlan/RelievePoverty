@@ -64,6 +64,13 @@ body{
   background-color: #FFFFFF;
 }
 
+.related-instances{
+  width: 70%;
+  margin-left: 12%;
+  margin-bottom: 5%
+
+}
+
 .navbar{
   background-color: #201F1D;
 }
