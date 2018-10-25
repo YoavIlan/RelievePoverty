@@ -64,7 +64,7 @@ body{
   background-color: #FFFFFF;
 }
 
-.related-instances > div{
+.related-instances > div > div{
   width: 70%;
   margin-left: 12%;
   margin-bottom: 5%
