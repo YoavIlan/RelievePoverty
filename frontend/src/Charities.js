@@ -41,7 +41,7 @@ class Charities extends Component{
                 <div class="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
-                      <CharitiesCard image={obj.img} title={obj.name} description={obj.mission  }/>
+                      <CharitiesCard image={obj.img} title={obj.name} description={obj.mission} id={obj.id}/>
                     )}
                   </div>
                 </div>
