@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import StatesCard from './shared-components/StatesCard';
 import NewsCard from './shared-components/NewsCard';
 import CharitiesCard  from './shared-components/CharitiesCard';
-import StateData  from './shared-components/StateData';
 import './shared-components/styles.css';
-
-
 
 class StateInstance extends Component {
 
@@ -29,7 +26,6 @@ class StateInstance extends Component {
        }
    }
 
-
    get_related_news(state) {
      this.getJSON('https:api.relievepoverty.me/v1/news?state=' + state)
          .then(response => {
@@ -37,6 +33,7 @@ class StateInstance extends Component {
              this.setState({news: obj.data});
          });
    }
+
    get_related_charities(state) {
      this.getJSON('https:api.relievepoverty.me/v1/charities?state=' + state)
          .then(response => {
@@ -44,8 +41,6 @@ class StateInstance extends Component {
              this.setState({charities: obj.data});
          });
    }
-
-
 
    componentWillMount(){
        var obj = {};
@@ -57,9 +52,7 @@ class StateInstance extends Component {
                child_poverty_rate: obj.child_poverty_rate, below_poverty_rate: obj.below_poverty_rate})
                this.get_related_news(this.props.match.params.name);
                this.get_related_charities(this.props.match.params.name);
-
            });
-
    }
 
    getJSON(url) {
@@ -67,8 +60,23 @@ class StateInstance extends Component {
            return response.json();
        });
    }
-   render() {
 
+   getRank(rank) {
+      if (rank == 11 || rank == 12 || rank == 13)
+        return  'th'
+      switch(rank%10){
+        case 1:
+            return 'st'
+        case 2:
+            return 'nd'
+        case 3:
+            return 'rd'
+        default:
+            return 'th'
+      }
+   }
+
+   render() {
        return (
          <>
            <h1 class="my-4"> {this.state.name} </h1>
@@ -76,11 +84,18 @@ class StateInstance extends Component {
              <div class="col-md-8">
                  <img class="img-fluid" src={this.state.flag} alt=""></img>
              </div>
-
-             <StateData rank={this.state.rank} below_poverty_rate={this.state.below_poverty_rate}
-                              child_poverty_rate={this.state.child_poverty_rate} counties={this.state.counties}
-                              flag={this.state.flag} median_income={this.state.median_income}
-                              name={this.state.name} flag={this.state.flag}/>
+              <div class="col-md-4">
+                <b>Ranking</b>
+                <p>{this.state.rank}{this.getRank(this.state.rank)} out of 50 states for its poverty rate</p>
+                <b>Below Poverty Rate</b>
+                <p>{this.state.below_poverty_rate}% of all citizens</p>
+                <b>Under 18 and Below Poverty Rate</b>
+                <p>{this.state.child_poverty_rate}% of all children</p>
+                <b>Median Income</b>
+                <p>{(this.state.median_income.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))}</p>
+                <b>County with the highest poverty rates</b>
+                <p>{this.state.counties}</p>
+             </div>
            </div>
            <div>
              <h3 class="my-4">Related Articles</h3>
@@ -101,18 +116,16 @@ class StateInstance extends Component {
           </div>
           <div class="row related-instances">
              { this.state.charities[0] != undefined &&
-               <CharitiesCard image={this.state.charities[0].img} title={this.state.charities[0].name} description={this.state.charities[0].mission}/>
+               <CharitiesCard image={this.state.charities[0].img} title={this.state.charities[0].name} description={this.state.charities[0].mission} id={this.state.charities[0].id}/>
              }
              { this.state.charities[1] != undefined &&
-               <CharitiesCard image={this.state.charities[1].img} title={this.state.charities[1].name} description={this.state.charities[1].mission}/>
+               <CharitiesCard image={this.state.charities[1].img} title={this.state.charities[1].name} description={this.state.charities[1].mission} id={this.state.charities[1].id}/>
              }
              { this.state.charities[2] != undefined &&
-               <CharitiesCard image={this.state.charities[2].img} title={this.state.charities[2].name} description={this.state.charities[2].mission}/>
+               <CharitiesCard image={this.state.charities[2].img} title={this.state.charities[2].name} description={this.state.charities[2].mission} id={this.state.charities[2].id}/>
              }
           </div>
           </>
-
-
        )
    }
 }
