@@ -5,7 +5,7 @@ import './styles.css'
 
 function getRank(rank) {
     if (rank == 11 || rank == 12 || rank == 13)
-        return rank + 'th'
+        return  'th'
     switch(rank%10){
         case 1:
             return 'st'
@@ -32,7 +32,7 @@ class StateData extends Component {
           <div class="col-md-4">
 
               <b>Ranking</b>
-              <p>{rank}{getRank(({rank}))} out of 50 states for its poverty rate</p>
+              <p>{rank}{getRank(rank)} out of 50 states for its poverty rate</p>
               <b>Below Poverty Rate</b>
               <p>{below_poverty_rate}% of all citizens</p>
               <b>Under 18 and Below Poverty Rate</b>
