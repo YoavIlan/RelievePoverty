@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import StatesCard from './shared-components/StatesCard';
+import Jumbotron from './shared-components/Jumbotron';
 import {Grid, Row, Col} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import './Paginate.css'
@@ -35,6 +36,7 @@ class States extends Component{
         let pageSize = 12.0;
         return(
             <>
+              <Jumbotron title={"Learn more about poverty in the U.S."} description={"Learn more about poverty for each state."}/>
               <div className='album py-5 bg-light listingPage'>
                 <div class="container">
                   <div className='row'>
