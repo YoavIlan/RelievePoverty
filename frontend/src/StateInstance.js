@@ -19,9 +19,9 @@ class StateInstance extends Component {
            news: [{author: "", id: 0, image: "", published_date: "", source: "", state: "", summary: "", title: "", url: ""},
                   {author: "", id: 0, image: "", published_date: "", source: "", state: "", summary: "", title: "", url: ""},
                   {author: "", id: 0, image: "", published_date: "", source: "", state: "", summary: "", title: "", url: ""}],
-           charities: [{address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""},
-                  {address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""},
-                  {address: "", id: 0, affiliation: "", cause_name: "", id: "", img: "", mission: "", name: "", state: "", tax_classification: ""}]
+           charities: [{address: "", id: 0, affiliation: "", cause_name: "", img: "", mission: "", name: "", state: "", tax_classification: ""},
+                  {address: "", id: 0, affiliation: "", cause_name: "", img: "", mission: "", name: "", state: "", tax_classification: ""},
+                  {address: "", id: 0, affiliation: "", cause_name: "", img: "", mission: "", name: "", state: "", tax_classification: ""}]
 
        }
    }
