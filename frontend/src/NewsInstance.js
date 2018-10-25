@@ -55,7 +55,7 @@ class NewsInstance extends Component {
                     </div>
                     <div class="col-md-4">
                         <h3 class="my-3">Summary</h3>
-                        <p>{this.state.summary}</p>
+                        <p>{this.state.summary}...</p>
                         <h3 class="my-3">Information</h3>
                         <ul>
                             <li>News Organization: {this.state.source}</li>

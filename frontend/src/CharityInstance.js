@@ -70,8 +70,7 @@ class CharityInstance extends Component {
 
              <div class="col-md-4">
 
-               <b>Cause</b>
-               <p>{this.state.cause_name}</p>
+               {this.state.cause_name != 'null' && <><b>Cause</b><p>{this.state.cause_name}</p></>}
                <b>Address</b>
                <p>{this.state.address}</p>
                <b>Affiliation</b>
@@ -89,13 +88,13 @@ class CharityInstance extends Component {
            </div>
            <div class="row related-instances">
               { this.state.news[0] != undefined &&
-                <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary} id={this.state.news[0].id}/>
+                <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} source={this.state.news[0].source} id={this.state.news[0].id} published_date={this.state.news[0].published_date} state={this.state.news[0].state} author={this.state.news[0].author} />
               }
               { this.state.news[1] != undefined &&
-                <NewsCard image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary} id={this.state.news[1].id}/>
+                <NewsCard image={this.state.news[1].image} title={this.state.news[1].title} source={this.state.news[1].source} id={this.state.news[1].id} published_date={this.state.news[1].published_date} state={this.state.news[1].state} author={this.state.news[1].author} />
               }
               { this.state.news[2] != undefined &&
-                <NewsCard image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary} id={this.state.news[2].id}/>
+                <NewsCard image={this.state.news[2].image} title={this.state.news[2].title} source={this.state.news[2].source} id={this.state.news[2].id} published_date={this.state.news[2].published_date} state={this.state.news[2].state} author={this.state.news[2].author} />
               }
           </div>
 

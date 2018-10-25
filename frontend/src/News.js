@@ -41,7 +41,7 @@ class News extends Component{
                 <div class="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
-                      <NewsCard image={obj.image} title={obj.title} description={obj.summary} id={obj.id}/>
+                      <NewsCard image={obj.image} title={obj.title} source={obj.source} id={obj.id} published_date={obj.published_date} state={obj.state} author={obj.author} />
                     )}
                   </div>
                 </div>
