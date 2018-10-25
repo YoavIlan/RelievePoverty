@@ -6,7 +6,7 @@ class NewsInstance extends Component {
         super(props);
         this.state = {
             author:	"",
-            id:	-1,
+            id:	0,
             image:	"",
             published_date: "",
             source:	"",
@@ -17,7 +17,7 @@ class NewsInstance extends Component {
         }
     }
     componentWillMount(){
-        const id = this.props.id;
+        const id = this.props.match.params.id;
         this.getJSON('https:api.relievepoverty.me/v1/news/' + id)
             .then(response => {
                 var obj = JSON.parse(JSON.stringify(response));

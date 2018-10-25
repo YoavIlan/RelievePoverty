@@ -87,13 +87,13 @@ class StateInstance extends Component {
            </div>
            <div class="row related-instances">
               { this.state.news[0] != undefined &&
-                <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary}/>
+                <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary} id={this.state.news[0].id}/>
               }
               { this.state.news[1] != undefined &&
-                <NewsCard image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary}/>
+                <NewsCard image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary} id={this.state.news[1].id}/>
               }
               { this.state.news[2] != undefined &&
-                <NewsCard image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary}/>
+                <NewsCard image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary} id={this.state.news[2].id}/>
               }
           </div>
           <div>
