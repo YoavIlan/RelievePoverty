@@ -112,7 +112,7 @@ class StateInstance extends Component {
               }
           </div>
           <div>
-            <h3 class="my-4">Related Charities {this.state.charities[0].mission}</h3>
+            <h3 class="my-4">Related Charities</h3>
           </div>
           <div class="row related-instances">
              { this.state.charities[0] != undefined &&
