@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import NewsCard from './shared-components/NewsCard';
 import './shared-components/styles.css';
+import { Link } from 'react-router-dom';
 
 
 
@@ -78,7 +79,7 @@ class CharityInstance extends Component {
                <b>Mission</b>
                <p>{this.state.mission}</p>
                <b>State</b>
-               <p>{this.state.state}</p>
+               <p><Link to={"/states/" + this.state.state}>{this.state.state}</Link></p>
                <b>Tax Classification</b>
                <p>{this.state.tax_classification}</p>
             </div>
