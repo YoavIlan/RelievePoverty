@@ -27,7 +27,7 @@ class StateInstance extends Component {
    }
 
    get_related_news(state) {
-     this.getJSON('https:api.relievepoverty.me/v1/news?state=' + state)
+     this.getJSON('https://api.relievepoverty.me/v1/news?state=' + state)
          .then(response => {
              var obj = JSON.parse(JSON.stringify(response));
              this.setState({news: obj.data});
@@ -35,7 +35,7 @@ class StateInstance extends Component {
    }
 
    get_related_charities(state) {
-     this.getJSON('https:api.relievepoverty.me/v1/charities?state=' + state)
+     this.getJSON('https://api.relievepoverty.me/v1/charities?state=' + state)
          .then(response => {
              var obj = JSON.parse(JSON.stringify(response));
              this.setState({charities: obj.data});
@@ -45,7 +45,7 @@ class StateInstance extends Component {
    componentWillMount(){
        var obj = {};
        const name = this.props.match.params.name;
-       this.getJSON('https:api.relievepoverty.me/v1/states/' + name)
+       this.getJSON('https://api.relievepoverty.me/v1/states/' + name)
            .then(response => {
                obj = JSON.parse(JSON.stringify(response));
                this.setState({rank: obj.rank, name: obj.name, median_income: obj.median_income, flag: obj.flag, counties: obj.counties,

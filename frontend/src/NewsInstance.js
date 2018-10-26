@@ -22,7 +22,7 @@ class NewsInstance extends Component {
     }
     componentWillMount(){
         const id = this.props.match.params.id;
-        this.getJSON('https:api.relievepoverty.me/v1/news/' + id)
+        this.getJSON('https://api.relievepoverty.me/v1/news/' + id)
             .then(response => {
                 var obj = JSON.parse(JSON.stringify(response));
                 this.setState({author: obj.author, id: obj.id, image: obj.image, published_date: obj.published_date, source: obj.source,
@@ -32,7 +32,7 @@ class NewsInstance extends Component {
     }
 
     get_related_charities(state) {
-        this.getJSON('https:api.relievepoverty.me/v1/charities?state=' + state)
+        this.getJSON('https://api.relievepoverty.me/v1/charities?state=' + state)
          .then(response => {
              var obj = JSON.parse(JSON.stringify(response));
              this.setState({charities: obj.data});

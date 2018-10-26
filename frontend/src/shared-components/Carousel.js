@@ -13,7 +13,7 @@ class CustomCarousel extends Component {
         <div>
         <Carousel showThumbs={false} showStatus={false}>
         <div style = {usMap}>
-          <iframe src="https://createaclickablemap.com/map.php?&id=75610&maplocation=false&online=true" height="100%" width="100%"></iframe>
+          <iframe src="https://createaclickablemap.com/map.php?&id=75691&maplocation=false&online=true" height="100%" width="100%"></iframe>
           <p className="legend">States</p>
         </div>
         <div>

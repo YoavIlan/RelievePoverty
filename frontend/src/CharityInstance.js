@@ -28,7 +28,7 @@ class CharityInstance extends Component {
 
 
    get_related_news(state) {
-     this.getJSON('https:api.relievepoverty.me/v1/news?state=' + state)
+     this.getJSON('https://api.relievepoverty.me/v1/news?state=' + state)
          .then(response => {
              var obj = JSON.parse(JSON.stringify(response));
              this.setState({news: obj.data});
@@ -40,7 +40,7 @@ class CharityInstance extends Component {
    componentWillMount(){
        var obj = {};
        const id = this.props.match.params.id;
-       this.getJSON('https:api.relievepoverty.me/v1/charities/' + id)
+       this.getJSON('https://api.relievepoverty.me/v1/charities/' + id)
            .then(response => {
                obj = JSON.parse(JSON.stringify(response));
                this.setState({address: obj.address, affiliation: obj.affiliation, cause_name: obj.cause_name,
