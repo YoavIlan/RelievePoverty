@@ -110,7 +110,7 @@ let options = {
     }
 
     return (
-      <div className="App container about-content">
+      <div className="App container about-info">
         <AboutInfo/>
         <center/>
         {members}

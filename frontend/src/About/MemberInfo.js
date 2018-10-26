@@ -53,6 +53,7 @@ export function getTeam() {
       "He is interested in studying artificial intelligence and web development. " +
       "He does not enjoy walking of any form.",
     "colin.jpg",
+    "Full-Stack Developer",
   ];
   members["Daniel Chruscielski"] = [
     "Daniel Chruscielski",
