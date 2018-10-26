@@ -38,18 +38,19 @@ def build_address(address):
         print (address[element])
     print ("\n")
     builder = StringIO()
-    builder.write(address["streetAddress1"])
-    builder.write("\n")
-    if address["streetAddress2"] != None:
+    if "streetAddress1" in address["streetAddress1"]:
+        builder.write(address["streetAddress1"])
+        builder.write("\n")
+    if "streetAddress2" in address["streetAddress2"]:
         builder.write(address["streetAddress2"])
         builder.write("\n")
     builder.write(address["city"])
     builder.write(", ")
-    if address["stateOrProvince"] != None:
+    if "stateOrProvince" in address["stateOrProvince"]:
         builder.write(address["stateOrProvince"])
-        builder.write("\n")
-    builder.write(" ")
-    builder.write(address["postalCode"])
+    if "postalCode" in address["postalCode"]:
+        builder.write(" ")
+        builder.write(address["postalCode"])
     return builder.getvalue()
 
 def get_charities_by_query(query):
@@ -63,7 +64,7 @@ def get_charities_by_query(query):
             if charity["mailingAddress"]["stateOrProvince"] == "DC" or charity["mailingAddress"]["stateOrProvince"] == None:
                 continue
             state = state_dict[charity["mailingAddress"]["stateOrProvince"]]
-        cause = "null"
+        cause = "NULL"
         if "cause" in charity:
             cause = charity["cause"]["causeName"]
         charity_row = Charities(name=charity["charityName"], mission=charity["mission"], affiliation=charity["irsClassification"]["affiliation"], tax_classification=charity["irsClassification"]["subsection"], state=state, address=address, img="null", cause_name=cause)
