@@ -106,7 +106,7 @@ class About extends Component{
 			console.log('getCommits FAILED');
 		});
 	}
-
+	
 	/**
  	 * Sends individual issue API Gets for each contributor in parallel, parses the data, then updates the prop
  	 */
@@ -137,8 +137,9 @@ class About extends Component{
  	 * Fetches the tests from gitlab then parses comments for tests, then updates the prop
  	 */
 	getTests() {
+		var proxy = 'https://cors.io/?';
 		var urls = ['https://gitlab.com/urielkugelmass/relievepoverty/raw/development/Postman.json'];
-		var promises = urls.map(url => this.getJSON(url));
+		var promises = urls.map(url =>fetch(proxy + url).then(resp => resp.text()));
 		var responses = new Array(urls.length);
 		Promise.all(promises)
 		.then((responses) => {
@@ -146,8 +147,7 @@ class About extends Component{
 			var stats = this.state.total;
 			members.forEach(member => {
 				responses.map(resp => {
-					console.log(resp.text());
-					member.tests += resp.text().count(member.test_id);
+					member.tests += (resp.split(member.tests_id).length - 1);
 				});
 				stats.tests += member.tests;
 			});
