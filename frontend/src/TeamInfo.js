@@ -67,7 +67,7 @@ export const getTeam = () => {
       description: 'Daniel is a third year Computer Science student at UT. He enjoys making long walks on the beach shorter by finding the shortest possible path. In his spare time, he plays the drums, listens to jazz, and generally does what you would expect from someone who lives in Austin.',
       issue_id: '2773160',
       commit_ids: ['Daniel Chruscielski'],
-      tests_id: 'Daniel',
+      tests_id: '@Daniel@',
       commits: 0,
       issues: 0,
       tests: 0,   
