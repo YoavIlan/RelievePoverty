@@ -3,8 +3,6 @@ import NewsCard from './shared-components/NewsCard';
 import './shared-components/styles.css';
 import { Link } from 'react-router-dom';
 
-
-
 class CharityInstance extends Component {
 
    constructor (props){
@@ -34,8 +32,6 @@ class CharityInstance extends Component {
              this.setState({news: obj.data});
          });
    }
-
-
 
    componentWillMount(){
        var obj = {};
@@ -87,15 +83,15 @@ class CharityInstance extends Component {
              <h3 class="my-4">Related Articles</h3>
            </div>
            <div class="row related-instances">
-              { this.state.news[0] != undefined &&
-                <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} source={this.state.news[0].source} id={this.state.news[0].id} published_date={this.state.news[0].published_date} state={this.state.news[0].state} author={this.state.news[0].author} />
-              }
-              { this.state.news[1] != undefined &&
-                <NewsCard image={this.state.news[1].image} title={this.state.news[1].title} source={this.state.news[1].source} id={this.state.news[1].id} published_date={this.state.news[1].published_date} state={this.state.news[1].state} author={this.state.news[1].author} />
-              }
-              { this.state.news[2] != undefined &&
-                <NewsCard image={this.state.news[2].image} title={this.state.news[2].title} source={this.state.news[2].source} id={this.state.news[2].id} published_date={this.state.news[2].published_date} state={this.state.news[2].state} author={this.state.news[2].author} />
-              }
+             { this.state.news[0] != undefined &&
+               <NewsCard author={this.state.news[0].author} source={this.state.news[0].source} state = {this.state.news[0].state} id={this.state.news[0].id} published_date = {this.state.news[0].published_date} image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary} id={this.state.news[0].id}/>
+             }
+             { this.state.news[1] != undefined &&
+               <NewsCard author={this.state.news[1].author} source={this.state.news[1].source} state = {this.state.news[1].state} id={this.state.news[1].id} published_date = {this.state.news[1].published_date} image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary} id={this.state.news[1].id}/>
+             }
+             { this.state.news[2] != undefined &&
+               <NewsCard author={this.state.news[2].author} source={this.state.news[2].source} state = {this.state.news[2].state} id={this.state.news[2].id} published_date = {this.state.news[2].published_date} image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary} id={this.state.news[2].id}/>
+             }
           </div>
 
 

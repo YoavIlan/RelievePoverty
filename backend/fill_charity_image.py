@@ -35,9 +35,16 @@ db.create_all()
 images = ["https://images.pexels.com/photos/1260293/pexels-photo-1260293.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260","https://as2.ftcdn.net/jpg/01/28/88/01/500_F_128880100_NE4CKidKwEtT2jIo9tx4cbyYV4IsCW9P.jpg","https://images.pexels.com/photos/1493374/pexels-photo-1493374.jpeg?auto=compress&cs=tinysrgb&h=350","https://images.pexels.com/photos/95425/pexels-photo-95425.jpeg?auto=compress&cs=tinysrgb&h=350","https://images.pexels.com/photos/933632/pexels-photo-933632.jpeg?auto=compress&cs=tinysrgb&h=350"]
 
 def exists(url):
-    response = requests.get(url)
-    print(response.status_code)
-    return response.status_code != 404
+    if(url == "NULL"):
+        print("URL is NULL")
+        return False
+    try:
+        response = requests.get(url)
+        print(response.status_code)
+        return response.status_code != 404
+    except requests.exceptions.MissingSchema:
+        print("Not able to read URL")
+        return True
 
 def fill_images(ids):
     seed = random.randint(0, len(images) - 1)
@@ -52,46 +59,7 @@ def fill_images(ids):
             print
             seed = seed + 1 if seed + 1 < len(images) else 0
             db.session.commit()
-        # print("Before: " + c.img)
-        # c.img = images[seed]
-        # print("After: " + c.img)
-        # print
-        # seed = seed+1 if seed+1 < len(images) else 0
 
-
-
-
-
-# def get_charities_by_query(query):
-#     parameters = {"app_key":"0efb8566aac6ae0816327eb85748219a", "app_id":"6c538fc3", "search":query}
-#     response = requests.get(url, params=parameters)
-#     charities = response.json()
-#     for charity in charities:
-#         address = build_address(charity["mailingAddress"])
-#         state = "null"
-#         if "stateOrProvince" in charity["mailingAddress"]:
-#             if charity["mailingAddress"]["stateOrProvince"] == "DC" or charity["mailingAddress"]["stateOrProvince"] == None:
-#                 continue
-#             state = state_dict[charity["mailingAddress"]["stateOrProvince"]]
-#         cause = "null"
-#         if "cause" in charity:
-#             cause = charity["cause"]["causeName"]
-#         charity_row = Charities(name=charity["charityName"], mission=charity["mission"], affiliation=charity["irsClassification"]["affiliation"], tax_classification=charity["irsClassification"]["subsection"], state=state, address=address, img="null", cause_name=cause)
-#         db.session.merge(charity_row)
-#
-# def get_charities_by_category():
-#     parameters = {"app_key":"0efb8566aac6ae0816327eb85748219a", "app_id":"6c538fc3", "categoryID": "6"}
-#     response = requests.get(url, params=parameters)
-#     charities = response.json()
-#     for charity in charities:
-#         address = build_address(charity["mailingAddress"])
-#         state = "null"
-#         if "stateOrProvince" in charity["mailingAddress"]:
-#             if charity["mailingAddress"]["stateOrProvince"] == "DC" or charity["mailingAddress"]["stateOrProvince"] == None:
-#                 continue
-#             state = state_dict[charity["mailingAddress"]["stateOrProvince"]]
-#         charity_row = Charities(name=charity["charityName"], mission=charity["mission"], affiliation=charity["irsClassification"]["affiliation"], tax_classification=charity["irsClassification"]["subsection"], state=state, address=address, img="null", cause_name=charity["cause"]["causeName"])
-#         db.session.add(charity_row)
 
 if __name__ == "__main__":
     fill_images(range(1, int(sys.argv[1])+1))

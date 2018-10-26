@@ -102,13 +102,13 @@ class StateInstance extends Component {
            </div>
            <div class="row related-instances">
               { this.state.news[0] != undefined &&
-                <NewsCard image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary} id={this.state.news[0].id}/>
+                <NewsCard author={this.state.news[0].author} source={this.state.news[0].source} state = {this.state.news[0].state} id={this.state.news[0].id} published_date = {this.state.news[0].published_date} image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary} id={this.state.news[0].id}/>
               }
               { this.state.news[1] != undefined &&
-                <NewsCard image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary} id={this.state.news[1].id}/>
+                <NewsCard author={this.state.news[1].author} source={this.state.news[1].source} state = {this.state.news[1].state} id={this.state.news[1].id} published_date = {this.state.news[1].published_date} image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary} id={this.state.news[1].id}/>
               }
               { this.state.news[2] != undefined &&
-                <NewsCard image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary} id={this.state.news[2].id}/>
+                <NewsCard author={this.state.news[2].author} source={this.state.news[2].source} state = {this.state.news[2].state} id={this.state.news[2].id} published_date = {this.state.news[2].published_date} image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary} id={this.state.news[2].id}/>
               }
           </div>
           <div>
