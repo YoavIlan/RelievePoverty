@@ -8,7 +8,7 @@ import Tools from "./Tools.js";
 import Api from "./Data.js";
 import { getTeam } from "./MemberInfo";
 let request = require("request");
-
+import './About.css'
 
 export default class About extends Component {
   constructor(props) {
