@@ -6,10 +6,6 @@ import Members from "./Members";
 import AboutInfo from "./TopInfo.js";
 import Tools from "./Tools.js";
 import Api from "./Data.js";
-
-
-import "./App.css";
-import "./About.css";
 import { getTeam } from "./MemberInfo";
 let request = require("request");
 
