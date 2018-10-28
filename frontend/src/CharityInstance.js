@@ -18,6 +18,7 @@ class CharityInstance extends Component {
            state : "",
            tax_classification : "",
            rating : "",
+           url : "",
 
            news: [{author: "", id: 0, image: "", published_date: "", source: "", state: "", summary: "", title: "", url: ""},
                   {author: "", id: 0, image: "", published_date: "", source: "", state: "", summary: "", title: "", url: ""},
@@ -42,7 +43,7 @@ class CharityInstance extends Component {
                obj = JSON.parse(JSON.stringify(response));
                this.setState({address: obj.address, affiliation: obj.affiliation, cause_name: obj.cause_name,
                  id: obj.id, img: obj.img, mission: obj.mission, name: obj.name,
-                 state: obj.state, tax_classification: obj.tax_classification, rating: obj.rating});
+                 state: obj.state, tax_classification: obj.tax_classification, rating: obj.rating, url: obj.url});
                  console.log(obj.name)
                this.get_related_news(obj.state);
 
@@ -80,6 +81,7 @@ class CharityInstance extends Component {
                <p>{this.state.tax_classification}</p>
                <b>Rating</b>
                <p>{this.state.rating}/4 Stars</p>
+               <a href={this.state.url} target="_blank" className="btn btn-primary mt-auto">Visit Page</a>
             </div>
           </div>
            <div>
