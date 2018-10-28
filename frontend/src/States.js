@@ -3,6 +3,7 @@ import StatesCard from './shared-components/StatesCard';
 import Jumbotron from './shared-components/Jumbotron';
 import {Grid, Row, Col} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
+import fetch from 'node-fetch';
 import './Paginate.css'
 
 
@@ -19,8 +20,8 @@ class States extends Component{
         });
     }
 
-    componentWillMount() {
-        this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
+    async componentWillMount() {
+        await this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
     }
