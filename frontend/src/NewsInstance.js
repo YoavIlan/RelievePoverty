@@ -61,7 +61,7 @@ class NewsInstance extends Component {
                             <li>News Organization: {this.state.source}</li>
                             <li>Related State: <Link to={"/states/" + this.state.state}>{this.state.state}</Link></li>
                             <li>Author: {this.state.author}</li>
-                            <li>Date Published: {this.state.published_date}</li>
+                            <li>Date Published: {this.state.published_date.substring(0,16)}</li>
                             <a href={this.state.url} target="_blank" class="btn btn-primary mt-auto">Read Article</a>
                         </ul>
                     </div>
