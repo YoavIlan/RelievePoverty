@@ -20,11 +20,10 @@ class States extends Component{
         });
     }
 
-    async componentWillMount() {
-        await this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
+    componentWillMount() {
+        this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
-        console.log(1);
     }
 
     handlePageClick = (data) =>{

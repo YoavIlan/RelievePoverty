@@ -33,8 +33,9 @@ configure({ adapter: new Adapter() });
 // var news_instance = require('./src/NewsInstance');
 
 describe('<States />', () => {
-    it('renders 50 total states', () =>{
-        const states_page = shallow(<States />);
-        expect(states_page.state().total).toEqual(50);
+    it('renders 50 total states', async () =>{
+
+        const wrapper = await mount(<States />);
+        expect(wrapper.state().total).toEqual(50);
     });
 });
