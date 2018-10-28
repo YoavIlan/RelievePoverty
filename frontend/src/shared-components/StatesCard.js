@@ -20,6 +20,10 @@ function getRank(rank) {
 
 class StatesCard extends Component {
     render() {
+        let median_income = this.props.median_income;
+        let counties = this.props.counties;
+        let child_poverty_rate = this.props.child_poverty_rate;
+        let below_poverty_rate = this.props.below_poverty_rate;
         let image = this.props.image;
         let state = this.props.state;
         let rank = this.props.rank;
@@ -29,7 +33,18 @@ class StatesCard extends Component {
                 <img class="card-img-top" id="developer-img" src={image} alt="Card image cap" styles="height: 212px !important; width:320px !important"></img>
                 <div class="card-body">
                   <h5 class="card-title">{state}</h5>
-                  <p className="card-text">{state} is ranked {rank}{getRank(rank)} out of 50 states for its poverty rates</p>
+                      <div className="card-text">
+                      <b>Ranking</b>
+                        <p>{rank}{getRank(rank)} out of 50 states for its poverty rate</p>
+                        <b>Below Poverty Rate</b>
+                        <p>{below_poverty_rate}% of all citizens</p>
+                        <b>Under 18 and Below Poverty Rate</b>
+                        <p>{child_poverty_rate}% of all children</p>
+                        <b>Median Income</b>
+                        <p>${(median_income.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))}</p>
+                        <b>County with the highest poverty rates</b>
+                        <p>{counties}</p>
+                      </div>
                   <Link to={`/states/${state}`}  className="btn btn-primary mt-auto">More Information</Link>
                 </div>
               </div>

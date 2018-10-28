@@ -41,7 +41,7 @@ class States extends Component{
                 <div class="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
-                      <StatesCard image={obj.flag} state={obj.name} rank={obj.rank}/>
+                      <StatesCard image={obj.flag} state={obj.name} rank={obj.rank} median_income={obj.median_income} counties={obj.counties} child_poverty_rate={obj.child_poverty_rate} below_poverty_rate={obj.below_poverty_rate}/>
                     )}
                   </div>
                 </div>
