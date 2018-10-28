@@ -115,16 +115,15 @@ class StateInstance extends Component {
           <div>
             <h3 class="my-4">Related Charities</h3>
           </div>
+
           <div class="row related-instances">
              { this.state.charities[0] != undefined &&
-               <CharitiesCard image={this.state.charities[0].img} title={this.state.charities[0].name} description={this.state.charities[0].mission} id={this.state.charities[0].id}/>
+               <CharitiesCard rating={this.state.charities[0].rating} state={this.state.charities[0].state} tax_classification={this.state.charities[0].tax_classification} affiliation={this.state.charities[0].affiliation} image={this.state.charities[0].img} title={this.state.charities[0].name} description={this.state.charities[0].mission} id={this.state.charities[0].id}/>
              }
              { this.state.charities[1] != undefined &&
-               <CharitiesCard image={this.state.charities[1].img} title={this.state.charities[1].name} description={this.state.charities[1].mission} id={this.state.charities[1].id}/>
-             }
+               <CharitiesCard rating={this.state.charities[1].rating} state={this.state.charities[1].state} tax_classification={this.state.charities[1].tax_classification} affiliation={this.state.charities[1].affiliation} image={this.state.charities[1].img} title={this.state.charities[1].name} description={this.state.charities[1].mission} id={this.state.charities[1].id}/>             }
              { this.state.charities[2] != undefined &&
-               <CharitiesCard image={this.state.charities[2].img} title={this.state.charities[2].name} description={this.state.charities[2].mission} id={this.state.charities[2].id}/>
-             }
+               <CharitiesCard rating={this.state.charities[2].rating} state={this.state.charities[2].state} tax_classification={this.state.charities[2].tax_classification} affiliation={this.state.charities[2].affiliation} image={this.state.charities[2].img} title={this.state.charities[2].name} description={this.state.charities[2].mission} id={this.state.charities[2].id}/>             }
           </div>
           </>
        )

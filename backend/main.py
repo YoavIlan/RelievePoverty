@@ -47,6 +47,8 @@ class Charities(db.Model):
     address = db.Column(db.String(255))
     img = db.Column(db.String(255))
     cause_name = db.Column(db.String(255))
+    rating = db.Column(db.Integer)
+    url = db.Column(db.String(255))
     id = db.Column(db.Integer, primary_key=True)
 
     def serialize(self):
@@ -59,7 +61,9 @@ class Charities(db.Model):
             "state": self.state,
             "address": self.address,
             "img": self.img,
-            "cause_name": self.cause_name
+            "cause_name": self.cause_name,
+            "rating": self.rating,
+            "url" : self.url
         }
 
 

@@ -42,7 +42,7 @@ class Charities extends Component{
                 <div className="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
-                      <CharitiesCard image={obj.img} title={obj.name} description={obj.mission} id={obj.id}/>
+                      <CharitiesCard image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id}/>
                     )}
                   </div>
                 </div>

@@ -8,6 +8,10 @@
     font-size: 150% !important;
 }
 
+.btn.btn-primary.mt-auto {
+    color: white;
+}
+
 .img-fluid {
   position:relative;
     left: 6%;
