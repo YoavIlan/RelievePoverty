@@ -11,8 +11,14 @@ import States from './States';
 import Navbar from './shared-components/Navbar';
 
 class App extends Component {
+    componentDidMount(){
+      document.title = "Relieve Poverty";
+      document.image = "../img/daniel.jpg"
+    };
     render() {
         return (
+          <>
+
             <Router>
               <div>
                 <Navbar />
@@ -28,6 +34,7 @@ class App extends Component {
                 </Switch>
               </div>
             </Router>
+            </>
         );
     }
 }
