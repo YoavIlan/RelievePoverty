@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import CharitiesCard  from './shared-components/CharitiesCard';
+import fetch from 'node-fetch';
 
 class NewsInstance extends Component {
     constructor (props){

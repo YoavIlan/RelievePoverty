@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NewsCard from './shared-components/NewsCard';
 import {Grid, Row, Col} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
+import fetch from 'node-fetch';
 import './Paginate.css'
 import Jumbotron from './shared-components/Jumbotron';
 

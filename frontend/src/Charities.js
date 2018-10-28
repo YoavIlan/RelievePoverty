@@ -3,6 +3,7 @@ import CharitiesCard from './shared-components/CharitiesCard';
 import Jumbotron from './shared-components/Jumbotron';
 import {Grid, Row, Col} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
+import fetch from 'node-fetch';
 import './Paginate.css'
 
 

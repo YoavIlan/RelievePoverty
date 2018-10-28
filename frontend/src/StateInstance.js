@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StatesCard from './shared-components/StatesCard';
 import NewsCard from './shared-components/NewsCard';
 import CharitiesCard  from './shared-components/CharitiesCard';
+import fetch from 'node-fetch';
 import './shared-components/styles.css';
 
 class StateInstance extends Component {

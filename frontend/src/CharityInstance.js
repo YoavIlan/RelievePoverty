@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NewsCard from './shared-components/NewsCard';
 import './shared-components/styles.css';
 import { Link } from 'react-router-dom';
+import fetch from 'node-fetch';
 
 class CharityInstance extends Component {
 

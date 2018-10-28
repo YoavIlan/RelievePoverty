@@ -3,6 +3,7 @@ import AboutCard from './shared-components/AboutCard';
 import Jumbotron from './shared-components/Jumbotron';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getTeam } from './TeamInfo.js';
+import fetch from 'node-fetch';
 
 class About extends Component{
 
@@ -106,7 +107,7 @@ class About extends Component{
 			console.log('getCommits FAILED');
 		});
 	}
-	
+
 	/**
  	 * Sends individual issue API Gets for each contributor in parallel, parses the data, then updates the prop
  	 */
@@ -130,7 +131,7 @@ class About extends Component{
 			this.setState({team: members, total: stats});
 		}).catch(err => {
 			console.log('getIssues FAILED');
-		}); 
+		});
 	}
 
 	/**
