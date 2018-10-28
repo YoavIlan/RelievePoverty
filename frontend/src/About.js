@@ -33,41 +33,41 @@ class About extends Component{
     		<>
 			<Jumbotron title={'About Our Site'} description={'Our mission is to educate citizens of the United States about the issues concerning poverty within the country by providing articles and information about it in each state. We then provide information about charities that readers can donate to in order to help fight against poverty. An interesting result of integrating articles, charities, and state statistics concerning poverty is that we were able to make a connection between them even though they were previously three distinct mediums.'}/>
 			<main role="main">
-		      <div class="album py-5">
-		        <div class="container">
-		          <div class="card mb-4 box-shadow">
-		            <div class="card-body">
-		              <h4 class="card-title" styles="margin-bottom: 0">Stats</h4>
+		      <div className="album py-5">
+		        <div className="container">
+		          <div className="card mb-4 box-shadow">
+		            <div className="card-body">
+		              <h4 className="card-title" styles="margin-bottom: 0">Stats</h4>
 		            </div>
-		            <ul class="list-group list-group-flush">
-		              <li class="list-group-item">Total # of commits: {this.state.total.commits}</li>
-		              <li class="list-group-item">Total # of issues: {this.state.total.issues}</li>
-		              <li class="list-group-item">Total # of unit tests: {this.state.total.tests}</li>
+		            <ul className="list-group list-group-flush">
+		              <li className="list-group-item">Total # of commits: {this.state.total.commits}</li>
+		              <li className="list-group-item">Total # of issues: {this.state.total.issues}</li>
+		              <li className="list-group-item">Total # of unit tests: {this.state.total.tests}</li>
 		            </ul>
 		          </div>
-			    	<div class="row">
+			    	<div className="row">
 			    	    {this.state.team.map(obj => <AboutCard data={obj}/> )}
 			    	</div>
-		          <div class="card mb-4 box-shadow">
-		            <div class="card-body">
-		              <h4 class="card-title" styles="margin-bottom: 0">Data Sources</h4>
+		          <div className="card mb-4 box-shadow">
+		            <div className="card-body">
+		              <h4 className="card-title" styles="margin-bottom: 0">Data Sources</h4>
 		            </div>
-		            <ul class="list-group list-group-flush">
-		              <li class="list-group-item"><a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_poverty_rate" target="_blank">Wikipedia (State Poverty)</a> - Scraped by using Wikipedia's REST API then parsing the data tables</li>
-		              <li class="list-group-item"><a href="https://developer.nytimes.com/article_search_v2.json" target="_blank">NYTimes</a> - Scraped by using their article search API with queries</li>
-		              <li class="list-group-item"><a href="https://newsapi.org/" target="_blank">NewsAPI</a> - Scraped by using their API with states as filters</li>
-		              <li class="list-group-item"><a href="https://charity.3scale.net/docs/data-api/reference" target="_blank">Charity Navigator</a> - Scraped by using their API by searching for poverty related charities</li>
+		            <ul className="list-group list-group-flush">
+		              <li className="list-group-item"><a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_poverty_rate" target="_blank">Wikipedia (State Poverty)</a> - Scraped by using Wikipedia's REST API then parsing the data tables</li>
+		              <li className="list-group-item"><a href="https://developer.nytimes.com/article_search_v2.json" target="_blank">NYTimes</a> - Scraped by using their article search API with queries</li>
+		              <li className="list-group-item"><a href="https://newsapi.org/" target="_blank">NewsAPI</a> - Scraped by using their API with states as filters</li>
+		              <li className="list-group-item"><a href="https://charity.3scale.net/docs/data-api/reference" target="_blank">Charity Navigator</a> - Scraped by using their API by searching for poverty related charities</li>
 		            </ul>
 		          </div>
-		          <div class="card mb-4 box-shadow">
-		            <div class="card-body">
-		              <h4 class="card-title" styles="margin-bottom: 0">Tools</h4>
+		          <div className="card mb-4 box-shadow">
+		            <div className="card-body">
+		              <h4 className="card-title" styles="margin-bottom: 0">Tools</h4>
 		            </div>
-		            <ul class="list-group list-group-flush">
-		              <li class="list-group-item"><a href="https://gitlab.com/urielkugelmass/relievepoverty" target="_blank">Gitlab</a> - Used for version control, continuous integration, and issue/story tracking</li>
-		              <li class="list-group-item"><a href="https://documenter.getpostman.com/view/5460449/RWgjY1qy" target="_blank">Postman</a> - Used for API design and unit testing</li>
-		              <li class="list-group-item"><a href="https://aws.amazon.com/" target="_blank">AWS</a> - Used to host our webapp, backend, and database</li>
-		              <li class="list-group-item"><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> - An open source toolkit for CSS elements</li>
+		            <ul className="list-group list-group-flush">
+		              <li className="list-group-item"><a href="https://gitlab.com/urielkugelmass/relievepoverty" target="_blank">Gitlab</a> - Used for version control, continuous integration, and issue/story tracking</li>
+		              <li className="list-group-item"><a href="https://documenter.getpostman.com/view/5460449/RWgjY1qy" target="_blank">Postman</a> - Used for API design and unit testing</li>
+		              <li className="list-group-item"><a href="https://aws.amazon.com/" target="_blank">AWS</a> - Used to host our webapp, backend, and database</li>
+		              <li className="list-group-item"><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> - An open source toolkit for CSS elements</li>
 		            </ul>
 		          </div>
 		        </div>

@@ -24,6 +24,7 @@ class States extends Component{
         await this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
+        console.log(1);
     }
 
     handlePageClick = (data) =>{
@@ -39,7 +40,7 @@ class States extends Component{
             <>
               <Jumbotron title={"Learn more about poverty in the U.S."} description={"Learn more about poverty for each state."}/>
               <div className='album py-5 bg-light listingPage'>
-                <div class="container">
+                <div className="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
                       <StatesCard image={obj.flag} state={obj.name} rank={obj.rank}/>

@@ -39,7 +39,7 @@ class Charities extends Component{
             <>
               <Jumbotron title={"Learn more about poverty in the U.S."} description={"Charities throughout the US are doing amazing work every single day to combat poverty. Help them accomplish their goals by donating today."}/>
               <div className='album py-5 bg-light listingPage'>
-                <div class="container">
+                <div className="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
                       <CharitiesCard image={obj.img} title={obj.name} description={obj.mission} id={obj.id}/>

@@ -39,7 +39,7 @@ class News extends Component{
             <>
               <Jumbotron title={"Learn more about poverty in the U.S."} description={"Our news sources include The New York Times, CNN and U.S. News & World Report."}/>
               <div className='album py-5 bg-light listingPage'>
-                <div class="container">
+                <div className="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
                       <NewsCard image={obj.image} title={obj.title} source={obj.source} id={obj.id} published_date={obj.published_date} state={obj.state} author={obj.author} />
