@@ -35,16 +35,16 @@ db.create_all()
 images = ["https://images.pexels.com/photos/1068530/pexels-photo-1068530.jpeg?auto=compress&cs=tinysrgb&h=350", "https://images.pexels.com/photos/230860/pexels-photo-230860.jpeg?auto=compress&cs=tinysrgb&h=350", "https://images.pexels.com/photos/158651/news-newsletter-newspaper-information-158651.jpeg?auto=compress&cs=tinysrgb&h=350", "https://images.pexels.com/photos/97050/pexels-photo-97050.jpeg?auto=compress&cs=tinysrgb&h=350", "https://images.pexels.com/photos/6335/man-coffee-cup-pen.jpg?auto=compress&cs=tinysrgb&h=350"]
 
 def exists(url):
-    if(url == "NULL"):
+    if(url is None):
         print("URL is NULL")
         return False
     try:
         response = requests.get(url)
         print(response.status_code)
-        return response.status_code != 404
+        return response.status_code == 200
     except requests.exceptions.MissingSchema:
         print("Not able to read URL")
-        return True
+        return False
 
 def fill_images(ids):
     seed = random.randint(0, len(images) - 1)
@@ -53,7 +53,10 @@ def fill_images(ids):
         c = News.query.filter_by(id=i).first()
         print "ID = ", i
         if(not exists(c.image)):
-            print("Before: " +c.image)
+            if(c.image is None):
+                print("Before: None")
+            else:
+                print("Before: " +c.image)
             c.image = images[seed]
             print("After: " + c.image)
             print
