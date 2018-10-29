@@ -53,10 +53,12 @@ class About extends Component{
 		              <h4 className="card-title" styles="margin-bottom: 0">Data Sources</h4>
 		            </div>
 		            <ul className="list-group list-group-flush">
-		              <li className="list-group-item"><a href="https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_poverty_rate" target="_blank">Wikipedia (State Poverty)</a> - Scraped by using Wikipedia's REST API then parsing the data tables</li>
-		              <li className="list-group-item"><a href="https://developer.nytimes.com/article_search_v2.json" target="_blank">NYTimes</a> - Scraped by using their article search API with queries</li>
+		              <li className="list-group-item"><a href="https://www.census.gov/programs-surveys/saipe/data/api.html" target="_blank">US Census Bureau (State Poverty)</a> - Used The US Census Bureau''s restful SAIPE API to find information on poverty rates by state </li>
 		              <li className="list-group-item"><a href="https://newsapi.org/" target="_blank">NewsAPI</a> - Scraped by using their API with states as filters</li>
 		              <li className="list-group-item"><a href="https://charity.3scale.net/docs/data-api/reference" target="_blank">Charity Navigator</a> - Scraped by using their API by searching for poverty related charities</li>
+									<li className="list-group-item"><a href="https://clearbit.com/logo" target="_blank">Clearbit</a> - Used the API on clearbit to retrieve images from charity websites</li>
+									<li className="list-group-item"><a href="http://www.theus50.com/" target="_blank">The US50</a> - Retrieved images of all 50 state flags from URL of this website</li>
+
 		            </ul>
 		          </div>
 		          <div className="card mb-4 box-shadow">
