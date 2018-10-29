@@ -66,6 +66,7 @@ body{
 
 .card{
   background-color: #FFFFFF;
+  width: 100%;
 }
 
 .related-instances > div > div{

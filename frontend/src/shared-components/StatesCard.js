@@ -28,11 +28,11 @@ class StatesCard extends Component {
         let state = this.props.state;
         let rank = this.props.rank;
         return(
-            <div class="col-md-4 d-flex">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" id="developer-img" src={image} alt="Card image cap" styles="height: 212px !important; width:320px !important"></img>
-                <div class="card-body">
-                  <h5 class="card-title">{state}</h5>
+            <div className="col-md-4 d-flex">
+              <div className="card mb-4 box-shadow">
+                <img className="card-img-top" id="developer-img" src={image} alt="Card image cap" styles="height: 212px !important; width:320px !important"></img>
+                <div className="card-body">
+                  <h5 className="card-title">{state}</h5>
                       <div className="card-text">
                       <b>Ranking</b>
                         <p>{rank}{getRank(rank)} out of 50 states for its poverty rate</p>

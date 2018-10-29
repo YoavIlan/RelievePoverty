@@ -12,9 +12,9 @@ class CharitiesCard extends Component {
         let state = this.props.state;
         let rating = this.props.rating;
         let id = this.props.id;
-        return <div class="col-md-4 d-flex">
-            <div class="card mb-4 box-shadow">
-                <img className="card-img-top" src={image} alt="Card image"/>
+        return <div className="col-md-4 d-flex">
+            <div className="card mb-4 box-shadow">
+                <img className="card-img-top d-flex" src={image} alt="Card image"/>
                 <div className="card-body d-flex flex-column">
                     <h5 className="card-title">{title}</h5>
                     <ul className="card-text">
