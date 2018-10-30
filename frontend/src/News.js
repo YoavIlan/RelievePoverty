@@ -37,7 +37,7 @@ class News extends Component{
         let pageSize = 12.0;
         return(
             <>
-              <Jumbotron title={"Learn more about poverty in the U.S."} description={"Our news sources include The New York Times, CNN and U.S. News & World Report."}/>
+              <Jumbotron title={"Read Articles About Poverty in the US"} description={"Our news sources include The New York Times, CNN and others."}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>

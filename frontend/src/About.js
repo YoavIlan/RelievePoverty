@@ -61,6 +61,9 @@ class About extends Component{
 		              <li className="list-group-item"><a href="https://charity.3scale.net/docs/data-api/reference" target="_blank">Charity Navigator</a> - Scraped by using their API by searching for poverty related charities</li>
 									<li className="list-group-item"><a href="https://clearbit.com/logo" target="_blank">Clearbit</a> - Used the API on clearbit to retrieve images from charity websites</li>
 									<li className="list-group-item"><a href="http://www.theus50.com/" target="_blank">The US50</a> - Retrieved images of all 50 state flags from URL of this website</li>
+									<li className="list-group-item"><a href="https://createaclickablemap.com/" target="_blank">Create a Clickable Map</a> - Placed a clickable US map on the home page of this wesite</li>
+
+
 
 		            </ul>
 		          </div>
