@@ -30,8 +30,8 @@ class StatesCard extends Component {
         return(
             <div className="col-md-4 d-flex">
               <div className="card mb-4 box-shadow">
-                <img className="card-img-top" id="developer-img" src={image} alt="Card image cap" styles="height: 212px !important; width:320px !important"></img>
-                <div className="card-body">
+                <img className="card-img-top d-flex" id="developer-img" src={image} alt="Card image cap" styles="height: 212px !important; width:320px !important"></img>
+                <div className="card-body d-flex flex-column">
                   <h5 className="card-title">{state}</h5>
                       <div className="card-text">
                       <b>Ranking</b>
