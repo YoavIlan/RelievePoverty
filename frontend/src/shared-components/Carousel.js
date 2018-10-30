@@ -16,18 +16,21 @@ class CustomCarousel extends Component {
         <Carousel showThumbs={false} showStatus={false}>
         <div style = {usMap}>
           <iframe src="https://createaclickablemap.com/map.php?&id=75691&maplocation=false&online=true" height="100%" width="100%"></iframe>
-          <p className="legend">
-          <Link to="/states">States</Link>
-          </p>
+            <p className="legend">
+            <Link to="/states">States</Link>
+            </p>
         </div>
         <div>
+          <Link to="/charities">
           <img className="d-block w-100" src={require('./../img/Charities.jpg')} alt="Second slide"/>
+          </Link>
           <p className="legend">
           <Link to="/charities">Charities</Link>
           </p>
         </div>
         <div>
-          <img className="d-block w-100" src={require('./../img/News.jpeg')} alt="Third slide"/>
+          <Link to="/news"><img className="d-block w-100" src={require('./../img/News.jpeg')} alt="Third slide"/>
+          </Link>
           <p className="legend">
           <Link to="/news">News</Link>
           </p>
