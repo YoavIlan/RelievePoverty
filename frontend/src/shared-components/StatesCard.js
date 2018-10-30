@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function getRank(rank) {
-    if (rank == 11 || rank == 12 || rank == 13)
+    if (rank === 11 || rank === 12 || rank === 13)
         return 'th'
     switch(rank%10){
         case 1:

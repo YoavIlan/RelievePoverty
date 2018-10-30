@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import StatesCard from './shared-components/StatesCard';
 import NewsCard from './shared-components/NewsCard';
 import CharitiesCard  from './shared-components/CharitiesCard';
 import fetch from 'node-fetch';
@@ -63,7 +62,7 @@ class StateInstance extends Component {
    }
 
    getRank(rank) {
-      if (rank == 11 || rank == 12 || rank == 13)
+      if (rank === 11 || rank === 12 || rank === 13)
         return  'th'
       switch(rank%10){
         case 1:
@@ -98,7 +97,7 @@ class StateInstance extends Component {
                 <p>{this.state.counties}</p>
                 <b>Location of {this.state.counties}</b>
                 <br/>
-                <iframe width="400" height="250" frameborder="0"
+                <iframe title="map" width="400" height="250" frameborder="0"
                  src={"https://www.google.com/maps/embed/v1/place?q=" + this.state.counties + " "+ this.state.name + "&key=AIzaSyDh5sTwB-wqHvvsyUis6GwXzXMv78iePCs"} allowfullscreen></iframe>
              </div>
            </div>
@@ -106,14 +105,14 @@ class StateInstance extends Component {
              <h3 class="my-4">Related Articles</h3>
            </div>
            <div class="row related-instances">
-              { this.state.news[0] != undefined &&
-                <NewsCard author={this.state.news[0].author} source={this.state.news[0].source} state = {this.state.news[0].state} id={this.state.news[0].id} published_date = {this.state.news[0].published_date} image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary} id={this.state.news[0].id}/>
+              { this.state.news[0] !== undefined &&
+                <NewsCard author={this.state.news[0].author} source={this.state.news[0].source} state = {this.state.news[0].state} published_date = {this.state.news[0].published_date} image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary} id={this.state.news[0].id}/>
               }
-              { this.state.news[1] != undefined &&
-                <NewsCard author={this.state.news[1].author} source={this.state.news[1].source} state = {this.state.news[1].state} id={this.state.news[1].id} published_date = {this.state.news[1].published_date} image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary} id={this.state.news[1].id}/>
+              { this.state.news[1] !== undefined &&
+                <NewsCard author={this.state.news[1].author} source={this.state.news[1].source} state = {this.state.news[1].state} published_date = {this.state.news[1].published_date} image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary} id={this.state.news[1].id}/>
               }
-              { this.state.news[2] != undefined &&
-                <NewsCard author={this.state.news[2].author} source={this.state.news[2].source} state = {this.state.news[2].state} id={this.state.news[2].id} published_date = {this.state.news[2].published_date} image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary} id={this.state.news[2].id}/>
+              { this.state.news[2] !== undefined &&
+                <NewsCard author={this.state.news[2].author} source={this.state.news[2].source} state = {this.state.news[2].state} published_date = {this.state.news[2].published_date} image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary} id={this.state.news[2].id}/>
               }
           </div>
           <div>
@@ -121,12 +120,12 @@ class StateInstance extends Component {
           </div>
 
           <div class="row related-instances">
-             { this.state.charities[0] != undefined &&
+             { this.state.charities[0] !== undefined &&
                <CharitiesCard rating={this.state.charities[0].rating} state={this.state.charities[0].state} tax_classification={this.state.charities[0].tax_classification} affiliation={this.state.charities[0].affiliation} image={this.state.charities[0].img} title={this.state.charities[0].name} description={this.state.charities[0].mission} id={this.state.charities[0].id}/>
              }
-             { this.state.charities[1] != undefined &&
+             { this.state.charities[1] !== undefined &&
                <CharitiesCard rating={this.state.charities[1].rating} state={this.state.charities[1].state} tax_classification={this.state.charities[1].tax_classification} affiliation={this.state.charities[1].affiliation} image={this.state.charities[1].img} title={this.state.charities[1].name} description={this.state.charities[1].mission} id={this.state.charities[1].id}/>             }
-             { this.state.charities[2] != undefined &&
+             { this.state.charities[2] !== undefined &&
                <CharitiesCard rating={this.state.charities[2].rating} state={this.state.charities[2].state} tax_classification={this.state.charities[2].tax_classification} affiliation={this.state.charities[2].affiliation} image={this.state.charities[2].img} title={this.state.charities[2].name} description={this.state.charities[2].mission} id={this.state.charities[2].id}/>             }
           </div>
           </>

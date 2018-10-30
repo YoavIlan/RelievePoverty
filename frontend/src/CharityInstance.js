@@ -69,7 +69,7 @@ class CharityInstance extends Component {
 
              <div class="col-md-4">
 
-               {this.state.cause_name != 'null' && <><b>Cause</b><p>{this.state.cause_name}</p></>}
+               {this.state.cause_name !== 'null' && <><b>Cause</b><p>{this.state.cause_name}</p></>}
                <b>Address</b>
                <p>{this.state.address}</p>
                <b>Affiliation</b>
@@ -82,10 +82,10 @@ class CharityInstance extends Component {
                <p>{this.state.tax_classification}</p>
                <b>Rating</b>
                <p>{this.state.rating}/4 Stars</p>
-               <a href={this.state.url} target="_blank" className="btn btn-primary mt-auto">Visit Page</a>
+               <a href={this.state.url} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-auto">Visit Page</a>
                <br/>
                <br/>
-               <iframe width="400" height="250" frameborder="0"
+               <iframe title="map" width="400" height="250" frameborder="0"
                 src={"https://www.google.com/maps/embed/v1/place?q=" + this.state.address + "&key=AIzaSyDh5sTwB-wqHvvsyUis6GwXzXMv78iePCs"} allowfullscreen></iframe>
             </div>
           </div>
@@ -93,13 +93,13 @@ class CharityInstance extends Component {
              <h3 class="my-4">Related Articles</h3>
            </div>
            <div class="row related-instances">
-             { this.state.news[0] != undefined &&
+             { this.state.news[0] !== undefined &&
                <NewsCard author={this.state.news[0].author} source={this.state.news[0].source} state = {this.state.news[0].state} id={this.state.news[0].id} published_date = {this.state.news[0].published_date} image={this.state.news[0].image} title={this.state.news[0].title} description={this.state.news[0].summary} id={this.state.news[0].id}/>
              }
-             { this.state.news[1] != undefined &&
+             { this.state.news[1] !== undefined &&
                <NewsCard author={this.state.news[1].author} source={this.state.news[1].source} state = {this.state.news[1].state} id={this.state.news[1].id} published_date = {this.state.news[1].published_date} image={this.state.news[1].image} title={this.state.news[1].title} description={this.state.news[1].summary} id={this.state.news[1].id}/>
              }
-             { this.state.news[2] != undefined &&
+             { this.state.news[2] !== undefined &&
                <NewsCard author={this.state.news[2].author} source={this.state.news[2].source} state = {this.state.news[2].state} id={this.state.news[2].id} published_date = {this.state.news[2].published_date} image={this.state.news[2].image} title={this.state.news[2].title} description={this.state.news[2].summary} id={this.state.news[2].id}/>
              }
           </div>

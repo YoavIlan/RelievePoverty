@@ -14,14 +14,14 @@ class CharitiesCard extends Component {
         let id = this.props.id;
         return <div className="col-md-4 d-flex">
             <div className="card mb-4 box-shadow">
-                <img className="card-img-top d-flex" src={image} alt="Card image"/>
+                <img className="card-img-top d-flex" src={image} alt="Card"/>
                 <div className="card-body d-flex flex-column">
                     <h5 className="card-title">{title}</h5>
                     <ul className="card-text">
                         <li><b>State:</b> {state}</li>
-                        {rating != undefined && <li><b>Rating:</b> {rating}</li>}
-                        {affiliation != undefined && <li><b>Affiliation:</b> {affiliation.substring(0,affiliation.indexOf('-'))}</li>}
-                        {tax_classification != undefined && <li><b>Classification:</b> {tax_classification}</li>}
+                        {rating !== undefined && <li><b>Rating:</b> {rating}</li>}
+                        {affiliation !== undefined && <li><b>Affiliation:</b> {affiliation.substring(0,affiliation.indexOf('-'))}</li>}
+                        {tax_classification !== undefined && <li><b>Classification:</b> {tax_classification}</li>}
                     </ul>
                     <Link to={`/charities/${id}`}  className="btn btn-primary mt-auto">More Information</Link>
 

@@ -9,7 +9,7 @@ class CustomNavbar extends Component {
       <Navbar default collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-              <Image ClassName="nav-img d-inline-block align-top" src={require('./../img/rp.png')} alt="Second slide"/>
+              <Image className="nav-img d-inline-block align-top" src={require('./../img/rp.png')} alt="Second slide"/>
             <Link to="/">RelievePoverty</Link>
           </Navbar.Brand>
         </Navbar.Header>

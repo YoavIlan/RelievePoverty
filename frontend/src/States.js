@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import StatesCard from './shared-components/StatesCard';
 import Jumbotron from './shared-components/Jumbotron';
-import {Grid, Row, Col} from 'react-bootstrap';
 import ReactPaginate from 'react-paginate';
 import fetch from 'node-fetch';
 import './Paginate.css'
@@ -49,7 +48,7 @@ class States extends Component{
                 <ReactPaginate className='pagination'
                   previousLabel={"Previous"}
                   nextLabel={"Next"}
-                  breakLabel={<a href="">...</a>}
+                  breakLabel={<a href="#">...</a>}
                   breakClassName={"break-me"}
                   pageCount={Math.ceil(this.state.total / pageSize)}
                   marginPagesDisplayed={2}

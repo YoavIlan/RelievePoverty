@@ -56,13 +56,13 @@ class About extends Component{
 		              <h4 className="card-title about-card-title" styles="margin-bottom: 0">Data Sources</h4>
 		            </div>
 		            <ul className="list-group list-group-flush">
-		              <li className="list-group-item"><a href="https://www.census.gov/programs-surveys/saipe/data/api.html" target="_blank">US Census Bureau (State Poverty)</a> - Used The US Census Bureau''s restful SAIPE API to find information on poverty rates by state </li>
-		              <li className="list-group-item"><a href="https://newsapi.org/" target="_blank">NewsAPI</a> - Scraped by using their API with states as filters</li>
-		              <li className="list-group-item"><a href="https://charity.3scale.net/docs/data-api/reference" target="_blank">Charity Navigator</a> - Scraped by using their API by searching for poverty related charities</li>
-									<li className="list-group-item"><a href="https://clearbit.com/logo" target="_blank">Clearbit</a> - Used the API on clearbit to retrieve images from charity websites</li>
-									<li className="list-group-item"><a href="http://www.theus50.com/" target="_blank">The US50</a> - Retrieved images of all 50 state flags from URL of this website</li>
-									<li className="list-group-item"><a href="https://createaclickablemap.com/" target="_blank">Create a Clickable Map</a> - Placed a clickable US map on the home page of this wesite</li>
-									<li className="list-group-item"><a href="https://developers.google.com/maps/documentation/" target="_blank">Google Maps API</a> - Used to place maps in instance pages</li>
+		              <li className="list-group-item"><a href="https://www.census.gov/programs-surveys/saipe/data/api.html" target="_blank" rel="noopener noreferrer">US Census Bureau (State Poverty)</a> - Used The US Census Bureau''s restful SAIPE API to find information on poverty rates by state </li>
+		              <li className="list-group-item"><a href="https://newsapi.org/" target="_blank" rel="noopener noreferrer">NewsAPI</a> - Scraped by using their API with states as filters</li>
+		              <li className="list-group-item"><a href="https://charity.3scale.net/docs/data-api/reference" target="_blank" rel="noopener noreferrer">Charity Navigator</a> - Scraped by using their API by searching for poverty related charities</li>
+									<li className="list-group-item"><a href="https://clearbit.com/logo" target="_blank" rel="noopener noreferrer">Clearbit</a> - Used the API on clearbit to retrieve images from charity websites</li>
+									<li className="list-group-item"><a href="http://www.theus50.com/" target="_blank" rel="noopener noreferrer">The US50</a> - Retrieved images of all 50 state flags from URL of this website</li>
+									<li className="list-group-item"><a href="https://createaclickablemap.com/" target="_blank" rel="noopener noreferrer">Create a Clickable Map</a> - Placed a clickable US map on the home page of this wesite</li>
+									<li className="list-group-item"><a href="https://developers.google.com/maps/documentation/" target="_blank" rel="noopener noreferrer">Google Maps API</a> - Used to place maps in instance pages</li>
 
 
 
@@ -73,10 +73,10 @@ class About extends Component{
 		              <h4 className="card-title about-card-title" styles="margin-bottom: 0">Tools</h4>
 		            </div>
 		            <ul className="list-group list-group-flush">
-		              <li className="list-group-item"><a href="https://gitlab.com/urielkugelmass/relievepoverty" target="_blank">Gitlab</a> - Used for version control, continuous integration, and issue/story tracking</li>
-		              <li className="list-group-item"><a href="https://documenter.getpostman.com/view/5460449/RWgjY1qy" target="_blank">Postman</a> - Used for API design and unit testing</li>
-		              <li className="list-group-item"><a href="https://aws.amazon.com/" target="_blank">AWS</a> - Used to host our webapp, backend, and database</li>
-		              <li className="list-group-item"><a href="http://getbootstrap.com/" target="_blank">Bootstrap</a> - An open source toolkit for CSS elements</li>
+		              <li className="list-group-item"><a href="https://gitlab.com/urielkugelmass/relievepoverty" target="_blank" rel="noopener noreferrer">Gitlab</a> - Used for version control, continuous integration, and issue/story tracking</li>
+		              <li className="list-group-item"><a href="https://documenter.getpostman.com/view/5460449/RWgjY1qy" target="_blank" rel="noopener noreferrer">Postman</a> - Used for API design and unit testing</li>
+		              <li className="list-group-item"><a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer">AWS</a> - Used to host our webapp, backend, and database</li>
+		              <li className="list-group-item"><a href="http://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> - An open source toolkit for CSS elements</li>
 		            </ul>
 		          </div>
 		        </div>
@@ -122,9 +122,7 @@ class About extends Component{
  	 */
 	getIssues() {
 		var urls = [];
-		this.state.team.map(member => {
-			urls.push('https://gitlab.com/api/v4/projects/8594442/issues?author_id=' + member.issue_id + '&per_page=100');
-		});
+		this.state.team.map(member => urls.push('https://gitlab.com/api/v4/projects/8594442/issues?author_id=' + member.issue_id + '&per_page=100'));
 		var promises = urls.map(url => this.getJSON(url));
 		var responses = new Array(urls.length);
 		Promise.all(promises)
