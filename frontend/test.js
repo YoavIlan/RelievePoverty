@@ -1,6 +1,7 @@
 import React from 'react';
 import { configure, shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import ReactPaginate from 'react-paginate';
 
 import StatesCard from './src/shared-components/StatesCard';
 import StateInstance from './src/StateInstance';
@@ -34,8 +35,27 @@ configure({ adapter: new Adapter() });
 
 describe('<States />', () => {
     it('renders 50 total states', async () =>{
-
-        const wrapper = await mount(<States />);
+        const wrapper = await shallow(<States />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
         expect(wrapper.state().total).toEqual(50);
+    });
+});
+
+describe('<Charities />', () =>{
+    it('renders correct number of charities', async () => {
+        const wrapper = await shallow(<Charities />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        expect(wrapper.state().total).toEqual(301);
+    });
+});
+
+describe('<News />', () =>{
+    it('renders correct number of news articles', async () => {
+        const wrapper = await shallow(<News />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        expect(wrapper.state().total).toEqual(237);
     });
 });

@@ -20,8 +20,8 @@ class States extends Component{
         });
     }
 
-    componentWillMount() {
-        this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
+    async componentWillMount() {
+        await this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
     }
