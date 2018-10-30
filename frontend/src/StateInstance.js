@@ -93,9 +93,13 @@ class StateInstance extends Component {
                 <b>Under 18 and Below Poverty Rate</b>
                 <p>{this.state.child_poverty_rate}% of all children</p>
                 <b>Median Income</b>
-                <p>{(this.state.median_income.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))}</p>
+                <p>${(this.state.median_income.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))}</p>
                 <b>County with the highest poverty rates</b>
                 <p>{this.state.counties}</p>
+                <b>Location of {this.state.counties}</b>
+                <br/>
+                <iframe width="400" height="250" frameborder="0"
+                 src={"https://www.google.com/maps/embed/v1/place?q=" + this.state.counties + " "+ this.state.name + "&key=AIzaSyDh5sTwB-wqHvvsyUis6GwXzXMv78iePCs"} allowfullscreen></iframe>
              </div>
            </div>
            <div>
