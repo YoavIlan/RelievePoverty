@@ -84,3 +84,45 @@ describe('<Jumbotron />', () => {
     });
 });
 
+describe('<NewsCard />', () => {
+    // @Colin@
+    it('renders NewCard image', () => {
+        const wrapper = shallow(<NewsCard title="test" published_date="12/24/18" image="./img/colin.jpg" id={1} source="Nowhere" state="Texas" author="Me"/>);
+        const actualImage = wrapper.find("img");
+        expect(actualImage.html()).toBe("<img class=\"card-img-top d-flex\" src=\"./img/colin.jpg\" alt=\"Card image cap\"/>");
+    });
+});
+
+describe('<StatesCard />', () => {
+    // @Colin@
+    it('renders StatesCard rank at 19', () => {
+        const wrapper = shallow(<StatesCard median_income="1" rank={19}/>);
+        const actualRank = wrapper.find("p").first();
+        expect(actualRank.html()).toBe("<p>19th out of 50 states for its poverty rate</p>");
+    });
+
+    // @Colin@
+    it('renders StatesCard rank at 1', () => {
+        const wrapper = shallow(<StatesCard median_income="1" rank={1}/>);
+        const actualRank = wrapper.find("p").first();
+        expect(actualRank.html()).toBe("<p>1st out of 50 states for its poverty rate</p>");
+    });
+});
+
+
+
+describe('<CharitiesCard />', () => {
+    // @Colin@
+    it('renders CharitiesCard state', () => {
+        const wrapper = shallow(<CharitiesCard id="5" median_income="10" name="Charity" state="Texas"/>);
+        const actualState = wrapper.find("li").first();
+        expect(actualState.html()).toBe("<li><b>State:</b> Texas</li>");
+    });
+
+    // @Colin@
+    it('renders CharitiesCard s', () => {
+        const wrapper = shallow(<CharitiesCard id="5" median_income="10" name="Charity" state="Texas" image="my_image"/>);
+        const actualState = wrapper.find("img").first();
+        expect(actualState.html()).toBe("<img class=\"card-img-top d-flex\" src=\"my_image\" alt=\"Card image\"/>");
+    });
+});
