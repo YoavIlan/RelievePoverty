@@ -83,6 +83,10 @@ class CharityInstance extends Component {
                <b>Rating</b>
                <p>{this.state.rating}/4 Stars</p>
                <a href={this.state.url} target="_blank" className="btn btn-primary mt-auto">Visit Page</a>
+               <br/>
+               <br/>
+               <iframe width="400" height="250" frameborder="0"
+                src={"https://www.google.com/maps/embed/v1/place?q=" + this.state.address + "&key=AIzaSyDh5sTwB-wqHvvsyUis6GwXzXMv78iePCs"} allowfullscreen></iframe>
             </div>
           </div>
            <div>
