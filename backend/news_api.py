@@ -6,7 +6,7 @@ import flask_restless
 
 # Create the Flask application and the Flask-SQLAlchemy object.
 app = flask.Flask(__name__)
-app.config['DEBUG'] = True
+app.config['DEBUG'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://relievepoverty:SWEpoverty6@relievepoverty.cdbjmfurziio.us-east-2.rds.amazonaws.com/RelievePovertyDB'
 db = flask_sqlalchemy.SQLAlchemy(app)
 
@@ -32,21 +32,26 @@ states = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Conne
 def find_articles_for_state(state):
     parameters['q'] = 'poverty' + '&' + state
     response = requests.get(url, params=parameters)
-    articles = [article for article in response.json()['articles']]
-    return articles
+    if response.status_code == requests.codes.ok:
+        articles = [article for article in response.json()['data']]
+        return articles
+    return None
 
 def add_states_to_table():
     for state in states:
         articles = find_articles_for_state(state)
-        for article in articles:
-            pprint.pprint(article)
-            try:
-                if ('poverty' in article['title']) or ('Poverty' in article['title']) or ('poverty' in article['description']) or ('Poverty' in article['description']):
-                    curr_article = News(title=article['title'], summary=article['description'], source=article['source']['name'], state=state, author=article['author'], published_date=article['publishedAt'], url=article['url'], image=article['urlToImage'])
-                    db.session.add(curr_article)   
-            except:
-                pass         
-        db.session.commit()
+        if articles is not None:
+            for article in articles:
+                pprint.pprint(article)
+                try:
+                    if ('poverty' in article['title']) or ('Poverty' in article['title']) or ('poverty' in article['description']) or ('Poverty' in article['description']):
+                        curr_article = News(title=article['title'], summary=article['description'], source=article['source']['name'], state=state, author=article['author'], published_date=article['publishedAt'], url=article['url'], image=article['urlToImage'])
+                        db.session.add(curr_article)
+                except:
+                    pass
+            db.session.commit()
+        else:
+            print("Could not get data from endpoint")
 
 if __name__ == "__main__":
     add_states_to_table()
