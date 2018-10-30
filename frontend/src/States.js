@@ -37,7 +37,7 @@ class States extends Component{
         let pageSize = 12.0;
         return(
             <>
-              <Jumbotron title={"Learn more about poverty in the U.S."} description={"Learn more about poverty for each state."}/>
+              <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>
