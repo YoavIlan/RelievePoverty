@@ -14,7 +14,8 @@ class About extends Component{
     		total: {
     			commits: 0,
     			issues: 0,
-    			tests: 0
+					tests: 0,
+					acceptance_tests: 0,
     		}
     	};
    }
@@ -26,6 +27,7 @@ class About extends Component{
 		this.getCommits();
 		this.getIssues();
 		this.getTests();
+		this.getAcceptanceTests();
 	}
 
     render(){
@@ -43,6 +45,7 @@ class About extends Component{
 		              <li className="list-group-item">Total # of commits: {this.state.total.commits}</li>
 		              <li className="list-group-item">Total # of issues: {this.state.total.issues}</li>
 		              <li className="list-group-item">Total # of unit tests: {this.state.total.tests}</li>
+									<li className="list-group-item">Total # of acceptance tests: {this.state.total.acceptance_tests}</li>
 		            </ul>
 		          </div>
 			    	<div className="row">
@@ -153,6 +156,27 @@ class About extends Component{
 					member.tests += (resp.split(member.tests_id).length - 1);
 				});
 				stats.tests += member.tests;
+			});
+			this.setState({team: members, total: stats});
+		}).catch(err => {
+			console.log('getTests FAILED');
+		}); ;
+	}
+
+	getAcceptanceTests() {
+		var proxy = 'https://cors.io/?';
+		var urls = ['https://gitlab.com/urielkugelmass/relievepoverty/raw/development/tst/e2e/test.py'];
+		var promises = urls.map(url =>fetch(proxy + url).then(resp => resp.text()));
+		var responses = new Array(urls.length);
+		Promise.all(promises)
+		.then((responses) => {
+			var members = this.state.team;
+			var stats = this.state.total;
+			members.forEach(member => {
+				responses.map(resp => {
+					member.acceptance_tests += (resp.split(member.tests_id).length - 1);
+				});
+				stats.tests += member.acceptance_tests;
 			});
 			this.setState({team: members, total: stats});
 		}).catch(err => {

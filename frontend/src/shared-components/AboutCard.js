@@ -18,6 +18,7 @@ class AboutCard extends Component {
                   <li className="list-group-item"># of commits: {this.props.data.commits}</li>
                   <li className="list-group-item"># of issues: {this.props.data.issues}</li>
                   <li className="list-group-item"># of unit tests: {this.props.data.tests}</li>
+                  <li className="list-group-item"># of acceptance tests: {this.props.data.acceptance_tests}</li>
                 </ul>
               </div>
             </div>

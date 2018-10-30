@@ -11,6 +11,7 @@ export const getTeam = () => {
       commits: 0,
       issues: 0,
       tests: 0,
+      acceptance_tests: 0,
     },
     {
       image: require('./img/evan.jpg'),
@@ -23,6 +24,7 @@ export const getTeam = () => {
       commits: 0,
       issues: 0,
       tests: 0,
+      acceptance_tests: 0,
     },
     {
       image: require('./img/yoav.jpg'),
@@ -35,6 +37,7 @@ export const getTeam = () => {
       commits: 0,
       issues: 0,
       tests: 0,
+      acceptance_tests: 0,
     },
     {
       image: require('./img/albert.jpg'),
@@ -47,6 +50,7 @@ export const getTeam = () => {
       commits: 0,
       issues: 0,
       tests: 0,
+      acceptance_tests: 0,
     },
     {
       image: require('./img/colin.jpg'),
@@ -59,6 +63,7 @@ export const getTeam = () => {
       commits: 0,
       issues: 0,
       tests: 0,
+      acceptance_tests: 0,
     },
     {
       image: require('./img/daniel.jpg'),
@@ -70,7 +75,8 @@ export const getTeam = () => {
       tests_id: '@Daniel@',
       commits: 0,
       issues: 0,
-      tests: 0,   
+      tests: 0,
+      acceptance_tests: 0,   
     },
   ];
 }
