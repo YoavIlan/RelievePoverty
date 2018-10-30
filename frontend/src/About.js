@@ -39,7 +39,7 @@ class About extends Component{
 		        <div className="container">
 		          <div className="card mb-4 box-shadow">
 		            <div className="card-body">
-		              <h4 className="card-title" styles="margin-bottom: 0">Stats</h4>
+		              <h4 className="card-title about-card-title" styles="margin-bottom: 0">Stats</h4>
 		            </div>
 		            <ul className="list-group list-group-flush">
 		              <li className="list-group-item">Total # of commits: {this.state.total.commits}</li>
@@ -53,7 +53,7 @@ class About extends Component{
 			    	</div>
 		          <div className="card mb-4 box-shadow">
 		            <div className="card-body">
-		              <h4 className="card-title" styles="margin-bottom: 0">Data Sources</h4>
+		              <h4 className="card-title about-card-title" styles="margin-bottom: 0">Data Sources</h4>
 		            </div>
 		            <ul className="list-group list-group-flush">
 		              <li className="list-group-item"><a href="https://www.census.gov/programs-surveys/saipe/data/api.html" target="_blank">US Census Bureau (State Poverty)</a> - Used The US Census Bureau''s restful SAIPE API to find information on poverty rates by state </li>
@@ -66,7 +66,7 @@ class About extends Component{
 		          </div>
 		          <div className="card mb-4 box-shadow">
 		            <div className="card-body">
-		              <h4 className="card-title" styles="margin-bottom: 0">Tools</h4>
+		              <h4 className="card-title about-card-title" styles="margin-bottom: 0">Tools</h4>
 		            </div>
 		            <ul className="list-group list-group-flush">
 		              <li className="list-group-item"><a href="https://gitlab.com/urielkugelmass/relievepoverty" target="_blank">Gitlab</a> - Used for version control, continuous integration, and issue/story tracking</li>

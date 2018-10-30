@@ -11,17 +11,17 @@ class Jumbotron extends Component {
             if (hasDescription)
             {
                 return (
-                    <section className="jumbotron text-center flex-fill"> 
-                    <div className="container"> 
+                    <section className="jumbotron text-center flex-fill">
+                    <div className="container">
                     <h1 className="jumbotron-heading">{this.props.title}</h1>
                     <p className="lead">{this.props.description}</p>
                     </div>
                     </section>
                     );
             } else {
-                return (                     
-                    <section className="jumbotron text-center flex-fill"> 
-                    <div className="container"> 
+                return (
+                    <section className="jumbotron text-center flex-fill">
+                    <div className="container">
                     <h1 className="jumbotron-heading">{this.props.title}</h1>
                     </div>
                     </section>

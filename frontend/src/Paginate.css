@@ -7,6 +7,16 @@
     margin-bottom: 0;
 }
 
+.album{
+    background-color: #121212 !important;
+}
+
+.btn.btn-primary.mt-auto {
+    background-color: #ed4e00;
+    outline-color: #ed4e00;
+    border-color: #ed4e00;
+}
+
 .pagination ul {
     display: inline-block;
     text-align: center !important;
@@ -21,10 +31,11 @@
 .pagination li.active {
     font-size: 20px;
      border-bottom:1px solid #000;
+     border-bottom-color: #ed4e00;
 }
 
 .pagination a {
-    color: black;
+    color: #ed4e00;
     display: inline-block;
     text-align: center !important;
     padding: 8px 16px;

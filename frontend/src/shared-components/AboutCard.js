@@ -8,7 +8,7 @@ class AboutCard extends Component {
               <div className="card mb-4 box-shadow">
                 <img className="card-img-top" id="developer-img" src={this.props.data.image} alt="Card image cap"></img>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item"><h4 className="card-title" styles="margin-bottom: 0">{this.props.data.name}</h4></li>
+                  <li className="list-group-item"><h4 className="card-title about-card-title" styles="margin-bottom: 0">{this.props.data.name}</h4></li>
                 </ul>
                 <div className="card-body">
                   <h5 className="card-title">{this.props.data.title}</h5>

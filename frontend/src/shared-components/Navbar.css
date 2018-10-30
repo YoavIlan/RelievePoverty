@@ -1,5 +1,5 @@
 nav.navbar, .navbar-default {
-  background-color: black !important;
+  background-color: #232323 !important;
 }
 .navbar-nav{
     -webkit-flex-direction: row;
@@ -18,9 +18,9 @@ nav.navbar, .navbar-default {
 }
 
 .navbar-default .navbar-nav > li > a {
-  color: white;
+  color: #bcbcbc !important;
 }
 
 .navbar-default .navbar-brand {
-  color: orange;
+  color: #ed4e00;
 }
