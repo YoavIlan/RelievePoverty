@@ -141,7 +141,7 @@ class About extends Component{
  	 */
 	getTests() {
 		var proxy = 'https://cors.io/?';
-		var urls = ['https://gitlab.com/urielkugelmass/relievepoverty/raw/development/Postman.json'];
+		var urls = ['https://gitlab.com/urielkugelmass/relievepoverty/raw/development/Postman.json', 'https://gitlab.com/urielkugelmass/relievepoverty/raw/development/frontend/test.js'];
 		var promises = urls.map(url =>fetch(proxy + url).then(resp => resp.text()));
 		var responses = new Array(urls.length);
 		Promise.all(promises)

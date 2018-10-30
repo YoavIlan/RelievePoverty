@@ -34,6 +34,7 @@ configure({ adapter: new Adapter() });
 // var news_instance = require('./src/NewsInstance');
 
 describe('<States />', () => {
+    // @Yoav@
     it('renders 50 total states', async () =>{
         const wrapper = await shallow(<States />);
         const inst = wrapper.instance();
@@ -43,6 +44,7 @@ describe('<States />', () => {
 });
 
 describe('<Charities />', () =>{
+    // @Yoav@
     it('renders correct number of charities', async () => {
         const wrapper = await shallow(<Charities />);
         const inst = wrapper.instance();
@@ -52,6 +54,7 @@ describe('<Charities />', () =>{
 });
 
 describe('<News />', () =>{
+    // @Yoav@
     it('renders correct number of news articles', async () => {
         const wrapper = await shallow(<News />);
         const inst = wrapper.instance();
