@@ -48,16 +48,16 @@ class NewsInstance extends Component {
     render() {
         return (
             <>
-            <div class="container">
-                <h1 class="my-4">{this.state.title}</h1>
-                <div class="row">
-                    <div class="col-md-8">
-                        <img class="img-fluid" src={this.state.image} alt="" />
+            <div className="container">
+                <h1 className="my-4">{this.state.title}</h1>
+                <div className="row">
+                    <div className="col-md-8">
+                        <img className="img-fluid" src={this.state.image} alt="" />
                     </div>
-                    <div class="col-md-4">
-                        <h3 class="my-3">Summary</h3>
+                    <div className="col-md-4">
+                        <h3 className="my-3">Summary</h3>
                         <p>{this.state.summary}...</p>
-                        <h3 class="my-3">Information</h3>
+                        <h3 className="my-3">Information</h3>
                         <ul>
                             <li>News Organization: {this.state.source}</li>
                             <li>Related State: <Link to={"/states/" + this.state.state}>{this.state.state}</Link></li>

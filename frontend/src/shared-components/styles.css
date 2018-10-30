@@ -27,6 +27,23 @@
 .my-4 {
   position:relative;
   left: 4%;
+  color: #ed4e00;
+}
+
+b{
+    color: #e2e2e2;
+}
+
+p{
+    color: #bcbcbc;
+}
+
+.my-3{
+    color: #e2e2e2;
+}
+
+ul{
+    color: #bcbcbc;
 }
 
 .twitter-timeline{
@@ -57,7 +74,7 @@
 }
 
 body{
-  background-color: #1c1c1c;
+  background-color: #121212 !important;
 }
 
 .jumbotron{
@@ -92,7 +109,7 @@ a {
 }
 
 .card-text{
-    color: #bcbcbc;;
+    color: #bcbcbc;
 }
 
 .related-instances > div > div{
