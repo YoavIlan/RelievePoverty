@@ -109,6 +109,8 @@ def get_charities_by_category():
                 webURL = charity["charityNavigatorURL"]
             charity_row = Charities(url=webURL, rating=rate, name=charity["charityName"], mission=charity["mission"], affiliation=charity["irsClassification"]["affiliation"], tax_classification=charity["irsClassification"]["subsection"], state=state, address=address, img="null", cause_name=cause)
             db.session.add(charity_row)
+    else:
+        print("Could not reach endpoint")
 
 if __name__ == "__main__":
     get_charities_by_category()

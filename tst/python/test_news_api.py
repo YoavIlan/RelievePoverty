@@ -1,6 +1,9 @@
+import sys
+sys.path.append('../../')
+
 import unittest
 import flask_sqlalchemy
-from news_api import find_articles_for_state, add_states_to_table
+from backend.news_api import find_articles_for_state, add_states_to_table
 from unittest.mock import patch, Mock
 import mock
 from io import StringIO
@@ -8,6 +11,7 @@ import pprint
 
 class NewsApiTests(unittest.TestCase):
 
+    # @Daniel@
     def test_find_articles_for_states(self):
         """Mocking requests.get() to simulate API call"""
         mock_get_patcher = patch('requests.get')
@@ -39,7 +43,7 @@ class NewsApiTests(unittest.TestCase):
         # Start patching 'requests.get'.
         mock_get = mock_get_patcher.start()
 
-        # Configure the mock to return a response with status code 200 and a list of users.
+        # Configure the mock to return a response with status code 200 and sample json
         mock_get.return_value = Mock(status_code = 200)
         mock_get.return_value.json.return_value = response
 
@@ -51,6 +55,7 @@ class NewsApiTests(unittest.TestCase):
 
         self.assertEqual(result, output)
 
+    # @Daniel@
     def test_bad_request(self):
         """Mocking requests.get() to simulate API call"""
         mock_get_patcher = patch('requests.get')
@@ -70,11 +75,12 @@ class NewsApiTests(unittest.TestCase):
 
         self.assertEqual(result, None)
 
+    # @Daniel@
     @unittest.mock.patch('sys.stdout', new_callable=StringIO)
     def test_add_states_to_table(self, mock_stdout):
         with patch("flask_sqlalchemy.SQLAlchemy") as mock:
-            """Mocking find_articles_for_state to give None as output"""
-            mock_find_patcher = patch('news_api.find_articles_for_state')
+            """Mocking find_articles_for_state to give sample json as output"""
+            mock_find_patcher = patch('backend.news_api.find_articles_for_state')
             mock_find = mock_find_patcher.start()
             mock_find.return_value = [{
                 "author":	"24/7 Wall St",
@@ -93,18 +99,19 @@ class NewsApiTests(unittest.TestCase):
                 expected_output += pprint.pformat(mock_find.return_value[0]) + "\n"
 
 
-            # Call the function which should not get any data
+            # Should process sample json for all 50 states
             add_states_to_table()
 
             mock_find_patcher.stop()
 
             self.assertEqual(mock_stdout.getvalue(), expected_output)
 
+    # @Daniel@
     @unittest.mock.patch('sys.stdout', new_callable=StringIO)
     def test_add_states_to_table_bad_request(self, mock_stdout):
         with patch("flask_sqlalchemy.SQLAlchemy") as mock:
             """Mocking find_articles_for_state to give None as output"""
-            mock_find_patcher = patch('news_api.find_articles_for_state')
+            mock_find_patcher = patch('backend.news_api.find_articles_for_state')
             mock_find = mock_find_patcher.start()
             mock_find.return_value = None
 
