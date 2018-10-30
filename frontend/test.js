@@ -18,6 +18,8 @@ import Charities from './src/Charities'
 import AboutCard from './src/shared-components/AboutCard';
 import About from './src/About';
 
+import Jumbotron from './src/shared-components/Jumbotron';
+
 configure({ adapter: new Adapter() });
 // var assert = require('assert');
 //
@@ -62,3 +64,23 @@ describe('<News />', () =>{
         expect(wrapper.state().total).toEqual(237);
     });
 });
+
+describe('<Jumbotron />', () => {
+    // @Yoav@
+    it('renders expected jumbotron title', () =>{
+        const title = "this is the title";
+        const wrapper = shallow(<Jumbotron title={title}/>);
+        const actualTitle = wrapper.find(".jumbotron-heading");
+        expect(actualTitle.text()).toBe(title);
+    });
+
+    // @Yoav@
+    it('renders expected jumbotron description', () =>{
+        const title = "this is the title";
+        const desc = "this is the description";
+        const wrapper = shallow(<Jumbotron title={title} description={desc}/>);
+        const actualDescription = wrapper.find(".lead");
+        expect(actualDescription.text()).toBe(desc);
+    });
+});
+
