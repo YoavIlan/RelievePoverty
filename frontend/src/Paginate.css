@@ -12,9 +12,9 @@
 }
 
 .btn.btn-primary.mt-auto {
-    background-color: #ed4e00;
-    outline-color: #ed4e00;
-    border-color: #ed4e00;
+    background-color: #b35c22;
+    outline-color: #b35c22;
+    border-color: #b35c22;
 }
 
 .pagination ul {
@@ -31,11 +31,11 @@
 .pagination li.active {
     font-size: 20px;
      border-bottom:1px solid #000;
-     border-bottom-color: #ed4e00;
+     border-bottom-color: #b35c22;
 }
 
 .pagination a {
-    color: #ed4e00;
+    color: #b35c22;
     display: inline-block;
     text-align: center !important;
     padding: 8px 16px;

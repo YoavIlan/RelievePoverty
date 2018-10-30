@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Navbar.css'
 
@@ -9,6 +9,7 @@ class CustomNavbar extends Component {
       <Navbar default collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
+              <Image ClassName="nav-img d-inline-block align-top" src={require('./../img/rp.png')} alt="Second slide"/>
             <Link to="/">RelievePoverty</Link>
           </Navbar.Brand>
         </Navbar.Header>

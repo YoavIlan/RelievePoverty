@@ -7,6 +7,14 @@ nav.navbar, .navbar-default {
     flex-direction: row;
 }
 
+.navbar-header {
+    width: 20%
+}
+
+.navbar-brand>img {
+  width: 25%;
+}
+
 .navitem{
     margin: 0px 15px;
 }
@@ -22,5 +30,5 @@ nav.navbar, .navbar-default {
 }
 
 .navbar-default .navbar-brand {
-  color: #ed4e00;
+  color: #b35c22;
 }

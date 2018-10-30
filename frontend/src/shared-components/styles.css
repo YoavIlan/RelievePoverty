@@ -27,7 +27,7 @@
 .my-4 {
   position:relative;
   left: 4%;
-  color: #ed4e00;
+  color: #b35c22;
 }
 
 b{
@@ -61,7 +61,7 @@ ul{
   margin-top: 20px;
   width: 100%!important;
   height: 30%!important;
-  object-fit: contain;
+  /* object-fit: contain; */
 }
 
 #developer-img {
@@ -83,7 +83,7 @@ body{
 }
 
 .jumbotron-heading{
-    color: #ed4e00 !important;
+    color: #b35c22 !important;
 }
 
 .list-group-item{
@@ -92,7 +92,7 @@ body{
 }
 
 .card{
-  background-color: #1c1c1c;
+  background-color: #232323;
   width: 100%;
 }
 
@@ -101,11 +101,11 @@ body{
 }
 
 .card-title.about-card-title{
-    color: #ed4e00;
+    color: #b35c22;
 }
 
 a {
-    color: #ed4e00;
+    color: #b35c22;
 }
 
 .card-text{
