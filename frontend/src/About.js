@@ -176,7 +176,7 @@ class About extends Component{
 				responses.map(resp => {
 					member.acceptance_tests += (resp.split(member.tests_id).length - 1);
 				});
-				stats.tests += member.acceptance_tests;
+				stats.acceptance_tests += member.acceptance_tests;
 			});
 			this.setState({team: members, total: stats});
 		}).catch(err => {
