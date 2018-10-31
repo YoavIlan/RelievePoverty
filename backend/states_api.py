@@ -23,8 +23,6 @@ class States(db.Model):
     counties = db.Column(db.String(255))
     flag = db.Column(db.String(255))
 
-    #image = db.Column(db.String(255))
-
 # Create the database tables.
 db.create_all()
 
@@ -72,16 +70,10 @@ def add_state_information():
             for i in l :
                 state[next(it)] = i
             states.append(state)
-
-    for i in states :
-        print(i)
-    #states = [state for state in response.json()['NAME']]
     states.sort(key=lambda obj: float(obj['SAEPOVRTALL_PT']))
     for s in states:
-
         pprint.pprint(s)
-        curr_state = States(name=s['NAME'], rank=50-(states.index(s)), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties=get_county(s["STATE"]), flag='http://www.theus50.com/images/state-flags/' + s['NAME'].lower().replace(" ", "") + '-flag.jpg')
-        print(curr_state)
+        curr_state = States(name=s['NAME'], rank=50-(states.index(s)), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties="temp", flag='http://www.theus50.com/images/state-flags/' + s['NAME'].lower().replace(" ", "") + '-flag.jpg')
         db.session.add(curr_state)
         db.session.commit()
 
