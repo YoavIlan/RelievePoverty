@@ -10,10 +10,13 @@ RUN pip install --upgrade pip && \
     pip install mypy          && \
     pip install numpy         && \
     pip install pylint        && \
-    pip install flask         && \
-    pip install flask_sqlalchemy    && \
-    pip install flask_restless && \
-    pip install requests        && \
+    pip3 install flask         && \
+    pip3 install flask_sqlalchemy    && \
+    pip3 install flask_restless && \
+    pip3 install requests        && \
+    pip3 install mock   && \
+    pip3 install patch  && \
+    pip3 install pymysql    && \
     pip list
 
 CMD bash
