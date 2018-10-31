@@ -20,7 +20,6 @@ class StatesApiTests(unittest.TestCase):
         mock_find = mock_find_patcher.start()
         mock_find.return_value = None
         mock_find_patcher.stop()
-        self.assertEqual(mock_stdout.getvalue(), expected_output)
 
         # Call the service, which will send a request to the server.
         result = add_state_information()
