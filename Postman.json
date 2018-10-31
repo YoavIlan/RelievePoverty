@@ -1,0 +1,1015 @@
+{
+	"info": {
+		"_postman_id": "81d27c91-7588-46f3-82eb-94bd41e987ac",
+		"name": "RelievePoverty.me API",
+		"description": "The backend API for RelievePoverty.me",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "News",
+			"item": [
+				{
+					"name": "getNewsById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "df913cee-86d8-45e4-b32e-cc0e050b5b64",
+								"exec": [
+									"pm.globals.set(\"id\", \"1\");",
+									"// @Evan@",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"// @Evan@",
+									"pm.test(\"Body is correct\", function () {",
+									"    var body = {",
+									"      \"author\": \"24/7 Wall St\", ",
+									"      \"id\": 1, ",
+									"      \"image\": \"https://amp.businessinsider.com/images/5babbfef39ce1ace748b4568-2732-1366.jpg\", ",
+									"      \"published_date\": \"Thu, 27 Sep 2018 14:45:26 GMT\", ",
+									"      \"source\": \"247wallst.com\", ",
+									"      \"state\": \"Alabama\", ",
+									"      \"summary\": \"Brian Stansberry/Wikimedia Commons/CC BY 4.0 Currently, close to 50 million Americans live below the official poverty income of $25,100 a year, or less, for a family of four. Poverty is the most extreme example of financial hardship, but the official pove\", ",
+									"      \"title\": \"50 million Americans live below the official poverty income \\u2014 here are the poorest towns in every US state\", ",
+									"      \"url\": \"https://247wallst.com/special-report/2018/05/02/poorest-town-in-every-state-3/\"",
+									"    };",
+									"    pm.expect(pm.response.json()).to.eql(body);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.relievepoverty.me/v1/news/{{id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"relievepoverty",
+								"me"
+							],
+							"path": [
+								"v1",
+								"news",
+								"{{id}}"
+							]
+						},
+						"description": "Gets a news article by an internal ID"
+					},
+					"response": [
+						{
+							"name": "Get news article by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/news/235",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"news",
+										"235"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"author\": \"By Emma Dumain edumain@mcclatchydc.com\", \n  \"id\": 235, \n  \"image\": \"https://www.thestate.com/latest-news/1aatmv/picture215544320/alternates/LANDSCAPE_1140/BlackHistoryExtravaganza2201720.JPG\", \n  \"published_date\": \"Tue, 16 Oct 2018 09:00:00 GMT\", \n  \"source\": \"Mcclatchydc.com\", \n  \"state\": \"Wisconsin\", \n  \"summary\": \"South Carolina Democratic Rep. Jim Clyburn is hitting the campaign trail to sell his anti-poverty proposal ahead of the 2018 midterms. But Clyburn is also has to sell himself if he wants a promotion in House Democratic leadership.\", \n  \"title\": \"Black Caucus members tell Jim Clyburn to step it up ahead of midterms\", \n  \"url\": \"https://www.mcclatchydc.com/news/politics-government/congress/article220043885.html\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getNews",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c12d6f7b-4480-4204-859c-61714638d96c",
+								"exec": [
+									"pm.globals.set(\"page\", \"1\");",
+									"pm.globals.set(\"state\", \"texas\");",
+									"",
+									"// @Evan@",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// @Evan@",
+									"pm.test(\"Body is correct\", function () {",
+									"    var body = {",
+									"      \"data\": [",
+									"        {",
+									"          \"author\": \"Rene Submissions\", ",
+									"          \"id\": 193, ",
+									"          \"image\": \"https://images.adsttc.com/media/images/5bab/9575/f197/cca2/3c00/0a47/large_jpg/open-uri20180926-28807-orvzu8.jpg?1537971547\", ",
+									"          \"published_date\": \"Thu, 27 Sep 2018 03:45:00 GMT\", ",
+									"          \"source\": \"Archdaily.com\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"Catholic Charities of the Rio Grande Valley (CCRGV), a non-profit inclusive organization, dedicated to reduce poverty and tend to the most vulnerable has teamed with Georgetown University to host a competition to design and build a permanent Humanitarian \", ",
+									"          \"title\": \"Open Call: Design a Humanitarian Respite Center - Restoring Human Dignity on the Border\", ",
+									"          \"url\": \"https://www.archdaily.com/902753/open-call-design-a-humanitarian-respite-center-restoring-human-dignity-on-the-border\"",
+									"        }, ",
+									"        {",
+									"          \"author\": \"Francisco Navas in New York\", ",
+									"          \"id\": 194, ",
+									"          \"image\": \"https://i.guim.co.uk/img/media/7f216d0ed58628203e18e38ffd5051c2a54e89b2/0_457_6309_3785/master/6309.jpg?width=1200&height=630&quality=85&auto=format&usm=12&fit=crop&crop=faces%2Centropy&bm=normal&ba=bottom%2Cleft&blend64=aHR0cHM6Ly9hc3NldHMuZ3VpbS5jby51ay\", ",
+									"          \"published_date\": \"Fri, 21 Sep 2018 09:00:22 GMT\", ",
+									"          \"source\": \"The Guardian (AU)\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"Woman who fled poverty and violence in El Salvador more than 10 years ago says leaving would devastate her son\\u2019s care She gets to work at 4am, puts on her boots, hard hat and respirator and goes straight through noon. Drywall finishing is demanding labor \", ",
+									"          \"title\": \"'Our lives are in danger': mother with autistic son faces US deportation\", ",
+									"          \"url\": \"https://www.theguardian.com/us-news/2018/sep/21/mother-deportation-us-el-salvador-son-autism-trump-immigration\"",
+									"        }, ",
+									"        {",
+									"          \"author\": \"Scot McKnight\", ",
+									"          \"id\": 195, ",
+									"          \"image\": \"http://www.patheos.com/blogs/wp-content/themes/Patheos%20TwentySeventeen/assets/images/default-thumbs/default-img-bicycle.jpg\", ",
+									"          \"published_date\": \"Fri, 21 Sep 2018 09:25:47 GMT\", ",
+									"          \"source\": \"Patheos.com\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"By Vonda Dyer It\\u2019s \\u201cGiving Day\\u201d in north Texas, and I\\u2019m celebrating what our agency calls #minervasoul, because we have the privilege of supporting clients who want to end poverty as we know it through innovative higher education, others who want to eradi\", ",
+									"          \"title\": \"Vonda Dyer Speaks\", ",
+									"          \"url\": \"http://www.patheos.com/blogs/jesuscreed/2018/09/21/vonda-dyer-speaks/\"",
+									"        }, ",
+									"        {",
+									"          \"author\": \"Oliver Milman\", ",
+									"          \"id\": 196, ",
+									"          \"image\": \"https://i.guim.co.uk/img/media/4ffc6c5a032da5479dc7736d5b9c4458454ec778/0_182_5472_3283/master/5472.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&crop=faces%2Centropy&bm=normal&ba=bottom%2Cleft&blend64=aHR0cHM6Ly9hc3NldHMuZ3VpbS5jby51ay9pbWFnZ\", ",
+									"          \"published_date\": \"Tue, 09 Oct 2018 18:04:14 GMT\", ",
+									"          \"source\": \"The Guardian (AU)\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"New report warns \\u2018unprecedented\\u2019 changes needed to cut risk of extreme heat, drought, floods and poverty Faced with a major UN report that warns of floods, drought, extreme heat and increased poverty should the world not take radical action to address cli\", ",
+									"          \"title\": \"Trump silent as the UN warns of climate change catastrophe\", ",
+									"          \"url\": \"https://www.theguardian.com/us-news/2018/oct/09/trump-climate-change-report-ipcc-response\"",
+									"        }, ",
+									"        {",
+									"          \"author\": \"The Conversation\", ",
+									"          \"id\": 197, ",
+									"          \"image\": \"https://www.rawstory.com/wp-content/uploads/2018/10/Children-at-the-border-800x430.jpg\", ",
+									"          \"published_date\": \"Wed, 10 Oct 2018 14:08:26 GMT\", ",
+									"          \"source\": \"Rawstory.com\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"Recent media stories from the U.S.-Mexico border about immigration have largely missed the daily struggle of families and children in U.S. communities called \\u201ccolonias.\\u201d Colonias line both sides of the border, including the southern counties of Texas, Cal\", ",
+									"          \"title\": \"Youth living in settlements at US border suffer poverty and lack of health care\", ",
+									"          \"url\": \"https://www.rawstory.com/2018/10/youth-living-settlements-us-border-suffer-poverty-lack-health-care/\"",
+									"        }, ",
+									"        {",
+									"          \"author\": \"britney\", ",
+									"          \"id\": 198, ",
+									"          \"image\": \"https://truthout.org/wp-content/uploads/2018/10/GettyImages-1016849556-1200x828.jpg\", ",
+									"          \"published_date\": \"Fri, 12 Oct 2018 14:11:55 GMT\", ",
+									"          \"source\": \"Truthout.org\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"Informal settlements along Mexico's border, called \\\"colonias,\\\" lack access to basic infrastructure. The post Youth Living in Settlements at US Border Suffer Poverty and Lack of Health Care appeared first on Truthout.\", ",
+									"          \"title\": \"Youth Living in Settlements at US Border Suffer Poverty and Lack of Health Care\", ",
+									"          \"url\": \"https://truthout.org/articles/youth-living-in-settlements-at-us-border-suffer-poverty-and-lack-of-health-care/\"",
+									"        }, ",
+									"        {",
+									"          \"author\": null, ",
+									"          \"id\": 199, ",
+									"          \"image\": \"http://usa.inquirer.net/files/2018/10/img_07392-620x775.jpg\", ",
+									"          \"published_date\": \"Tue, 16 Oct 2018 16:59:19 GMT\", ",
+									"          \"source\": \"Inquirer.net\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"Lingap sa Mamamayan, the Iglesia Ni Cristo's (INC) local and international outreach program, which provides free livelihood assistance to needy communities, recently held two \\\"Aid to Humanity, Fight Poverty\\\" activities in New York and Connecticut. The Fil\", ",
+									"          \"title\": \"INC gives aid to the poor in US East Coast outreach\", ",
+									"          \"url\": \"http://usa.inquirer.net/15996/inc-gives-aid-poor-us-east-coast-outreach\"",
+									"        }, ",
+									"        {",
+									"          \"author\": \"Ashley A. Smith\", ",
+									"          \"id\": 200, ",
+									"          \"image\": \"https://www.insidehighered.com/sites/default/server_files/media/IMG_4426.jpg\", ",
+									"          \"published_date\": \"Wed, 03 Oct 2018 07:00:00 GMT\", ",
+									"          \"source\": \"Insidehighered.com\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"PHILADELPHIA -- Amarillo College president Russell Lowery-Hart and his staff frequently talk about a young woman called Maria. Maria is a first-generation student at the Texas community college. She is a racial minority who attends Amarillo part-time, rec\", ",
+									"          \"title\": \"College administrators meet to find solutions to reduce student poverty\", ",
+									"          \"url\": \"https://www.insidehighered.com/news/2018/10/03/college-administrators-meet-find-solutions-reduce-student-poverty\"",
+									"        }, ",
+									"        {",
+									"          \"author\": \"Emma Whitford\", ",
+									"          \"id\": 201, ",
+									"          \"image\": \"https://www.insidehighered.com/sites/default/server_files/media/GettyImages-638549866.jpg\", ",
+									"          \"published_date\": \"Tue, 02 Oct 2018 07:00:00 GMT\", ",
+									"          \"source\": \"Insidehighered.com\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"summary\": \"College students with preschool-age children take longer to complete their degrees and are less likely to stay in college than their childless peers, according to a recent study published in the Journal of Higher Education. The study explored the relation\", ",
+									"          \"title\": \"Student parents complete degrees slower, drop out due to 'time poverty'\", ",
+									"          \"url\": \"https://www.insidehighered.com/news/2018/10/02/student-parents-complete-degrees-slower-drop-out-due-time-poverty\"",
+									"        }",
+									"      ], ",
+									"      \"total\": 9",
+									"    };",
+									"    pm.expect(pm.response.json()).to.eql(body);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.relievepoverty.me/v1/news?page={{page}}&state={{state}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"relievepoverty",
+								"me"
+							],
+							"path": [
+								"v1",
+								"news"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{page}}",
+									"description": "(Optional) Filters by page number"
+								},
+								{
+									"key": "state",
+									"value": "{{state}}",
+									"description": "(Optional) Filters by state"
+								}
+							]
+						},
+						"description": "Gets all news articles. The caller may also filter by state and page"
+					},
+					"response": [
+						{
+							"name": "Filter by state",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/news?state=texas",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"news"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "${page}",
+											"description": "filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "state",
+											"value": "texas",
+											"description": "filters by state"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n    \"author\": \"Rene Submissions\", \n    \"id\": 193, \n    \"image\": \"https://images.adsttc.com/media/images/5bab/9575/f197/cca2/3c00/0a47/large_jpg/open-uri20180926-28807-orvzu8.jpg?1537971547\", \n    \"published_date\": \"Thu, 27 Sep 2018 03:45:00 GMT\", \n    \"source\": \"Archdaily.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"Catholic Charities of the Rio Grande Valley (CCRGV), a non-profit inclusive organization, dedicated to reduce poverty and tend to the most vulnerable has teamed with Georgetown University to host a competition to design and build a permanent Humanitarian \", \n    \"title\": \"Open Call: Design a Humanitarian Respite Center - Restoring Human Dignity on the Border\", \n    \"url\": \"https://www.archdaily.com/902753/open-call-design-a-humanitarian-respite-center-restoring-human-dignity-on-the-border\"\n  }, \n  {\n    \"author\": \"Francisco Navas in New York\", \n    \"id\": 194, \n    \"image\": \"https://i.guim.co.uk/img/media/7f216d0ed58628203e18e38ffd5051c2a54e89b2/0_457_6309_3785/master/6309.jpg?width=1200&height=630&quality=85&auto=format&usm=12&fit=crop&crop=faces%2Centropy&bm=normal&ba=bottom%2Cleft&blend64=aHR0cHM6Ly9hc3NldHMuZ3VpbS5jby51ay\", \n    \"published_date\": \"Fri, 21 Sep 2018 09:00:22 GMT\", \n    \"source\": \"The Guardian (AU)\", \n    \"state\": \"Texas\", \n    \"summary\": \"Woman who fled poverty and violence in El Salvador more than 10 years ago says leaving would devastate her son\\u2019s care She gets to work at 4am, puts on her boots, hard hat and respirator and goes straight through noon. Drywall finishing is demanding labor \", \n    \"title\": \"'Our lives are in danger': mother with autistic son faces US deportation\", \n    \"url\": \"https://www.theguardian.com/us-news/2018/sep/21/mother-deportation-us-el-salvador-son-autism-trump-immigration\"\n  }, \n  {\n    \"author\": \"Scot McKnight\", \n    \"id\": 195, \n    \"image\": \"http://www.patheos.com/blogs/wp-content/themes/Patheos%20TwentySeventeen/assets/images/default-thumbs/default-img-bicycle.jpg\", \n    \"published_date\": \"Fri, 21 Sep 2018 09:25:47 GMT\", \n    \"source\": \"Patheos.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"By Vonda Dyer It\\u2019s \\u201cGiving Day\\u201d in north Texas, and I\\u2019m celebrating what our agency calls #minervasoul, because we have the privilege of supporting clients who want to end poverty as we know it through innovative higher education, others who want to eradi\", \n    \"title\": \"Vonda Dyer Speaks\", \n    \"url\": \"http://www.patheos.com/blogs/jesuscreed/2018/09/21/vonda-dyer-speaks/\"\n  }, \n  {\n    \"author\": \"Oliver Milman\", \n    \"id\": 196, \n    \"image\": \"https://i.guim.co.uk/img/media/4ffc6c5a032da5479dc7736d5b9c4458454ec778/0_182_5472_3283/master/5472.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&crop=faces%2Centropy&bm=normal&ba=bottom%2Cleft&blend64=aHR0cHM6Ly9hc3NldHMuZ3VpbS5jby51ay9pbWFnZ\", \n    \"published_date\": \"Tue, 09 Oct 2018 18:04:14 GMT\", \n    \"source\": \"The Guardian (AU)\", \n    \"state\": \"Texas\", \n    \"summary\": \"New report warns \\u2018unprecedented\\u2019 changes needed to cut risk of extreme heat, drought, floods and poverty Faced with a major UN report that warns of floods, drought, extreme heat and increased poverty should the world not take radical action to address cli\", \n    \"title\": \"Trump silent as the UN warns of climate change catastrophe\", \n    \"url\": \"https://www.theguardian.com/us-news/2018/oct/09/trump-climate-change-report-ipcc-response\"\n  }, \n  {\n    \"author\": \"The Conversation\", \n    \"id\": 197, \n    \"image\": \"https://www.rawstory.com/wp-content/uploads/2018/10/Children-at-the-border-800x430.jpg\", \n    \"published_date\": \"Wed, 10 Oct 2018 14:08:26 GMT\", \n    \"source\": \"Rawstory.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"Recent media stories from the U.S.-Mexico border about immigration have largely missed the daily struggle of families and children in U.S. communities called \\u201ccolonias.\\u201d Colonias line both sides of the border, including the southern counties of Texas, Cal\", \n    \"title\": \"Youth living in settlements at US border suffer poverty and lack of health care\", \n    \"url\": \"https://www.rawstory.com/2018/10/youth-living-settlements-us-border-suffer-poverty-lack-health-care/\"\n  }, \n  {\n    \"author\": \"britney\", \n    \"id\": 198, \n    \"image\": \"https://truthout.org/wp-content/uploads/2018/10/GettyImages-1016849556-1200x828.jpg\", \n    \"published_date\": \"Fri, 12 Oct 2018 14:11:55 GMT\", \n    \"source\": \"Truthout.org\", \n    \"state\": \"Texas\", \n    \"summary\": \"Informal settlements along Mexico's border, called \\\"colonias,\\\" lack access to basic infrastructure. The post Youth Living in Settlements at US Border Suffer Poverty and Lack of Health Care appeared first on Truthout.\", \n    \"title\": \"Youth Living in Settlements at US Border Suffer Poverty and Lack of Health Care\", \n    \"url\": \"https://truthout.org/articles/youth-living-in-settlements-at-us-border-suffer-poverty-and-lack-of-health-care/\"\n  }, \n  {\n    \"author\": null, \n    \"id\": 199, \n    \"image\": \"http://usa.inquirer.net/files/2018/10/img_07392-620x775.jpg\", \n    \"published_date\": \"Tue, 16 Oct 2018 16:59:19 GMT\", \n    \"source\": \"Inquirer.net\", \n    \"state\": \"Texas\", \n    \"summary\": \"Lingap sa Mamamayan, the Iglesia Ni Cristo's (INC) local and international outreach program, which provides free livelihood assistance to needy communities, recently held two \\\"Aid to Humanity, Fight Poverty\\\" activities in New York and Connecticut. The Fil\", \n    \"title\": \"INC gives aid to the poor in US East Coast outreach\", \n    \"url\": \"http://usa.inquirer.net/15996/inc-gives-aid-poor-us-east-coast-outreach\"\n  }, \n  {\n    \"author\": \"Ashley A. Smith\", \n    \"id\": 200, \n    \"image\": \"https://www.insidehighered.com/sites/default/server_files/media/IMG_4426.jpg\", \n    \"published_date\": \"Wed, 03 Oct 2018 07:00:00 GMT\", \n    \"source\": \"Insidehighered.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"PHILADELPHIA -- Amarillo College president Russell Lowery-Hart and his staff frequently talk about a young woman called Maria. Maria is a first-generation student at the Texas community college. She is a racial minority who attends Amarillo part-time, rec\", \n    \"title\": \"College administrators meet to find solutions to reduce student poverty\", \n    \"url\": \"https://www.insidehighered.com/news/2018/10/03/college-administrators-meet-find-solutions-reduce-student-poverty\"\n  }, \n  {\n    \"author\": \"Emma Whitford\", \n    \"id\": 201, \n    \"image\": \"https://www.insidehighered.com/sites/default/server_files/media/GettyImages-638549866.jpg\", \n    \"published_date\": \"Tue, 02 Oct 2018 07:00:00 GMT\", \n    \"source\": \"Insidehighered.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"College students with preschool-age children take longer to complete their degrees and are less likely to stay in college than their childless peers, according to a recent study published in the Journal of Higher Education. The study explored the relation\", \n    \"title\": \"Student parents complete degrees slower, drop out due to 'time poverty'\", \n    \"url\": \"https://www.insidehighered.com/news/2018/10/02/student-parents-complete-degrees-slower-drop-out-due-time-poverty\"\n  }\n]"
+						},
+						{
+							"name": "Filter by page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/news?page=1",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"news"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "filters by page number"
+										},
+										{
+											"key": "state",
+											"value": "${state}",
+											"description": "filters by state",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n    \"author\": \"24/7 Wall St\", \n    \"id\": 1, \n    \"image\": \"https://amp.businessinsider.com/images/5babbfef39ce1ace748b4568-2732-1366.jpg\", \n    \"published_date\": \"Thu, 27 Sep 2018 14:45:26 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alabama\", \n    \"summary\": \"Brian Stansberry/Wikimedia Commons/CC BY 4.0 Currently, close to 50 million Americans live below the official poverty income of $25,100 a year, or less, for a family of four. Poverty is the most extreme example of financial hardship, but the official pove\", \n    \"title\": \"50 million Americans live below the official poverty income \\u2014 here are the poorest towns in every US state\", \n    \"url\": \"https://247wallst.com/special-report/2018/05/02/poorest-town-in-every-state-3/\"\n  }, \n  {\n    \"author\": null, \n    \"id\": 2, \n    \"image\": \"https://opportunityatlas.org/public/images/share.png\", \n    \"published_date\": \"Mon, 08 Oct 2018 12:52:00 GMT\", \n    \"source\": \"Opportunityatlas.org\", \n    \"state\": \"Alabama\", \n    \"summary\": \"The \\\"Opportunity Atlas\\\" shows which neighborhoods in America offer children the best chance to rise out of poverty. ?? The Opportunity Atlas View Post ?\", \n    \"title\": \"The \\\"Opportunity Atlas\\\" shows which neighborhoods in America offer children the best chance to rise out of poverty.\", \n    \"url\": \"https://opportunityatlas.org\"\n  }, \n  {\n    \"author\": \"Greg Kaufmann\", \n    \"id\": 3, \n    \"image\": \"https://www.thenation.com/wp-content/uploads/2018/01/2526-Edit-img.jpg\", \n    \"published_date\": \"Mon, 01 Oct 2018 11:00:09 GMT\", \n    \"source\": \"Thenation.com\", \n    \"state\": \"Alabama\", \n    \"summary\": \"Greg Kaufmann In December, a group of low-income mothers in Mississippi will begin receiving $1,000 a month, no strings attached. The post How a Guaranteed Income Could Relieve the \\u2018Pressure Cooker\\u2019 of Poverty appeared first on The Nation.\", \n    \"title\": \"How a Guaranteed Income Could Relieve the \\u2018Pressure Cooker\\u2019 of Poverty\", \n    \"url\": \"https://www.thenation.com/article/how-a-guaranteed-income-could-relieve-the-pressure-cooker-of-poverty/\"\n  }, \n  {\n    \"author\": null, \n    \"id\": 4, \n    \"image\": \"http://www.modernhealthcare.com/apps/pbcsi.dll/storyimage/CH/20180927/NEWS/180929907/AR/0/AR-180929907.jpg&maxw=1200&maxh=630\", \n    \"published_date\": \"Thu, 27 Sep 2018 12:21:04 GMT\", \n    \"source\": \"Modernhealthcare.com\", \n    \"state\": \"Alabama\", \n    \"summary\": \"CMS Administrator Seema Verma insisted that Medicaid work requirements are working as intended to move people out of poverty, despite criticism that they're doing more harm than good.\", \n    \"title\": \"Verma touts work requirement successes, despite coverage loss\", \n    \"url\": \"http://www.modernhealthcare.com/article/20180927/NEWS/180929907\"\n  }, \n  {\n    \"author\": \"Gabrielle Gurley\", \n    \"id\": 5, \n    \"image\": \"http://prospect.org/sites/default/files/styles/thumbnail/public/ap_18163709882706_1.jpg?itok=lKe4AXyp\", \n    \"published_date\": \"Thu, 18 Oct 2018 14:06:08 GMT\", \n    \"source\": \"Prospect.org\", \n    \"state\": \"Alabama\", \n    \"summary\": \"(AP Photo/Robert F. Bukaty, File) Mary Mayhew on May 5, 2018, in Augusta, Maine T here\\u2019s no better way to drive a stake through the heart of anti-poverty programs than to appoint a new administrator with documented success in heaving low-income adults and\", \n    \"title\": \"Mary, Mary, Quite Contrary\", \n    \"url\": \"http://prospect.org/article/mary-mary-quite-contrary\"\n  }, \n  {\n    \"author\": \"jonlabelle\", \n    \"id\": 6, \n    \"image\": \"https://opportunityatlas.org/public/images/share.png\", \n    \"published_date\": \"Tue, 02 Oct 2018 05:47:01 GMT\", \n    \"source\": \"Opportunityatlas.org\", \n    \"state\": \"Alabama\", \n    \"summary\": \"Which neighborhoods in America offer children the best chance to rise out of poverty? The Opportunity Atlas answers this question using anonymous data following 20 million Americans from childhood to their mid-30s. Now you can trace the roots of today's a\", \n    \"title\": \"Opportunity Atlas\", \n    \"url\": \"https://www.opportunityatlas.org/\"\n  }, \n  {\n    \"author\": \"Angela Helm\", \n    \"id\": 7, \n    \"image\": \"https://i.kinja-img.com/gawker-media/image/upload/s--ubwhjGKZ--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/rmllkoghojvigx1jwe7g.png\", \n    \"published_date\": \"Tue, 09 Oct 2018 02:25:00 GMT\", \n    \"source\": \"Theroot.com\", \n    \"state\": \"Alabama\", \n    \"summary\": \"Gov. Phil Bryant, head of the state which ranks second to last in education in all 50 of these United States; a man who runs the government of a place with an actual Confederate flag in its state flag and where the poverty rate stands at an abysmal 20 per\", \n    \"title\": \"Gov. of Mississippi Has the Nerve to Talk About Being \\u2018Civilized\\u2019 After Black Teens Stage Controversial Halftime Show\", \n    \"url\": \"https://www.theroot.com/gov-of-mississippi-has-the-nerve-to-talk-about-being-1829610913\"\n  }, \n  {\n    \"author\": \"Abigail Geiger\", \n    \"id\": 8, \n    \"image\": \"http://www.pewresearch.org/wp-content/uploads/2018/10/FT_18.09.28_Suburbs_feature.jpg\", \n    \"published_date\": \"Tue, 02 Oct 2018 11:00:48 GMT\", \n    \"source\": \"Pewresearch.org\", \n    \"state\": \"Alabama\", \n    \"summary\": \"U.S. suburbs are evenly divided politically, but some have a clear Democratic or Republican tilt. Poverty has increased more sharply in the suburbs than in urban or rural counties. The post 5 facts about U.S. suburbs appeared first on Pew Research Center.\", \n    \"title\": \"5 facts about U.S. suburbs\", \n    \"url\": \"http://www.pewresearch.org/fact-tank/2018/10/02/5-facts-about-u-s-suburbs/\"\n  }, \n  {\n    \"author\": \"24/7 Wall St\", \n    \"id\": 9, \n    \"image\": \"https://amp.businessinsider.com/images/5babbfef39ce1ace748b4568-2732-1366.jpg\", \n    \"published_date\": \"Thu, 27 Sep 2018 14:45:26 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alaska\", \n    \"summary\": \"Brian Stansberry/Wikimedia Commons/CC BY 4.0 Currently, close to 50 million Americans live below the official poverty income of $25,100 a year, or less, for a family of four. Poverty is the most extreme example of financial hardship, but the official pove\", \n    \"title\": \"50 million Americans live below the official poverty income \\u2014 here are the poorest towns in every US state\", \n    \"url\": \"https://247wallst.com/special-report/2018/05/02/poorest-town-in-every-state-3/\"\n  }, \n  {\n    \"author\": \"Grant Suneson\", \n    \"id\": 10, \n    \"image\": \"https://s2.wp.com/wp-content/themes/vip/247wallst/images/247-50x50.png\", \n    \"published_date\": \"Thu, 04 Oct 2018 23:03:46 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alaska\", \n    \"summary\": \"Source: SeanPavonePhoto / Getty ImagesFrom 2016 to 2017, the U.S. economy improved in several key metrics. The median household income increased by more than $1,500, unemployment dropped from 4.9% to 4.4%, and the poverty rate fell from 14.0% to 13.4%. Wh\", \n    \"title\": \"America\\u2019s Richest and Poorest States\", \n    \"url\": \"http://247wallst.com/special-report/2018/10/04/americas-richest-and-poorest-states-6/\"\n  }, \n  {\n    \"author\": \"24/7 Wall Street, Michael B. Sauter, 24/7 Wall Street\", \n    \"id\": 11, \n    \"image\": \"https://www.gannett-cdn.com/-mm-/b2b05a4ab25f4fca0316459e1c7404c537a89702/c=0-0-1365-768/local/-/media/2018/09/28/USATODAY/usatsports/247WallSt.com-247WS-495549-slum-alabama.jpg?width=3200&height=1680&fit=crop\", \n    \"published_date\": \"Wed, 10 Oct 2018 12:10:57 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alaska\", \n    \"summary\": \"24/7 Wall Street reviewed 2017 data from the U.S. Census Bureau to identify 11 distinct groups of Americans who are more likely to live in poverty.\", \n    \"title\": \"Faces of poverty: What racial, social groups are more likely to experience it?\", \n    \"url\": \"https://247wallst.com/special-report/2018/09/28/faces-of-poverty?utm_source=google&utm_medium=amp&utm_campaign=speakable\"\n  }, \n  {\n    \"author\": \"24/7 Wall Street, Thomas C. Frohlich, Michael B. Sauter and Alexander Kent, 24/7 Wall Street\", \n    \"id\": 12, \n    \"image\": \"https://www.gannett-cdn.com/-mm-/b2b05a4ab25f4fca0316459e1c7404c537a89702/c=0-0-1365-768/local/-/media/2018/09/14/USATODAY/usatsports/poorest-cities-poverty-homeless.jpg?width=3200&height=1680&fit=crop\", \n    \"published_date\": \"Mon, 01 Oct 2018 10:00:10 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alaska\", \n    \"summary\": \"24/7 Wall Street analyzed data from government and private sources, interviewed experts and studied the latest research examining the poverty problem.\", \n    \"title\": \"Progress in fighting poverty in America has slowed despite recent economic recovery\", \n    \"url\": \"https://247wallst.com/special-report/2018/09/27/poverty-in-america?utm_source=google&utm_medium=amp&utm_campaign=speakable\"\n  }\n]"
+						}
+					]
+				}
+			],
+			"description": "News Articles",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "8e21e2a7-8c0c-4ff2-a881-b07652406f1b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e0819438-dcfa-4762-acc2-113636a218f2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Charities",
+			"item": [
+				{
+					"name": "getCharityById",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5061393c-660b-42a1-b743-c069cef9ff77",
+								"exec": [
+									"pm.globals.set(\"id\", \"1\");",
+									"",
+									"// @Evan@",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// @Evan@",
+									"pm.test(\"Body is correct\", function () {",
+									"    var body = {",
+									"      \"address\": \"277 Cumberland Avenue\\nP.O. Box 7830\\nPortland, ME\\n 04112\", ",
+									"      \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"      \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", ",
+									"      \"id\": 1, ",
+									"      \"img\": \"logo.clearbit.com/bgcmaine.org/home\", ",
+									"      \"mission\": \"For more than 100 years, Boys & Girls Clubs of Southern Maine has provided youth development programs for young people, especially those who need us most. Our Clubhouses are safe places to learn, have fun and develop skills and interests that last a lifetime.<br><br>Whether it's academic help, learning to swim or a much needed healthy meal or snack, young people can go to their Clubhouse for the support they need to grow into great adults.\", ",
+									"      \"name\": \"Boys & Girls Clubs of Southern Maine\", ",
+									"      \"state\": \"Maine\", ",
+									"      \"tax_classification\": \"501(c)(3)\"",
+									"    };",
+									"    pm.expect(pm.response.json()).to.eql(body);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.relievepoverty.me/v1/charities/{{id}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"relievepoverty",
+								"me"
+							],
+							"path": [
+								"v1",
+								"charities",
+								"{{id}}"
+							]
+						},
+						"description": "Gets a charity by an internal ID"
+					},
+					"response": [
+						{
+							"name": "Get charity by ID",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/charities/215",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"charities",
+										"215"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"address\": \"2111 CHAMPA ST\\nDENVER, CO\\n 80205-2529\", \n  \"affiliation\": \"Subordinate - the organization is a subordinate in a group ruling.\", \n  \"cause_name\": \"null\", \n  \"id\": 215, \n  \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=205309612&utm_source=DataAPI&utm_content=9af5afa3\", \n  \"mission\": null, \n  \"name\": \"COLORADO COALITION FOR THE HOMELESS\", \n  \"state\": \"Colorado\", \n  \"tax_classification\": \"501(c)(3)\"\n}"
+						}
+					]
+				},
+				{
+					"name": "getCharities",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "35e84966-68d3-40a1-abc9-9193218d3a6b",
+								"exec": [
+									"pm.globals.set(\"page\", \"1\");",
+									"pm.globals.set(\"state\", \"texas\");",
+									"",
+									"// @Evan@",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// @Evan@",
+									"pm.test(\"Body is correct\", function () {",
+									"    var body = {",
+									"      \"data\": [",
+									"        {",
+									"          \"address\": \"230 COLLINS RD\\nRICHMOND, TX\\n 77469-2914\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 150, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=452401548&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Attack Poverty\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"PO BOX 84904\\nPEARLAND, TX\\n 77584-0008\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 177, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=473422453&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Sock Out Poverty\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"PO BOX 23025\\nWACO, TX\\n 76702-3025\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 207, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=161699211&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Heart of Texas Homeless Coalition\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"PO BOX 86\\nLONGVIEW, TX\\n 75606-0086\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 222, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=384012391&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"North East Texas Homeless Consortium\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"PO BOX 980935\\nHOUSTON, TX\\n 77098-0935\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 240, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=474612125&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Homeless Gay Kids - Houston\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"2471 FM 1237\\nTEMPLE, TX\\n 76501-0000\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 261, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=311658126&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Happy Endings-Homeless Animal Aid\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"2816 SWISS AVE\\nDALLAS, TX\\n 75204-5958\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 273, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=752461679&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Metro Dallas Homeless Alliance\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"PO BOX 55607\\nHOUSTON, TX\\n 77255-5607\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 280, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760447678&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Westside Homeless Partnership Inc.\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"501 N MAPLE ST\\nATHENS, TX\\n 75751-4233\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 284, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=611849774&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Henderson County Homeless Ministry\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"PO BOX 273331\\nHOUSTON, TX\\n 77277-3331\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 286, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760618317&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Homeless & Orphaned Pets Endeavor\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"PO BOX 273027\\nHOUSTON, TX\\n 77277-3027\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 287, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760283479&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Homeless Pet Placement League Inc.\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }, ",
+									"        {",
+									"          \"address\": \"12320 BEECHNUT ST\\nHOUSTON, TX\\n 77072-3945\", ",
+									"          \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", ",
+									"          \"cause_name\": \"null\", ",
+									"          \"id\": 294, ",
+									"          \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=812775766&utm_source=DataAPI&utm_content=9af5afa3\", ",
+									"          \"mission\": null, ",
+									"          \"name\": \"Alief Coalition for the Homeless\", ",
+									"          \"state\": \"Texas\", ",
+									"          \"tax_classification\": \"501(c)(3)\"",
+									"        }",
+									"      ], ",
+									"      \"total\": 12",
+									"    };",
+									"    pm.expect(pm.response.json()).to.eql(body);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.relievepoverty.me/v1/charities?page={{page}}&state={{state}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"relievepoverty",
+								"me"
+							],
+							"path": [
+								"v1",
+								"charities"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{page}}",
+									"description": "(Optional) Filters by page number"
+								},
+								{
+									"key": "state",
+									"value": "{{state}}",
+									"description": "(Optional) Filters by state"
+								}
+							]
+						},
+						"description": "Gets all charities. The caller may also filter by state and page."
+					},
+					"response": [
+						{
+							"name": "Filter by page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/charities?page=2",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"charities"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "2",
+											"description": "(Optional) Filters by page number"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n    \"address\": \"25 Walker Street\\nConcord, NH\\n 03301\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Social Services\", \n    \"id\": 13, \n    \"img\": \"logo.clearbit.com/sightcenter.org/\", \n    \"mission\": \"The New Hampshire Association for the Blind is the statewide leader in providing vision rehabilitation services for New Hampshire people of all ages who are blind and visually impaired. Founded in 1912, it provides services in virtually every community statewide and at the McGreal Sight Center in Concord. The Association provides support through information, education, informed choice, and help through a range of specialized professional vision rehabilitation services which are available at the McGreal Si\", \n    \"name\": \"New Hampshire Association for the Blind\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"55 Bradley Street\\nConcord, NH\\n 03301\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n    \"id\": 14, \n    \"img\": \"logo.clearbit.com/centralnhclubs.org/\", \n    \"mission\": \"The Boys & Girls Clubs of Greater Concord provides afterschool programs, summer day camps and basketball leagues to 1300 youth in the greater Concord area. Our mission is to inspire and enable all young people, especially those who need us most, to reach their full potential as productive, caring and responsible citizens. We offer a safe place to belong, caring adult mentors and programs covering everything from academics and leadership development to physical fitness and healthy habits.\", \n    \"name\": \"Boys & Girls Clubs of Central New Hampshire\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"200 East Wells Street\\nBaltimore, MD\\n 21230\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Social Services\", \n    \"id\": 15, \n    \"img\": \"logo.clearbit.com/nfb.org\", \n    \"mission\": \"The mission of the National Federation of the Blind is to serve as a means for blind people to come together to work collectively to improve our lives. By providing public education about blindness, information and referral services, scholarships, literature and materials about blindness, specialized aids and appliances, adaptive equipment, and support for blind people and their families, the members of the National Federation of the Blind strive to spread the word that the blind are normal individuals wh\", \n    \"name\": \"National Federation of the Blind\", \n    \"state\": \"Maryland\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"14 Grove Street\\nNorth Conway, NH\\n 03860\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Social Services\", \n    \"id\": 16, \n    \"img\": \"logo.clearbit.com/gibsoncenter.org\", \n    \"mission\": \"The Gibson Center for Senior Services has provided services to senior citizens of Northern Carroll County since 1979. Our goal is to enable seniors to remain in their homes, while maintaining a high level of independence and quality of life through the offering of an evolving array of programs and services. Our programs are designed to serve the needs of these active and passive senior residents through nutrition programs (home delivery, congregate meals and nutrition education), transportation programs f\", \n    \"name\": \"The Gibson Center for Senior Services\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"2 Quincy Street\\nPO Box 3116\\nNashua, NH\\n 03061\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Social Services\", \n    \"id\": 17, \n    \"img\": \"logo.clearbit.com/nsks.org/\", \n    \"mission\": \"The Nashua Soup Kitchen & Shelter (NSK&S) is dedicated to providing shelter and food to those in need. The overall objective of the agency is to advocate, create, and operate programs and services that promote dignity and self-sufficiency for those we serve. To ensure that basic needs are addressed, the NSK&S is committed to joining with others in a community-wide ethic of caring.\", \n    \"name\": \"Nashua Soup Kitchen & Shelter\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"56 Mont Vernon Street\\nMilford, NH\\n 03055\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n    \"id\": 18, \n    \"img\": \"logo.clearbit.com/svbgc.org/\", \n    \"mission\": \"Founded in 1991, Boys & Girls Club of Souhegan Valley's mission is to enable all young people, especially those who need us most, to be great today and reach their full potential as productive, caring, responsible citizens tomorrow. We primarily service communities in New Hampshire's Souhegan Valley: Milford, Amherst, Hollis, Brookline, Mont Vernon, Peterborough, New Ipswich, Lyndeborough, and Wilton.\", \n    \"name\": \"Boys & Girls Club of Souhegan Valley\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"2361 Hyland Boulevard\\nStaten Island, NY\\n 10306\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Multipurpose Human Service Organizations\", \n    \"id\": 19, \n    \"img\": \"logo.clearbit.com/tunnel2towers.org/\", \n    \"mission\": \"The mission of the Stephen Siller Tunnel to Towers Foundation is to honor the sacrifice of firefighter Stephen Siller, who laid down his life to save others on September 11, 2001. We also honor our military and first responders who continue to make the supreme sacrifice of life and limb for our country.\", \n    \"name\": \"Stephen Siller Tunnel to Towers Foundation\", \n    \"state\": \"New York\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"114 East 39th Street\\nNew York, NY\\n 10016\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Children's and Family Services\", \n    \"id\": 20, \n    \"img\": \"logo.clearbit.com/pajamaprogram.org/\", \n    \"mission\": \"Founded in 2001, Pajama Program's mission is to provide a loving environment for children who have lived through a great deal of hurt in their young lives to give them hope for a better tomorrow. The program identifies key institutions in major cities in the U.S. and other countries where children are living temporarily as they wait and hope for adoption. It is to the children in these circumstances and temporary living quarters that the pajamas are delivered with love an affection. \", \n    \"name\": \"Pajama Program\", \n    \"state\": \"New York\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"461 Glenbrook Road\\nStamford, CT\\n 06906\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Food Banks, Food Pantries, and Food Distribution\", \n    \"id\": 21, \n    \"img\": \"logo.clearbit.com/foodbanklfc.org\", \n    \"mission\": \"The Food Bank of Lower Fairfield County is lower Fairfield County's primary hunger-relief organization. We provide food to approximately 75 non-profit agencies and programs that serve low income people in our six town service area through bags of groceries and congregate meals. These include soup kitchens, food pantries, child care programs, homeless shelters, senior centers, domestic violence safe houses, and rehabilitation programs. Our mission statement is to raise awareness of, and promote action to c\", \n    \"name\": \"The Food Bank of Lower Fairfield County\", \n    \"state\": \"Connecticut\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"708 Kurn Hattin Road\\nWestminster, VT\\n 05158\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n    \"id\": 22, \n    \"img\": \"logo.clearbit.com/kurnhattin.org/\", \n    \"mission\": \"New England Kurn Hattin Homes was founded in 1894 by Reverend Charles Albert Dickinson, who believed that young children in need or orphans could be cared for in a nurturing rural setting rather than the urban childcare institution which existed at the time. Today our mission and commitment to provide services to children and families are as strong as they were when the initial seeds were planted. Kurn Hattin is a charitable home and school dedicated to helping children grow up to become happy, productive\", \n    \"name\": \"New England Kurn Hattin Homes\", \n    \"state\": \"Vermont\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"62 Oak Street\\nBurlington, VT\\n 05401\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n    \"id\": 23, \n    \"img\": \"logo.clearbit.com/bandgclub.org\", \n    \"mission\": \"The Boys & Girls Club of Burlington has been serving the children and youth of Chittenden County since 1942. The Club was started as a place for boys who needed constructive alternatives to hanging out on Burlington street corners. As the years progressed, the Club evolved its membership to include girls as well as boys from very diverse racial, economic, ethnic and religious backgrounds. Today, the Club reaches children and youth through its many programs and constant outreach activities from two locatio\", \n    \"name\": \"Boys & Girls Club of Burlington\", \n    \"state\": \"Vermont\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"713 Hartford Avenue\\nWhite River Junction, VT\\n 05001\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Homeless Services\", \n    \"id\": 24, \n    \"img\": \"logo.clearbit.com/uppervalleyhaven.org\", \n    \"mission\": \"The Upper Valley Haven is a private not-for-profit organization, founded in 1980, providing temporary shelter and educational programming for homeless families and adults as well as food and clothing to anyone in need. For 33 years the Haven has fostered independence through our programs. The Haven is open 365 days per year and never charges for any of its services. We serve over 11,000 people from Vermont and New Hampshire per year generally from within a 45-mile radius of White River Junction, Vermont. \", \n    \"name\": \"Upper Valley Haven\", \n    \"state\": \"Vermont\", \n    \"tax_classification\": \"501(c)(3)\"\n  }\n]"
+						},
+						{
+							"name": "Filter by state",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/charities?state=texas",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"charities"
+									],
+									"query": [
+										{
+											"key": "state",
+											"value": "texas",
+											"description": "(Optional) Filters by state"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n    \"address\": \"230 COLLINS RD\\nRICHMOND, TX\\n 77469-2914\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 150, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=452401548&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Attack Poverty\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 84904\\nPEARLAND, TX\\n 77584-0008\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 177, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=473422453&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Sock Out Poverty\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 23025\\nWACO, TX\\n 76702-3025\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 207, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=161699211&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Heart of Texas Homeless Coalition\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 86\\nLONGVIEW, TX\\n 75606-0086\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 222, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=384012391&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"North East Texas Homeless Consortium\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 980935\\nHOUSTON, TX\\n 77098-0935\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 240, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=474612125&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Homeless Gay Kids - Houston\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"2471 FM 1237\\nTEMPLE, TX\\n 76501-0000\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 261, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=311658126&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Happy Endings-Homeless Animal Aid\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"2816 SWISS AVE\\nDALLAS, TX\\n 75204-5958\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 273, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=752461679&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Metro Dallas Homeless Alliance\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 55607\\nHOUSTON, TX\\n 77255-5607\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 280, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760447678&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Westside Homeless Partnership Inc.\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"501 N MAPLE ST\\nATHENS, TX\\n 75751-4233\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 284, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=611849774&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Henderson County Homeless Ministry\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 273331\\nHOUSTON, TX\\n 77277-3331\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 286, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760618317&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Homeless & Orphaned Pets Endeavor\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 273027\\nHOUSTON, TX\\n 77277-3027\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 287, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760283479&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Homeless Pet Placement League Inc.\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"12320 BEECHNUT ST\\nHOUSTON, TX\\n 77072-3945\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 294, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=812775766&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Alief Coalition for the Homeless\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }\n]"
+						}
+					]
+				}
+			],
+			"description": "Charities"
+		},
+		{
+			"name": "States",
+			"item": [
+				{
+					"name": "getStateByName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6de798c2-f297-4096-a1ae-102ed3768cea",
+								"exec": [
+									"pm.globals.set(\"state\", \"texas\");",
+									"",
+									"// @Evan@",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// @Evan@",
+									"pm.test(\"Body is correct\", function () {",
+									"    var body = {",
+									"        \"below_poverty_rate\": \"15.6\",",
+									"        \"child_poverty_rate\": \"22.4\",",
+									"        \"counties\": \"Starr County\",",
+									"        \"flag\": \"http://www.theus50.com/images/state-flags/texas-flag.jpg\",",
+									"        \"median_income\": \"56583\",",
+									"        \"name\": \"Texas\",",
+									"        \"rank\": 18",
+									"    };",
+									"    pm.expect(pm.response.json()).to.eql(body);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.relievepoverty.me/v1/states/{{state}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"relievepoverty",
+								"me"
+							],
+							"path": [
+								"v1",
+								"states",
+								"{{state}}"
+							]
+						},
+						"description": "Gets information about a state given its name."
+					},
+					"response": [
+						{
+							"name": "Get state by name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/states/texas",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"states",
+										"texas"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "{\n  \"below_poverty_rate\": \"15.6\", \n  \"child_poverty_rate\": \"22.4\", \n  \"counties\": \"Starr County\", \n  \"flag\": \"http://www.theus50.com/images/state-flags/texas-flag.jpg\", \n  \"median_income\": \"56583\", \n  \"name\": \"Texas\", \n  \"rank\": 18\n}"
+						}
+					]
+				},
+				{
+					"name": "getStates",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ee8e9405-04e0-4d15-bfd6-04040243747f",
+								"exec": [
+									"pm.globals.set(\"page\", \"1\");",
+									"",
+									"// @Evan@",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"// @Evan@",
+									"pm.test(\"Body is correct\", function () {",
+									"    var body = {",
+									"        \"data\": [",
+									"            {",
+									"                \"below_poverty_rate\": \"9.9\",",
+									"                \"child_poverty_rate\": \"13.6\",",
+									"                \"counties\": \"Kusilvak Census Area\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/alaska-flag.jpg\",",
+									"                \"median_income\": \"76144\",",
+									"                \"name\": \"Alaska\",",
+									"                \"rank\": 1",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"9.9\",",
+									"                \"child_poverty_rate\": \"13.1\",",
+									"                \"counties\": \"Windham County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/connecticut-flag.jpg\",",
+									"                \"median_income\": \"73380\",",
+									"                \"name\": \"Connecticut\",",
+									"                \"rank\": 2",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"9.9\",",
+									"                \"child_poverty_rate\": \"12.5\",",
+									"                \"counties\": \"Beltrami County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/minnesota-flag.jpg\",",
+									"                \"median_income\": \"65583\",",
+									"                \"name\": \"Minnesota\",",
+									"                \"rank\": 3",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"9.7\",",
+									"                \"child_poverty_rate\": \"13\",",
+									"                \"counties\": \"Somerset County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/maryland-flag.jpg\",",
+									"                \"median_income\": \"78787\",",
+									"                \"name\": \"Maryland\",",
+									"                \"rank\": 4",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"9.5\",",
+									"                \"child_poverty_rate\": \"11.2\",",
+									"                \"counties\": \"Hawaii County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/hawaii-flag.jpg\",",
+									"                \"median_income\": \"74659\",",
+									"                \"name\": \"Hawaii\",",
+									"                \"rank\": 5",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"7.6\",",
+									"                \"child_poverty_rate\": \"8.5\",",
+									"                \"counties\": \"Coos County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/newhampshire-flag.jpg\",",
+									"                \"median_income\": \"70986\",",
+									"                \"name\": \"New Hampshire\",",
+									"                \"rank\": 6",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"21\",",
+									"                \"child_poverty_rate\": \"30.2\",",
+									"                \"counties\": \"Holmes County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/mississippi-flag.jpg\",",
+									"                \"median_income\": \"41793\",",
+									"                \"name\": \"Mississippi\",",
+									"                \"rank\": 7",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"20.1\",",
+									"                \"child_poverty_rate\": \"28.4\",",
+									"                \"counties\": \"East Carroll Parish\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/louisiana-flag.jpg\",",
+									"                \"median_income\": \"45374\",",
+									"                \"name\": \"Louisiana\",",
+									"                \"rank\": 8",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"19.1\",",
+									"                \"child_poverty_rate\": \"27.8\",",
+									"                \"counties\": \"McKinley County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/newmexico-flag.jpg\",",
+									"                \"median_income\": \"46844\",",
+									"                \"name\": \"New Mexico\",",
+									"                \"rank\": 9",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"18.2\",",
+									"                \"child_poverty_rate\": \"24.4\",",
+									"                \"counties\": \"Owsley County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/kentucky-flag.jpg\",",
+									"                \"median_income\": \"46610\",",
+									"                \"name\": \"Kentucky\",",
+									"                \"rank\": 10",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"17.9\",",
+									"                \"child_poverty_rate\": \"23.9\",",
+									"                \"counties\": \"McDowell County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/westvirginia-flag.jpg\",",
+									"                \"median_income\": \"43175\",",
+									"                \"name\": \"West Virginia\",",
+									"                \"rank\": 11",
+									"            },",
+									"            {",
+									"                \"below_poverty_rate\": \"17.2\",",
+									"                \"child_poverty_rate\": \"24.7\",",
+									"                \"counties\": \"Dallas County\",",
+									"                \"flag\": \"http://www.theus50.com/images/state-flags/alabama-flag.jpg\",",
+									"                \"median_income\": \"46309\",",
+									"                \"name\": \"Alabama\",",
+									"                \"rank\": 12",
+									"            }",
+									"        ],",
+									"        \"total\": 50",
+									"    };",
+									"    pm.expect(pm.response.json()).to.eql(body);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.relievepoverty.me/v1/states?page={{page}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"relievepoverty",
+								"me"
+							],
+							"path": [
+								"v1",
+								"states"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "{{page}}",
+									"description": "(Optional) Filters by page number"
+								}
+							]
+						},
+						"description": "Gets all states. The caller may also filter by page."
+					},
+					"response": [
+						{
+							"name": "Filter by page",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/states?page=5",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"states"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [],
+							"body": "[\n  {\n    \"below_poverty_rate\": \"10.4\", \n    \"child_poverty_rate\": \"14.5\", \n    \"counties\": \"Cumberland County\", \n    \"flag\": \"http://www.theus50.com/images/state-flags/newjersey-flag.jpg\", \n    \"median_income\": \"76212\", \n    \"name\": \"New Jersey\", \n    \"rank\": 49\n  }, \n  {\n    \"below_poverty_rate\": \"10.2\", \n    \"child_poverty_rate\": \"11\", \n    \"counties\": \"San Juan County\", \n    \"flag\": \"http://www.theus50.com/images/state-flags/utah-flag.jpg\", \n    \"median_income\": \"65931\", \n    \"name\": \"Utah\", \n    \"rank\": 50\n  }\n]"
+						}
+					]
+				}
+			],
+			"description": "U.S States"
+		}
+	]
+}

@@ -1,0 +1,20 @@
+before_script:
+    - date
+    - uname -a
+    - printenv | sort
+
+python:
+    image: yi637/swe-backend
+    script:
+    - cd backend/tests
+    - python3 test_charities_api.py
+    - python3 test_news_api.py
+    - python3 test_states_api.py
+    
+node:
+    image: gpdowning/node
+    script:
+    - cd frontend
+    - ls -al
+    - npm install
+    - npm test

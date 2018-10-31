@@ -1,0 +1,34 @@
+nav.navbar, .navbar-default {
+  background-color: #232323 !important;
+}
+.navbar-nav{
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.navbar-header {
+    width: 20%
+}
+
+.navbar-brand>img {
+  width: 25%;
+}
+
+.navitem{
+    margin: 0px 15px;
+}
+
+.navbar-default {
+  background-image: none;
+  border: none;
+  border-radius: 0;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #bcbcbc !important;
+}
+
+.navbar-default .navbar-brand {
+  color: #b35c22;
+}

@@ -1,0 +1,41 @@
+@startuml
+
+Charity "*" -o "1" State
+News   "*" -o "1" State
+
+class State {
+    + varchar[255] name
+    + int rank
+    + varchar[255] below_poverty_rate
+    + varchar[255] child_poverty_rate
+    + varchar[255] flag
+    + varchar[255] counties
+    + varchar[255] median_income
+    }
+
+class Charity {
+    + varchar[255] name
+    + varchar[510] mission
+    + varchar[255] affiliation
+    + varchar[255] address
+    + int(11) id
+    + varchar[255] img
+    + varchar[255] cause_name
+    + varchar[255] url
+    + int rating
+    }
+
+class News {
+    + int(11) id
+    + varchar[255] title
+    + varchar[255] summary
+    + varchar[255] source
+    + varchar[255] author
+    + datetime published_date
+    + varchar[255] url
+    + varchar[255] image
+    + int id
+
+    }
+
+@enduml
