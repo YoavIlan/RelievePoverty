@@ -16,7 +16,7 @@ Phase 2: 9d323736a70d4d9109d6a5e3ad6f76192c7c0a72
 [https://relievepoverty.me/](https://relievepoverty.me/)
 
 ## Pipelines
-We currently do not have any pipelines or CI
+[https://gitlab.com/urielkugelmass/relievepoverty/pipelines](https://gitlab.com/urielkugelmass/relievepoverty/pipelines)
 
 ## Estimated Completion Time for Phase 1:
 Albert - 20 hours  
@@ -33,6 +33,22 @@ Daniel - 19 hours
 Evan - 18 hours  
 Uriel - 16 hours  
 Yoav - 18 hours  
+
+## Estimated Completion Time for Phase 2:
+Albert - 35 hours  
+Colin - 40 hours  
+Daniel - 40 hours  
+Evan - 35 hours  
+Uriel - 30 hours  
+Yoav - 40 hours  
+
+## Actual Completion Time for Phase 2:
+Albert - 48 hours  
+Colin - 55 hours  
+Daniel - 54 hours  
+Evan - 56 hours  
+Uriel - 57 hours  
+Yoav - 52 hours  
 
 ## Comments
 We counted completion time as time spent developing with other members of the team
