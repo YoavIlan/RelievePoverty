@@ -4,6 +4,7 @@ before_script:
     - printenv | sort
 
 node:
+    image: gpdowning/node
     script:
     - cd frontend
     - ls -al
