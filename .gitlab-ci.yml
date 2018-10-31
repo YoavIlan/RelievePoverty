@@ -1,0 +1,12 @@
+before_script:
+    - date
+    - uname -a
+    - printenv | sort
+
+node:
+    image: yi637/swe-frontend
+    script:
+    - cd frontend
+    - ls -al
+    - cat makefile
+    - make tests

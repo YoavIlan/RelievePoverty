@@ -21,19 +21,6 @@ import About from './src/About';
 import Jumbotron from './src/shared-components/Jumbotron';
 
 configure({ adapter: new Adapter() });
-// var assert = require('assert');
-//
-// var state_card = require('./src/shared-components/StatesCard');
-// var states = require('./src/States');
-// var state_instance = require('./src/StateInstance');
-//
-// var charity_card = require('./src/shared-components/CharitiesCard');
-// var charities = require('./src/Charities');
-// var charity_instance = require('./src/CharityInstance');
-//
-// var news_card = require('./src/shared-components/NewsCard');
-// var news = require('./src/News');
-// var news_instance = require('./src/NewsInstance');
 
 describe('<States />', () => {
     // @Yoav@
