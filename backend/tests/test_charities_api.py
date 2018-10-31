@@ -9,7 +9,7 @@ import mock
 from io import StringIO
 import pprint
 
-class NewsApiTests(unittest.TestCase):
+class CharitiesApiTests(unittest.TestCase):
 
     # @Daniel@
     def test_build_address(self):

@@ -9,7 +9,7 @@ import mock
 from io import StringIO
 import pprint
 
-class NewsApiTests(unittest.TestCase):
+class StatesApiTests(unittest.TestCase):
 
     # @Evan@
     @unittest.mock.patch('sys.stdout', new_callable=StringIO)
@@ -21,7 +21,7 @@ class NewsApiTests(unittest.TestCase):
         mock_find.return_value = None
         mock_find_patcher.stop()
         self.assertEqual(mock_stdout.getvalue(), expected_output)
-        
+
         # Call the service, which will send a request to the server.
         result = add_state_information()
 
