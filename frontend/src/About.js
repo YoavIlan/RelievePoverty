@@ -145,8 +145,12 @@ class About extends Component{
  	 * Fetches the tests from gitlab then parses comments for tests, then updates the prop
  	 */
 	getTests() {
-		var proxy = 'https://cors.io/?';
-		var urls = ['https://gitlab.com/urielkugelmass/relievepoverty/raw/development/Postman.json', 'https://gitlab.com/urielkugelmass/relievepoverty/raw/development/frontend/test.js'];
+		var proxy = 'https://cors-anywhere.herokuapp.com/';
+		var urls = ['https://gitlab.com/urielkugelmass/relievepoverty/raw/development/Postman.json',
+		            'https://gitlab.com/urielkugelmass/relievepoverty/raw/development/frontend/test.js',
+		            'https://gitlab.com/urielkugelmass/relievepoverty/raw/development/backend/tests/test_charities_api.py',
+		            'https://gitlab.com/urielkugelmass/relievepoverty/raw/development/backend/tests/test_states_api.py',
+		            'https://gitlab.com/urielkugelmass/relievepoverty/raw/development/backend/tests/test_news_api.py'];
 		var promises = urls.map(url =>fetch(proxy + url).then(resp => resp.text()));
 		var responses = new Array(urls.length);
 		Promise.all(promises)
@@ -166,7 +170,7 @@ class About extends Component{
 	}
 
 	getAcceptanceTests() {
-		var proxy = 'https://cors.io/?';
+		var proxy = 'https://cors-anywhere.herokuapp.com/';
 		var urls = ['https://gitlab.com/urielkugelmass/relievepoverty/raw/development/tst/e2e/test.py'];
 		var promises = urls.map(url =>fetch(proxy + url).then(resp => resp.text()));
 		var responses = new Array(urls.length);
