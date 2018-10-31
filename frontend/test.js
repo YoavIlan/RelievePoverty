@@ -76,7 +76,7 @@ describe('<NewsCard />', () => {
     it('renders NewCard image', () => {
         const wrapper = shallow(<NewsCard title="test" published_date="12/24/18" image="./img/colin.jpg" id={1} source="Nowhere" state="Texas" author="Me"/>);
         const actualImage = wrapper.find("img");
-        expect(actualImage.html()).toBe("<img class=\"card-img-top d-flex\" src=\"./img/colin.jpg\" alt=\"Card image cap\"/>");
+        expect(actualImage.html()).toBe("<img class=\"card-img-top d-flex\" src=\"./img/colin.jpg\" alt=\"Card cap\"/>");
     });
 });
 
@@ -107,9 +107,9 @@ describe('<CharitiesCard />', () => {
     });
 
     // @Colin@
-    it('renders CharitiesCard s', () => {
+    it('renders CharitiesCard image', () => {
         const wrapper = shallow(<CharitiesCard id="5" median_income="10" name="Charity" state="Texas" image="my_image"/>);
         const actualState = wrapper.find("img").first();
-        expect(actualState.html()).toBe("<img class=\"card-img-top d-flex\" src=\"my_image\" alt=\"Card image\"/>");
+        expect(actualState.html()).toBe("<img class=\"card-img-top d-flex\" src=\"my_image\" alt=\"Card\"/>");
     });
 });
