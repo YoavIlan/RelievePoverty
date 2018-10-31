@@ -16,7 +16,7 @@ class StatesApiTests(unittest.TestCase):
     def test_add_state_information(self, mock_stdout):
       with patch("flask_sqlalchemy.SQLAlchemy") as mock:
         """Mocking requests.get() to simulate API call"""
-        mock_find_patcher = patch(backend.states_api.add_state_information)
+        mock_find_patcher = patch('backend.states_api.add_state_information')
         mock_find = mock_find_patcher.start()
         mock_find.return_value = None
         mock_find_patcher.stop()
