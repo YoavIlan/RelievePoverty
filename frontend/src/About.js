@@ -75,8 +75,15 @@ class About extends Component{
 		            <ul className="list-group list-group-flush">
 		              <li className="list-group-item"><a href="https://gitlab.com/urielkugelmass/relievepoverty" target="_blank" rel="noopener noreferrer">Gitlab</a> - Used for version control, continuous integration, and issue/story tracking</li>
 		              <li className="list-group-item"><a href="https://documenter.getpostman.com/view/5460449/RWgjY1qy" target="_blank" rel="noopener noreferrer">Postman</a> - Used for API design and unit testing</li>
-		              <li className="list-group-item"><a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer">AWS</a> - Used to host our webapp, backend, and database</li>
-		              <li className="list-group-item"><a href="http://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> - An open source toolkit for CSS elements</li>
+		              <li className="list-group-item"><a href="https://aws.amazon.com/" target="_blank" rel="noopener noreferrer">AWS</a> - Used to host our webapp, backend, and database.</li>
+		              <li className="list-group-item"><a href="http://getbootstrap.com/" target="_blank" rel="noopener noreferrer">Bootstrap</a> - An open source toolkit for CSS elements.</li>
+		              <li className="list-group-item"><a href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">ReactJS</a> - ReactJS is our front-end JavaScript framework. It focuses on components makes it easier for distributed, collaborative work. It also renders out site from API data.</li>
+		              <li className="list-group-item"><a href="http://flask.pocoo.org/" target="_blank" rel="noopener noreferrer">Flask</a> - Flask is a web framework used on the site.</li>
+		              <li className="list-group-item"><a href="https://mochajs.org/" target="_blank" rel="noopener noreferrer">Mocha</a> - Mocha is a JavaScript testing framework.</li>
+		              <li className="list-group-item"><a href="https://www.seleniumhq.org/" target="_blank" rel="noopener noreferrer">Selenium</a> - Selenium is a framework that allows browser navigation automation.</li>
+		              <li className="list-group-item"><a href="https://docs.python.org/2/library/unittest.html" target="_blank" rel="noopener noreferrer">Unittest</a> - Python framework that allows creation of unit tests.</li>
+		              <li className="list-group-item"><a href="http://plantuml.com/" target="_blank" rel="noopener noreferrer">PlantUML</a> - Program that allows you to see relationship between classes and their attributes.</li>
+		              <li className="list-group-item"><a href="https://www.grammarly.com/" target="_blank" rel="noopener noreferrer">Grammarly</a> - Grammarly is a plugin that checks for grammar mistakes.</li>
 		            </ul>
 		          </div>
 		        </div>
@@ -85,7 +92,7 @@ class About extends Component{
     		</>
     	)
 	}
-
+    
 	/**
  	 * Wrapper to get JSON from an external API
  	 */
