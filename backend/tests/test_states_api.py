@@ -19,13 +19,8 @@ class StatesApiTests(unittest.TestCase):
         mock_find_patcher = patch('backend.states_api.add_state_information')
         mock_find = mock_find_patcher.start()
         mock_find.return_value = None
+        add_state_information()
         mock_find_patcher.stop()
-
-        # Call the service, which will send a request to the server.
-        result = add_state_information()
-
-        # Stop patching 'requests'.
-        mock_get_patcher.stop()
         self.assertEqual(mock_stdout.getvalue().count('STATE'), 50)
 
 if __name__ == "__main__":
