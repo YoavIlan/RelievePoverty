@@ -1,10 +1,13 @@
 import flask
 import flask_sqlalchemy
 import flask_restless
+import sqlalchemy
 from flask import request
+from re import sub
 
 INSTANCES_PER_PAGE = 12
 DATABASE_URI = 'mysql+pymysql://relievepoverty:SWEpoverty6@relievepoverty.cdbjmfurziio.us-east-2.rds.amazonaws.com/RelievePovertyDB'
+
 
 # Create the Flask application and the Flask-SQLAlchemy object.
 app = flask.Flask(__name__)
@@ -163,6 +166,93 @@ def getAllStates():
 def home():
     return "Welcome to the RelievePoverty.me API!<br>You can find the documentation at <a href='https://documenter.getpostman.com/view/5460449/RWgjY1qy'>https://documenter.getpostman.com/view/5460449/RWgjY1qy</a>"
 
+@app.route("/v1/states/q=<query>", methods=['GET'])
+def state_search(query):
+    searches = query.split(" ")
+    for i in range(len(searches)):
+        searches[i] = sub("[\\ \" \' ;]", "", searches[i])
+
+    results = []
+    for s in searches:
+        x = "%" + s + "%"
+        results += States.query.filter(States.name.like(x)).all()
+        results += States.query.filter(States.counties.like(x)).all()
+    results = list(set(results))
+
+    total = len(results)
+    if 'page' in request.args:
+        result = list()
+        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
+        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
+            result.append(results[i - 1])
+        return flask.jsonify({'data': [States.serialize(state) for state in result], 'total': total})
+
+
+    return flask.jsonify({'data': [States.serialize(state) for state in results], 'total': total})
+
+@app.route("/v1/charities/q=<query>", methods=['GET'])
+def charities_search(query):
+    searches = query.split(" ")
+    for i in range(len(searches)):
+        searches[i] = sub("[\\ \" \' ;]", "", searches[i])
+
+    results = []
+    for s in searches:
+        if s is not "":
+            x = "%" + s + "%"
+            results += Charities.query.filter(Charities.name.like(x)).all()
+            results += Charities.query.filter(Charities.state.like(x)).all()
+            results += Charities.query.filter(Charities.mission.like(x)).all()
+            results += Charities.query.filter(Charities.cause_name.like(x)).all()
+
+    results = list(set(results))
+
+
+    total = len(results)
+    if 'page' in request.args:
+        result = list()
+        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
+        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
+            result.append(results[i - 1])
+        return flask.jsonify({'data': [Charities.serialize(charity) for charity in result], 'total': total})
+
+
+    return flask.jsonify({'data': [Charities.serialize(charity) for charity in results], 'total': total})
+
+@app.route("/v1/news/q=<query>", methods=['GET'])
+def news_search(query):
+    searches = query.split(" ")
+    for i in range(len(searches)):
+        searches[i] = sub("[\\ \" \' ;]", "", searches[i])
+
+    results = []
+
+    for s in searches:
+        x = "%" + s + "%"
+        results += News.query.filter(News.title.like(x)).all()
+        results += News.query.filter(News.author.like(x)).all()
+        results += News.query.filter(News.state.like(x)).all()
+        results += News.query.filter(News.summary.like(x)).all()
+
+
+    results = list(set(results))
+
+
+    total = len(results)
+    if 'page' in request.args:
+        result = list()
+        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
+        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
+            result.append(results[i - 1])
+        return flask.jsonify({'data': [News.serialize(article) for article in result], 'total': total})
+
+
+    return flask.jsonify({'data': [News.serialize(article) for article in results], 'total': total})
+
+
+
+
+
 
 @app.after_request
 def after_request(response):
@@ -174,4 +264,5 @@ def after_request(response):
     return response
 
 # start the flask loop
-app.run(debug=True, host='0.0.0.0', port=80)
+#app.run(debug=True, host='0.0.0.0', port=80)
+app.run(debug=True, host='127.0.0.1', port=5000)
