@@ -92,6 +92,27 @@ class States(db.Model):
 
 db.create_all()
 
+
+
+def getIDsByPoints(points):
+    ids = []
+    all_zero = False
+    while(max(points) != 0):
+        m = max(points)
+        index = points.index(m)
+        points[index] = 0
+        ids.append(index)
+    return ids
+
+def updatePoints(val, points, instances):
+    for f in instances:
+        points[f.id - 1] += val
+
+def updatePointsState(val, points, instances):
+    for f in instances:
+        points[f.rank - 1] += val
+
+
 # Gets a specific news article by its primary key
 
 
@@ -172,14 +193,24 @@ def state_search(query):
     for i in range(len(searches)):
         searches[i] = sub("[\\ \" \' ;]", "", searches[i])
 
-    results = []
+    # Ranking Relevances by Points
+    points = [0] * len(States.query.all())
     for s in searches:
-        x = "%" + s + "%"
-        results += States.query.filter(States.name.like(x)).all()
-        results += States.query.filter(States.counties.like(x)).all()
-    results = list(set(results))
+        if s is not "":
+            x = "%" + s + "%"
+            updatePointsState(200, points, States.query.filter(States.name.like(x)).all())
+            updatePointsState(99, points, States.query.filter(States.counties.like(x)).all())
+
+    # Turning list of points with index=id into sorted list of ids
+    ids = getIDsByPoints(points)
+
+    # Grabbing instances by id in order
+    results = []
+    for i in ids:
+        results.append(States.query.get(i + 1))
 
     total = len(results)
+
     if 'page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
@@ -196,17 +227,21 @@ def charities_search(query):
     for i in range(len(searches)):
         searches[i] = sub("[\\ \" \' ;]", "", searches[i])
 
-    results = []
+    # Ranking Relevances by Points
+    points = [0] * len(Charities.query.all())
     for s in searches:
         if s is not "":
             x = "%" + s + "%"
-            results += Charities.query.filter(Charities.name.like(x)).all()
-            results += Charities.query.filter(Charities.state.like(x)).all()
-            results += Charities.query.filter(Charities.mission.like(x)).all()
-            results += Charities.query.filter(Charities.cause_name.like(x)).all()
+            updatePoints(200, points, Charities.query.filter(Charities.name.like(x)).all())
+            updatePoints(99, points, Charities.query.filter(Charities.state.like(x)).all())
 
-    results = list(set(results))
+    # Turning list of points with index=id into sorted list of ids
+    ids = getIDsByPoints(points)
 
+    # Grabbing instances by id in order
+    results = []
+    for i in ids:
+        results.append(Charities.query.get(i + 1))
 
     total = len(results)
     if 'page' in request.args:
@@ -225,18 +260,25 @@ def news_search(query):
     for i in range(len(searches)):
         searches[i] = sub("[\\ \" \' ;]", "", searches[i])
 
-    results = []
-
+    # Ranking Relevances by Points
+    points = [0] * len(News.query.all())
     for s in searches:
-        x = "%" + s + "%"
-        results += News.query.filter(News.title.like(x)).all()
-        results += News.query.filter(News.author.like(x)).all()
-        results += News.query.filter(News.state.like(x)).all()
-        results += News.query.filter(News.summary.like(x)).all()
+        if s is not "" :
+            x = "%" + s + "%"
+            updatePoints(200, points, News.query.filter(News.title.like(x)).all())
+            updatePoints(99, points, News.query.filter(News.author.like(x)).all())
+            updatePoints(98, points, News.query.filter(News.state.like(x)).all())
+            updatePoints(97, points, News.query.filter(News.source.like(x)).all())
+            updatePoints(49, points, News.query.filter(News.summary.like(x)).all())
 
 
-    results = list(set(results))
+    # Turning list of points with index=id into sorted list of ids
+    ids = getIDsByPoints(points)
 
+    # Grabbing instances by id in order
+    results = []
+    for i in ids:
+        results.append(News.query.get(i + 1))
 
     total = len(results)
     if 'page' in request.args:
