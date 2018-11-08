@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Navbar, Nav, NavItem, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './Navbar.css'
+import { Input } from 'semantic-ui-react';
+import './Navbar.css';
 
 class CustomNavbar extends Component {
   render() {
@@ -10,11 +11,11 @@ class CustomNavbar extends Component {
         <Navbar.Header>
           <Navbar.Brand>
               <Image className="nav-img d-inline-block align-top" src={require('./../img/rp.png')} alt="Second slide"/>
-            <Link to="/">RelievePoverty</Link>
+              <Link className="website-name"to="/">RelievePoverty</Link>
           </Navbar.Brand>
         </Navbar.Header>
-        <Navbar>
-          <Nav pullRight>
+        <Navbar className= "navbar">
+          <Nav pullLeft>
             <NavItem eventKey={1} className='navitem' componentClass={Link} href="/" to="/">
               Home
             </NavItem>
@@ -31,6 +32,7 @@ class CustomNavbar extends Component {
               About
             </NavItem>
           </Nav>
+          <Input className="search-bar" placeholder="Search" icon='search'></Input>
         </Navbar>
       </Navbar>
   );
