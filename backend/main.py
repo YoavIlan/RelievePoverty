@@ -137,20 +137,29 @@ def getNewsById(id):
 
 @app.route("/v1/news", methods=['GET'])
 def getAllNews():
-    if(request.args.get('q') is not None):
-        return news_search(request.args.get('q'))
-
-    total = len(News.query.all())
+    news = []
+    ran = False
     if 'state' in request.args:
-        filtered = News.query.filter_by(state=request.args['state'])
-        return flask.jsonify({'data': [News.serialize(news) for news in filtered], 'total': filtered.count()})
+        news += Charities.query.filter_by(state=request.args['state'])
+        ran = True
+    if(request.args.get('q') is not None):
+        news =  news_search(request.args.get('q'))
+        ran = True
+    if(request.args.get('state') is not None):
+        return news_state_filter(request.args.get('state'))
+        ran = True
+    if(not ran):
+        news = News.query.all()
+
+    total = len(news)
+
     if 'page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(News.query.get(i))
+            result.append(news[i])
         return flask.jsonify({'data': [News.serialize(news) for news in result], 'total': total})
-    return flask.jsonify({'data': [News.serialize(news) for news in News.query.all()], 'total': total})
+    return flask.jsonify({'data': [News.serialize(news) for news in news], 'total': total})
 
 # Gets a specific charity by its primary key
 
@@ -164,20 +173,27 @@ def getCharityById(id):
 
 @app.route("/v1/charities", methods=['GET'])
 def getAllCharities():
+    charities = []
+    ran = False
     if(request.args.get('q') is not None):
-        return charities_search(request.args.get('q'))
-
-    total = len(Charities.query.all())
+        charities += charities_search(request.args.get('q'))
+        ran = True
     if 'state' in request.args:
-        filtered = Charities.query.filter_by(state=request.args['state'])
-        return flask.jsonify({'data': [Charities.serialize(charity) for charity in filtered], 'total': filtered.count()})
+        charities = Charities.query.filter_by(state=request.args['state'])
+        ran = True
+    if(not ran):
+        charities = Charities.query.all()
+
+
+    total = len(charities)
+
     if 'page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(Charities.query.get(i))
+            result.append(charities.get(i))
         return flask.jsonify({'data': [Charities.serialize(charity) for charity in result], 'total': total})
-    return flask.jsonify({'data': [Charities.serialize(charity) for charity in Charities.query.all()], 'total': total})
+    return flask.jsonify({'data': [Charities.serialize(charity) for charity in charities], 'total': total})
 
 # Gets a specific state by its name
 
@@ -191,22 +207,43 @@ def getStateByName(state):
 
 @app.route("/v1/states", methods=['GET'])
 def getAllStates():
+    ran = False
+    states = []
     if(request.args.get('q') is not None):
-        return state_search(request.args.get('q'))
+        states += state_search(request.args.get('q'))
+        ran = True
+    if(not ran):
+        states = States.query.all()
 
-    total = len(States.query.all())
+    total = len(states)
     if 'page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(States.query.get(i))
+            result.append(states.get(i))
         return flask.jsonify({'data': [States.serialize(state) for state in result], 'total': total})
-    return flask.jsonify({'data': [States.serialize(state) for state in States.query.all()], 'total': total})
+    return flask.jsonify({'data': [States.serialize(state) for state in states], 'total': total})
 
 
 @app.route("/")
 def home():
     return "Welcome to the RelievePoverty.me API!<br>You can find the documentation at <a href='https://documenter.getpostman.com/view/5460449/RWgjY1qy'>https://documenter.getpostman.com/view/5460449/RWgjY1qy</a>"
+
+def news_state_filter(query):
+
+    return News.query.filter(News.state==query).all()
+
+
+
+# def news_year_filter(query):
+#
+# def charities_state_filter(query):
+#
+# def charities_rating_filter(query):
+#
+# def charities_affiliation_filter(query):
+#
+# def charities_tax_filter(query):
 
 def state_search(query):
     searches = query.split(" ")
@@ -227,9 +264,9 @@ def state_search(query):
     # Grabbing instances by id in order
     results = []
     for i in ids:
-        results.append(States.serialize(States.query.get(i + 1)))
+        results.append(States.query.get(i + 1))
 
-    return returnResults(results)
+    return results
 
 
 def charities_search(query):
@@ -251,9 +288,9 @@ def charities_search(query):
     # Grabbing instances by id in order
     results = []
     for i in ids:
-        results.append(Charities.serialize(Charities.query.get(i + 1)))
+        results.append(Charities.query.get(i + 1))
 
-    return returnResults(results)
+    return results
 
 
 def news_search(query):
@@ -279,9 +316,9 @@ def news_search(query):
     # Grabbing instances by id in order
     results = []
     for i in ids:
-        results.append(News.serialize(News.query.get(i + 1)))
+        results.append(News.query.get(i + 1))
 
-    return returnResults(results)
+    return results
 
 
 
