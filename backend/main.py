@@ -138,18 +138,13 @@ def getNewsById(id):
 @app.route("/v1/news", methods=['GET'])
 def getAllNews():
     news = []
-    ran = False
-    if 'state' in request.args:
-        news += Charities.query.filter_by(state=request.args['state'])
-        ran = True
-    if(request.args.get('q') is not None):
-        news =  news_search(request.args.get('q'))
-        ran = True
-    if(request.args.get('state') is not None):
-        return news_state_filter(request.args.get('state'))
-        ran = True
-    if(not ran):
+    query = request.args.get('q')
+    if query is None:
         news = News.query.all()
+    else:
+        news = news_search(query)
+    if 'state' in request.args:
+        news = filter(lambda n: News.serialize(n)['state'] == request.args['state'], news)
 
     total = len(news)
 
@@ -174,15 +169,13 @@ def getCharityById(id):
 @app.route("/v1/charities", methods=['GET'])
 def getAllCharities():
     charities = []
-    ran = False
-    if(request.args.get('q') is not None):
-        charities += charities_search(request.args.get('q'))
-        ran = True
-    if 'state' in request.args:
-        charities = Charities.query.filter_by(state=request.args['state'])
-        ran = True
-    if(not ran):
+    query = request.args.get('q')
+    if query is None:
         charities = Charities.query.all()
+    else:
+        charities = charities_search(query)
+    if 'state' in request.args:
+        charities = filter(lambda n: Charities.serialize(n)['state'] == request.args['state'], charities)
 
 
     total = len(charities)
@@ -207,13 +200,15 @@ def getStateByName(state):
 
 @app.route("/v1/states", methods=['GET'])
 def getAllStates():
-    ran = False
     states = []
-    if(request.args.get('q') is not None):
-        states += state_search(request.args.get('q'))
-        ran = True
-    if(not ran):
+    query = request.args.get('q')
+    if query is None:
         states = States.query.all()
+    else:
+        states = news_search(query)
+    if 'state' in request.args:
+        states = filter(lambda n: States.serialize(n)['state'] == request.args['state'], states)
+
 
     total = len(states)
     if 'page' in request.args:
@@ -229,9 +224,6 @@ def getAllStates():
 def home():
     return "Welcome to the RelievePoverty.me API!<br>You can find the documentation at <a href='https://documenter.getpostman.com/view/5460449/RWgjY1qy'>https://documenter.getpostman.com/view/5460449/RWgjY1qy</a>"
 
-def news_state_filter(query):
-
-    return News.query.filter(News.state==query).all()
 
 
 
@@ -253,10 +245,9 @@ def state_search(query):
     # Ranking Relevances by Points
     points = [0] * len(States.query.all())
     for s in searches:
-        if s is not "":
-            x = "%" + s + "%"
-            updatePointsState(200, points, States.query.filter(States.name.like(x)).all())
-            updatePointsState(99, points, States.query.filter(States.counties.like(x)).all())
+        x = "%" + s + "%"
+        updatePointsState(200, points, States.query.filter(States.name.like(x)).all())
+        updatePointsState(99, points, States.query.filter(States.counties.like(x)).all())
 
     # Turning list of points with index=id into sorted list of ids
     ids = getIDsByPoints(points)
@@ -277,10 +268,9 @@ def charities_search(query):
     # Ranking Relevances by Points
     points = [0] * len(Charities.query.all())
     for s in searches:
-        if s is not "":
-            x = "%" + s + "%"
-            updatePoints(200, points, Charities.query.filter(Charities.name.like(x)).all())
-            updatePoints(99, points, Charities.query.filter(Charities.state.like(x)).all())
+        x = "%" + s + "%"
+        updatePoints(200, points, Charities.query.filter(Charities.name.like(x)).all())
+        updatePoints(99, points, Charities.query.filter(Charities.state.like(x)).all())
 
     # Turning list of points with index=id into sorted list of ids
     ids = getIDsByPoints(points)
@@ -301,13 +291,12 @@ def news_search(query):
     # Ranking Relevances by Points
     points = [0] * len(News.query.all())
     for s in searches:
-        if s is not "" :
-            x = "%" + s + "%"
-            updatePoints(200, points, News.query.filter(News.title.like(x)).all())
-            updatePoints(99, points, News.query.filter(News.author.like(x)).all())
-            updatePoints(98, points, News.query.filter(News.state.like(x)).all())
-            updatePoints(97, points, News.query.filter(News.source.like(x)).all())
-            updatePoints(49, points, News.query.filter(News.summary.like(x)).all())
+        x = "%" + s + "%"
+        updatePoints(200, points, News.query.filter(News.title.like(x)).all())
+        updatePoints(99, points, News.query.filter(News.author.like(x)).all())
+        updatePoints(98, points, News.query.filter(News.state.like(x)).all())
+        updatePoints(97, points, News.query.filter(News.source.like(x)).all())
+        updatePoints(49, points, News.query.filter(News.summary.like(x)).all())
 
 
     # Turning list of points with index=id into sorted list of ids
