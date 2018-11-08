@@ -322,8 +322,12 @@ def news_search(query):
 
 
 
-@app.route("/v1/q=<query>", methods=['GET'])
-def all_search(query):
+@app.route("/v1", methods=['GET'])
+def all_search():
+    if(request.args.get('q') is not None):
+        query = charities_search(request.args.get('q'))
+    else:
+        return "No Query entered"
     searches = query.split(" ")
     for i in range(len(searches)):
         searches[i] = sub("[\\ \" \' ;]", "", searches[i])
