@@ -137,6 +137,9 @@ def getNewsById(id):
 
 @app.route("/v1/news", methods=['GET'])
 def getAllNews():
+    if(request.args.get('q') is not None):
+        return news_search(request.args.get('q'))
+
     total = len(News.query.all())
     if 'state' in request.args:
         filtered = News.query.filter_by(state=request.args['state'])
@@ -161,6 +164,9 @@ def getCharityById(id):
 
 @app.route("/v1/charities", methods=['GET'])
 def getAllCharities():
+    if(request.args.get('q') is not None):
+        return charities_search(request.args.get('q'))
+
     total = len(Charities.query.all())
     if 'state' in request.args:
         filtered = Charities.query.filter_by(state=request.args['state'])
@@ -185,6 +191,9 @@ def getStateByName(state):
 
 @app.route("/v1/states", methods=['GET'])
 def getAllStates():
+    if(request.args.get('q') is not None):
+        return state_search(request.args.get('q'))
+
     total = len(States.query.all())
     if 'page' in request.args:
         result = list()
@@ -199,7 +208,6 @@ def getAllStates():
 def home():
     return "Welcome to the RelievePoverty.me API!<br>You can find the documentation at <a href='https://documenter.getpostman.com/view/5460449/RWgjY1qy'>https://documenter.getpostman.com/view/5460449/RWgjY1qy</a>"
 
-@app.route("/v1/states/q=<query>", methods=['GET'])
 def state_search(query):
     searches = query.split(" ")
     for i in range(len(searches)):
@@ -224,7 +232,6 @@ def state_search(query):
     return returnResults(results)
 
 
-@app.route("/v1/charities/q=<query>", methods=['GET'])
 def charities_search(query):
     searches = query.split(" ")
     for i in range(len(searches)):
@@ -249,7 +256,6 @@ def charities_search(query):
     return returnResults(results)
 
 
-@app.route("/v1/news/q=<query>", methods=['GET'])
 def news_search(query):
     searches = query.split(" ")
     for i in range(len(searches)):
