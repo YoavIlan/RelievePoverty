@@ -145,14 +145,22 @@ def getAllNews():
         news = news_search(query)
     if 'state' in request.args:
         news = filter(lambda n: News.serialize(n)['state'] == request.args['state'], news)
+    if 'year' in request.args:
+        news = filter(lambda n: News.serialize(n)['published_date'].year == int(request.args['year']), news)
+    filters = ['state', 'author', 'source']
+    for fil in filters:
+        if(fil in request.args):
+            news = filter(lambda n: str(News.serialize(n)[fil]) == request.args[fil], news)
 
+    if "sort_by" in request.args:
+        news.sort(key=lambda x: News.serialize(x)[request.args.get('sort_by')], reverse=(request.args.get('reverse')=='true'))
     total = len(news)
 
     if 'page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(news[i])
+            result.append(news[i-1])
         return flask.jsonify({'data': [News.serialize(news) for news in result], 'total': total})
     return flask.jsonify({'data': [News.serialize(news) for news in news], 'total': total})
 
@@ -174,9 +182,17 @@ def getAllCharities():
         charities = Charities.query.all()
     else:
         charities = charities_search(query)
-    if 'state' in request.args:
-        charities = filter(lambda n: Charities.serialize(n)['state'] == request.args['state'], charities)
 
+    filters = ['state', 'rating', 'affiliation','tax_classification', 'cause']
+    for fil in filters:
+        if(fil in request.args):
+            charities = filter(lambda n: str(Charities.serialize(n)[fil]) == request.args[fil], charities)
+
+    if "sort_by" in request.args :
+        if(request.args.get('sort_by') in ["rating"]):
+            charities.sort(key=lambda x: float(Charities.serialize(x)[request.args.get('sort_by')]), reverse=(request.args.get('reverse')=='true'))
+        else:
+            charities.sort(key=lambda x: Charities.serialize(x)[request.args.get('sort_by')], reverse=(request.args.get('reverse')=='true'))
 
     total = len(charities)
 
@@ -184,7 +200,7 @@ def getAllCharities():
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(charities.get(i))
+            result.append(charities[i-1])
         return flask.jsonify({'data': [Charities.serialize(charity) for charity in result], 'total': total})
     return flask.jsonify({'data': [Charities.serialize(charity) for charity in charities], 'total': total})
 
@@ -209,13 +225,18 @@ def getAllStates():
     if 'state' in request.args:
         states = filter(lambda n: States.serialize(n)['state'] == request.args['state'], states)
 
+    if "sort_by" in request.args :
+        if(request.args.get('sort_by') in ["below_poverty_rate", "child_poverty_rate", "median_income"]):
+            states.sort(key=lambda x: float(States.serialize(x)[request.args.get('sort_by')]), reverse=(request.args.get('reverse')=='true'))
+        else:
+            states.sort(key=lambda x: States.serialize(x)[request.args.get('sort_by')], reverse=(request.args.get('reverse')=='true'))
 
     total = len(states)
     if 'page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(states.get(i))
+            result.append(states[i-1])
         return flask.jsonify({'data': [States.serialize(state) for state in result], 'total': total})
     return flask.jsonify({'data': [States.serialize(state) for state in states], 'total': total})
 
@@ -225,17 +246,6 @@ def home():
     return "Welcome to the RelievePoverty.me API!<br>You can find the documentation at <a href='https://documenter.getpostman.com/view/5460449/RWgjY1qy'>https://documenter.getpostman.com/view/5460449/RWgjY1qy</a>"
 
 
-
-
-# def news_year_filter(query):
-#
-# def charities_state_filter(query):
-#
-# def charities_rating_filter(query):
-#
-# def charities_affiliation_filter(query):
-#
-# def charities_tax_filter(query):
 
 def state_search(query):
     searches = query.split(" ")
