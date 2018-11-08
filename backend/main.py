@@ -104,14 +104,26 @@ def getIDsByPoints(points):
         ids.append(index)
     return ids
 
-def updatePoints(val, points, instances):
+def updatePoints(val, points, instances, adj=0):
     for f in instances:
-        points[f.id - 1] += val
+        points[f.id - 1 + adj] += val
 
 def updatePointsState(val, points, instances):
     for f in instances:
         points[f.rank - 1] += val
 
+def returnResults(results):
+    total = len(results)
+
+    if 'page' in request.args:
+        result = list()
+        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
+        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
+            result.append(results[i - 1])
+        return flask.jsonify({'data': result, 'total': total})
+
+
+    return flask.jsonify({'data': results, 'total': total})
 
 # Gets a specific news article by its primary key
 
@@ -207,19 +219,10 @@ def state_search(query):
     # Grabbing instances by id in order
     results = []
     for i in ids:
-        results.append(States.query.get(i + 1))
+        results.append(States.serialize(States.query.get(i + 1)))
 
-    total = len(results)
+    return returnResults(results)
 
-    if 'page' in request.args:
-        result = list()
-        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
-        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(results[i - 1])
-        return flask.jsonify({'data': [States.serialize(state) for state in result], 'total': total})
-
-
-    return flask.jsonify({'data': [States.serialize(state) for state in results], 'total': total})
 
 @app.route("/v1/charities/q=<query>", methods=['GET'])
 def charities_search(query):
@@ -241,18 +244,10 @@ def charities_search(query):
     # Grabbing instances by id in order
     results = []
     for i in ids:
-        results.append(Charities.query.get(i + 1))
+        results.append(Charities.serialize(Charities.query.get(i + 1)))
 
-    total = len(results)
-    if 'page' in request.args:
-        result = list()
-        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
-        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(results[i - 1])
-        return flask.jsonify({'data': [Charities.serialize(charity) for charity in result], 'total': total})
+    return returnResults(results)
 
-
-    return flask.jsonify({'data': [Charities.serialize(charity) for charity in results], 'total': total})
 
 @app.route("/v1/news/q=<query>", methods=['GET'])
 def news_search(query):
@@ -278,21 +273,51 @@ def news_search(query):
     # Grabbing instances by id in order
     results = []
     for i in ids:
-        results.append(News.query.get(i + 1))
+        results.append(News.serialize(News.query.get(i + 1)))
 
-    total = len(results)
-    if 'page' in request.args:
-        result = list()
-        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
-        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(results[i - 1])
-        return flask.jsonify({'data': [News.serialize(article) for article in result], 'total': total})
-
-
-    return flask.jsonify({'data': [News.serialize(article) for article in results], 'total': total})
+    return returnResults(results)
 
 
 
+@app.route("/v1/q=<query>", methods=['GET'])
+def all_search(query):
+    searches = query.split(" ")
+    for i in range(len(searches)):
+        searches[i] = sub("[\\ \" \' ;]", "", searches[i])
+
+    # Ranking Relevances by Points
+    news_adj = len(States.query.all())
+    c_adj = news_adj + len(News.query.all())
+    points = [0] * (c_adj + len(Charities.query.all()))
+    for s in searches:
+        if s is not "" :
+            x = "%" + s + "%"
+            updatePointsState(200, points, States.query.filter(States.name.like(x)).all())
+            updatePointsState(99, points, States.query.filter(States.counties.like(x)).all())
+            updatePoints(200, points, News.query.filter(News.title.like(x)).all(), news_adj)
+            updatePoints(99, points, News.query.filter(News.author.like(x)).all(), news_adj)
+            updatePoints(98, points, News.query.filter(News.state.like(x)).all(), news_adj)
+            updatePoints(97, points, News.query.filter(News.source.like(x)).all(), news_adj)
+            updatePoints(49, points, News.query.filter(News.summary.like(x)).all(), news_adj)
+            updatePoints(200, points, Charities.query.filter(Charities.name.like(x)).all(), c_adj)
+            updatePoints(99, points, Charities.query.filter(Charities.state.like(x)).all(), c_adj)
+
+
+    # Turning list of points with index=id into sorted list of ids
+    ids = getIDsByPoints(points)
+
+    # Grabbing instances by id in order
+    results = []
+    for i in ids:
+        if(i < news_adj):
+            results.append(States.serialize(States.query.get(i + 1)))
+        elif(i < c_adj):
+            results.append(News.serialize(News.query.get(i - news_adj + 1)))
+        else :
+            results.append(Charities.serialize(Charities.query.get(i-c_adj + 1)))
+
+
+    return returnResults(results)
 
 
 
