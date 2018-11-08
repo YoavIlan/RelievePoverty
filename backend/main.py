@@ -222,8 +222,11 @@ def getAllStates():
         states = States.query.all()
     else:
         states = state_search(query)
-    if 'state' in request.args:
-        states = filter(lambda n: States.serialize(n)['state'] == request.args['state'], states)
+
+    filters = ['median_income', 'below_poverty_rate', 'child_poverty_rate']
+    for fil in filters:
+        if (fil + "_low") in request.args:
+            states = filter(lambda n: (float(States.serialize(n)[fil]) >= float(request.args[fil + '_low'])) and (float(States.serialize(n)[fil]) < float(request.args[fil+'_high'])), states)
 
     if "sort_by" in request.args :
         if(request.args.get('sort_by') in ["below_poverty_rate", "child_poverty_rate", "median_income"]):
