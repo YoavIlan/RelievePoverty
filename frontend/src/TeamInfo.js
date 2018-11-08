@@ -42,7 +42,7 @@ export const getTeam = () => {
     {
       image: require('./img/albert.jpg'),
       name: 'Albert Luu',
-      title: 'Frontend Developer',
+      title: 'Backend Developer',
       description: 'Albert is a Junior Computer Science student from Arlington, Texas. Outside of school, he enjoys biking, gaming, and playing piano. Unfortunately, long walks on the beach are very tiring to him.',
       issue_id: '2803538',
       commit_ids: ['Albert Luu'],
@@ -55,7 +55,7 @@ export const getTeam = () => {
     {
       image: require('./img/colin.jpg'),
       name: 'Colin Frick',
-      title: 'Full-Stack Developer',
+      title: 'Backend Developer',
       description: 'Colin is a Junior Computer Science student at UT from Houston, Texas. He is interested in studying artificial intelligence and web development. He does not enjoy walking of any form.',
       issue_id: '2776165',
       commit_ids: ['cfrick16'],
@@ -76,7 +76,7 @@ export const getTeam = () => {
       commits: 0,
       issues: 0,
       tests: 0,
-      acceptance_tests: 0,   
+      acceptance_tests: 0,
     },
   ];
 }
