@@ -205,11 +205,7 @@ def getAllStates():
     if query is None:
         states = States.query.all()
     else:
-<<<<<<< HEAD
         states = state_search(query)
-=======
-        states = news_search(query)
->>>>>>> 6534539896b6c790a4715f2c2c3a361b09be428c
     if 'state' in request.args:
         states = filter(lambda n: States.serialize(n)['state'] == request.args['state'], states)
 
