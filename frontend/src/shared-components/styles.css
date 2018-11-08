@@ -119,9 +119,28 @@ a {
 
 }
 
+span.input-group-btn{
+    background-color: white;
+}
+
 .navbar{
   background-color: #201F1D;
 }
+
+#search-submit{
+    color: #e2e2e2;
+    border: 0px;
+}
+
+input.search-bar{
+  color: #e2e2e2;
+  background-color: #121212;
+}
+
+input:focus{
+    outline-color: transparent;
+    outline-width: 0px;
+  }
 
 .navbar.sticky-top.navbar-expand-lg.navbar-light{
   color: #DE8D47;

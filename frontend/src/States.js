@@ -19,6 +19,14 @@ class States extends Component{
         });
     }
 
+    handleSearch = (data) => {
+        let query = data.target[0].value;
+        query = 'https://api.relievepoverty.me/v1/states?page=1&q=' + query; 
+        this.getJSON(query).then(response => {
+            this.setState(JSON.parse(JSON.stringify(response)))
+        });
+    }
+
     async componentWillMount() {
         await this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
@@ -36,7 +44,7 @@ class States extends Component{
         let pageSize = 12.0;
         return(
             <>
-              <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"}/>
+              <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} search={this.handleSearch} modelName={"states"}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>

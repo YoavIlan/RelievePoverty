@@ -9,7 +9,6 @@ import './Paginate.css'
 class Charities extends Component{
     constructor (props) {
        super(props);
-
        this.state = {data: [], total: 0}
     }
 
@@ -32,11 +31,19 @@ class Charities extends Component{
         });
     }
 
+    handleSearch = (data) => {
+        let query = data.target[0].value;
+        query = 'https://api.relievepoverty.me/v1/charities?page=1&q=' + query; 
+        this.getJSON(query).then(response => {
+            this.setState(JSON.parse(JSON.stringify(response)))
+        });
+    }
+
     render(){
         let pageSize = 12.0;
         return(
             <>
-              <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."}/>
+              <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>

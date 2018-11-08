@@ -25,6 +25,14 @@ class News extends Component{
         });
     }
 
+    handleSearch = (data) => {
+        let query = data.target[0].value;
+        query = 'https://api.relievepoverty.me/v1/news?page=1&q=' + query; 
+        this.getJSON(query).then(response => {
+            this.setState(JSON.parse(JSON.stringify(response)))
+        });
+    }
+
     handlePageClick = (data) =>{
         let selected = data.selected + 1;
         this.getJSON('https://api.relievepoverty.me/v1/news?page='+selected).then(response => {
@@ -36,7 +44,7 @@ class News extends Component{
         let pageSize = 12.0;
         return(
             <>
-              <Jumbotron title={"Read Articles About Poverty in the US"} description={"Our news sources include The New York Times, CNN and others."}/>
+              <Jumbotron title={"Read Articles About Poverty in the US"} description={"Our news sources include The New York Times, CNN and others."} search={this.handleSearch} modelName={"news"}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>

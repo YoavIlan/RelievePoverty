@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { Navbar, Nav, NavItem, Image } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { Input } from 'semantic-ui-react';
 import './Navbar.css';
 
 class CustomNavbar extends Component {
+  constructor (props) {
+    super(props);
+    this.state = {query: ""}
+ }
+handleSearch = (data) => {
+    this.state.query = data.target[0].value;
+}
   render() {
     return (
       <Navbar default collapseOnSelect>
@@ -32,7 +38,10 @@ class CustomNavbar extends Component {
               About
             </NavItem>
           </Nav>
-          <Input className="search-bar" placeholder="Search" icon='search'></Input>
+          <form onSubmit={this.handleSearch}>
+                            <input className="navbar-search-bar" type="text" placeholder="Search" />
+                            <input id="search-submit" type="submit" value="Submit" />
+                        </form>
         </Navbar>
       </Navbar>
   );

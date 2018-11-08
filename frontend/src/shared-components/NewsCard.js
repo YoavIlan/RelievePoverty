@@ -20,7 +20,7 @@ class NewsCard extends Component {
                         <li><b>Source:</b> {source}</li>
                         <li><b>State:</b> {state}</li>
                         {author !== undefined && <li><b>Author:</b> {author}</li>}
-                        {published_date !== undefined && <li><b>Date:</b> {published_date.substring(0,16)}</li>}
+                        {published_date !==  undefined && <li><b>Date:</b> {published_date.substring(0,16)}</li>}
                     </ul>
                     <Link to={`/news/${id}`}  className="btn btn-primary mt-auto">More Information</Link>
         			</div>
