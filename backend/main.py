@@ -112,18 +112,7 @@ def updatePointsState(val, points, instances):
     for f in instances:
         points[f.rank - 1] += val
 
-def returnResults(results):
-    total = len(results)
 
-    if 'page' in request.args:
-        result = list()
-        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
-        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
-            result.append(results[i - 1])
-        return flask.jsonify({'data': result, 'total': total})
-
-
-    return flask.jsonify({'data': results, 'total': total})
 
 # Gets a specific news article by its primary key
 
@@ -327,12 +316,51 @@ def news_search(query):
 @app.route("/v1", methods=['GET'])
 def all_search():
     if(request.args.get('q') is not None):
-        query = charities_search(request.args.get('q'))
+        query = request.args.get('q')
     else:
         return "No Query entered"
+
+    states = state_search(query)
+    charities = charities_search(query)
+    news = news_search(query)
+    total = len(news)
+    if 'page' in request.args:
+        result = list()
+        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
+        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
+            result.append(news[i-1])
+        news_json= {'data': [News.serialize(news) for news in result], 'total': total}
+    else:
+        news_json = {'data': [News.serialize(news) for news in news], 'total': total}
+
+    total = len(states)
+    if 'page' in request.args:
+        result = list()
+        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
+        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
+            result.append(states[i-1])
+        states_json= {'data': [States.serialize(states) for states in result], 'total': total}
+    else:
+        states_json = {'data': [States.serialize(state) for state in states], 'total': total}
+
+    total = len(charities)
+    if 'page' in request.args:
+        result = list()
+        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
+        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
+            result.append(charities[i-1])
+        charities_json= {'data': [Charities.serialize(charity) for charity in result], 'total': total}
+    else:
+        charities_json = {'data': [Charities.serialize(charity) for charity in charities], 'total': total}
+
+
+    return flask.jsonify({'states': states_json, 'charities': charities_json,
+        'news': news_json})
+
     searches = query.split(" ")
     for i in range(len(searches)):
         searches[i] = sub("[\\ \" \' ;]", "", searches[i])
+
 
     # Ranking Relevances by Points
     news_adj = len(States.query.all())
@@ -366,7 +394,17 @@ def all_search():
             results.append(Charities.serialize(Charities.query.get(i-c_adj + 1)))
 
 
-    return returnResults(results)
+    total = len(results)
+
+    if 'page' in request.args:
+        result = list()
+        i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
+        for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
+            result.append(results[i - 1])
+        return flask.jsonify({'data': result, 'total': total})
+
+
+    return flask.jsonify({'data': results, 'total': total})
 
 
 
