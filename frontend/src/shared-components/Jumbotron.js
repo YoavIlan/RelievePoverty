@@ -9,8 +9,6 @@ class Jumbotron extends Component {
         this.state = {query: ""}
      }
 
-
-    input = document.getElementById("myInput");
     render() {
         const hasTitle = this.props.title != null;
         const hasDescription = this.props.description != null;

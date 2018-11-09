@@ -10,7 +10,7 @@ class News extends Component{
     constructor (props) {
        super(props);
 
-       this.state = {data: [], total: 0}
+       this.state = {data: [], total: 0, query: 'https://api.relievepoverty.me/v1/news?page=', page: 1}
     }
 
     getJSON(url) {
@@ -20,22 +20,23 @@ class News extends Component{
     }
 
     async componentWillMount() {
-        await this.getJSON('https://api.relievepoverty.me/v1/news?page=1').then(response => {
+        await this.getJSON(this.state.query + 1).then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
     }
 
     handleSearch = (data) => {
+        data.preventDefault();
         let query = data.target[0].value;
-        query = 'https://api.relievepoverty.me/v1/news?page=1&q=' + query; 
-        this.getJSON(query).then(response => {
+        this.state.query = this.state.query + this.state.page +'&q=' + query; 
+        this.getJSON(this.state.query).then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
     }
 
     handlePageClick = (data) =>{
-        let selected = data.selected + 1;
-        this.getJSON('https://api.relievepoverty.me/v1/news?page='+selected).then(response => {
+        this.state.page = data.selected + 1;
+        this.getJSON('https://api.relievepoverty.me/v1/news?page='+this.state.page).then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
     }

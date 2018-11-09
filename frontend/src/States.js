@@ -20,6 +20,7 @@ class States extends Component{
     }
 
     handleSearch = (data) => {
+        data.preventDefault();
         let query = data.target[0].value;
         query = 'https://api.relievepoverty.me/v1/states?page=1&q=' + query; 
         this.getJSON(query).then(response => {
