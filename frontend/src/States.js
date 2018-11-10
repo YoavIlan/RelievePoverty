@@ -83,6 +83,13 @@ class States extends Component{
         });
     }
 
+    handleFilter = (filter) => {
+        let query = 'https://api.relievepoverty.me/v1/states?page=1&q=' + filter; 
+        this.getJSON(query).then(response => {
+            this.setState(JSON.parse(JSON.stringify(response)))
+        })
+    }
+
     async componentWillMount() {
         await this.getJSON('https://api.relievepoverty.me/v1/states?page=1').then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
