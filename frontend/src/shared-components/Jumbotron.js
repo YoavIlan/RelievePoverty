@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import NativeSelects from './Dropdown';
 
 
 class Jumbotron extends Component {
@@ -12,6 +12,8 @@ class Jumbotron extends Component {
     render() {
         const hasTitle = this.props.title != null;
         const hasDescription = this.props.description != null;
+        const filters = this.props.filters;
+        const prompt = this.props.prompt;
         if (hasTitle)
         {
             if (hasDescription)
@@ -24,7 +26,7 @@ class Jumbotron extends Component {
                     </div>
                         <div className="row">
                         <div className="col-md-4 d-flex">
-                            
+                        <NativeSelects data={filters} prompt={prompt} onChange={this.props.handleFilter}></NativeSelects>
                         </div>
                         <div className="col-md-4 d-flex">
                             
