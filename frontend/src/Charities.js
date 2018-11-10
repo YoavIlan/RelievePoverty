@@ -58,7 +58,7 @@ class Charities extends Component{
         let pageSize = 12.0;
         return(
             <>
-              <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"}/>
+              <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"} filters={[]} prompt={""}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>
