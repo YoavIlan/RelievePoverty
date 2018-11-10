@@ -9,7 +9,7 @@ import './Paginate.css'
 class Charities extends Component{
     constructor (props) {
        super(props);
-       this.state = {data: [], total: 0, query: 'https://api.relievepoverty.me/v1/charities?page=', page: 1}
+       this.state = {data: [], total: 0, api: "https://api.relievepoverty.me/v1/charities?page=", page: 1, query: ""}
     }
 
     getJSON(url) {
@@ -19,26 +19,39 @@ class Charities extends Component{
     }
 
     async componentWillMount() {
-        await this.getJSON(this.state.query+this.state.page).then(response => {
+        await this.getJSON(this.state.api + this.state.page).then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
     }
 
     handlePageClick = (data) =>{
         this.state.page = data.selected + 1;
-        this.getJSON(this.state.query+this.state.page).then(response => {
-            this.setState(JSON.parse(JSON.stringify(response)))
-        });
+        if(this.state.query === ""){
+            this.getJSON(this.state.api + this.state.page).then(response => {
+                this.setState(JSON.parse(JSON.stringify(response)))
+            });
+        }
+        else{
+            this.getJSON(this.state.api + this.state.page + "&q=" + this.state.query).then(response => {
+                this.setState(JSON.parse(JSON.stringify(response)))
+            });
+        }
     }
 
     handleSearch = (data) => {
         data.preventDefault();
-        let query = data.target[0].value;
-        this.state.page = 1
-        this.state.query = this.state.query+this.state.page+'&q='+ query; 
-        this.getJSON(this.state.query).then(response => {
-            this.setState(JSON.parse(JSON.stringify(response)))
-        });
+        this.state.query = data.target[0].value;
+        this.state.page = 1;
+        if(this.state.query === ""){
+            this.getJSON(this.state.api + this.state.page).then(response => {
+                this.setState(JSON.parse(JSON.stringify(response)))
+            });
+        }
+        else{
+            this.getJSON(this.state.api + this.state.page + "&q=" + this.state.query).then(response => {
+                this.setState(JSON.parse(JSON.stringify(response)))
+            });
+        }
     }
 
     render(){
