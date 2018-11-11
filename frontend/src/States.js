@@ -3,6 +3,7 @@ import StatesCard from './shared-components/StatesCard';
 import Jumbotron from './shared-components/Jumbotron';
 import ReactPaginate from 'react-paginate';
 import fetch from 'node-fetch';
+import NativeSelects from './shared-components/Dropdown'
 import './Paginate.css'
 
 
@@ -10,7 +11,16 @@ class States extends Component{
     constructor (props) {
        super(props);
 
-       this.state = {data: [], total: 0, api: "https://api.relievepoverty.me/v1/states?page=", page: 1, query: ""}
+       this.state = {
+         data: [],
+         total: 0,
+         api: "https://api.relievepoverty.me/v1/states?page=",
+         page: 1,
+         query: "",
+         sort: "sort_by=median_income",
+         reverse: "",
+         filters: []
+       }
     }
 
     allStates = [
@@ -67,6 +77,14 @@ class States extends Component{
         "Wyoming"
     ];
 
+    sorts = [
+      "median_income",
+      "rank",
+      "name",
+      "below_poverty_rate",
+      "child_poverty_rate"
+    ]
+
     getJSON(url) {
         return fetch(url).then(response => {
             return response.json();
@@ -75,25 +93,86 @@ class States extends Component{
 
     handleSearch = (data) => {
         data.preventDefault();
-        this.state.query = data.target[0].value;
+        this.state.query = "q=" + data.target[0].value;
         this.state.page = 1;
-        if(this.state.query === ""){
-            this.getJSON(this.state.api + this.state.page).then(response => {
-                this.setState(JSON.parse(JSON.stringify(response)))
-            });
-        }
-        else{
-            this.getJSON(this.state.api + this.state.page + "&q=" + this.state.query).then(response => {
-                this.setState(JSON.parse(JSON.stringify(response)))
-            });
-        }
+        this.accessAPI();
+        // if(this.state.query === ""){
+        //     this.getJSON(this.state.api + this.state.page).then(response => {
+        //         this.setState(JSON.parse(JSON.stringify(response)))
+        //     });
+        // }
+        // else{
+        //     this.getJSON(this.state.api + this.state.page + "&q=" + this.state.query).then(response => {
+        //         this.setState(JSON.parse(JSON.stringify(response)))
+        //     });
+        // }
     }
 
-    handleFilter = (filter) => {
-        let query = 'https://api.relievepoverty.me/v1/states?page=1&q=' + filter;
-        this.getJSON(query).then(response => {
-            this.setState(JSON.parse(JSON.stringify(response)))
-        })
+    handleFilterName = (filter_value) => {
+        let str = "name=" + filter_value;
+        this.state.filters.push(str);
+        this.accessAPI();
+    }
+    // handleFilterMedianIncome = (filter_value) => {
+    //     let str = "median_income=" + filter_value;
+    //     this.state.filter.push(str);
+    //     this.accessAPI();
+    // }
+    // handleFilterName = (filter_value) => {
+    //     let str = "name=" + filter_value;
+    //     this.state.filter.push(str);
+    //     this.accessAPI();
+    // }
+    // handleFilterName = (filter_value) => {
+    //     let str = "name=" + filter_value;
+    //     this.state.filter.push(str);
+    //     this.accessAPI();
+    // }
+    // handleFilterName = (filter_value) => {
+    //     let str = "name=" + filter_value;
+    //     this.state.filter.push(str);
+    //     this.accessAPI();
+    // }
+    // handleFilterName = (filter_value) => {
+    //     let str = "name=" + filter_value;
+    //     this.state.filter.push(str);
+    //     this.accessAPI();
+    // }
+    // handleFilterName = (filter_value) => {
+    //     let str = "name=" + filter_value;
+    //     this.state.filter.push(str);
+    //     this.accessAPI();
+    // }
+
+    handleSort = (sort_by) => {
+        let str = "sort_by=" + sort_by;
+        this.state.sort = str;
+        this.accessAPI();
+    }
+
+    accessAPI = () => {
+      let args = [this.state.sort, this.state.reverse, this.state.query].concat(this.state.filters);
+      let api = this.state.api + this.state.page + "&";
+      for(let i = 0; i < args.length; i++){
+        if(args[i] != "")
+          args[i] += "&";
+          api += args[i]
+      }
+      api = api.substring(0, api.length-1);
+      console.log(this.state.sort)
+      console.log(api);
+      this.getJSON(api).then(response => {
+          this.setState(JSON.parse(JSON.stringify(response)))
+      })
+    }
+
+    handleReverse = (reverse) => {
+      if(reverse == "Descending")
+        this.state.reverse = "reverse=true"
+      else
+        this.state.reverse = ""
+
+      this.accessAPI();
     }
 
     async componentWillMount() {
@@ -121,6 +200,9 @@ class States extends Component{
         return(
             <>
               <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} search={this.handleSearch} modelName={"states"} handleFilter={this.handleFilter} filters={this.allStates} prompt={"Filter by State"}/>
+              <NativeSelects data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
+              <NativeSelects data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+              <NativeSelects data={this.allStates} prompt={"Filter by States"} onChange={this.handleFilterName}></NativeSelects>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>

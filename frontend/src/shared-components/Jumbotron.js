@@ -26,12 +26,10 @@ class Jumbotron extends Component {
                     </div>
                         <div className="row">
                         <div className="col-md-4 d-flex">
-                        {prompt &&
-                        <NativeSelects data={filters} prompt={prompt} onChange={this.props.handleFilter}></NativeSelects>
-                        }
+
                         </div>
                         <div className="col-md-4 d-flex">
-                            
+
                         </div>
                         <div className="col-md-4 d-flex">
                         {prompt &&
