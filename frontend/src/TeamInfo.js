@@ -12,6 +12,7 @@ export const getTeam = () => {
       issues: 0,
       tests: 0,
       acceptance_tests: 0,
+      lab: 'basement'
     },
     {
       image: require('./img/evan.jpg'),
@@ -25,6 +26,7 @@ export const getTeam = () => {
       issues: 0,
       tests: 0,
       acceptance_tests: 0,
+      lab: 'basement'
     },
     {
       image: require('./img/yoav.jpg'),
@@ -38,6 +40,7 @@ export const getTeam = () => {
       issues: 0,
       tests: 0,
       acceptance_tests: 0,
+      lab: '3rd floor'
     },
     {
       image: require('./img/albert.jpg'),
@@ -51,6 +54,7 @@ export const getTeam = () => {
       issues: 0,
       tests: 0,
       acceptance_tests: 0,
+      lab: 'basement'
     },
     {
       image: require('./img/colin.jpg'),
@@ -64,6 +68,7 @@ export const getTeam = () => {
       issues: 0,
       tests: 0,
       acceptance_tests: 0,
+      lab: '3rd floor'
     },
     {
       image: require('./img/daniel.jpg'),
@@ -77,6 +82,7 @@ export const getTeam = () => {
       issues: 0,
       tests: 0,
       acceptance_tests: 0,
+      lab: '3rd floor'
     },
   ];
 }

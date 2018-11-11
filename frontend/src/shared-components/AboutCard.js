@@ -12,7 +12,7 @@ class AboutCard extends Component {
                 </ul>
                 <div className="card-body">
                   <h5 className="card-title">{this.props.data.title}</h5>
-                  <p className="card-text">{this.props.data.description}</p>
+                  <p className="card-text">{this.props.data.description}<br/><br/>{this.props.data.name} is a GDC {this.props.data.lab} lab type of guy.</p>
                 </div>
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item"># of commits: {this.props.data.commits}</li>
