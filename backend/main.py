@@ -328,19 +328,14 @@ def news_search(query):
 
 
 # Returns a json with three inner jsons one for each category
-@app.route("/v1", methods=['GET'])
-def all_search():
-    if(request.args.get('q') is not None):
-        query = request.args.get('q')
-    else:
-        return "No Query entered"
-
+@app.route("/v1/search/<query>", methods=['GET'])
+def all_search(query):
     # Searches each category and saves results
     states = state_search(query)
     charities = charities_search(query)
     news = news_search(query)
     total = len(news)
-    if 'page' in request.args:
+    if 'news_page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
@@ -350,7 +345,7 @@ def all_search():
         news_json = {'data': [News.serialize(news) for news in news], 'total': total}
 
     total = len(states)
-    if 'page' in request.args:
+    if 'states_page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
@@ -360,7 +355,7 @@ def all_search():
         states_json = {'data': [States.serialize(state) for state in states], 'total': total}
 
     total = len(charities)
-    if 'page' in request.args:
+    if 'charities_page' in request.args:
         result = list()
         i = (int(request.args['page']) - 1) * INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + INSTANCES_PER_PAGE, total) + 1):
