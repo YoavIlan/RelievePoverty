@@ -26,16 +26,20 @@ class Jumbotron extends Component {
                     </div>
                         <div className="row">
                         <div className="col-md-4 d-flex">
+                        {prompt &&
                         <NativeSelects data={filters} prompt={prompt} onChange={this.props.handleFilter}></NativeSelects>
+                        }
                         </div>
                         <div className="col-md-4 d-flex">
                             
                         </div>
                         <div className="col-md-4 d-flex">
+                        {prompt &&
                         <form onSubmit={this.props.search}>
-                                <input className="search-bar" type="text" placeholder="Search" />
-                                <input id="search-submit" type="submit" value="Submit" />
-                            </form>
+                            <input className="search-bar" type="text" placeholder="Search" />
+                            <input id="search-submit" type="submit" value="Submit" />
+                        </form>
+                        }
                         </div>
                         </div>
                     </section>

@@ -10,7 +10,7 @@ class News extends Component{
     constructor (props) {
        super(props);
 
-       this.state = {data: [], total: 0, api: "https://api.relievepoverty.me/v1/charities?page=", page: 1, query: ""}
+       this.state = {data: [], total: 0, api: "https://api.relievepoverty.me/v1/news?page=", page: 1, query: ""}
     }
 
     getJSON(url) {
