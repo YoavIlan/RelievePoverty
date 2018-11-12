@@ -39,7 +39,7 @@ class States extends Component{
 
     handleSearch = (data) => {
         data.preventDefault();
-        this.state.query = data.target[0].value;
+        this.state.query = "q=" + data.target[0].value;
         this.state.page = 1;
         this.accessAPI();
     }
@@ -109,7 +109,7 @@ class States extends Component{
       });
     }
     accessAPI = () => {
-      let args = [this.state.sort, this.state.reverse, "q="+this.state.query].concat(this.state.filters);
+      let args = [this.state.sort, this.state.reverse, this.state.query].concat(this.state.filters);
       let api = this.state.api + this.state.page + "&";
       for(let i = 0; i < args.length; i++){
         if(args[i] != "")
@@ -142,17 +142,9 @@ class States extends Component{
 
     handlePageClick = (data) =>{
         this.state.page = data.selected + 1;
-        if(this.state.query === ""){
-            this.getJSON(this.state.api + this.state.page).then(response => {
-                this.setState(JSON.parse(JSON.stringify(response)))
-            });
-        }
-        else{
-            this.getJSON(this.state.api + this.state.page + "&q=" + this.state.query).then(response => {
-                this.setState(JSON.parse(JSON.stringify(response)))
-            });
-        }
+        this.accessAPI()
     }
+
 
     render(){
         let pageSize = 12.0;
