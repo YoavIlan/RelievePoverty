@@ -33,7 +33,6 @@ class Charities extends Component{
         "Colorado",
         "Connecticut",
         "Delaware",
-        "District Of Columbia",
         "Florida",
         "Georgia",
         "Hawaii",
@@ -172,7 +171,7 @@ class Charities extends Component{
     }
 
     reset = () => {
-      this.state = {
+      this.setState({
         data: [],
         total: 0,
         api: "https://api.relievepoverty.me/v1/charities?page=",
@@ -182,7 +181,7 @@ class Charities extends Component{
         reverse: "",
         filters: {},
         reset: true
-      };
+      });
     }
     accessAPI = () => {
       let args = [this.state.sort, this.state.reverse, this.state.query].concat(this.state.filters);
@@ -265,7 +264,7 @@ class Charities extends Component{
 
                 <div className="col-md-4 d-flex flex-column">
                 {prompt &&
-                <button onClick={this.reset}>Reset</button>
+                <button className="reset-button" onClick={this.reset}>Reset</button>
                 }
                 </div>
 
@@ -295,6 +294,9 @@ class Charities extends Component{
               </div>
             </>
         )
+        if(this.state.reset){
+            this.accessAPI()
+        }
         this.state.reset = false;
         return result;
     }

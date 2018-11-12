@@ -61,6 +61,7 @@ class Search extends Component{
               <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"} filters={[]} prompt={""}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
+                <h3 className="jumbotron-heading">Charities</h3>
                   <div className='row'>
                     {this.state.charities.data.map(obj =>
                       <CharitiesCard image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id} query={this.props.match.params.query}/>
@@ -84,6 +85,7 @@ class Search extends Component{
 
                 <div className='album py-5 bg-light listingPage'>
                 <div className="container">
+                <h3 className="jumbotron-heading">News</h3>
                   <div className='row'>
                     {this.state.news.data.map(obj =>
                       <NewsCard image={obj.image} title={obj.title} source={obj.source} id={obj.id} published_date={obj.published_date} state={obj.state} author={obj.author} query={this.props.match.params.query}/>
@@ -107,6 +109,7 @@ class Search extends Component{
 
                 <div className='album py-5 bg-light listingPage'>
                 <div className="container">
+                <h3 className="jumbotron-heading">States</h3>
                   <div className='row'>
                     {this.state.states.data.map(obj =>
                       <StatesCard image={obj.flag} state={obj.name} rank={obj.rank} median_income={obj.median_income} counties={obj.counties} child_poverty_rate={obj.child_poverty_rate} below_poverty_rate={obj.below_poverty_rate} query={this.props.match.params.query}/>
