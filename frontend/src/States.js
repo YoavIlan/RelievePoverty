@@ -159,7 +159,6 @@ class States extends Component{
         filters: {},
         reset: true
       });
-      this.accessAPI()
     }
     accessAPI = () => {
       let args = [this.state.sort, this.state.reverse, this.state.query];
@@ -269,6 +268,9 @@ class States extends Component{
               </div>
             </>
         )
+        if(this.state.reset){
+            this.accessAPI()
+        }
         this.state.reset = false;
         return result;
     }
