@@ -75,6 +75,7 @@ class Search extends Component{
                   pageCount={Math.ceil(this.state.charities.total / pageSize)}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
+                  forcePage={this.state.charities_page - 1}
                   onPageChange={this.handleCharityPageClick}
                   containerClassName={"pagination"}
                   subContainerClassName={"pages pagination"}
@@ -97,6 +98,7 @@ class Search extends Component{
                   pageCount={Math.ceil(this.state.news.total / pageSize)}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
+                  forcePage={this.state.news_page - 1}
                   onPageChange={this.handleNewsPageClick}
                   containerClassName={"pagination"}
                   subContainerClassName={"pages pagination"}
@@ -119,6 +121,7 @@ class Search extends Component{
                   pageCount={Math.ceil(this.state.states.total / pageSize)}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
+                  forcePage={this.state.states_page - 1}
                   onPageChange={this.handleStatePageClick}
                   containerClassName={"pagination"}
                   subContainerClassName={"pages pagination"}
