@@ -60,6 +60,40 @@ class News extends Component{
         return(
             <>
               <Jumbotron title={"Read Articles About Poverty in the US"} description={"Our news sources include The New York Times, CNN and others."} search={this.handleSearch} modelName={"news"} filters={[]} prompt={"blah"}/>
+                  <div className="container-fluid fss">
+                      <div className="row fss-bar">
+                    <div className="col-md-4 d-flex flex-column">
+
+                    </div>
+                    <div className="col-md-4 d-flex flex-column">
+
+                    </div>
+                    <div className="col-md-4 d-flex flex-column">
+                    {prompt &&
+                    <form onSubmit={this.handleSearch}>
+                        <input className="search-bar" type="text" placeholder="Search" />
+                        <input id="search-submit" type="submit" value="Submit" />
+                    </form>
+                    }
+                    </div>
+                    <div className="col-md-4 d-flex flex-column">
+
+                    </div>
+                    <div className="col-md-4 d-flex flex-column">
+
+                    </div>
+                    <div className="col-md-4 d-flex flex-column"></div>
+                    <div className="col-md-4 d-flex flex-column">
+
+                    </div>
+                    <div className="col-md-4 d-flex flex-column">
+                    {prompt &&
+                    <button onClick={this.reset}>Reset</button>
+                    }
+                    </div>
+                  </div>
+                  </div>
+
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>
