@@ -147,7 +147,19 @@ class States extends Component{
         this.state.sort = str;
         this.accessAPI();
     }
-
+    reset = () => {
+      this.state = {
+        data: [],
+        total: 0,
+        api: "https://api.relievepoverty.me/v1/states?page=",
+        page: 1,
+        query: "",
+        sort: "sort_by=rank",
+        reverse: "",
+        filters: {}
+      }
+      this.accessAPI()
+    }
     accessAPI = () => {
       let args = [this.state.sort, this.state.reverse, this.state.query];
       let api = this.state.api + this.state.page + "&";
@@ -224,6 +236,11 @@ class States extends Component{
                 <div className="col-md-5 d-flex flex-column">
                 {prompt &&
                 <NativeSelects data={["From 05% to 15%", "From 15% to 25%","From 25% to 35%"]} prompt={"Filter by Child Poverty Rates"} onChange={this.handleFilterChildPoverty}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-5 d-flex flex-column">
+                {prompt &&
+                <button onClick={this.reset}>Reset</button>
                 }
                 </div>
               </div>
