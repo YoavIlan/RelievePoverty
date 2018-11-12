@@ -106,37 +106,32 @@ class Charities extends Component{
 
     handlePageClick = (data) =>{
         this.state.page = data.selected + 1;
-        if(this.state.query === ""){
-            this.getJSON(this.state.api + this.state.page).then(response => {
-                this.setState(JSON.parse(JSON.stringify(response)))
-            });
-        }
-        else{
-            this.getJSON(this.state.api + this.state.page + "&q=" + this.state.query).then(response => {
-                this.setState(JSON.parse(JSON.stringify(response)))
-            });
-        }
+        this.accessAPI()
     }
 
     handleFilterState = (filter_value) => {
+        this.state.page = 1;
         let str = "state=" + filter_value;
         this.state.filters["state"] = str;
         this.accessAPI();
     }
 
     handleFilterRating = (filter_value) => {
+        this.state.page = 1;
         let str = "rating=" + filter_value;
         this.state.filters["rating"] = str;
         this.accessAPI();
     }
 
     handleFilterTaxClassification = (filter_value) => {
+        this.state.page = 1;
         let str = "tax_classification=" + filter_value;
         this.state.filters["tax_classification"] = str;
         this.accessAPI();
     }
 
     handleFilterCause = (filter_value) => {
+        this.state.page = 1;
         if(filter_value == "Unknown"){
           filter_value = "NULL"
         }
@@ -146,6 +141,7 @@ class Charities extends Component{
     }
 
     handleFilterAffiliation = (filter_value) => {
+        this.state.page = 1;
         let str = "affiliation=" + filter_value;
         this.state.filters["affiliation"] = str;
         this.accessAPI();
@@ -159,12 +155,14 @@ class Charities extends Component{
     }
 
     handleSort = (sort_by) => {
+        this.state.page = 1;
         let str = "sort_by=" + sort_by;
         this.state.sort = str;
         this.accessAPI();
     }
 
     handleReverse = (reverse) => {
+        this.state.page = 1;
       if(reverse == "Descending")
         this.state.reverse = "reverse=true"
       else
@@ -208,48 +206,69 @@ class Charities extends Component{
         let result = (
             <>
               <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"} filters={[]} prompt={"Search"}/>
-              <div className="row fss-bar">
-              <div className="container row fss">
-                <div className="col-md-5 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By:"} onChange={this.handleSort}></NativeSelects>
-                }
-                </div>
-                <div className="col-md-5 d-flex flex-column">
+              <div className="container-fluid fss">
+                  <div className="row fss-bar">
+                  <div className="col-md-4 d-flex flex-column">
+                  {prompt &&
+                  <NativeSelects reset={this.state.reset} data={["Independent", "Central", "Subordinate"]} prompt={"Filter by Affiliation"} onChange={this.handleFilterAffiliation}></NativeSelects>
+                  }
+                  </div>
+
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
+
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
-                <NativeSelects reset={this.state.reset} data={["Independent", "Central", "Subordinate"]} prompt={"Filter by Affiliation"} onChange={this.handleFilterAffiliation}></NativeSelects>
+                <form onSubmit={this.handleSearch}>
+                    <input className="search-bar" type="text" placeholder="Search" />
+                    <input id="search-submit" type="submit" value="Submit" />
+                </form>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
+
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={this.allStates} prompt={"Filter by State"} onChange={this.handleFilterState}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
+
+                <div className="col-md-4 d-flex flex-column">
+                {prompt &&
+                <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
+                }
+                </div>
+
+                <div className="col-md-4 d-flex flex-column"></div>
+
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["501(c)(3)","501(c)(4)","501(c)(5)","501(c)(6)","501(c)(7)","501(c)(8)"]} prompt={"Filter by Tax Classification"} onChange={this.handleFilterTaxClassification}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
+
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={this.causes} prompt={"Filter by Cause"} onChange={this.handleFilterCause}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
+
+                <div className="col-md-4 d-flex flex-column"></div>
+
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["1", "2", "3", "4"]} prompt={"Filter by Rating"} onChange={this.handleFilterRating}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
+
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <button onClick={this.reset}>Reset</button>
                 }
                 </div>
+
               </div>
               </div>
               <div className='album py-5 bg-light listingPage'>
@@ -268,6 +287,7 @@ class Charities extends Component{
                   pageCount={Math.ceil(this.state.total / pageSize)}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
+                  forcePage={this.state.page - 1}
                   onPageChange={this.handlePageClick}
                   containerClassName={"pagination"}
                   subContainerClassName={"pages pagination"}
