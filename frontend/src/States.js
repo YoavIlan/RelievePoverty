@@ -17,7 +17,7 @@ class States extends Component{
          api: "https://api.relievepoverty.me/v1/states?page=",
          page: 1,
          query: "",
-         sort: "sort_by=median_income",
+         sort: "sort_by=rank",
          reverse: "",
          filters: {}
        }
