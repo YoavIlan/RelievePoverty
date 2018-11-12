@@ -22,7 +22,7 @@ class CharitiesCard extends Component {
                     <ul className="card-text">
                         <li><b>State:</b> {state}</li>
                         {rating !== undefined && <li><b>Rating:</b> {rating}</li>}
-                        {affiliation !== undefined && <li><b>Affiliation:</b> <Highlighter searchWords={[query]} textToHighlight={affiliation.substring(0,affiliation.indexOf('-'))}/></li>}
+                        {affiliation !== undefined && <li><b>Affiliation:</b> <Highlighter searchWords={[query]} textToHighlight={affiliation}/></li>}
                         {tax_classification !== undefined && <li><b>Classification:</b> {tax_classification}</li>}
                     </ul>
                     <Link to={`/charities/${id}`}  className="btn btn-primary mt-auto">More Information</Link>
