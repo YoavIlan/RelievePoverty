@@ -63,7 +63,7 @@ class Search extends Component{
                 <div className="container">
                   <div className='row'>
                     {this.state.charities.data.map(obj =>
-                      <CharitiesCard image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id}/>
+                      <CharitiesCard image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id} query={this.props.match.params.query}/>
                     )}
                   </div>
                 </div>
@@ -86,7 +86,7 @@ class Search extends Component{
                 <div className="container">
                   <div className='row'>
                     {this.state.news.data.map(obj =>
-                      <NewsCard image={obj.image} title={obj.title} source={obj.source} id={obj.id} published_date={obj.published_date} state={obj.state} author={obj.author} />
+                      <NewsCard image={obj.image} title={obj.title} source={obj.source} id={obj.id} published_date={obj.published_date} state={obj.state} author={obj.author} query={this.props.match.params.query}/>
                     )}
                   </div>
                 </div>
@@ -109,7 +109,7 @@ class Search extends Component{
                 <div className="container">
                   <div className='row'>
                     {this.state.states.data.map(obj =>
-                      <StatesCard image={obj.flag} state={obj.name} rank={obj.rank} median_income={obj.median_income} counties={obj.counties} child_poverty_rate={obj.child_poverty_rate} below_poverty_rate={obj.below_poverty_rate}/>
+                      <StatesCard image={obj.flag} state={obj.name} rank={obj.rank} median_income={obj.median_income} counties={obj.counties} child_poverty_rate={obj.child_poverty_rate} below_poverty_rate={obj.below_poverty_rate} query={this.props.match.params.query}/>
                     )}
                   </div>
                 </div>

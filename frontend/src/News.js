@@ -59,12 +59,12 @@ class News extends Component{
         let pageSize = 12.0;
         return(
             <>
-              <Jumbotron title={"Read Articles About Poverty in the US"} description={"Our news sources include The New York Times, CNN and others."} search={this.handleSearch} modelName={"news"} filters={[]} prompt={""}/>
+              <Jumbotron title={"Read Articles About Poverty in the US"} description={"Our news sources include The New York Times, CNN and others."} search={this.handleSearch} modelName={"news"} filters={[]} prompt={"blah"}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
-                      <NewsCard image={obj.image} title={obj.title} source={obj.source} id={obj.id} published_date={obj.published_date} state={obj.state} author={obj.author} />
+                      <NewsCard image={obj.image} title={obj.title} source={obj.source} id={obj.id} published_date={obj.published_date} state={obj.state} author={obj.author} query={this.state.query}/>
                     )}
                   </div>
                 </div>
