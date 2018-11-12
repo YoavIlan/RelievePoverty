@@ -5,6 +5,7 @@ import fetch from 'node-fetch';
 import './Paginate.css'
 import Jumbotron from './shared-components/Jumbotron';
 import NativeSelects from './shared-components/Dropdown'
+import './shared-components/styles.css'
 
 
 class News extends Component{
@@ -163,7 +164,7 @@ class News extends Component{
                 <div className="col-md-4 d-flex flex-column"></div>
                 <div className="col-md-4 d-flex flex-column">
                 {prompt &&
-                <button onClick={this.reset}>Reset</button>
+                <button className="reset-button" onClick={this.reset}>Reset</button>
                 }
                 </div>
               </div>
