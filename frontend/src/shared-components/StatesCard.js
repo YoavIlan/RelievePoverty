@@ -28,7 +28,7 @@ class StatesCard extends Component {
         let image = this.props.image;
         let state = this.props.state;
         let rank = this.props.rank;
-        let query = this.props.query;
+        let query = this.props.query.split(" ");
         return(
             <div className="col-md-4 d-flex">
               <div className="card mb-4 box-shadow">
