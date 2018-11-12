@@ -9,6 +9,7 @@ import StateInstance from './StateInstance';
 import Charities from './Charities';
 import States from './States';
 import Navbar from './shared-components/Navbar';
+import Search from './Search';
 
 class App extends Component {
     componentDidMount(){
@@ -27,6 +28,7 @@ class App extends Component {
                     <Route path="/news/:id" component={NewsInstance} />
                     <Route path="/charities/:id" component={CharityInstance} />
                     <Route path="/states/:name" component={StateInstance} />
+                    <Route path="/search/:query" component={Search} />
                     <Route path="/about" component={About} />
                     <Route path="/news" component={News} />
                     <Route path="/charities" component={Charities} />
