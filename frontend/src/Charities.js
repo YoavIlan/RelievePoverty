@@ -58,12 +58,12 @@ class Charities extends Component{
         let pageSize = 12.0;
         return(
             <>
-              <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"} filters={[]} prompt={""}/>
+              <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"} filters={[]} prompt={"Search"}/>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
-                      <CharitiesCard image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id}/>
+                      <CharitiesCard query={this.state.query} image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id}/>
                     )}
                   </div>
                 </div>
