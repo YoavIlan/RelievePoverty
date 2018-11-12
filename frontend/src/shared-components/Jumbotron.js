@@ -24,22 +24,6 @@ class Jumbotron extends Component {
                     <h1 className="jumbotron-heading">{this.props.title}</h1>
                     <p className="lead">{this.props.description}</p>
                     </div>
-                        <div className="row">
-                        <div className="col-md-4 d-flex">
-
-                        </div>
-                        <div className="col-md-4 d-flex">
-
-                        </div>
-                        <div className="col-md-4 d-flex">
-                        {prompt &&
-                        <form onSubmit={this.props.search}>
-                            <input className="search-bar" type="text" placeholder="Search" />
-                            <input id="search-submit" type="submit" value="Submit" />
-                        </form>
-                        }
-                        </div>
-                        </div>
                     </section>
                 );
             } else {

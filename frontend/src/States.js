@@ -23,66 +23,12 @@ class States extends Component{
        }
     }
 
-    allStates = [
-        "Alabama",
-        "Alaska",
-        "Arizona",
-        "Arkansas",
-        "California",
-        "Colorado",
-        "Connecticut",
-        "Delaware",
-        "District Of Columbia",
-        "Florida",
-        "Georgia",
-        "Hawaii",
-        "Idaho",
-        "Illinois",
-        "Indiana",
-        "Iowa",
-        "Kansas",
-        "Kentucky",
-        "Louisiana",
-        "Maine",
-        "Maryland",
-        "Massachusetts",
-        "Michigan",
-        "Minnesota",
-        "Mississippi",
-        "Missouri",
-        "Montana",
-        "Nebraska",
-        "Nevada",
-        "New Hampshire",
-        "New Jersey",
-        "New Mexico",
-        "New York",
-        "North Carolina",
-        "North Dakota",
-        "Ohio",
-        "Oklahoma",
-        "Oregon",
-        "Pennsylvania",
-        "Rhode Island",
-        "South Carolina",
-        "South Dakota",
-        "Tennessee",
-        "Texas",
-        "Utah",
-        "Vermont",
-        "Virginia",
-        "Washington",
-        "West Virginia",
-        "Wisconsin",
-        "Wyoming"
-    ];
-
     sorts = [
-      "median_income",
+      "median income",
       "rank",
       "name",
-      "below_poverty_rate",
-      "child_poverty_rate"
+      "below poverty rate",
+      "child poverty rate"
     ]
 
     getJSON(url) {
@@ -143,7 +89,7 @@ class States extends Component{
     }
 
     handleSort = (sort_by) => {
-        let str = "sort_by=" + sort_by;
+        let str = "sort_by=" + sort_by.replace(/ /g, '_');
         this.state.sort = str;
         this.accessAPI();
     }
@@ -209,42 +155,51 @@ class States extends Component{
         let pageSize = 12.0;
         let result = (
             <>
-              <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} search={this.handleSearch} modelName={"states"} handleFilter={this.handleFilter} filters={this.allStates} prompt={"Filter by State"}/>
-              <div className="row fss-bar">
-              <div className="container row fss">
-                <div className="col-md-5 d-flex flex-column">
+              <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} modelName={"states"}/>
+              <div className="container-fluid fss">
+                  <div className="row fss-bar">
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["From 05% to 10%", "From 10% to 15%","From 15% to 20%", "From 20% to 25%"]} prompt={"Filter by Poverty Rates"} onChange={this.handleFilterBelowPoverty}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By:"} onChange={this.handleSort}></NativeSelects>
-                }
-                </div>
-                <div className="col-md-5 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={["From 40000 to 50000", "From 50000 to 60000","From 60000 to 70000", "From 70000 to 80000"]} prompt={"Filter by Median Incomes"} onChange={this.handleFilterMedianIncome}></NativeSelects>
-                }
-                </div>
-                <div className="col-md-5 d-flex flex-column">
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
+                <div className="col-md-4 d-flex flex-column">
+                {prompt &&
+                <form onSubmit={this.handleSearch}>
+                    <input className="search-bar" type="text" placeholder="Search" />
+                    <input id="search-submit" type="submit" value="Submit" />
+                </form>
+                }
+                </div>
+                <div className="col-md-4 d-flex flex-column">
+                {prompt &&
+                <NativeSelects reset={this.state.reset} data={["From 40000 to 50000", "From 50000 to 60000","From 60000 to 70000", "From 70000 to 80000"]} prompt={"Filter by Median Incomes"} onChange={this.handleFilterMedianIncome}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-4 d-flex flex-column">
+                {prompt &&
+                <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-4 d-flex flex-column"></div>
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["From 05% to 15%", "From 15% to 25%","From 25% to 35%"]} prompt={"Filter by Child Poverty Rates"} onChange={this.handleFilterChildPoverty}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-5 d-flex flex-column">
+                <div className="col-md-4 d-flex flex-column">
                 {prompt &&
                 <button onClick={this.reset}>Reset</button>
                 }
                 </div>
               </div>
               </div>
-              
+
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>

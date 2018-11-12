@@ -12,9 +12,16 @@ label + .MuiInput-formControl-34{
 }*/
 
 [class^="Mui"]{
-    color: #e2e2e2;
-    border-bottom: .008px solid #e2e2e2 !important;
+    color: #e2e2e2 !important;
 }
+
+[class^="NativeSelects"]{
+    justify-content: center;
+}
+
+/* [class= "MuiSelect-icon"]{
+    color: #e2e2e2 !important;
+} */
 /*
 div[class^="Mui"][class$="-2"]{
     color: purple;
