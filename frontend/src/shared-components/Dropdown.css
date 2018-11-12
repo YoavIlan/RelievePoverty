@@ -1,18 +1,31 @@
-.NativeSelects-formControl-2{
+.NativeSelects-formControl-2, .NativeSelects-formControl-14, .NativeSelects-formControl-215, .NativeSelects-formControl-286{
     margin: 0px !important;
 }
 
-label + .MuiInput-formControl-34{
+.MuiInput-formControl-34, .MuiInput-formControl-105, .MuiInput-formControl-176, .MuiInput-formControl-247{
     margin-top: 0px !important;
 }
 
-.MuiInput-underline-37:before{
+.container-fluid>.row.fss-bar{
+    padding-bottom: 20px;
+}
+
+.MuiInput-underline-37:before, .MuiInput-underline-179:before, .MuiInput-underline-108:before, .MuiInput-underline-250:before{
     border-bottom: 1px solid #e2e2e2 !important;
 }
 
 /*Regular expression meaning- starts with Mui*/
 [class^="Mui"]{
     color: #e2e2e2 !important;
+}
+
+[class^=NativeSelects-formControl-]{
+    margin: 0 !important;
+}
+
+.MuiInputBase-input-127, .MuiInputBase-input-56, .MuiInputBase-input-198, .MuiInputBase-input-269{
+    padding-bottom: 0px !important;
+    padding-top: 0px !important;
 }
 
 .search-form, #reset{
