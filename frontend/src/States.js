@@ -19,7 +19,7 @@ class States extends Component{
          query: "",
          sort: "sort_by=median_income",
          reverse: "",
-         filters: []
+         filters: {}
        }
     }
 
@@ -96,16 +96,7 @@ class States extends Component{
         this.state.query = "q=" + data.target[0].value;
         this.state.page = 1;
         this.accessAPI();
-        // if(this.state.query === ""){
-        //     this.getJSON(this.state.api + this.state.page).then(response => {
-        //         this.setState(JSON.parse(JSON.stringify(response)))
-        //     });
-        // }
-        // else{
-        //     this.getJSON(this.state.api + this.state.page + "&q=" + this.state.query).then(response => {
-        //         this.setState(JSON.parse(JSON.stringify(response)))
-        //     });
-        // }
+
     }
 
     handleFilterName = (filter_value) => {
@@ -113,36 +104,43 @@ class States extends Component{
         this.state.filters.push(str);
         this.accessAPI();
     }
-    // handleFilterMedianIncome = (filter_value) => {
-    //     let str = "median_income=" + filter_value;
-    //     this.state.filter.push(str);
-    //     this.accessAPI();
-    // }
-    // handleFilterName = (filter_value) => {
-    //     let str = "name=" + filter_value;
-    //     this.state.filter.push(str);
-    //     this.accessAPI();
-    // }
-    // handleFilterName = (filter_value) => {
-    //     let str = "name=" + filter_value;
-    //     this.state.filter.push(str);
-    //     this.accessAPI();
-    // }
-    // handleFilterName = (filter_value) => {
-    //     let str = "name=" + filter_value;
-    //     this.state.filter.push(str);
-    //     this.accessAPI();
-    // }
-    // handleFilterName = (filter_value) => {
-    //     let str = "name=" + filter_value;
-    //     this.state.filter.push(str);
-    //     this.accessAPI();
-    // }
-    // handleFilterName = (filter_value) => {
-    //     let str = "name=" + filter_value;
-    //     this.state.filter.push(str);
-    //     this.accessAPI();
-    // }
+
+    handleFilterMedianIncome = (filter_value) => {
+        let low = filter_value.substring(5,10);
+        let str_low = "median_income_low=" + low;
+        this.state.filters["median_income_low"] = str_low;
+
+        let high = filter_value.substring(14);
+        let str_high = "median_income_high=" + high;
+        this.state.filters["median_income_high"] = str_high;
+
+        this.accessAPI();
+    }
+    handleFilterBelowPoverty = (filter_value) => {
+      // from 05% to 10%
+
+        let low = filter_value.substring(5,7);
+        let str_low = "below_poverty_rate_low=" + low;
+        this.state.filters["below_poverty_rate_low"] = str_low;
+
+        let high = filter_value.substring(12, 14);
+        let str_high = "below_poverty_rate_high=" + high;
+        this.state.filters["below_poverty_rate_high"] = str_high;
+        this.accessAPI();
+    }
+
+    handleFilterChildPoverty = (filter_value) => {
+      // from 05% to 10%
+
+        let low = filter_value.substring(5,7);
+        let str_low = "child_poverty_rate_low=" + low;
+        this.state.filters["child_poverty_rate_low"] = str_low;
+
+        let high = filter_value.substring(12, 14);
+        let str_high = "child_poverty_rate_high=" + high;
+        this.state.filters["child_poverty_rate_high"] = str_high;
+        this.accessAPI();
+    }
 
     handleSort = (sort_by) => {
         let str = "sort_by=" + sort_by;
@@ -151,12 +149,14 @@ class States extends Component{
     }
 
     accessAPI = () => {
-      let args = [this.state.sort, this.state.reverse, this.state.query].concat(this.state.filters);
+      let args = [this.state.sort, this.state.reverse, this.state.query];
       let api = this.state.api + this.state.page + "&";
       for(let i = 0; i < args.length; i++){
         if(args[i] != "")
-          args[i] += "&";
-          api += args[i]
+          api += args[i] + "&"
+      }
+      for(let i = 0; i < Object.keys(this.state.filters).length; i++){
+        api += this.state.filters[Object.keys(this.state.filters)[i]] + "&";
       }
       api = api.substring(0, api.length-1);
       console.log(this.state.sort)
@@ -202,7 +202,9 @@ class States extends Component{
               <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} search={this.handleSearch} modelName={"states"} handleFilter={this.handleFilter} filters={this.allStates} prompt={"Filter by State"}/>
               <NativeSelects data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
               <NativeSelects data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
-              <NativeSelects data={this.allStates} prompt={"Filter by States"} onChange={this.handleFilterName}></NativeSelects>
+              <NativeSelects data={["From 40000 to 50000", "From 50000 to 60000","From 60000 to 70000", "From 70000 to 80000"]} prompt={"Filter by Median Incomes"} onChange={this.handleFilterMedianIncome}></NativeSelects>
+              <NativeSelects data={["From 05% to 10%", "From 10% to 15%","From 15% to 20%", "From 20% to 25%"]} prompt={"Filter by Poverty Rates"} onChange={this.handleFilterBelowPoverty}></NativeSelects>
+              <NativeSelects data={["From 05% to 15%", "From 15% to 25%","From 25% to 35%"]} prompt={"Filter by Child Poverty Rates"} onChange={this.handleFilterChildPoverty}></NativeSelects>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>
