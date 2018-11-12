@@ -338,7 +338,7 @@ def all_search(query):
     total = len(news)
     if 'news_page' in request.args:
         result = list()
-        i = (int(request.args['page']) - 1) * SEARCH_ALL_INSTANCES_PER_PAGE
+        i = (int(request.args['news_page']) - 1) * SEARCH_ALL_INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + SEARCH_ALL_INSTANCES_PER_PAGE, total) + 1):
             result.append(news[i-1])
         news_json= {'data': [News.serialize(news) for news in result], 'total': total}
@@ -348,7 +348,7 @@ def all_search(query):
     total = len(states)
     if 'states_page' in request.args:
         result = list()
-        i = (int(request.args['page']) - 1) * SEARCH_ALL_INSTANCES_PER_PAGE
+        i = (int(request.args['states_page']) - 1) * SEARCH_ALL_INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + SEARCH_ALL_INSTANCES_PER_PAGE, total) + 1):
             result.append(states[i-1])
         states_json= {'data': [States.serialize(states) for states in result], 'total': total}
@@ -358,7 +358,7 @@ def all_search(query):
     total = len(charities)
     if 'charities_page' in request.args:
         result = list()
-        i = (int(request.args['page']) - 1) * SEARCH_ALL_INSTANCES_PER_PAGE
+        i = (int(request.args['charities_page']) - 1) * SEARCH_ALL_INSTANCES_PER_PAGE
         for i in range(i + 1, min(i + SEARCH_ALL_INSTANCES_PER_PAGE, total) + 1):
             result.append(charities[i-1])
         charities_json= {'data': [Charities.serialize(charity) for charity in result], 'total': total}
@@ -383,5 +383,5 @@ def after_request(response):
     return response
 
 # start the flask loop
-#app.run(debug=True, host='0.0.0.0', port=80)
-app.run(debug=True, host='127.0.0.1', port=5000)
+app.run(debug=True, host='0.0.0.0', port=80)
+#app.run(debug=True, host='127.0.0.1', port=5000)
