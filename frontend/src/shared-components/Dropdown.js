@@ -45,7 +45,9 @@ class NativeSelects extends React.Component {
 
   render() {
     const { classes } = this.props;
-
+    if (this.props.reset) {
+      this.state.value = this.props.prompt;
+    }
     return (
       <div className={classes.root}>
         <FormControl className={classes.formControl}>
