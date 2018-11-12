@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 import { Navbar, Nav, NavItem, Image } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import './Navbar.css';
 
 class CustomNavbar extends Component {
   constructor (props) {
     super(props);
-    this.state = {query: ""}
  }
-handleSearch = (data) => {
-    this.state.query = data.target[0].value;
-}
+  handleSearch = (data) => {
+    data.preventDefault();
+    this.props.history.push('/search/' + data.target[0].value);
+  }
   render() {
     return (
       <Navbar default collapseOnSelect>
@@ -39,12 +39,12 @@ handleSearch = (data) => {
             </NavItem>
           </Nav>
           <form onSubmit={this.handleSearch}>
-                            <input className="navbar-search-bar" type="text" placeholder="Search" />
-                            <input id="search-submit" type="submit" value="Submit" />
-                        </form>
+            <input className="navbar-search-bar" type="text" placeholder="Search" />
+            <input id="search-submit" type="submit" value="Submit" />
+          </form>
         </Navbar>
       </Navbar>
   );
   }
 }
-export default CustomNavbar;
+export default withRouter(CustomNavbar);
