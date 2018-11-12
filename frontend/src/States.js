@@ -93,10 +93,10 @@ class States extends Component{
 
     handleSearch = (data) => {
         data.preventDefault();
-        this.state.query = "q=" + data.target[0].value;
+        // this.state.query = "q=" + data.target[0].value;
+        this.state.query = data.target[0].value;
         this.state.page = 1;
         this.accessAPI();
-
     }
 
     handleFilterName = (filter_value) => {
@@ -161,7 +161,7 @@ class States extends Component{
       });
     }
     accessAPI = () => {
-      let args = [this.state.sort, this.state.reverse, this.state.query];
+      let args = [this.state.sort, this.state.reverse, "q="+this.state.query].concat(this.state.filters);
       let api = this.state.api + this.state.page + "&";
       for(let i = 0; i < args.length; i++){
         if(args[i] != "")
@@ -210,7 +210,6 @@ class States extends Component{
         let result = (
             <>
               <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} search={this.handleSearch} modelName={"states"} handleFilter={this.handleFilter} filters={this.allStates} prompt={"Filter by State"}/>
-
               <div className="row fss-bar">
               <div className="container row fss">
                 <div className="col-md-5 d-flex flex-column">
@@ -245,11 +244,12 @@ class States extends Component{
                 </div>
               </div>
               </div>
+              
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>
                     {this.state.data.map(obj =>
-                      <StatesCard image={obj.flag} state={obj.name} rank={obj.rank} median_income={obj.median_income} counties={obj.counties} child_poverty_rate={obj.child_poverty_rate} below_poverty_rate={obj.below_poverty_rate}/>
+                      <StatesCard query={this.state.query} image={obj.flag} state={obj.name} rank={obj.rank} median_income={obj.median_income} counties={obj.counties} child_poverty_rate={obj.child_poverty_rate} below_poverty_rate={obj.below_poverty_rate}/>
                     )}
                   </div>
                 </div>
