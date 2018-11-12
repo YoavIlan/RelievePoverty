@@ -5,6 +5,7 @@ import ReactPaginate from 'react-paginate';
 import fetch from 'node-fetch';
 import NativeSelects from './shared-components/Dropdown'
 import './Paginate.css'
+import './shared-components/Dropdown.css'
 
 
 class States extends Component{
@@ -152,42 +153,43 @@ class States extends Component{
             <>
               <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} modelName={"states"}/>
               <div className="container-fluid fss">
-                  <div className="row fss-bar">
-                <div className="col-md-4 d-flex flex-column">
+                <div className="row fss-bar">
+                    <div className="col-sm-3 d-flex flex-column">
+                    {prompt &&
+                    <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
+                    }
+                    </div>
+                    <div className="col-sm-3 d-flex flex-column">
+                    {prompt &&
+                    <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+                    }
+                    </div>
+                    <div className="d-flex flex-column search-form">
+                        {prompt &&
+                        <form onSubmit={this.handleSearch}>
+                            <input className="search-bar" type="text" placeholder="Search" />
+                            <input id="search-submit" type="submit" value="Submit" />
+                        </form>
+                        }
+                    </div>
+                </div>
+                <div className="row fss-bar">
+                <div className="col-sm-3 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["From 05% to 10%", "From 10% to 15%","From 15% to 20%", "From 20% to 25%"]} prompt={"Filter by Poverty Rates"} onChange={this.handleFilterBelowPoverty}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
-                }
-                </div>
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <form onSubmit={this.handleSearch}>
-                    <input className="search-bar" type="text" placeholder="Search" />
-                    <input id="search-submit" type="submit" value="Submit" />
-                </form>
-                }
-                </div>
-                <div className="col-md-4 d-flex flex-column">
+                <div className="col-sm-3 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["From 40000 to 50000", "From 50000 to 60000","From 60000 to 70000", "From 70000 to 80000"]} prompt={"Filter by Median Incomes"} onChange={this.handleFilterMedianIncome}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
-                }
-                </div>
-                <div className="col-md-4 d-flex flex-column"></div>
-                <div className="col-md-4 d-flex flex-column">
+                <div className="col-sm-3 d-flex flex-column">
                 {prompt &&
                 <NativeSelects reset={this.state.reset} data={["From 05% to 15%", "From 15% to 25%","From 25% to 35%"]} prompt={"Filter by Child Poverty Rates"} onChange={this.handleFilterChildPoverty}></NativeSelects>
                 }
                 </div>
-                <div className="col-md-4 d-flex flex-column">
+                <div className="col-sm-3 d-flex flex-column" id="reset">
                 {prompt &&
                 <button onClick={this.reset}>Reset</button>
                 }

@@ -2,33 +2,21 @@
     margin: 0px !important;
 }
 
-
 label + .MuiInput-formControl-34{
     margin-top: 0px !important;
 }
 
-/*.MuiInput-underline-37:before{
+.MuiInput-underline-37:before{
     border-bottom: 1px solid #e2e2e2 !important;
-}*/
+}
 
+/*Regular expression meaning- starts with Mui*/
 [class^="Mui"]{
     color: #e2e2e2 !important;
 }
 
-[class^="NativeSelects"]{
-    justify-content: center;
+.search-form, #reset{
+    padding-right: 0px;
+    position: absolute;
+    right: 1%;
 }
-
-/* [class= "MuiSelect-icon"]{
-    color: #e2e2e2 !important;
-} */
-/*
-div[class^="Mui"][class$="-2"]{
-    color: purple;
-    border-bottom: 1px solid #e2e2e2 !important;
-}
-
-[class^="Mui"][class$="::before"]{
-    color: purple;
-    border-bottom: 1px solid #e2e2e2 !important;
-}*/
