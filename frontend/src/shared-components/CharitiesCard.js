@@ -12,7 +12,8 @@ class CharitiesCard extends Component {
         let affiliation = this.props.affiliation;
         let tax_classification = <Highlighter searchWords={[query]} textToHighlight={this.props.tax_classification}/>;
         let state = <Highlighter searchWords={[query]} textToHighlight={this.props.state}/>;
-        let rating = <Highlighter searchWords={[query]} textToHighlight={this.props.rating}/>;
+        let rating = <Highlighter searchWords={[query]} textToHighlight={String(this.props.rating)}/>;
+        console.log(this.props.rating)
         let id = this.props.id;
         return <div className="col-md-4 d-flex">
             <div className="card mb-4 box-shadow">
