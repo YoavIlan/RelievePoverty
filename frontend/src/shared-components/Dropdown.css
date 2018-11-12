@@ -7,10 +7,21 @@ label + .MuiInput-formControl-34{
     margin-top: 0px !important;
 }
 
-.MuiInput-underline-37:before{
+/*.MuiInput-underline-37:before{
+    border-bottom: 1px solid #e2e2e2 !important;
+}*/
+
+[class^="Mui"]{
+    color: #e2e2e2;
+    border-bottom: .008px solid #e2e2e2 !important;
+}
+/*
+div[class^="Mui"][class$="-2"]{
+    color: purple;
     border-bottom: 1px solid #e2e2e2 !important;
 }
 
-.MuiInputBase-input-56, .MuiSelect-icon-32{
-    color: #e2e2e2 !important;
-}
+[class^="Mui"][class$="::before"]{
+    color: purple;
+    border-bottom: 1px solid #e2e2e2 !important;
+}*/

@@ -159,8 +159,6 @@ class States extends Component{
         api += this.state.filters[Object.keys(this.state.filters)[i]] + "&";
       }
       api = api.substring(0, api.length-1);
-      console.log(this.state.sort)
-      console.log(api);
       this.getJSON(api).then(response => {
           this.setState(JSON.parse(JSON.stringify(response)))
       })
@@ -200,11 +198,36 @@ class States extends Component{
         return(
             <>
               <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} search={this.handleSearch} modelName={"states"} handleFilter={this.handleFilter} filters={this.allStates} prompt={"Filter by State"}/>
-              <NativeSelects data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
-              <NativeSelects data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
-              <NativeSelects data={["From 40000 to 50000", "From 50000 to 60000","From 60000 to 70000", "From 70000 to 80000"]} prompt={"Filter by Median Incomes"} onChange={this.handleFilterMedianIncome}></NativeSelects>
-              <NativeSelects data={["From 05% to 10%", "From 10% to 15%","From 15% to 20%", "From 20% to 25%"]} prompt={"Filter by Poverty Rates"} onChange={this.handleFilterBelowPoverty}></NativeSelects>
-              <NativeSelects data={["From 05% to 15%", "From 15% to 25%","From 25% to 35%"]} prompt={"Filter by Child Poverty Rates"} onChange={this.handleFilterChildPoverty}></NativeSelects>
+
+              <div className="row fss-bar">
+              <div className="container row fss">
+                <div className="col-md-5 d-flex flex-column">
+                {prompt &&
+                <NativeSelects data={["From 05% to 10%", "From 10% to 15%","From 15% to 20%", "From 20% to 25%"]} prompt={"Filter by Poverty Rates"} onChange={this.handleFilterBelowPoverty}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-5 d-flex flex-column">
+                {prompt &&
+                <NativeSelects data={this.sorts} prompt={"Sort By:"} onChange={this.handleSort}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-5 d-flex flex-column">
+                {prompt &&
+                <NativeSelects data={["From 40000 to 50000", "From 50000 to 60000","From 60000 to 70000", "From 70000 to 80000"]} prompt={"Filter by Median Incomes"} onChange={this.handleFilterMedianIncome}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-5 d-flex flex-column">
+                {prompt &&
+                <NativeSelects data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-5 d-flex flex-column">
+                {prompt &&
+                <NativeSelects data={["From 05% to 15%", "From 15% to 25%","From 25% to 35%"]} prompt={"Filter by Child Poverty Rates"} onChange={this.handleFilterChildPoverty}></NativeSelects>
+                }
+                </div>
+              </div>
+              </div>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>

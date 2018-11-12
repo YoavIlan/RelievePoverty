@@ -24,6 +24,11 @@
   left: 0
 }
 
+.row.fss-bar{
+  background-color: #1c1c1c;
+  padding-bottom: 1%;
+}
+
 .my-4 {
   position:relative;
   left: 4%;
