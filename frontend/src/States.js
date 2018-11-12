@@ -39,19 +39,20 @@ class States extends Component{
 
     handleSearch = (data) => {
         data.preventDefault();
-        // this.state.query = "q=" + data.target[0].value;
-        this.state.query = data.target[0].value;
+        this.state.query = "q=" + data.target[0].value;
         this.state.page = 1;
         this.accessAPI();
     }
 
     handleFilterName = (filter_value) => {
         let str = "name=" + filter_value;
+        this.state.page = 1;
         this.state.filters.push(str);
         this.accessAPI();
     }
 
     handleFilterMedianIncome = (filter_value) => {
+        this.state.page = 1;
         let low = filter_value.substring(5,10);
         let str_low = "median_income_low=" + low;
         this.state.filters["median_income_low"] = str_low;
@@ -64,7 +65,7 @@ class States extends Component{
     }
     handleFilterBelowPoverty = (filter_value) => {
       // from 05% to 10%
-
+        this.state.page = 1;
         let low = filter_value.substring(5,7);
         let str_low = "below_poverty_rate_low=" + low;
         this.state.filters["below_poverty_rate_low"] = str_low;
@@ -77,7 +78,7 @@ class States extends Component{
 
     handleFilterChildPoverty = (filter_value) => {
       // from 05% to 10%
-
+        this.state.page = 1;
         let low = filter_value.substring(5,7);
         let str_low = "child_poverty_rate_low=" + low;
         this.state.filters["child_poverty_rate_low"] = str_low;
@@ -89,6 +90,7 @@ class States extends Component{
     }
 
     handleSort = (sort_by) => {
+        this.state.page = 1;
         let str = "sort_by=" + sort_by.replace(/ /g, '_');
         this.state.sort = str;
         this.accessAPI();
@@ -107,7 +109,7 @@ class States extends Component{
       });
     }
     accessAPI = () => {
-      let args = [this.state.sort, this.state.reverse, "q="+this.state.query].concat(this.state.filters);
+      let args = [this.state.sort, this.state.reverse, this.state.query].concat(this.state.filters);
       let api = this.state.api + this.state.page + "&";
       for(let i = 0; i < args.length; i++){
         if(args[i] != "")
@@ -123,6 +125,7 @@ class States extends Component{
     }
 
     handleReverse = (reverse) => {
+        this.state.page = 1;
       if(reverse == "Descending")
         this.state.reverse = "reverse=true"
       else
@@ -139,17 +142,9 @@ class States extends Component{
 
     handlePageClick = (data) =>{
         this.state.page = data.selected + 1;
-        if(this.state.query === ""){
-            this.getJSON(this.state.api + this.state.page).then(response => {
-                this.setState(JSON.parse(JSON.stringify(response)))
-            });
-        }
-        else{
-            this.getJSON(this.state.api + this.state.page + "&q=" + this.state.query).then(response => {
-                this.setState(JSON.parse(JSON.stringify(response)))
-            });
-        }
+        this.accessAPI()
     }
+
 
     render(){
         let pageSize = 12.0;
@@ -216,6 +211,7 @@ class States extends Component{
                   pageCount={Math.ceil(this.state.total / pageSize)}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
+                  forcePage={this.state.page - 1}
                   onPageChange={this.handlePageClick}
                   containerClassName={"pagination"}
                   subContainerClassName={"pages pagination"}
