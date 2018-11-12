@@ -138,6 +138,12 @@ span.input-group-btn{
     border: 0px;
 }
 
+.reset-button{
+    background-color: #b35c22 !important;
+    color: #e2e2e2;
+    border: 0px;
+}
+
 input.search-bar{
   color: #e2e2e2;
   background-color: #121212;

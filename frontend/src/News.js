@@ -88,7 +88,7 @@ class News extends Component{
                     </div>
                     <div className="col-md-4 d-flex flex-column">
                     {prompt &&
-                    <button onClick={this.reset}>Reset</button>
+                    <button className="reset-button" onClick={this.reset}>Reset</button>
                     }
                     </div>
                   </div>

@@ -191,7 +191,7 @@ class States extends Component{
                 </div>
                 <div className="col-sm-3 d-flex flex-column" id="reset">
                 {prompt &&
-                <button onClick={this.reset}>Reset</button>
+                <button className="reset-button" onClick={this.reset}>Reset</button>
                 }
                 </div>
               </div>
