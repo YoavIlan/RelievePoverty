@@ -28,7 +28,7 @@ class Search extends Component{
 
     async componentWillReceiveProps(next) {
         this.setState({states: {data: [], total: 0}, news: {data: [], total: 0}, charities: {data: [], total: 0}, api: "https://api.relievepoverty.me/v1/search/" + this.props.match.params.query, states_page: 1, charities_page: 1, news_page: 1});
-        await this.getJSON('https://api.relievepoverty.me/v1/search/' + next.match.params.query + '?news_page=' + this.state.news_page + '&states_page=' + this.state.states_page + '&charities_page=' + this.state.charities_page).then(response => {
+        await this.getJSON('https://api.relievepoverty.me/v1/search/' + next.match.params.query + '?news_page=1&states_page=1&charities_page=1').then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         });
     }
