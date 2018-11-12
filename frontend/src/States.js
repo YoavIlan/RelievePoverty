@@ -200,9 +200,26 @@ class States extends Component{
         return(
             <>
               <Jumbotron title={"Learn More About Poverty by State in the U.S."} description={"Facts and figures of poverty in all 50 states"} search={this.handleSearch} modelName={"states"} handleFilter={this.handleFilter} filters={this.allStates} prompt={"Filter by State"}/>
-              <NativeSelects data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
-              <NativeSelects data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
-              <NativeSelects data={this.allStates} prompt={"Filter by States"} onChange={this.handleFilterName}></NativeSelects>
+
+              <div className="row fss-bar">
+              <div className="container row fss">
+                <div className="col-md-4 d-flex flex-column">
+                {prompt &&
+                <NativeSelects data={this.allStates} prompt={"Filter by state:"} onChange={this.handleFilterName}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-4 d-flex flex-column">
+                {prompt &&
+                <NativeSelects data={this.sorts} prompt={"Sort By:"} onChange={this.handleSort}></NativeSelects>
+                }
+                </div>
+                <div className="col-md-4 d-flex flex-column">
+                {prompt &&
+                <NativeSelects data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+                }
+                </div>
+              </div>
+              </div>
               <div className='album py-5 bg-light listingPage'>
                 <div className="container">
                   <div className='row'>
