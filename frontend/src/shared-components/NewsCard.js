@@ -5,7 +5,7 @@ import Highlighter from 'react-highlight-words';
 
 class NewsCard extends Component {
     render() {
-        let query = this.props.query === undefined ? [] : this.props.query.slice(2).split(" ");
+        let query = this.props.query === undefined ? [] : this.props.query.replace("q=", "").split(" ");
         let title = <Highlighter searchWords={query} textToHighlight={this.props.title}/>;
         let published_date = this.props.published_date;
         let image = this.props.image;

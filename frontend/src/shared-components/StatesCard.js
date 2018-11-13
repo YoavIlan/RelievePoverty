@@ -28,7 +28,7 @@ class StatesCard extends Component {
         let image = this.props.image;
         let state = this.props.state;
         let rank = this.props.rank;
-        let query = this.props.query === undefined ? [] : this.props.query.slice(2).split(" ");
+        let query = this.props.query === undefined ? [] : this.props.query.replace("q=", "").split(" ");
 
         return(
             <div className="col-md-4 d-flex">
