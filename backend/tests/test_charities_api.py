@@ -24,6 +24,28 @@ class CharitiesApiTests(unittest.TestCase):
 
         self.assertEqual(build_address(address), expected_output)
 
+    # @Albert@
+    def test_build_address_value_none(self):
+        address = {
+        "streetAddress1": None,
+        "streetAddress2": None,
+        "city": None,
+        "stateOrProvince": None,
+        "postalCode": None
+        }
+        expected_output = ""
+
+        self.assertEqual(build_address(address), expected_output)
+
+    # @Albert@
+    def test_build_address_no_field(self):
+        address = {
+        }
+        expected_output = ""
+
+        self.assertEqual(build_address(address), expected_output)
+
+
     # @Daniel@
     def test_build_address_missing_field(self):
         address = {
@@ -250,6 +272,8 @@ class CharitiesApiTests(unittest.TestCase):
             mock_get_patcher.stop()
 
             self.assertEqual(mock_stdout.getvalue(), expected_output)
+
+
 
     # @Daniel@
     @unittest.mock.patch('sys.stdout', new_callable=StringIO)
