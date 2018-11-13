@@ -103,7 +103,7 @@ describe('<CharitiesCard />', () => {
     it('renders CharitiesCard state', () => {
         const wrapper = shallow(<CharitiesCard id="5" median_income="10" name="Charity" state="Texas"/>);
         const actualState = wrapper.find("li").first();
-        expect(actualState.html()).toBe("<li><b>State:</b> Texas</li>");
+        expect(actualState.html()).toBe("<li><b>State:</b> <span><span class=\"\">Texas</span></span></li>");
     });
 
     // @Colin@

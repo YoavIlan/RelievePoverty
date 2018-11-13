@@ -10,20 +10,19 @@ class CharitiesCard extends Component {
         let image = this.props.image;
         let title = this.props.title;
         let affiliation = this.props.affiliation;
-        let tax_classification = <Highlighter searchWords={[query]} textToHighlight={this.props.tax_classification}/>;
-        let state = <Highlighter searchWords={[query]} textToHighlight={this.props.state}/>;
-        let rating = <Highlighter searchWords={[query]} textToHighlight={String(this.props.rating)}/>;
-        console.log(this.props.rating)
+        let tax_classification = <Highlighter searchWords={query} textToHighlight={this.props.tax_classification}/>;
+        let state = <Highlighter searchWords={query} textToHighlight={this.props.state}/>;
+        let rating = <Highlighter searchWords={query} textToHighlight={String(this.props.rating)}/>;
         let id = this.props.id;
         return <div className="col-md-4 d-flex">
             <div className="card mb-4 box-shadow">
                 <img className="card-img-top d-flex" src={image} alt="Card"/>
                 <div className="card-body d-flex flex-column">
-                    <h5 className="card-title"><Highlighter searchWords={[query]} textToHighlight={title}/> </h5>
+                    <h5 className="card-title"><Highlighter searchWords={query} textToHighlight={title}/> </h5>
                     <ul className="card-text">
                         <li><b>State:</b> {state}</li>
                         {rating !== undefined && <li><b>Rating:</b> {rating}</li>}
-                        {affiliation !== undefined && <li><b>Affiliation:</b> <Highlighter searchWords={[query]} textToHighlight={affiliation}/></li>}
+                        {affiliation !== undefined && <li><b>Affiliation:</b> <Highlighter searchWords={query} textToHighlight={affiliation}/></li>}
                         {tax_classification !== undefined && <li><b>Classification:</b> {tax_classification}</li>}
                     </ul>
                     <Link to={`/charities/${id}`}  className="btn btn-primary mt-auto">More Information</Link>

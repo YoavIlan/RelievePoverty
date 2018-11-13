@@ -28,13 +28,14 @@ class StatesCard extends Component {
         let image = this.props.image;
         let state = this.props.state;
         let rank = this.props.rank;
-        let query = this.props.query.split(" ");
+        let query = this.props.query === undefined ? [] : this.props.query.split(" ");
+
         return(
             <div className="col-md-4 d-flex">
               <div className="card mb-4 box-shadow">
                 <img className="card-img-top d-flex" id="developer-img" src={image} alt="Card image cap" styles="height: 212px !important; width:320px !important"></img>
                 <div className="card-body d-flex flex-column">
-                  <h5 className="card-title"><Highlighter searchWords={[query]} textToHighlight={state}/> </h5>
+                  <h5 className="card-title"><Highlighter searchWords={query} textToHighlight={state}/> </h5>
                       <div className="card-text">
                       <b>Ranking</b>
                         <p>{rank}{getRank(rank)} out of 50 states for its poverty rate</p>
@@ -45,7 +46,7 @@ class StatesCard extends Component {
                         <b>Median Income</b>
                         <p>${median_income}</p>
                         <b>County with the highest poverty rates</b>
-                        <p><Highlighter searchWords={[query]} textToHighlight={counties}/></p>
+                        <p><Highlighter searchWords={query} textToHighlight={counties}/></p>
                       </div>
                   <Link to={`/states/${state}`}  className="btn btn-primary mt-auto">More Information</Link>
                 </div>

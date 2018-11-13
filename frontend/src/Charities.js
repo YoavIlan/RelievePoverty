@@ -195,7 +195,6 @@ class Charities extends Component {
             api += this.state.filters[Object.keys(this.state.filters)[i]] + "&";
         }
         api = api.substring(0, api.length - 1);
-        console.log(api)
         this.getJSON(api).then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         })
