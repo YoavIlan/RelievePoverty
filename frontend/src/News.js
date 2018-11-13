@@ -66,6 +66,13 @@ class News extends Component {
         this.accessAPI();
     }
 
+    handleFilterDate = (filter_value) => {
+        let str = "date=" + filter_value;
+        this.state.page = 1;
+        this.state.filters['date'] = str;
+        this.accessAPI();
+    }
+
     handleFilterYear = (filter_value) => {
         let str = "year=" + filter_value;
         this.state.page = 1;
@@ -147,6 +154,11 @@ class News extends Component {
                         <div className="col-md-4 d-flex flex-column">
                             {prompt &&
                                 <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+                            }
+                        </div>
+                        <div className="col-md-4 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={["past_week", "past_month", "past_year"]} prompt={"Filter by Date"} onChange={this.handleFilterDate}></NativeSelects>
                             }
                         </div>
                         <div className="d-flex flex-column search-form">

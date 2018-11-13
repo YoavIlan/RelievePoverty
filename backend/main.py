@@ -117,9 +117,9 @@ def getAllNews():
     now = datetime.datetime.now()
     days = 0
     if 'date' in request.args:
-        if(request.args['date'] == 'past year'):
+        if(request.args['date'] == 'past_year'):
             days = 365
-        elif(request.args['date'] == 'past month'):
+        elif(request.args['date'] == 'past_month'):
             days = 30
         else:
             days = 7
