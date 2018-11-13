@@ -162,7 +162,7 @@ def getAllCharities():
         charities = charities_search(query)
 
     # Filters out any instances using the given filters
-    filters = ['state', 'rating', 'affiliation','tax_classification', 'cause']
+    filters = ['state', 'rating', 'affiliation','tax_classification', 'cause_name']
     for fil in filters:
         if(fil in request.args):
             charities = filter(lambda n: str(Charities.serialize(n)[fil]).lower() == request.args[fil].lower(), charities)
