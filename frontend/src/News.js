@@ -26,11 +26,11 @@ class News extends Component {
     }
 
     sorts = [
-        "title",
-        "source",
-        "state",
-        "author",
-        "published_date"
+        "Title",
+        "Source",
+        "State",
+        "Author",
+        "Published Date"
     ]
 
     getJSON(url) {
@@ -99,7 +99,7 @@ class News extends Component {
 
     handleSort = (sort_by) => {
         this.state.page = 1;
-        let str = "sort_by=" + sort_by.replace(/ /g, '_');
+        let str = "sort_by=" + sort_by.replace(/ /g, '_').toLowerCase();
         this.state.sort = str;
         this.accessAPI();
     }
