@@ -147,9 +147,9 @@ class News extends Component {
                         </div>
                         <div className="col-md-4 d-flex flex-column">
                             {prompt &&
-                                <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+                                <NativeSelects reset={this.state.reset} data={["Associated Press", "ABC News", "CNN", "The New York Times", "The Huffington Post"]} prompt={"Filter by Source"} onChange={this.handleFilterSource}></NativeSelects>
                             }
-                        </div>
+                        </div>  
                         <div className="d-flex flex-column search-form">
                             {prompt &&
                                 <form onSubmit={this.handleSearch}>
@@ -162,9 +162,10 @@ class News extends Component {
                     <div className="row fss-bar">
                         <div className="col-md-4 d-flex flex-column">
                             {prompt &&
-                                <NativeSelects reset={this.state.reset} data={["Associated Press", "ABC News", "CNN", "The New York Times", "The Huffington Post"]} prompt={"Filter by Source"} onChange={this.handleFilterSource}></NativeSelects>
+                                <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
                             }
                         </div>
+
                         <div className="col-md-3 d-flex flex-column" id="reset">
                             {prompt &&
                                 <button className="reset-button" onClick={this.reset}>Reset</button>
