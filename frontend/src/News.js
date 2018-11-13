@@ -26,11 +26,11 @@ class News extends Component {
     }
 
     sorts = [
-        "title",
-        "source",
-        "state",
-        "author",
-        "published_date"
+        "Title",
+        "Source",
+        "State",
+        "Author",
+        "Published Date"
     ]
 
     getJSON(url) {
@@ -67,18 +67,12 @@ class News extends Component {
     }
 
     handleFilterDate = (filter_value) => {
-        let str = "date=" + filter_value;
+        let str = "date=" + filter_value.replace(/ /g, '_').toLowerCase();;
         this.state.page = 1;
         this.state.filters['date'] = str;
         this.accessAPI();
     }
 
-    handleFilterYear = (filter_value) => {
-        let str = "year=" + filter_value;
-        this.state.page = 1;
-        this.state.filters['year'] = str;
-        this.accessAPI();
-    }
 
     handleSearch = (data) => {
         data.preventDefault();
@@ -99,7 +93,7 @@ class News extends Component {
 
     handleSort = (sort_by) => {
         this.state.page = 1;
-        let str = "sort_by=" + sort_by.replace(/ /g, '_');
+        let str = "sort_by=" + sort_by.replace(/ /g, '_').toLowerCase();
         this.state.sort = str;
         this.accessAPI();
     }
@@ -178,7 +172,7 @@ class News extends Component {
                         </div>
                         <div className="col-md-4 d-flex flex-column">
                             {prompt &&
-                                <NativeSelects reset={this.state.reset} data={["past_week", "past_month", "past_year"]} prompt={"Filter by Date"} onChange={this.handleFilterDate}></NativeSelects>
+                                <NativeSelects reset={this.state.reset} data={["Past Week", "Past Month", "Past Year"]} prompt={"Filter by Date"} onChange={this.handleFilterDate}></NativeSelects>
                             }
                         </div>
                     </div>

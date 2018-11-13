@@ -87,9 +87,9 @@ class Charities extends Component {
         "Youth Development, Shelter, and Crisis Services"
     ]
     sorts = [
-        "rating",
-        "name",
-        "state"
+        "Rating",
+        "Name",
+        "State"
     ]
 
     getJSON(url) {
@@ -156,7 +156,7 @@ class Charities extends Component {
 
     handleSort = (sort_by) => {
         this.state.page = 1;
-        let str = "sort_by=" + sort_by;
+        let str = "sort_by=" + sort_by.replace(/ /g, '_').toLowerCase();
         this.state.sort = str;
         this.accessAPI();
     }

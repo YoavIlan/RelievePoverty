@@ -25,11 +25,11 @@ class States extends Component{
     }
 
     sorts = [
-      "median income",
-      "rank",
-      "name",
-      "below poverty rate",
-      "child poverty rate"
+      "Median Income",
+      "Rank",
+      "Name",
+      "Below Poverty Rate",
+      "Child Poverty Rate"
     ]
 
     getJSON(url) {
@@ -92,7 +92,7 @@ class States extends Component{
 
     handleSort = (sort_by) => {
         this.state.page = 1;
-        let str = "sort_by=" + sort_by.replace(/ /g, '_');
+        let str = "sort_by=" + sort_by.replace(/ /g, '_').toLowerCase();
         this.state.sort = str;
         this.accessAPI();
     }
