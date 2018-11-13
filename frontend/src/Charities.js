@@ -270,7 +270,7 @@ class Charities extends Component {
                     <div className="container">
                         <div className='row'>
                             {this.state.data.map(obj =>
-                                <CharitiesCard query={this.state.query.length === undefined ? "q= " : this.state.query} image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id} />
+                                <CharitiesCard query={this.state.query.length === undefined ? "q= " : this.state.query} mission={obj.mission} image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id} />
                             )}
                         </div>
                     </div>

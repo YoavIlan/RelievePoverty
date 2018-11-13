@@ -64,7 +64,7 @@ class Search extends Component{
                 <h3 className="jumbotron-heading">Charities</h3>
                   <div className='row'>
                     {this.state.charities.data.map(obj =>
-                      <CharitiesCard image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id} query={this.props.match.params.query}/>
+                      <CharitiesCard image={obj.img} title={obj.name} mission={obj.mission} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id} query={this.props.match.params.query}/>
                     )}
                   </div>
                 </div>
