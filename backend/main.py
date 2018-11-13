@@ -117,12 +117,21 @@ def getAllNews():
     now = datetime.datetime.now()
     days = 0
     if 'date' in request.args:
+<<<<<<< HEAD
         if(request.args['date'] == 'past year'):
             days = 365
         elif(request.args['date'] == 'past month'):
             days = 30
         else:
             days = 7
+=======
+        if(request.args['date'] == 'year'):
+            days = 365
+        elif(request.args['date'] == 'month'):
+            days = 30
+        else:
+            days = 1
+>>>>>>> 50b0a312868a72d63822347ccaf02539c704f399
         news = filter(lambda n: (now - News.serialize(n)['published_date']).days < days, news)
     filters = ['state', 'author', 'source']
     for fil in filters:

@@ -30,6 +30,13 @@ describe('<States />', () => {
         await inst.componentWillMount();
         expect(wrapper.state().total).toEqual(50);
     });
+
+    // @Uriel@
+    it('shows reset button', async () => {
+        const wrapper = await shallow(<News />);
+        const filters = wrapper.find("#reset");
+        expect(filters.length).toBe(1);
+    });
 });
 
 describe('<Charities />', () =>{
@@ -40,6 +47,13 @@ describe('<Charities />', () =>{
         await inst.componentWillMount();
         expect(wrapper.state().total).toEqual(301);
     });
+
+    // @Uriel@
+    it('shows reset button', async () => {
+        const wrapper = await shallow(<News />);
+        const filters = wrapper.find("#reset");
+        expect(filters.length).toBe(1);
+    });
 });
 
 describe('<News />', () =>{
@@ -49,6 +63,13 @@ describe('<News />', () =>{
         const inst = wrapper.instance();
         await inst.componentWillMount();
         expect(wrapper.state().total).toEqual(237);
+    });
+
+    // @Uriel@
+    it('shows reset button', async () => {
+        const wrapper = await shallow(<News />);
+        const filters = wrapper.find("#reset");
+        expect(filters.length).toBe(1);
     });
 });
 
