@@ -207,16 +207,23 @@ class Charities extends Component {
                 <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"} filters={[]} prompt={"Search"} />
                 <div className="container-fluid fss">
                     <div className="row fss-bar">
-                        <div className="col-sm-2 d-flex flex-column">
+                        <div className="col-sm-3 d-flex flex-column">
                             {prompt &&
                                 <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
                             }
                         </div>
-                        <div className="col-sm-2 d-flex flex-column">
+                        <div className="col-sm-2 d-flex flex-column" style={{marginRight: '8.4%'}}>
                             {prompt &&
-                                <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+                                <NativeSelects reset={this.state.reset} data={this.causes} prompt={"Filter by Cause"} onChange={this.handleFilterCause}></NativeSelects>
                             }
                         </div>
+
+                        <div className="col-sm-3 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={["1", "2", "3", "4"]} prompt={"Filter by Rating"} onChange={this.handleFilterRating}></NativeSelects>
+                            }
+                        </div>
+
                         <div className="d-flex flex-column search-form">
                             {prompt &&
                                 <form onSubmit={this.handleSearch}>
@@ -227,43 +234,26 @@ class Charities extends Component {
                         </div>
                     </div>
                     <div className="row fss-bar">
-                        <div className="col-sm-2 d-flex flex-column">
+                        <div className="col-sm-3 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+                            }
+                        </div>
+                        <div className="col-sm-3 d-flex flex-column">
                             {prompt &&
                                 <NativeSelects reset={this.state.reset} data={["Independent", "Central", "Subordinate"]} prompt={"Filter by Affiliation"} onChange={this.handleFilterAffiliation}></NativeSelects>
                             }
                         </div>
-
-                        <div className="col-sm-2 d-flex flex-column">
+                        <div className="col-sm-3 d-flex flex-column">
                             {prompt &&
                                 <NativeSelects reset={this.state.reset} data={this.allStates} prompt={"Filter by State"} onChange={this.handleFilterState}></NativeSelects>
                             }
                         </div>
-
-                        <div className="col-sm-3 d-flex flex-column">
-                            {prompt &&
-                                <NativeSelects reset={this.state.reset} data={["501(c)(3)", "501(c)(4)", "501(c)(5)", "501(c)(6)", "501(c)(7)", "501(c)(8)"]} prompt={"Filter by Tax Classification"} onChange={this.handleFilterTaxClassification}></NativeSelects>
-                            }
-                        </div>
-                    </div>
-                    <div className="row fss-bar">
-                        <div className="col-sm-2 d-flex flex-column">
-                            {prompt &&
-                                <NativeSelects reset={this.state.reset} data={this.causes} prompt={"Filter by Cause"} onChange={this.handleFilterCause}></NativeSelects>
-                            }
-                        </div>
-
-                        <div className="col-sm-2 d-flex flex-column">
-                            {prompt &&
-                                <NativeSelects reset={this.state.reset} data={["1", "2", "3", "4"]} prompt={"Filter by Rating"} onChange={this.handleFilterRating}></NativeSelects>
-                            }
-                        </div>
-
-                        <div className="col-sm-3 d-flex flex-column" id="reset">
+                        <div className="col-md-3 d-flex flex-column" id="reset">
                             {prompt &&
                                 <button className="reset-button" onClick={this.reset}>Reset</button>
                             }
                         </div>
-
                     </div>
                 </div>
                 <div className='album py-5 bg-light listingPage'>

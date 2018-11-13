@@ -1,22 +1,15 @@
 import React from 'react';
 import { configure, shallow, mount, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ReactPaginate from 'react-paginate';
 
 import StatesCard from './src/shared-components/StatesCard';
-import StateInstance from './src/StateInstance';
 import States from './src/States';
 
 import NewsCard from './src/shared-components/NewsCard';
-import NewsInstance from './src/NewsInstance';
 import News from './src/News';
 
 import CharitiesCard from './src/shared-components/CharitiesCard'
-import CharityInstance from './src/CharityInstance'
 import Charities from './src/Charities'
-
-import AboutCard from './src/shared-components/AboutCard';
-import About from './src/About';
 
 import Jumbotron from './src/shared-components/Jumbotron';
 
@@ -33,6 +26,7 @@ describe('<States />', () => {
 
     // @Uriel@
     it('shows reset button', async () => {
+<<<<<<< Updated upstream
         const wrapper = await shallow(<States />);
         const reset = wrapper.find("#reset");
         expect(reset.length).toBe(1);
@@ -43,6 +37,11 @@ describe('<States />', () => {
         const wrapper = await shallow(<States />);
         const statesSearch = wrapper.find(".search-bar");
         expect(statesSearch.length).toBe(1);
+=======
+        const wrapper = await shallow(<News />);
+        const filters = wrapper.find("#reset");
+        expect(filters.length).toBe(1);
+>>>>>>> Stashed changes
     });
 });
 
@@ -57,6 +56,7 @@ describe('<Charities />', () =>{
 
     // @Uriel@
     it('shows reset button', async () => {
+<<<<<<< Updated upstream
         const wrapper = await shallow(<Charities />);
         const reset = wrapper.find("#reset");
         expect(reset.length).toBe(1);
@@ -67,6 +67,11 @@ describe('<Charities />', () =>{
         const wrapper = await shallow(<Charities />);
         const charitiesSearch = wrapper.find(".search-bar");
         expect(charitiesSearch.length).toBe(1);
+=======
+        const wrapper = await shallow(<News />);
+        const filters = wrapper.find("#reset");
+        expect(filters.length).toBe(1);
+>>>>>>> Stashed changes
     });
 });
 
@@ -82,6 +87,7 @@ describe('<News />', () =>{
     // @Uriel@
     it('shows reset button', async () => {
         const wrapper = await shallow(<News />);
+<<<<<<< Updated upstream
         const reset = wrapper.find("#reset");
         expect(reset.length).toBe(1);
     });
@@ -91,6 +97,10 @@ describe('<News />', () =>{
         const wrapper = await shallow(<News />);
         const newsSearch = wrapper.find(".search-bar");
         expect(newsSearch.length).toBe(1);
+=======
+        const filters = wrapper.find("#reset");
+        expect(filters.length).toBe(1);
+>>>>>>> Stashed changes
     });
 });
 
@@ -155,3 +165,4 @@ describe('<CharitiesCard />', () => {
         expect(actualState.html()).toBe("<img class=\"card-img-top d-flex\" src=\"my_image\" alt=\"Card\"/>");
     });
 });
+
