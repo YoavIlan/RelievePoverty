@@ -3,25 +3,26 @@ import CharitiesCard from './shared-components/CharitiesCard';
 import Jumbotron from './shared-components/Jumbotron';
 import ReactPaginate from 'react-paginate';
 import fetch from 'node-fetch';
-import './Paginate.css'
-import NativeSelects from './shared-components/Dropdown'
+import './Paginate.css';
+import NativeSelects from './shared-components/Dropdown';
+import './shared-components/Dropdown.css';
 
 
 
-class Charities extends Component{
-    constructor (props) {
-       super(props);
-       this.state = {
-         data: [],
-         total: 0,
-         api: "https://api.relievepoverty.me/v1/charities?page=",
-         page: 1,
-         query: "",
-         sort: "",
-         reverse: "",
-         filters: {},
-         reset: true
-       }
+class Charities extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: [],
+            total: 0,
+            api: "https://api.relievepoverty.me/v1/charities?page=",
+            page: 1,
+            query: "",
+            sort: "",
+            reverse: "",
+            filters: {},
+            reset: true
+        }
     }
 
     allStates = [
@@ -77,18 +78,18 @@ class Charities extends Component{
         "Wyoming"
     ]
     causes = [
-      "Unknown",
-      "Food Banks, Food Pantries, and Food Distribution",
-      "Homeless Services",
-      "Children's and Family Services",
-      "Multipurpose Human Service Organizations",
-      "Social Services",
-      "Youth Development, Shelter, and Crisis Services"
+        "Unknown",
+        "Food Banks, Food Pantries, and Food Distribution",
+        "Homeless Services",
+        "Children's and Family Services",
+        "Multipurpose Human Service Organizations",
+        "Social Services",
+        "Youth Development, Shelter, and Crisis Services"
     ]
     sorts = [
-      "rating",
-      "name",
-      "state"
+        "rating",
+        "name",
+        "state"
     ]
 
     getJSON(url) {
@@ -103,7 +104,7 @@ class Charities extends Component{
         });
     }
 
-    handlePageClick = (data) =>{
+    handlePageClick = (data) => {
         this.state.page = data.selected + 1;
         this.accessAPI()
     }
@@ -131,8 +132,8 @@ class Charities extends Component{
 
     handleFilterCause = (filter_value) => {
         this.state.page = 1;
-        if(filter_value == "Unknown"){
-          filter_value = "NULL"
+        if (filter_value == "Unknown") {
+            filter_value = "NULL"
         }
         let str = "cause_name=" + filter_value;
         this.state.filters["cause_name"] = str;
@@ -162,139 +163,135 @@ class Charities extends Component{
 
     handleReverse = (reverse) => {
         this.state.page = 1;
-      if(reverse == "Descending")
-        this.state.reverse = "reverse=true"
-      else
-        this.state.reverse = ""
+        if (reverse == "Descending")
+            this.state.reverse = "reverse=true"
+        else
+            this.state.reverse = ""
 
-      this.accessAPI();
+        this.accessAPI();
     }
 
     reset = () => {
-      this.setState({
-        data: [],
-        total: 0,
-        api: "https://api.relievepoverty.me/v1/charities?page=",
-        page: 1,
-        query: "",
-        sort: "",
-        reverse: "",
-        filters: {},
-        reset: true
-      });
+        this.setState({
+            data: [],
+            total: 0,
+            api: "https://api.relievepoverty.me/v1/charities?page=",
+            page: 1,
+            query: "",
+            sort: "",
+            reverse: "",
+            filters: {},
+            reset: true
+        });
     }
     accessAPI = () => {
-      let args = [this.state.sort, this.state.reverse, this.state.query].concat(this.state.filters);
-      let api = this.state.api + this.state.page + "&";
-      for(let i = 0; i < args.length; i++){
-        if(args[i] != "")
-          api += args[i] + "&"
-      }
-      for(let i = 0; i < Object.keys(this.state.filters).length; i++){
-        api += this.state.filters[Object.keys(this.state.filters)[i]] + "&";
-      }
-      api = api.substring(0, api.length-1);
-      console.log(api)
-      this.getJSON(api).then(response => {
-          this.setState(JSON.parse(JSON.stringify(response)))
-      })
+        let args = [this.state.sort, this.state.reverse, this.state.query].concat(this.state.filters);
+        let api = this.state.api + this.state.page + "&";
+        for (let i = 0; i < args.length; i++) {
+            if (args[i] != "")
+                api += args[i] + "&"
+        }
+        for (let i = 0; i < Object.keys(this.state.filters).length; i++) {
+            api += this.state.filters[Object.keys(this.state.filters)[i]] + "&";
+        }
+        api = api.substring(0, api.length - 1);
+        console.log(api)
+        this.getJSON(api).then(response => {
+            this.setState(JSON.parse(JSON.stringify(response)))
+        })
     }
 
-    render(){
+    render() {
         let pageSize = 12.0;
         let result = (
             <>
-              <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"} filters={[]} prompt={"Search"}/>
-              <div className="container-fluid fss">
-                  <div className="row fss-bar">
-                  <div className="col-md-4 d-flex flex-column">
-                  {prompt &&
-                  <NativeSelects reset={this.state.reset} data={["Independent", "Central", "Subordinate"]} prompt={"Filter by Affiliation"} onChange={this.handleFilterAffiliation}></NativeSelects>
-                  }
-                  </div>
+                <Jumbotron title={"Search for Charities that Help to Relieve Poverty in the US"} description={"Charities throughout the US are doing great work every single day to combat poverty. Help them accomplish their goals by donating today."} search={this.handleSearch} modelName={"charities"} filters={[]} prompt={"Search"} />
+                <div className="container-fluid fss">
+                    <div className="row fss-bar">
+                        <div className="col-sm-2 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
+                            }
+                        </div>
+                        <div className="col-sm-2 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
+                            }
+                        </div>
+                        <div className="d-flex flex-column search-form">
+                            {prompt &&
+                                <form onSubmit={this.handleSearch}>
+                                    <input className="search-bar" type="text" placeholder="Search" />
+                                    <input id="search-submit" type="submit" value="Submit" />
+                                </form>
+                            }
+                        </div>
+                    </div>
+                    <div className="row fss-bar">
+                        <div className="col-sm-2 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={["Independent", "Central", "Subordinate"]} prompt={"Filter by Affiliation"} onChange={this.handleFilterAffiliation}></NativeSelects>
+                            }
+                        </div>
 
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
-                }
+                        <div className="col-sm-2 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={this.allStates} prompt={"Filter by State"} onChange={this.handleFilterState}></NativeSelects>
+                            }
+                        </div>
+
+                        <div className="col-sm-3 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={["501(c)(3)", "501(c)(4)", "501(c)(5)", "501(c)(6)", "501(c)(7)", "501(c)(8)"]} prompt={"Filter by Tax Classification"} onChange={this.handleFilterTaxClassification}></NativeSelects>
+                            }
+                        </div>
+                    </div>
+                    <div className="row fss-bar">
+                        <div className="col-sm-2 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={this.causes} prompt={"Filter by Cause"} onChange={this.handleFilterCause}></NativeSelects>
+                            }
+                        </div>
+
+                        <div className="col-sm-2 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={["1", "2", "3", "4"]} prompt={"Filter by Rating"} onChange={this.handleFilterRating}></NativeSelects>
+                            }
+                        </div>
+
+                        <div className="col-sm-3 d-flex flex-column" id="reset">
+                            {prompt &&
+                                <button className="reset-button" onClick={this.reset}>Reset</button>
+                            }
+                        </div>
+
+                    </div>
                 </div>
-
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <form onSubmit={this.handleSearch}>
-                    <input className="search-bar" type="text" placeholder="Search" />
-                    <input id="search-submit" type="submit" value="Submit" />
-                </form>
-                }
+                <div className='album py-5 bg-light listingPage'>
+                    <div className="container">
+                        <div className='row'>
+                            {this.state.data.map(obj =>
+                                <CharitiesCard query={this.state.query.length === undefined ? "q= " : this.state.query} image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id} />
+                            )}
+                        </div>
+                    </div>
+                    <ReactPaginate className='pagination'
+                        previousLabel={"Previous"}
+                        nextLabel={"Next"}
+                        breakLabel={<a href="#">...</a>}
+                        breakClassName={"break-me"}
+                        pageCount={Math.ceil(this.state.total / pageSize)}
+                        marginPagesDisplayed={2}
+                        pageRangeDisplayed={5}
+                        forcePage={this.state.page - 1}
+                        onPageChange={this.handlePageClick}
+                        containerClassName={"pagination"}
+                        subContainerClassName={"pages pagination"}
+                        activeClassName={"active"} />
                 </div>
-
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={this.allStates} prompt={"Filter by State"} onChange={this.handleFilterState}></NativeSelects>
-                }
-                </div>
-
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
-                }
-                </div>
-
-                <div className="col-md-4 d-flex flex-column"></div>
-
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={["501(c)(3)","501(c)(4)","501(c)(5)","501(c)(6)","501(c)(7)","501(c)(8)"]} prompt={"Filter by Tax Classification"} onChange={this.handleFilterTaxClassification}></NativeSelects>
-                }
-                </div>
-
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={this.causes} prompt={"Filter by Cause"} onChange={this.handleFilterCause}></NativeSelects>
-                }
-                </div>
-
-                <div className="col-md-4 d-flex flex-column"></div>
-
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <NativeSelects reset={this.state.reset} data={["1", "2", "3", "4"]} prompt={"Filter by Rating"} onChange={this.handleFilterRating}></NativeSelects>
-                }
-                </div>
-
-                <div className="col-md-4 d-flex flex-column">
-                {prompt &&
-                <button className="reset-button" onClick={this.reset}>Reset</button>
-                }
-                </div>
-
-              </div>
-              </div>
-              <div className='album py-5 bg-light listingPage'>
-                <div className="container">
-                  <div className='row'>
-                    {this.state.data.map(obj =>
-                      <CharitiesCard query={this.state.query.length === undefined  ? "q= ":this.state.query} image={obj.img} title={obj.name} affiliation={obj.affiliation} tax_classification={obj.tax_classification} state={obj.state} rating={obj.rating} id={obj.id}/>
-                    )}
-                  </div>
-                </div>
-                <ReactPaginate className='pagination'
-                  previousLabel={"Previous"}
-                  nextLabel={"Next"}
-                  breakLabel={<a href="#">...</a>}
-                  breakClassName={"break-me"}
-                  pageCount={Math.ceil(this.state.total / pageSize)}
-                  marginPagesDisplayed={2}
-                  pageRangeDisplayed={5}
-                  forcePage={this.state.page - 1}
-                  onPageChange={this.handlePageClick}
-                  containerClassName={"pagination"}
-                  subContainerClassName={"pages pagination"}
-                  activeClassName={"active"} />
-              </div>
             </>
         )
-        if(this.state.reset){
+        if (this.state.reset) {
             this.accessAPI()
         }
         this.state.reset = false;
