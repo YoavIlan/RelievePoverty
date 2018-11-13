@@ -18,11 +18,11 @@
 								"id": "df913cee-86d8-45e4-b32e-cc0e050b5b64",
 								"exec": [
 									"pm.globals.set(\"id\", \"1\");",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Body is correct\", function () {",
 									"    var body = {",
 									"      \"author\": \"24/7 Wall St\", ",
@@ -102,14 +102,14 @@
 								"id": "c12d6f7b-4480-4204-859c-61714638d96c",
 								"exec": [
 									"pm.globals.set(\"page\", \"1\");",
-									"pm.globals.set(\"state\", \"texas\");",
+									"pm.globals.set(\"state\", \"Texas\");",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Body is correct\", function () {",
 									"    var body = {",
 									"      \"data\": [",
@@ -228,7 +228,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "https://api.relievepoverty.me/v1/news?page={{page}}&state={{state}}",
+							"raw": "https://api.relievepoverty.me/v1/news?page={{page}}&state={{state}}&date={{date}}&source={{source}}&author={{author}}&q={{query}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -249,10 +249,30 @@
 									"key": "state",
 									"value": "{{state}}",
 									"description": "(Optional) Filters by state"
+								},
+								{
+									"key": "date",
+									"value": "{{date}}",
+									"description": "(Optional) Pass in \"past_month\", \"past_year\", or \"past_month\" to filter by all articles within the past month or year. Default is past week."
+								},
+								{
+									"key": "source",
+									"value": "{{source}}",
+									"description": "(Optional) Filters by source"
+								},
+								{
+									"key": "author",
+									"value": "{{author}}",
+									"description": "(Optional) Filters by author"
+								},
+								{
+									"key": "q",
+									"value": "{{query}}",
+									"description": "(Optional) Search"
 								}
 							]
 						},
-						"description": "Gets all news articles. The caller may also filter by state and page"
+						"description": "Gets all news articles. The caller may also filter by page, state, date, source, and author. Queries are also supported."
 					},
 					"response": [
 						{
@@ -296,6 +316,67 @@
 							"body": "[\n  {\n    \"author\": \"Rene Submissions\", \n    \"id\": 193, \n    \"image\": \"https://images.adsttc.com/media/images/5bab/9575/f197/cca2/3c00/0a47/large_jpg/open-uri20180926-28807-orvzu8.jpg?1537971547\", \n    \"published_date\": \"Thu, 27 Sep 2018 03:45:00 GMT\", \n    \"source\": \"Archdaily.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"Catholic Charities of the Rio Grande Valley (CCRGV), a non-profit inclusive organization, dedicated to reduce poverty and tend to the most vulnerable has teamed with Georgetown University to host a competition to design and build a permanent Humanitarian \", \n    \"title\": \"Open Call: Design a Humanitarian Respite Center - Restoring Human Dignity on the Border\", \n    \"url\": \"https://www.archdaily.com/902753/open-call-design-a-humanitarian-respite-center-restoring-human-dignity-on-the-border\"\n  }, \n  {\n    \"author\": \"Francisco Navas in New York\", \n    \"id\": 194, \n    \"image\": \"https://i.guim.co.uk/img/media/7f216d0ed58628203e18e38ffd5051c2a54e89b2/0_457_6309_3785/master/6309.jpg?width=1200&height=630&quality=85&auto=format&usm=12&fit=crop&crop=faces%2Centropy&bm=normal&ba=bottom%2Cleft&blend64=aHR0cHM6Ly9hc3NldHMuZ3VpbS5jby51ay\", \n    \"published_date\": \"Fri, 21 Sep 2018 09:00:22 GMT\", \n    \"source\": \"The Guardian (AU)\", \n    \"state\": \"Texas\", \n    \"summary\": \"Woman who fled poverty and violence in El Salvador more than 10 years ago says leaving would devastate her son\\u2019s care She gets to work at 4am, puts on her boots, hard hat and respirator and goes straight through noon. Drywall finishing is demanding labor \", \n    \"title\": \"'Our lives are in danger': mother with autistic son faces US deportation\", \n    \"url\": \"https://www.theguardian.com/us-news/2018/sep/21/mother-deportation-us-el-salvador-son-autism-trump-immigration\"\n  }, \n  {\n    \"author\": \"Scot McKnight\", \n    \"id\": 195, \n    \"image\": \"http://www.patheos.com/blogs/wp-content/themes/Patheos%20TwentySeventeen/assets/images/default-thumbs/default-img-bicycle.jpg\", \n    \"published_date\": \"Fri, 21 Sep 2018 09:25:47 GMT\", \n    \"source\": \"Patheos.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"By Vonda Dyer It\\u2019s \\u201cGiving Day\\u201d in north Texas, and I\\u2019m celebrating what our agency calls #minervasoul, because we have the privilege of supporting clients who want to end poverty as we know it through innovative higher education, others who want to eradi\", \n    \"title\": \"Vonda Dyer Speaks\", \n    \"url\": \"http://www.patheos.com/blogs/jesuscreed/2018/09/21/vonda-dyer-speaks/\"\n  }, \n  {\n    \"author\": \"Oliver Milman\", \n    \"id\": 196, \n    \"image\": \"https://i.guim.co.uk/img/media/4ffc6c5a032da5479dc7736d5b9c4458454ec778/0_182_5472_3283/master/5472.jpg?width=1200&height=630&quality=85&auto=format&fit=crop&crop=faces%2Centropy&bm=normal&ba=bottom%2Cleft&blend64=aHR0cHM6Ly9hc3NldHMuZ3VpbS5jby51ay9pbWFnZ\", \n    \"published_date\": \"Tue, 09 Oct 2018 18:04:14 GMT\", \n    \"source\": \"The Guardian (AU)\", \n    \"state\": \"Texas\", \n    \"summary\": \"New report warns \\u2018unprecedented\\u2019 changes needed to cut risk of extreme heat, drought, floods and poverty Faced with a major UN report that warns of floods, drought, extreme heat and increased poverty should the world not take radical action to address cli\", \n    \"title\": \"Trump silent as the UN warns of climate change catastrophe\", \n    \"url\": \"https://www.theguardian.com/us-news/2018/oct/09/trump-climate-change-report-ipcc-response\"\n  }, \n  {\n    \"author\": \"The Conversation\", \n    \"id\": 197, \n    \"image\": \"https://www.rawstory.com/wp-content/uploads/2018/10/Children-at-the-border-800x430.jpg\", \n    \"published_date\": \"Wed, 10 Oct 2018 14:08:26 GMT\", \n    \"source\": \"Rawstory.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"Recent media stories from the U.S.-Mexico border about immigration have largely missed the daily struggle of families and children in U.S. communities called \\u201ccolonias.\\u201d Colonias line both sides of the border, including the southern counties of Texas, Cal\", \n    \"title\": \"Youth living in settlements at US border suffer poverty and lack of health care\", \n    \"url\": \"https://www.rawstory.com/2018/10/youth-living-settlements-us-border-suffer-poverty-lack-health-care/\"\n  }, \n  {\n    \"author\": \"britney\", \n    \"id\": 198, \n    \"image\": \"https://truthout.org/wp-content/uploads/2018/10/GettyImages-1016849556-1200x828.jpg\", \n    \"published_date\": \"Fri, 12 Oct 2018 14:11:55 GMT\", \n    \"source\": \"Truthout.org\", \n    \"state\": \"Texas\", \n    \"summary\": \"Informal settlements along Mexico's border, called \\\"colonias,\\\" lack access to basic infrastructure. The post Youth Living in Settlements at US Border Suffer Poverty and Lack of Health Care appeared first on Truthout.\", \n    \"title\": \"Youth Living in Settlements at US Border Suffer Poverty and Lack of Health Care\", \n    \"url\": \"https://truthout.org/articles/youth-living-in-settlements-at-us-border-suffer-poverty-and-lack-of-health-care/\"\n  }, \n  {\n    \"author\": null, \n    \"id\": 199, \n    \"image\": \"http://usa.inquirer.net/files/2018/10/img_07392-620x775.jpg\", \n    \"published_date\": \"Tue, 16 Oct 2018 16:59:19 GMT\", \n    \"source\": \"Inquirer.net\", \n    \"state\": \"Texas\", \n    \"summary\": \"Lingap sa Mamamayan, the Iglesia Ni Cristo's (INC) local and international outreach program, which provides free livelihood assistance to needy communities, recently held two \\\"Aid to Humanity, Fight Poverty\\\" activities in New York and Connecticut. The Fil\", \n    \"title\": \"INC gives aid to the poor in US East Coast outreach\", \n    \"url\": \"http://usa.inquirer.net/15996/inc-gives-aid-poor-us-east-coast-outreach\"\n  }, \n  {\n    \"author\": \"Ashley A. Smith\", \n    \"id\": 200, \n    \"image\": \"https://www.insidehighered.com/sites/default/server_files/media/IMG_4426.jpg\", \n    \"published_date\": \"Wed, 03 Oct 2018 07:00:00 GMT\", \n    \"source\": \"Insidehighered.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"PHILADELPHIA -- Amarillo College president Russell Lowery-Hart and his staff frequently talk about a young woman called Maria. Maria is a first-generation student at the Texas community college. She is a racial minority who attends Amarillo part-time, rec\", \n    \"title\": \"College administrators meet to find solutions to reduce student poverty\", \n    \"url\": \"https://www.insidehighered.com/news/2018/10/03/college-administrators-meet-find-solutions-reduce-student-poverty\"\n  }, \n  {\n    \"author\": \"Emma Whitford\", \n    \"id\": 201, \n    \"image\": \"https://www.insidehighered.com/sites/default/server_files/media/GettyImages-638549866.jpg\", \n    \"published_date\": \"Tue, 02 Oct 2018 07:00:00 GMT\", \n    \"source\": \"Insidehighered.com\", \n    \"state\": \"Texas\", \n    \"summary\": \"College students with preschool-age children take longer to complete their degrees and are less likely to stay in college than their childless peers, according to a recent study published in the Journal of Higher Education. The study explored the relation\", \n    \"title\": \"Student parents complete degrees slower, drop out due to 'time poverty'\", \n    \"url\": \"https://www.insidehighered.com/news/2018/10/02/student-parents-complete-degrees-slower-drop-out-due-time-poverty\"\n  }\n]"
 						},
 						{
+							"name": "Filter by date",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/news?page=1&date=past%20month",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"news"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "(Optional) Filters by page number"
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "date",
+											"value": "past%20month",
+											"description": "(Optional) Filters by year published"
+										},
+										{
+											"key": "source",
+											"value": "{{source}}",
+											"description": "(Optional) Filters by source",
+											"disabled": true
+										},
+										{
+											"key": "author",
+											"value": "{{author}}",
+											"description": "(Optional) Filters by author",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"author\": \"Gabrielle Gurley\", \n      \"id\": 5, \n      \"image\": \"http://prospect.org/sites/default/files/styles/thumbnail/public/ap_18163709882706_1.jpg?itok=lKe4AXyp\", \n      \"published_date\": \"Thu, 18 Oct 2018 14:06:08 GMT\", \n      \"source\": \"Prospect.org\", \n      \"state\": \"Alabama\", \n      \"summary\": \"(AP Photo/Robert F. Bukaty, File) Mary Mayhew on May 5, 2018, in Augusta, Maine T here\\u2019s no better way to drive a stake through the heart of anti-poverty programs than to appoint a new administrator with documented success in heaving low-income adults and\", \n      \"title\": \"Mary, Mary, Quite Contrary\", \n      \"url\": \"http://prospect.org/article/mary-mary-quite-contrary\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 13, \n      \"image\": \"https://www.nationalobserver.com/sites/nationalobserver.com/files/img/2018/10/19/18-10-19-sheila_watt-cloutier-headshot_0.jpg\", \n      \"published_date\": \"Fri, 19 Oct 2018 20:25:13 GMT\", \n      \"source\": \"Nationalobserver.com\", \n      \"state\": \"Alaska\", \n      \"summary\": \"Climate change isn\\u2019t just about starving polar bears or melting ice, writes Sheila Watt-Cloutier. It is about human rights, human health, food security, poverty, loss of traditional knowledge, and global insecurity as traditional ways of life that are los\", \n      \"title\": \"It\\u2019s time to humanize climate change issues, says Sheila Watt-Cloutier\", \n      \"url\": \"https://www.nationalobserver.com/2018/10/19/opinion/its-time-humanize-climate-change-issues-says-sheila-watt-cloutier\"\n    }, \n    {\n      \"author\": \"Andi Murphy\", \n      \"id\": 18, \n      \"image\": \"https://cdn.vox-cdn.com/thumbor/s-GlJaX1_TDTWlvd2n5IE8Hju1I=/0x86:1200x714/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/13286927/navajonationmutn.jpg\", \n      \"published_date\": \"Wed, 17 Oct 2018 17:05:32 GMT\", \n      \"source\": \"Eater.com\", \n      \"state\": \"Arizona\", \n      \"summary\": \"Widespread poverty and food deserts left Native Americans with the highest rate of diabetes in the country \\u2014 but change is on the horizon as Native-led culinary programs are charting a new course for food in the Navajo Nation\", \n      \"title\": \"The Navajo Nation Is Reclaiming Its Native Food Culture\", \n      \"url\": \"https://www.eater.com/2018/10/17/17990098/navajo-nation-food-sovereignty-native-american-cuisine-arizona\"\n    }, \n    {\n      \"author\": \"AP, AP, AP\", \n      \"id\": 25, \n      \"image\": \"https://media.gannett-cdn.com/29906170001/29906170001_5850624941001_5850617909001-vs.jpg?pubId=29906170001?width=3200&height=1800&fit=crop\", \n      \"published_date\": \"Fri, 19 Oct 2018 01:23:03 GMT\", \n      \"source\": \"USA Today\", \n      \"state\": \"California\", \n      \"summary\": \"California may be famous for its Hollywood star power, wealth and technological innovation, but there is a different part of the state where poverty prevails in little farm towns halfway between Los Angeles and San Francisco. (Oct. 19)\", \n      \"title\": \"Poverty blossoms in \\u2018forgotten California\\u2019\", \n      \"url\": \"https://www.usatoday.com/videos/news/nation/2018/10/18/poverty-blossoms-\\u2018forgotten-california\\u2019/38202995/\"\n    }, \n    {\n      \"author\": \"Brian Melley\", \n      \"id\": 27, \n      \"image\": \"https://storage.googleapis.com/afs-prod/media/media:ed543ef37c99454b9930b688583f814d/3000.jpeg\", \n      \"published_date\": \"Fri, 19 Oct 2018 15:52:39 GMT\", \n      \"source\": \"Associated Press\", \n      \"state\": \"California\", \n      \"summary\": \"HURON, Calif. (AP) \\u2014 A rooster signals the start of the day as workers wearing sombreros emerge from the shadows and shuffle past boarded-up businesses in this tiny farm town. They converge on a dimly lit dirt lot outside Panaderia de Dios, a bakery sweet\", \n      \"title\": \"Poverty blossoms in 'forgotten California'...\", \n      \"url\": \"https://www.apnews.com/e94318e243084d62b2271f8f70a4a191\"\n    }, \n    {\n      \"author\": \"BRIAN MELLEY\", \n      \"id\": 30, \n      \"image\": \"https://static.seattletimes.com/wp-content/uploads/2018/10/urn-publicid-ap-org-371689fb315f4e3d855abb13022ede31California_At_A_Crossroads_Poverty_Mayor_09742-1200x630.jpg\", \n      \"published_date\": \"Fri, 19 Oct 2018 05:54:58 GMT\", \n      \"source\": \"Seattletimes.com\", \n      \"state\": \"California\", \n      \"summary\": \"HURON, Calif. (AP) \\u2014 Beyond the boarded-up buildings and patchwork fences that others view as eyesores, Huron Mayor Rey Leon sees potential in this tiny central California farm town that has been mired in poverty for decades. On a dirty restaurant wall, L\", \n      \"title\": \"Mayor returns home to try to lift town plagued by poverty\", \n      \"url\": \"https://www.seattletimes.com/nation-world/mayor-returns-home-to-try-to-lift-town-plagued-by-poverty/\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 33, \n      \"image\": \"http://usa.inquirer.net/files/2018/10/img_07392-620x775.jpg\", \n      \"published_date\": \"Tue, 16 Oct 2018 16:59:19 GMT\", \n      \"source\": \"Inquirer.net\", \n      \"state\": \"Connecticut\", \n      \"summary\": \"Lingap sa Mamamayan, the Iglesia Ni Cristo's (INC) local and international outreach program, which provides free livelihood assistance to needy communities, recently held two \\\"Aid to Humanity, Fight Poverty\\\" activities in New York and Connecticut. The Fil\", \n      \"title\": \"INC gives aid to the poor in US East Coast outreach\", \n      \"url\": \"http://usa.inquirer.net/15996/inc-gives-aid-poor-us-east-coast-outreach\"\n    }, \n    {\n      \"author\": \"Daniel J. Mitchell\", \n      \"id\": 49, \n      \"image\": \"https://fee.org/media/31250/johnson.jpg?anchor=center&mode=crop&height=466&widthratio=2.0171673819742489270386266094&rnd=131838493830000000\", \n      \"published_date\": \"Tue, 16 Oct 2018 14:00:44 GMT\", \n      \"source\": \"Fee.org\", \n      \"state\": \"Illinois\", \n      \"summary\": \"The poverty rate was consistently declining for twenty years\\u2014until 1966, when President Johnson decided to intervene.\", \n      \"title\": \"Poverty in the U.S. Was Plummeting\\u2014Until Lyndon Johnson Declared War On It\", \n      \"url\": \"https://fee.org/articles/poverty-in-the-us-was-plummeting-until-lyndon-johnson-declared-war-on-it/\"\n    }, \n    {\n      \"author\": \"chavens@sbtinfo.com (Cory Havens)\", \n      \"id\": 54, \n      \"image\": \"https://bloximages.newyork1.vip.townnews.com/southbendtribune.com/content/tncms/assets/v3/editorial/0/9c/09c765e6-8247-564c-a7cc-007db8e0e4ea/5bc374ab96edd.image.jpg?resize=200%2C200\", \n      \"published_date\": \"Sun, 21 Oct 2018 11:00:00 GMT\", \n      \"source\": \"Southbendtribune.com\", \n      \"state\": \"Indiana\", \n      \"summary\": \"A township trustee is legally responsible for managing all township property, keeping a written record of official proceedings and keeping those records open for public inspection. The trustee also provides assistance to residents in poverty.\", \n      \"title\": \"Township trustees Q&A\", \n      \"url\": \"https://www.southbendtribune.com/news/politics/township-trustees-q-a/article_a437e936-7087-58fd-b6dc-6f09a00dcbf6.html\"\n    }, \n    {\n      \"author\": \"John Hill\", \n      \"id\": 57, \n      \"image\": \"https://1.bp.blogspot.com/-Kj80_cnl9gY/W5Av8CpSIcI/AAAAAAAAW8c/qI24FIdwYLwjg-Q8fTYNhdy2jYV7X55SgCLcBGAs/w1200-h630-p-k-no-nu/Mallach-Divided.jpg\", \n      \"published_date\": \"Wed, 17 Oct 2018 16:00:00 GMT\", \n      \"source\": \"Blogspot.com\", \n      \"state\": \"Kansas\", \n      \"summary\": \"The Divided City: Poverty and Prosperity in America  by Alan Mallach  Island Press, 2018  Paperback, 326 pages     Although I live in New Yo...\", \n      \"title\": \"Book Review: The Divided City\", \n      \"url\": \"https://archidose.blogspot.com/2018/10/book-review-divided-city.html\"\n    }, \n    {\n      \"author\": \"think@kera.org (KERA), KERA\", \n      \"id\": 60, \n      \"image\": \"https://images.pexels.com/photos/97050/pexels-photo-97050.jpeg?auto=compress&cs=tinysrgb&h=350\", \n      \"published_date\": \"Thu, 18 Oct 2018 21:13:48 GMT\", \n      \"source\": \"Prx.org\", \n      \"state\": \"Kansas\", \n      \"summary\": \"Sarah Smarsh grew up in a long line of poor wheat farmers in rural Kansas. She joins us to talk about how working-class poverty stretches across generations \\u2013 and about our troubling tendency as a nation to judge people based on their wealth. Her new book\", \n      \"title\": \"The Forgotten Poverty Of Rural Whites\", \n      \"url\": \"https://beta.prx.org/stories/257263\"\n    }, \n    {\n      \"author\": \"Gabrielle Gurley\", \n      \"id\": 69, \n      \"image\": \"http://prospect.org/sites/default/files/styles/thumbnail/public/ap_18163709882706_1.jpg?itok=lKe4AXyp\", \n      \"published_date\": \"Thu, 18 Oct 2018 14:06:08 GMT\", \n      \"source\": \"Prospect.org\", \n      \"state\": \"Louisiana\", \n      \"summary\": \"(AP Photo/Robert F. Bukaty, File) Mary Mayhew on May 5, 2018, in Augusta, Maine T here\\u2019s no better way to drive a stake through the heart of anti-poverty programs than to appoint a new administrator with documented success in heaving low-income adults and\", \n      \"title\": \"Mary, Mary, Quite Contrary\", \n      \"url\": \"http://prospect.org/article/mary-mary-quite-contrary\"\n    }\n  ], \n  \"total\": 44\n}"
+						},
+						{
 							"name": "Filter by page",
 							"originalRequest": {
 								"method": "GET",
@@ -334,6 +415,190 @@
 							"header": [],
 							"cookie": [],
 							"body": "[\n  {\n    \"author\": \"24/7 Wall St\", \n    \"id\": 1, \n    \"image\": \"https://amp.businessinsider.com/images/5babbfef39ce1ace748b4568-2732-1366.jpg\", \n    \"published_date\": \"Thu, 27 Sep 2018 14:45:26 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alabama\", \n    \"summary\": \"Brian Stansberry/Wikimedia Commons/CC BY 4.0 Currently, close to 50 million Americans live below the official poverty income of $25,100 a year, or less, for a family of four. Poverty is the most extreme example of financial hardship, but the official pove\", \n    \"title\": \"50 million Americans live below the official poverty income \\u2014 here are the poorest towns in every US state\", \n    \"url\": \"https://247wallst.com/special-report/2018/05/02/poorest-town-in-every-state-3/\"\n  }, \n  {\n    \"author\": null, \n    \"id\": 2, \n    \"image\": \"https://opportunityatlas.org/public/images/share.png\", \n    \"published_date\": \"Mon, 08 Oct 2018 12:52:00 GMT\", \n    \"source\": \"Opportunityatlas.org\", \n    \"state\": \"Alabama\", \n    \"summary\": \"The \\\"Opportunity Atlas\\\" shows which neighborhoods in America offer children the best chance to rise out of poverty. ?? The Opportunity Atlas View Post ?\", \n    \"title\": \"The \\\"Opportunity Atlas\\\" shows which neighborhoods in America offer children the best chance to rise out of poverty.\", \n    \"url\": \"https://opportunityatlas.org\"\n  }, \n  {\n    \"author\": \"Greg Kaufmann\", \n    \"id\": 3, \n    \"image\": \"https://www.thenation.com/wp-content/uploads/2018/01/2526-Edit-img.jpg\", \n    \"published_date\": \"Mon, 01 Oct 2018 11:00:09 GMT\", \n    \"source\": \"Thenation.com\", \n    \"state\": \"Alabama\", \n    \"summary\": \"Greg Kaufmann In December, a group of low-income mothers in Mississippi will begin receiving $1,000 a month, no strings attached. The post How a Guaranteed Income Could Relieve the \\u2018Pressure Cooker\\u2019 of Poverty appeared first on The Nation.\", \n    \"title\": \"How a Guaranteed Income Could Relieve the \\u2018Pressure Cooker\\u2019 of Poverty\", \n    \"url\": \"https://www.thenation.com/article/how-a-guaranteed-income-could-relieve-the-pressure-cooker-of-poverty/\"\n  }, \n  {\n    \"author\": null, \n    \"id\": 4, \n    \"image\": \"http://www.modernhealthcare.com/apps/pbcsi.dll/storyimage/CH/20180927/NEWS/180929907/AR/0/AR-180929907.jpg&maxw=1200&maxh=630\", \n    \"published_date\": \"Thu, 27 Sep 2018 12:21:04 GMT\", \n    \"source\": \"Modernhealthcare.com\", \n    \"state\": \"Alabama\", \n    \"summary\": \"CMS Administrator Seema Verma insisted that Medicaid work requirements are working as intended to move people out of poverty, despite criticism that they're doing more harm than good.\", \n    \"title\": \"Verma touts work requirement successes, despite coverage loss\", \n    \"url\": \"http://www.modernhealthcare.com/article/20180927/NEWS/180929907\"\n  }, \n  {\n    \"author\": \"Gabrielle Gurley\", \n    \"id\": 5, \n    \"image\": \"http://prospect.org/sites/default/files/styles/thumbnail/public/ap_18163709882706_1.jpg?itok=lKe4AXyp\", \n    \"published_date\": \"Thu, 18 Oct 2018 14:06:08 GMT\", \n    \"source\": \"Prospect.org\", \n    \"state\": \"Alabama\", \n    \"summary\": \"(AP Photo/Robert F. Bukaty, File) Mary Mayhew on May 5, 2018, in Augusta, Maine T here\\u2019s no better way to drive a stake through the heart of anti-poverty programs than to appoint a new administrator with documented success in heaving low-income adults and\", \n    \"title\": \"Mary, Mary, Quite Contrary\", \n    \"url\": \"http://prospect.org/article/mary-mary-quite-contrary\"\n  }, \n  {\n    \"author\": \"jonlabelle\", \n    \"id\": 6, \n    \"image\": \"https://opportunityatlas.org/public/images/share.png\", \n    \"published_date\": \"Tue, 02 Oct 2018 05:47:01 GMT\", \n    \"source\": \"Opportunityatlas.org\", \n    \"state\": \"Alabama\", \n    \"summary\": \"Which neighborhoods in America offer children the best chance to rise out of poverty? The Opportunity Atlas answers this question using anonymous data following 20 million Americans from childhood to their mid-30s. Now you can trace the roots of today's a\", \n    \"title\": \"Opportunity Atlas\", \n    \"url\": \"https://www.opportunityatlas.org/\"\n  }, \n  {\n    \"author\": \"Angela Helm\", \n    \"id\": 7, \n    \"image\": \"https://i.kinja-img.com/gawker-media/image/upload/s--ubwhjGKZ--/c_fill,fl_progressive,g_center,h_900,q_80,w_1600/rmllkoghojvigx1jwe7g.png\", \n    \"published_date\": \"Tue, 09 Oct 2018 02:25:00 GMT\", \n    \"source\": \"Theroot.com\", \n    \"state\": \"Alabama\", \n    \"summary\": \"Gov. Phil Bryant, head of the state which ranks second to last in education in all 50 of these United States; a man who runs the government of a place with an actual Confederate flag in its state flag and where the poverty rate stands at an abysmal 20 per\", \n    \"title\": \"Gov. of Mississippi Has the Nerve to Talk About Being \\u2018Civilized\\u2019 After Black Teens Stage Controversial Halftime Show\", \n    \"url\": \"https://www.theroot.com/gov-of-mississippi-has-the-nerve-to-talk-about-being-1829610913\"\n  }, \n  {\n    \"author\": \"Abigail Geiger\", \n    \"id\": 8, \n    \"image\": \"http://www.pewresearch.org/wp-content/uploads/2018/10/FT_18.09.28_Suburbs_feature.jpg\", \n    \"published_date\": \"Tue, 02 Oct 2018 11:00:48 GMT\", \n    \"source\": \"Pewresearch.org\", \n    \"state\": \"Alabama\", \n    \"summary\": \"U.S. suburbs are evenly divided politically, but some have a clear Democratic or Republican tilt. Poverty has increased more sharply in the suburbs than in urban or rural counties. The post 5 facts about U.S. suburbs appeared first on Pew Research Center.\", \n    \"title\": \"5 facts about U.S. suburbs\", \n    \"url\": \"http://www.pewresearch.org/fact-tank/2018/10/02/5-facts-about-u-s-suburbs/\"\n  }, \n  {\n    \"author\": \"24/7 Wall St\", \n    \"id\": 9, \n    \"image\": \"https://amp.businessinsider.com/images/5babbfef39ce1ace748b4568-2732-1366.jpg\", \n    \"published_date\": \"Thu, 27 Sep 2018 14:45:26 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alaska\", \n    \"summary\": \"Brian Stansberry/Wikimedia Commons/CC BY 4.0 Currently, close to 50 million Americans live below the official poverty income of $25,100 a year, or less, for a family of four. Poverty is the most extreme example of financial hardship, but the official pove\", \n    \"title\": \"50 million Americans live below the official poverty income \\u2014 here are the poorest towns in every US state\", \n    \"url\": \"https://247wallst.com/special-report/2018/05/02/poorest-town-in-every-state-3/\"\n  }, \n  {\n    \"author\": \"Grant Suneson\", \n    \"id\": 10, \n    \"image\": \"https://s2.wp.com/wp-content/themes/vip/247wallst/images/247-50x50.png\", \n    \"published_date\": \"Thu, 04 Oct 2018 23:03:46 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alaska\", \n    \"summary\": \"Source: SeanPavonePhoto / Getty ImagesFrom 2016 to 2017, the U.S. economy improved in several key metrics. The median household income increased by more than $1,500, unemployment dropped from 4.9% to 4.4%, and the poverty rate fell from 14.0% to 13.4%. Wh\", \n    \"title\": \"America\\u2019s Richest and Poorest States\", \n    \"url\": \"http://247wallst.com/special-report/2018/10/04/americas-richest-and-poorest-states-6/\"\n  }, \n  {\n    \"author\": \"24/7 Wall Street, Michael B. Sauter, 24/7 Wall Street\", \n    \"id\": 11, \n    \"image\": \"https://www.gannett-cdn.com/-mm-/b2b05a4ab25f4fca0316459e1c7404c537a89702/c=0-0-1365-768/local/-/media/2018/09/28/USATODAY/usatsports/247WallSt.com-247WS-495549-slum-alabama.jpg?width=3200&height=1680&fit=crop\", \n    \"published_date\": \"Wed, 10 Oct 2018 12:10:57 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alaska\", \n    \"summary\": \"24/7 Wall Street reviewed 2017 data from the U.S. Census Bureau to identify 11 distinct groups of Americans who are more likely to live in poverty.\", \n    \"title\": \"Faces of poverty: What racial, social groups are more likely to experience it?\", \n    \"url\": \"https://247wallst.com/special-report/2018/09/28/faces-of-poverty?utm_source=google&utm_medium=amp&utm_campaign=speakable\"\n  }, \n  {\n    \"author\": \"24/7 Wall Street, Thomas C. Frohlich, Michael B. Sauter and Alexander Kent, 24/7 Wall Street\", \n    \"id\": 12, \n    \"image\": \"https://www.gannett-cdn.com/-mm-/b2b05a4ab25f4fca0316459e1c7404c537a89702/c=0-0-1365-768/local/-/media/2018/09/14/USATODAY/usatsports/poorest-cities-poverty-homeless.jpg?width=3200&height=1680&fit=crop\", \n    \"published_date\": \"Mon, 01 Oct 2018 10:00:10 GMT\", \n    \"source\": \"247wallst.com\", \n    \"state\": \"Alaska\", \n    \"summary\": \"24/7 Wall Street analyzed data from government and private sources, interviewed experts and studied the latest research examining the poverty problem.\", \n    \"title\": \"Progress in fighting poverty in America has slowed despite recent economic recovery\", \n    \"url\": \"https://247wallst.com/special-report/2018/09/27/poverty-in-america?utm_source=google&utm_medium=amp&utm_campaign=speakable\"\n  }\n]"
+						},
+						{
+							"name": "Search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/news?page=1&q=Trump",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"news"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1",
+											"description": "(Optional) Filters by page number"
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "date",
+											"value": "{{date}}",
+											"description": "(Optional) Pass in \"past_month\" or \"past_year\" to filter by all articles within the past month or year. Default is past week.",
+											"disabled": true
+										},
+										{
+											"key": "source",
+											"value": "{{source}}",
+											"description": "(Optional) Filters by source",
+											"disabled": true
+										},
+										{
+											"key": "author",
+											"value": "{{author}}",
+											"description": "(Optional) Filters by author",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "Trump",
+											"description": "(Optional) Search"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"author\": \"Jeff Madrick\", \n      \"id\": 78, \n      \"image\": \"https://www.thenation.com/wp-content/uploads/2018/10/maine-ebt-ap-img.jpg\", \n      \"published_date\": \"Thu, 18 Oct 2018 16:25:54 GMT\", \n      \"source\": \"Thenation.com\", \n      \"state\": \"Maine\", \n      \"summary\": \"Jeff Madrick It\\u2019s based on deeply flawed methodology, resulting from a study whose conclusions are arbitrary. In fact, poverty is seriously understated. The post That Trump Administration Claim That Poverty Is Low? Outright Flimflam. appeared first on The\", \n      \"title\": \"That Trump Administration Claim That Poverty Is Low? Outright Flimflam.\", \n      \"url\": \"https://www.thenation.com/article/that-trump-administration-claim-that-poverty-is-low-outright-flimflam/\"\n    }, \n    {\n      \"author\": \"https://www.dailymail.co.uk/home/search.html?s=&authornamef=Associated+Press\", \n      \"id\": 90, \n      \"image\": \"https://i.dailymail.co.uk/1/2018/09/24/06/wire-4505484-1537767365-91_636x382.jpg\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:36:12 GMT\", \n      \"source\": \"Daily Mail\", \n      \"state\": \"Maryland\", \n      \"summary\": \"WASHINGTON (AP) - As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come...\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"https://www.dailymail.co.uk/wires/ap/article-6200415/AP-FACT-CHECK-Trump-wrong-judges-plummeting-poverty.html\"\n    }, \n    {\n      \"author\": \"HOPE YEN, CALVIN WOODWARD, Associated Press\", \n      \"id\": 91, \n      \"image\": \"http://assets.startribune.com/static/img/branding/logos/strib-social-card.png?d=1537386305\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:30:20 GMT\", \n      \"source\": \"Startribune.com\", \n      \"state\": \"Maryland\", \n      \"summary\": \"As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come into starker relief.\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"http://www.startribune.com/ap-fact-check-trump-wrong-on-judges-plummeting-poverty/494096301/\"\n    }, \n    {\n      \"author\": \"By HOPE YEN and CALVIN WOODWARD Associated Press\", \n      \"id\": 92, \n      \"image\": \"https://bloximages.newyork1.vip.townnews.com/richmond.com/content/tncms/assets/v3/editorial/0/b0/0b05e02a-1298-5c50-96bb-3f67c760463c/5ba64f380561a.image.jpg?resize=891%2C630\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:26:21 GMT\", \n      \"source\": \"Associated Press\", \n      \"state\": \"Maryland\", \n      \"summary\": \"WASHINGTON (AP) \\u2014 As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come into starker relief.\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"https://apnews.com/9147bfd2be3c44baa752a280076815ce\"\n    }, \n    {\n      \"author\": \"https://www.dailymail.co.uk/home/search.html?s=&authornamef=Associated+Press\", \n      \"id\": 115, \n      \"image\": \"https://i.dailymail.co.uk/1/2018/09/24/06/wire-4505484-1537767365-91_636x382.jpg\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:36:12 GMT\", \n      \"source\": \"Daily Mail\", \n      \"state\": \"Missouri\", \n      \"summary\": \"WASHINGTON (AP) - As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come...\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"https://www.dailymail.co.uk/wires/ap/article-6200415/AP-FACT-CHECK-Trump-wrong-judges-plummeting-poverty.html\"\n    }, \n    {\n      \"author\": \"HOPE YEN, CALVIN WOODWARD, Associated Press\", \n      \"id\": 116, \n      \"image\": \"http://assets.startribune.com/static/img/branding/logos/strib-social-card.png?d=1537386305\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:30:20 GMT\", \n      \"source\": \"Startribune.com\", \n      \"state\": \"Missouri\", \n      \"summary\": \"As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come into starker relief.\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"http://www.startribune.com/ap-fact-check-trump-wrong-on-judges-plummeting-poverty/494096301/\"\n    }, \n    {\n      \"author\": \"By HOPE YEN and CALVIN WOODWARD Associated Press\", \n      \"id\": 117, \n      \"image\": \"https://bloximages.newyork1.vip.townnews.com/richmond.com/content/tncms/assets/v3/editorial/0/b0/0b05e02a-1298-5c50-96bb-3f67c760463c/5ba64f380561a.image.jpg?resize=891%2C630\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:26:21 GMT\", \n      \"source\": \"Associated Press\", \n      \"state\": \"Missouri\", \n      \"summary\": \"WASHINGTON (AP) \\u2014 As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come into starker relief.\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"https://apnews.com/9147bfd2be3c44baa752a280076815ce\"\n    }, \n    {\n      \"author\": \"https://www.dailymail.co.uk/home/search.html?s=&authornamef=Associated+Press\", \n      \"id\": 125, \n      \"image\": \"https://i.dailymail.co.uk/1/2018/09/24/06/wire-4505484-1537767365-91_636x382.jpg\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:36:12 GMT\", \n      \"source\": \"Daily Mail\", \n      \"state\": \"Nevada\", \n      \"summary\": \"WASHINGTON (AP) - As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come...\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"https://www.dailymail.co.uk/wires/ap/article-6200415/AP-FACT-CHECK-Trump-wrong-judges-plummeting-poverty.html\"\n    }, \n    {\n      \"author\": \"HOPE YEN, CALVIN WOODWARD, Associated Press\", \n      \"id\": 126, \n      \"image\": \"http://assets.startribune.com/static/img/branding/logos/strib-social-card.png?d=1537386305\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:30:20 GMT\", \n      \"source\": \"Startribune.com\", \n      \"state\": \"Nevada\", \n      \"summary\": \"As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come into starker relief.\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"http://www.startribune.com/ap-fact-check-trump-wrong-on-judges-plummeting-poverty/494096301/\"\n    }, \n    {\n      \"author\": \"By HOPE YEN and CALVIN WOODWARD Associated Press\", \n      \"id\": 127, \n      \"image\": \"https://bloximages.newyork1.vip.townnews.com/richmond.com/content/tncms/assets/v3/editorial/0/b0/0b05e02a-1298-5c50-96bb-3f67c760463c/5ba64f380561a.image.jpg?resize=891%2C630\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:26:21 GMT\", \n      \"source\": \"Associated Press\", \n      \"state\": \"Nevada\", \n      \"summary\": \"WASHINGTON (AP) \\u2014 As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come into starker relief.\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"https://apnews.com/9147bfd2be3c44baa752a280076815ce\"\n    }, \n    {\n      \"author\": \"By HOPE YEN and CALVIN WOODWARD, Associated Press\", \n      \"id\": 128, \n      \"image\": \"https://images.pexels.com/photos/230860/pexels-photo-230860.jpeg?auto=compress&cs=tinysrgb&h=350\", \n      \"published_date\": \"Mon, 24 Sep 2018 05:37:14 GMT\", \n      \"source\": \"Seattlepi.com\", \n      \"state\": \"Nevada\", \n      \"summary\": \"WASHINGTON (AP) \\u2014 As the midterm elections draw near, President Donald Trump's tendency to declare his campaign promises fulfilled when they aren't has come into starker relief. He insists poverty in the U.S. is \\\"plummeting,\\\" even though the number of poo\", \n      \"title\": \"AP FACT CHECK: Trump wrong on judges, 'plummeting' poverty\", \n      \"url\": \"https://www.seattlepi.com/news/politics/article/AP-FACT-CHECK-Trump-wrong-on-judges-13252356.php\"\n    }, \n    {\n      \"author\": \"Michelle Mark\", \n      \"id\": 138, \n      \"image\": \"https://amp.businessinsider.com/images/5bbf7e77dde8676ffa3e8043-1920-960.jpg\", \n      \"published_date\": \"Thu, 11 Oct 2018 16:45:59 GMT\", \n      \"source\": \"Thisisinsider.com\", \n      \"state\": \"New Jersey\", \n      \"summary\": \"The Trump administration is proposing weighing immigrants' income levels when determining if they should be allowed to enter the United States or receive a green card. The administration officially published a proposal for a new rule on the Federal Regist\", \n      \"title\": \"A proposed 'wealth test' could favor immigrants who earn 250% above the poverty rate, and it could be one of the Trump administration's most far-reaching immigration actions to date\", \n      \"url\": \"https://www.thisisinsider.com/trump-wealth-test-immigration-proposal-2018-10\"\n    }\n  ], \n  \"total\": 34\n}"
+						},
+						{
+							"name": "Filter by author",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/news?page=3&author=Unknown",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"news"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "3",
+											"description": "(Optional) Filters by page number"
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "date",
+											"value": "{{date}}",
+											"description": "(Optional) Pass in \"past_month\" or \"past_year\" to filter by all articles within the past month or year. Default is past week.",
+											"disabled": true
+										},
+										{
+											"key": "source",
+											"value": "{{source}}",
+											"description": "(Optional) Filters by source",
+											"disabled": true
+										},
+										{
+											"key": "author",
+											"value": "Unknown",
+											"description": "(Optional) Filters by author"
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"author\": \"Unknown\", \n      \"id\": 208, \n      \"image\": \"http://www.modernhealthcare.com/apps/pbcsi.dll/storyimage/CH/20180924/NEWS/180929946/AR/0/AR-180929946.jpg&maxw=1200&maxh=630\", \n      \"published_date\": \"Mon, 24 Sep 2018 19:21:00 GMT\", \n      \"source\": \"Modernhealthcare.com\", \n      \"state\": \"Virginia\", \n      \"summary\": \"As Virgina waits for the CMS to sign off on its pending Medicaid expansion request, it released a waiver seeking to impose work requirements and premiums on enrollees above the federal poverty level.\", \n      \"title\": \"Virginia looks to add Medicaid work requirements, premiums\", \n      \"url\": \"http://www.modernhealthcare.com/article/20180924/NEWS/180929946\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 209, \n      \"image\": \"http://www.modernhealthcare.com/apps/pbcsi.dll/storyimage/CH/20180927/NEWS/180929907/AR/0/AR-180929907.jpg&maxw=1200&maxh=630\", \n      \"published_date\": \"Thu, 27 Sep 2018 12:21:04 GMT\", \n      \"source\": \"Modernhealthcare.com\", \n      \"state\": \"Virginia\", \n      \"summary\": \"CMS Administrator Seema Verma insisted that Medicaid work requirements are working as intended to move people out of poverty, despite criticism that they're doing more harm than good.\", \n      \"title\": \"Verma touts work requirement successes, despite coverage loss\", \n      \"url\": \"http://www.modernhealthcare.com/article/20180927/NEWS/180929907\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 213, \n      \"image\": \"http://www.worldbank.org/content/dam/photos/780x439/2018/sep-1/780x439_PSP_FAQ01.jpg\", \n      \"published_date\": \"Fri, 21 Sep 2018 03:11:32 GMT\", \n      \"source\": \"Worldbank.org\", \n      \"state\": \"Washington\", \n      \"summary\": \"Fewer people are living in extreme poverty around the world, but the decline in poverty rates has slowed, raising concerns about achieving the goal of ending poverty by 2030 and pointing to the need for increased pro-poor investments, the World Bank finds\", \n      \"title\": \"Decline of Global Extreme Poverty Continues but Has Slowed\", \n      \"url\": \"https://www.worldbank.org/en/news/press-release/2018/09/19/decline-of-global-extreme-poverty-continues-but-has-slowed-world-bank\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 214, \n      \"image\": \"https://static.toiimg.com/thumb/msid-65953962,width-1070,height-580,imgsize-1146115,resizemode-6,overlay-toi_sw,pt-32,y_pad-40/photo.jpg\", \n      \"published_date\": \"Tue, 25 Sep 2018 15:15:03 GMT\", \n      \"source\": \"The Times of India\", \n      \"state\": \"Washington\", \n      \"summary\": \"US News: WASHINGTON: US President Donald Trump on Tuesday lauded India's efforts to lift millions of its citizens out of poverty as he addressed world leaders .\", \n      \"title\": \"India a free society, lifted millions out of poverty: Trump at UNGA\", \n      \"url\": \"https://timesofindia.indiatimes.com/world/us/donald-trump-addresses-unga-in-new-york-highlight/articleshow/65953961.cms\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 217, \n      \"image\": \"https://s.yimg.com/uu/api/res/1.2/eKZtpqbwqpo2Aj8RqdhR.g--~B/aD03NTg7dz0xMDI0O3NtPTE7YXBwaWQ9eXRhY2h5b24-/http://media.zenfs.com/en_us/News/afp.com/ba7c82e45c2ab67779b537c3c4913ab764d11101.jpg\", \n      \"published_date\": \"Wed, 17 Oct 2018 05:44:04 GMT\", \n      \"source\": \"Yahoo.com\", \n      \"state\": \"Washington\", \n      \"summary\": \"Yahoo News Nearly half the world lives on less than $5.50 a day: World Bank Yahoo News Washington (AFP) - Despite progress in reducing extreme poverty, nearly half the world's population lives on less than $5.50 a day, with a rising share of the poor in w\", \n      \"title\": \"Nearly half the world lives on less than $5.50 a day: World Bank - Yahoo News\", \n      \"url\": \"https://www.yahoo.com/news/nearly-half-world-lives-less-5-50-day-053853691--finance.html\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 219, \n      \"image\": \"https://s.yimg.com/uu/api/res/1.2/DMaKtRa8vwHCmcMLsIi5mA--~B/aD0zNDA7dz01MTI7c209MTthcHBpZD15dGFjaHlvbg--/http://media.zenfs.com/en_AU/Sports/Agence-FrancePresse/0f7a562ecedb4fb7df421ebe4ca692537e927f0e.jpg\", \n      \"published_date\": \"Sun, 07 Oct 2018 17:07:00 GMT\", \n      \"source\": \"Yahoo.com\", \n      \"state\": \"Washington\", \n      \"summary\": \"Yahoo News At least 12 dead in Haiti earthquake: govt spokesman Yahoo News A 5.9-magnitude earthquake struck off the northwest coast of Haiti late Saturday, killing at least 12 people, injuring more than 130 others and damaging homes in the poverty-strick\", \n      \"title\": \"At least 12 dead in Haiti earthquake: govt spokesman - Yahoo News\", \n      \"url\": \"https://au.news.yahoo.com/least-11-dead-haiti-earthquake-govt-spokesman-053818119--spt.html\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 222, \n      \"image\": \"https://newsinfo.inquirer.net/wp-content/blogs.dir/10/files/2015/07/China-Beijing-Population.jpg\", \n      \"published_date\": \"Wed, 17 Oct 2018 21:00:47 GMT\", \n      \"source\": \"Inquirer.net\", \n      \"state\": \"Washington\", \n      \"summary\": \"WASHINGTON --- Despite progress in reducing extreme poverty, nearly half the world's population lives on less than $5.50 (about P295) a day, with a rising share of the poor in wealthier economies, the World Bank (WB) said on Wednesday. The world has a pop\", \n      \"title\": \"Half of world population lives on $5.50 daily, says WB\", \n      \"url\": \"https://newsinfo.inquirer.net/1044299/half-of-world-population-lives-on-5-50-daily-says-wb\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 224, \n      \"image\": \"https://cdn.static-economist.com/sites/default/files/images/2017/09/articles/main/20170916_irp002.jpg\", \n      \"published_date\": \"Mon, 24 Sep 2018 14:57:19 GMT\", \n      \"source\": \"The Economist\", \n      \"state\": \"Washington\", \n      \"summary\": \"A report from the Gates Foundation spells out the biggest risks to future progress\", \n      \"title\": \"Great strides have been made against disease and poverty\", \n      \"url\": \"https://www.economist.com/international/2017/09/14/great-strides-have-been-made-against-disease-and-poverty\"\n    }, \n    {\n      \"author\": \"Unknown\", \n      \"id\": 232, \n      \"image\": \"http://www.modernhealthcare.com/apps/pbcsi.dll/storyimage/CH/20180927/NEWS/180929907/AR/0/AR-180929907.jpg&maxw=1200&maxh=630\", \n      \"published_date\": \"Thu, 27 Sep 2018 12:21:04 GMT\", \n      \"source\": \"Modernhealthcare.com\", \n      \"state\": \"Wisconsin\", \n      \"summary\": \"CMS Administrator Seema Verma insisted that Medicaid work requirements are working as intended to move people out of poverty, despite criticism that they're doing more harm than good.\", \n      \"title\": \"Verma touts work requirement successes, despite coverage loss\", \n      \"url\": \"http://www.modernhealthcare.com/article/20180927/NEWS/180929907\"\n    }\n  ], \n  \"total\": 33\n}"
+						},
+						{
+							"name": "Filter by source",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/news?source=Nationalobserver.com",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"news"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "(Optional) Filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "date",
+											"value": "{{date}}",
+											"description": "(Optional) Pass in \"past_month\" or \"past_year\" to filter by all articles within the past month or year. Default is past week.",
+											"disabled": true
+										},
+										{
+											"key": "source",
+											"value": "Nationalobserver.com",
+											"description": "(Optional) Filters by source"
+										},
+										{
+											"key": "author",
+											"value": "{{author}}",
+											"description": "(Optional) Filters by author",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"author\": \"Unknown\", \n      \"id\": 13, \n      \"image\": \"https://www.nationalobserver.com/sites/nationalobserver.com/files/img/2018/10/19/18-10-19-sheila_watt-cloutier-headshot_0.jpg\", \n      \"published_date\": \"Fri, 19 Oct 2018 20:25:13 GMT\", \n      \"source\": \"Nationalobserver.com\", \n      \"state\": \"Alaska\", \n      \"summary\": \"Climate change isn\\u2019t just about starving polar bears or melting ice, writes Sheila Watt-Cloutier. It is about human rights, human health, food security, poverty, loss of traditional knowledge, and global insecurity as traditional ways of life that are los\", \n      \"title\": \"It\\u2019s time to humanize climate change issues, says Sheila Watt-Cloutier\", \n      \"url\": \"https://www.nationalobserver.com/2018/10/19/opinion/its-time-humanize-climate-change-issues-says-sheila-watt-cloutier\"\n    }\n  ], \n  \"total\": 1\n}"
 						}
 					]
 				}
@@ -375,12 +640,12 @@
 								"exec": [
 									"pm.globals.set(\"id\", \"1\");",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Body is correct\", function () {",
 									"    var body = {",
 									"      \"address\": \"277 Cumberland Avenue\\nP.O. Box 7830\\nPortland, ME\\n 04112\", ",
@@ -463,12 +728,12 @@
 									"pm.globals.set(\"page\", \"1\");",
 									"pm.globals.set(\"state\", \"texas\");",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Body is correct\", function () {",
 									"    var body = {",
 									"      \"data\": [",
@@ -620,7 +885,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "https://api.relievepoverty.me/v1/charities?page={{page}}&state={{state}}",
+							"raw": "https://api.relievepoverty.me/v1/charities?page={{page}}&state={{state}}&rating={{rating}}&affiliation={{affiliation}}&tax_classification={{tax_classification}}&cause_name={{cause_name}}&q={{query}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -641,10 +906,35 @@
 									"key": "state",
 									"value": "{{state}}",
 									"description": "(Optional) Filters by state"
+								},
+								{
+									"key": "rating",
+									"value": "{{rating}}",
+									"description": "(Optional) Filters by rating"
+								},
+								{
+									"key": "affiliation",
+									"value": "{{affiliation}}",
+									"description": "(Optional) Filters by affiliation"
+								},
+								{
+									"key": "tax_classification",
+									"value": "{{tax_classification}}",
+									"description": "(Optional) Filters by tax_classification"
+								},
+								{
+									"key": "cause_name",
+									"value": "{{cause_name}}",
+									"description": "(Optional) Filters by cause_name"
+								},
+								{
+									"key": "q",
+									"value": "{{query}}",
+									"description": "(Optional) Search"
 								}
 							]
 						},
-						"description": "Gets all charities. The caller may also filter by state and page."
+						"description": "Gets all charities. The caller may also filter by page, state, rating, affiliation, tax_classification, and cause. Queries are also supported."
 					},
 					"response": [
 						{
@@ -682,6 +972,417 @@
 							"body": "[\n  {\n    \"address\": \"25 Walker Street\\nConcord, NH\\n 03301\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Social Services\", \n    \"id\": 13, \n    \"img\": \"logo.clearbit.com/sightcenter.org/\", \n    \"mission\": \"The New Hampshire Association for the Blind is the statewide leader in providing vision rehabilitation services for New Hampshire people of all ages who are blind and visually impaired. Founded in 1912, it provides services in virtually every community statewide and at the McGreal Sight Center in Concord. The Association provides support through information, education, informed choice, and help through a range of specialized professional vision rehabilitation services which are available at the McGreal Si\", \n    \"name\": \"New Hampshire Association for the Blind\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"55 Bradley Street\\nConcord, NH\\n 03301\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n    \"id\": 14, \n    \"img\": \"logo.clearbit.com/centralnhclubs.org/\", \n    \"mission\": \"The Boys & Girls Clubs of Greater Concord provides afterschool programs, summer day camps and basketball leagues to 1300 youth in the greater Concord area. Our mission is to inspire and enable all young people, especially those who need us most, to reach their full potential as productive, caring and responsible citizens. We offer a safe place to belong, caring adult mentors and programs covering everything from academics and leadership development to physical fitness and healthy habits.\", \n    \"name\": \"Boys & Girls Clubs of Central New Hampshire\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"200 East Wells Street\\nBaltimore, MD\\n 21230\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Social Services\", \n    \"id\": 15, \n    \"img\": \"logo.clearbit.com/nfb.org\", \n    \"mission\": \"The mission of the National Federation of the Blind is to serve as a means for blind people to come together to work collectively to improve our lives. By providing public education about blindness, information and referral services, scholarships, literature and materials about blindness, specialized aids and appliances, adaptive equipment, and support for blind people and their families, the members of the National Federation of the Blind strive to spread the word that the blind are normal individuals wh\", \n    \"name\": \"National Federation of the Blind\", \n    \"state\": \"Maryland\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"14 Grove Street\\nNorth Conway, NH\\n 03860\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Social Services\", \n    \"id\": 16, \n    \"img\": \"logo.clearbit.com/gibsoncenter.org\", \n    \"mission\": \"The Gibson Center for Senior Services has provided services to senior citizens of Northern Carroll County since 1979. Our goal is to enable seniors to remain in their homes, while maintaining a high level of independence and quality of life through the offering of an evolving array of programs and services. Our programs are designed to serve the needs of these active and passive senior residents through nutrition programs (home delivery, congregate meals and nutrition education), transportation programs f\", \n    \"name\": \"The Gibson Center for Senior Services\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"2 Quincy Street\\nPO Box 3116\\nNashua, NH\\n 03061\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Social Services\", \n    \"id\": 17, \n    \"img\": \"logo.clearbit.com/nsks.org/\", \n    \"mission\": \"The Nashua Soup Kitchen & Shelter (NSK&S) is dedicated to providing shelter and food to those in need. The overall objective of the agency is to advocate, create, and operate programs and services that promote dignity and self-sufficiency for those we serve. To ensure that basic needs are addressed, the NSK&S is committed to joining with others in a community-wide ethic of caring.\", \n    \"name\": \"Nashua Soup Kitchen & Shelter\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"56 Mont Vernon Street\\nMilford, NH\\n 03055\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n    \"id\": 18, \n    \"img\": \"logo.clearbit.com/svbgc.org/\", \n    \"mission\": \"Founded in 1991, Boys & Girls Club of Souhegan Valley's mission is to enable all young people, especially those who need us most, to be great today and reach their full potential as productive, caring, responsible citizens tomorrow. We primarily service communities in New Hampshire's Souhegan Valley: Milford, Amherst, Hollis, Brookline, Mont Vernon, Peterborough, New Ipswich, Lyndeborough, and Wilton.\", \n    \"name\": \"Boys & Girls Club of Souhegan Valley\", \n    \"state\": \"New Hampshire\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"2361 Hyland Boulevard\\nStaten Island, NY\\n 10306\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Multipurpose Human Service Organizations\", \n    \"id\": 19, \n    \"img\": \"logo.clearbit.com/tunnel2towers.org/\", \n    \"mission\": \"The mission of the Stephen Siller Tunnel to Towers Foundation is to honor the sacrifice of firefighter Stephen Siller, who laid down his life to save others on September 11, 2001. We also honor our military and first responders who continue to make the supreme sacrifice of life and limb for our country.\", \n    \"name\": \"Stephen Siller Tunnel to Towers Foundation\", \n    \"state\": \"New York\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"114 East 39th Street\\nNew York, NY\\n 10016\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Children's and Family Services\", \n    \"id\": 20, \n    \"img\": \"logo.clearbit.com/pajamaprogram.org/\", \n    \"mission\": \"Founded in 2001, Pajama Program's mission is to provide a loving environment for children who have lived through a great deal of hurt in their young lives to give them hope for a better tomorrow. The program identifies key institutions in major cities in the U.S. and other countries where children are living temporarily as they wait and hope for adoption. It is to the children in these circumstances and temporary living quarters that the pajamas are delivered with love an affection. \", \n    \"name\": \"Pajama Program\", \n    \"state\": \"New York\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"461 Glenbrook Road\\nStamford, CT\\n 06906\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Food Banks, Food Pantries, and Food Distribution\", \n    \"id\": 21, \n    \"img\": \"logo.clearbit.com/foodbanklfc.org\", \n    \"mission\": \"The Food Bank of Lower Fairfield County is lower Fairfield County's primary hunger-relief organization. We provide food to approximately 75 non-profit agencies and programs that serve low income people in our six town service area through bags of groceries and congregate meals. These include soup kitchens, food pantries, child care programs, homeless shelters, senior centers, domestic violence safe houses, and rehabilitation programs. Our mission statement is to raise awareness of, and promote action to c\", \n    \"name\": \"The Food Bank of Lower Fairfield County\", \n    \"state\": \"Connecticut\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"708 Kurn Hattin Road\\nWestminster, VT\\n 05158\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n    \"id\": 22, \n    \"img\": \"logo.clearbit.com/kurnhattin.org/\", \n    \"mission\": \"New England Kurn Hattin Homes was founded in 1894 by Reverend Charles Albert Dickinson, who believed that young children in need or orphans could be cared for in a nurturing rural setting rather than the urban childcare institution which existed at the time. Today our mission and commitment to provide services to children and families are as strong as they were when the initial seeds were planted. Kurn Hattin is a charitable home and school dedicated to helping children grow up to become happy, productive\", \n    \"name\": \"New England Kurn Hattin Homes\", \n    \"state\": \"Vermont\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"62 Oak Street\\nBurlington, VT\\n 05401\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n    \"id\": 23, \n    \"img\": \"logo.clearbit.com/bandgclub.org\", \n    \"mission\": \"The Boys & Girls Club of Burlington has been serving the children and youth of Chittenden County since 1942. The Club was started as a place for boys who needed constructive alternatives to hanging out on Burlington street corners. As the years progressed, the Club evolved its membership to include girls as well as boys from very diverse racial, economic, ethnic and religious backgrounds. Today, the Club reaches children and youth through its many programs and constant outreach activities from two locatio\", \n    \"name\": \"Boys & Girls Club of Burlington\", \n    \"state\": \"Vermont\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"713 Hartford Avenue\\nWhite River Junction, VT\\n 05001\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"Homeless Services\", \n    \"id\": 24, \n    \"img\": \"logo.clearbit.com/uppervalleyhaven.org\", \n    \"mission\": \"The Upper Valley Haven is a private not-for-profit organization, founded in 1980, providing temporary shelter and educational programming for homeless families and adults as well as food and clothing to anyone in need. For 33 years the Haven has fostered independence through our programs. The Haven is open 365 days per year and never charges for any of its services. We serve over 11,000 people from Vermont and New Hampshire per year generally from within a 45-mile radius of White River Junction, Vermont. \", \n    \"name\": \"Upper Valley Haven\", \n    \"state\": \"Vermont\", \n    \"tax_classification\": \"501(c)(3)\"\n  }\n]"
 						},
 						{
+							"name": "Search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/charities?q=Safety",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"charities"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "(Optional) Filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "rating",
+											"value": "{{rating}}",
+											"description": "(Optional) Filters by rating",
+											"disabled": true
+										},
+										{
+											"key": "affiliation",
+											"value": "{{affiliation}}",
+											"description": "(Optional) Filters by affiliation",
+											"disabled": true
+										},
+										{
+											"key": "tax_classification",
+											"value": "{{tax_classification}}",
+											"description": "(Optional) Filters by tax_classification",
+											"disabled": true
+										},
+										{
+											"key": "cause_name",
+											"value": "{{cause_name}}",
+											"description": "(Optional) Filters by cause_name",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "Safety",
+											"description": "(Optional) Search"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type,Authorization"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Nov 2018 20:47:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/0.14.1 Python/2.7.14"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 6c02603f677dd5669f8ab3b41062340f.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "v_bIt-Ewx-Wl72TU8NZCrPbtAlAJfgr89352LQhSltZ5nAlJVEltow=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"address\": \"140 Clarendon Street\\nSuite 403\\nBoston, MA 02116\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Multipurpose Human Service Organizations\", \n      \"id\": 31, \n      \"img\": \"https://logo.clearbit.com/ywboston.org\", \n      \"mission\": \"Founded in 1867, YWCA Boston was the first YWCA in the United States, established by leaders in the abolition and suffrage movement to address critical social justice issues of the time. Today, YWCA Boston intends to incrementally reduce systemic racial and gender disparities and improve social cohesion in Boston neighborhoods where health, educational and safety inequities are most significant. YWCA Boston is dedicated to eliminating racism, empowering women, and promoting peace, justice, freedom and dig\", \n      \"name\": \"YWCA Boston\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.ywboston.org\"\n    }, \n    {\n      \"address\": \"P.O. Box 540024\\nWaltham, MA 02454\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 62, \n      \"img\": \"https://logo.clearbit.com/reachma.org/\", \n      \"mission\": \"REACH Beyond Domestic Violence is building healthy communities by ending domestic violence. We are committed to advancing the safety, healing and empowerment of those who experience domestic or relationship violence through direct services and education while promoting social justice for individuals and families of all backgrounds. Our name, REACH (Refuge, Education, Advocacy, CHange) reflects our commitment to providing individuals and communities with the resources and tools necessary to heal from abuse\", \n      \"name\": \"REACH Beyond Domestic Violence\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.reachma.org/\"\n    }, \n    {\n      \"address\": \"2305 Renard Place S.E. Suite 200 Albuquerque, NM 87106\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 299, \n      \"img\": \"http://www.ndnm.org/images/uploads/DayOfGiving_2018_-_EndBanner_2.jpg\", \n      \"mission\": \"Our mission is critical: to authentically connect young people to safety, community and themselves.\", \n      \"name\": \"New Day\", \n      \"rating\": 3, \n      \"state\": \"New Mexico\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.ndnm.org/\"\n    }\n  ], \n  \"total\": 3\n}"
+						},
+						{
+							"name": "Filter by tax_classification",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/charities?page=25&tax_classification=501(c)(3)",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"charities"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "25",
+											"description": "(Optional) Filters by page number"
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "rating",
+											"value": "{{rating}}",
+											"description": "(Optional) Filters by rating",
+											"disabled": true
+										},
+										{
+											"key": "affiliation",
+											"value": "{{affiliation}}",
+											"description": "(Optional) Filters by affiliation",
+											"disabled": true
+										},
+										{
+											"key": "tax_classification",
+											"value": "501(c)(3)",
+											"description": "(Optional) Filters by tax_classification"
+										},
+										{
+											"key": "cause",
+											"value": "{{cause}}",
+											"description": "(Optional) Filters by cause",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type,Authorization"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Nov 2018 20:47:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/0.14.1 Python/2.7.14"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 6c02603f677dd5669f8ab3b41062340f.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "v_bIt-Ewx-Wl72TU8NZCrPbtAlAJfgr89352LQhSltZ5nAlJVEltow=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"address\": \"110 N. Hotel Street Honolulu, Hawaii, USA 96817 \", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 294, \n      \"img\": \"http://consuelo.org/asset/img/site/layout/logo.png\", \n      \"mission\": \"The Mission of Consuelo Foundation is to promote the wellbeing of at-risk children, women and families in the Philippines and Hawai\\u2018i, and to prevent and treat their abuse, neglect, and exploitation. We do this through innovative and effective strategies and services that engage and empower individuals, families, and communities.\", \n      \"name\": \"Consuelo Foundation\", \n      \"rating\": 3, \n      \"state\": \"Hawaii\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://consuelo.org/\"\n    }, \n    {\n      \"address\": \"704 S Latah St Boise, ID 83705\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 295, \n      \"img\": \"http://www.hfhboise.org/sites/all/themes/site-specific-themes/hfh2/logo.png\", \n      \"mission\": \"Seeking to put God\\u2019s love into action; Habitat for Humanity brings people together to build homes, communities and hope.\", \n      \"name\": \"Boise Valley Habitat for Humanity\", \n      \"rating\": 3, \n      \"state\": \"Idaho\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.hfhboise.org/\"\n    }, \n    {\n      \"address\": \"440 W. Beatty Street Jackson MS 39201\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 296, \n      \"img\": \"http://msfoodnet.wpengine.com/wp-content/uploads/2016/07/header-logo-fa.png\", \n      \"mission\": \"Our mission is to relieve poverty-related hunger in our service area by distributing donated and purchased food and grocery products through a network of member churches and nonprofit organizations. We provide nutrition education to our needy clients. We also emphasize advocacy and related needs.\", \n      \"name\": \"Mississippi Food Network\", \n      \"rating\": 3, \n      \"state\": \"Mississippi\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.msfoodnet.org/\"\n    }, \n    {\n      \"address\": \"2112 4TH AVE N, BILLINGS, MT 59101\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 297, \n      \"img\": \"https://billingsfoodbank.com/wp-content/uploads/2017/06/logo-newer.png\", \n      \"mission\": \"The Billings Food Bank gathers food and other essentials to meet the needs of the under privileged in our community. The food bank accepts donations of food all year around and each and every donation is greatly appreciated. The Billings Food Bank is always looking for volunteers to help with processing and distribution of the food that is collected.\", \n      \"name\": \"Billings Food Bank\", \n      \"rating\": 3, \n      \"state\": \"Montana\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"https://billingsfoodbank.com\"\n    }, \n    {\n      \"address\": \"4840 Doris Bair Cr. Ste. A Lincoln, NE 68504\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 298, \n      \"img\": \"http://www.lincolnfoodbank.org/images/logo.gif\", \n      \"mission\": \"To alleviate hunger in Southeast Nebraska.\", \n      \"name\": \"Food Bank of Lincoln\", \n      \"rating\": 3, \n      \"state\": \"Nebraska\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.lincolnfoodbank.org/\"\n    }, \n    {\n      \"address\": \"2305 Renard Place S.E. Suite 200 Albuquerque, NM 87106\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 299, \n      \"img\": \"http://www.ndnm.org/images/uploads/DayOfGiving_2018_-_EndBanner_2.jpg\", \n      \"mission\": \"Our mission is critical: to authentically connect young people to safety, community and themselves.\", \n      \"name\": \"New Day\", \n      \"rating\": 3, \n      \"state\": \"New Mexico\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.ndnm.org/\"\n    }, \n    {\n      \"address\": \"1385 West Indiana Avenue Salt Lake City, UT  84104\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 300, \n      \"img\": \"https://www.crossroadsurbancenter.org/uploads/5/2/3/8/52385067/published/cr-logowide3.jpg?1515602634\", \n      \"mission\": \"Crossroads Urban Center is a nonprofit, grassroots organization that assists and organizes Utahns with low incomes, those with disabilities, and people of color to meet basic survival needs and to address essential issues affecting quality of life. Established in 1966, Crossroads is a multi-faith, community based project that is in a covenant relationship with the United Methodist Women national office.  \", \n      \"name\": \"Crossroads Urban Center\", \n      \"rating\": 3, \n      \"state\": \"Utah\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"https://www.crossroadsurbancenter.org\"\n    }, \n    {\n      \"address\": \"1605 W Washington St, Charleston, WV 25387\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 301, \n      \"img\": \"http://www.wvdawg.org/wp-content/uploads/2011/05/pi-104-300x203.jpg\", \n      \"mission\": \"Direct Action Welfare Group (DAWG) is a statewide grassroots organization comprised of current and former public assistance recipients, low wage workers, people living in poverty, and concerned individuals who come together to share information and ideas and to advocate for each other, their neighbors, and themselves.  Direct Action Welfare Group\\u2019s vision is the end of poverty in West Virginia.  In order to make this vision a reality, we advocate with low-income families for economic justice\", \n      \"name\": \"Direct Action Welfare Group (DAWG)\", \n      \"rating\": 3, \n      \"state\": \"West Virginia\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.wvdawg.org/\"\n    }\n  ], \n  \"total\": 296\n}"
+						},
+						{
+							"name": "Filter by affiliation",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/charities?page=25&affiliation=Independent",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"charities"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "25",
+											"description": "(Optional) Filters by page number"
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "rating",
+											"value": "{{rating}}",
+											"description": "(Optional) Filters by rating",
+											"disabled": true
+										},
+										{
+											"key": "affiliation",
+											"value": "Independent",
+											"description": "(Optional) Filters by affiliation"
+										},
+										{
+											"key": "tax_classification",
+											"value": "{{tax_classification}}",
+											"description": "(Optional) Filters by tax_classification",
+											"disabled": true
+										},
+										{
+											"key": "cause",
+											"value": "{{cause}}",
+											"description": "(Optional) Filters by cause",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"address\": \"1605 W Washington St, Charleston, WV 25387\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 301, \n      \"img\": \"http://www.wvdawg.org/wp-content/uploads/2011/05/pi-104-300x203.jpg\", \n      \"mission\": \"Direct Action Welfare Group (DAWG) is a statewide grassroots organization comprised of current and former public assistance recipients, low wage workers, people living in poverty, and concerned individuals who come together to share information and ideas and to advocate for each other, their neighbors, and themselves.  Direct Action Welfare Group\\u2019s vision is the end of poverty in West Virginia.  In order to make this vision a reality, we advocate with low-income families for economic justice\", \n      \"name\": \"Direct Action Welfare Group (DAWG)\", \n      \"rating\": 3, \n      \"state\": \"West Virginia\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.wvdawg.org/\"\n    }\n  ], \n  \"total\": 289\n}"
+						},
+						{
+							"name": "Filter by cause_name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/charities?cause_name=Social Services",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"charities"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "(Optional) Filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "rating",
+											"value": "{{rating}}",
+											"description": "(Optional) Filters by rating",
+											"disabled": true
+										},
+										{
+											"key": "affiliation",
+											"value": "{{affiliation}}",
+											"description": "(Optional) Filters by affiliation",
+											"disabled": true
+										},
+										{
+											"key": "tax_classification",
+											"value": "{{tax_classification}}",
+											"description": "(Optional) Filters by tax_classification",
+											"disabled": true
+										},
+										{
+											"key": "cause_name",
+											"value": "Social Services",
+											"description": "(Optional) Filters by cause_name"
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "32"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Access-Control-Allow-Headers",
+									"value": "Content-Type,Authorization"
+								},
+								{
+									"key": "Access-Control-Allow-Methods",
+									"value": "GET"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 13 Nov 2018 20:47:44 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Werkzeug/0.14.1 Python/2.7.14"
+								},
+								{
+									"key": "X-Cache",
+									"value": "Miss from cloudfront"
+								},
+								{
+									"key": "Via",
+									"value": "1.1 6c02603f677dd5669f8ab3b41062340f.cloudfront.net (CloudFront)"
+								},
+								{
+									"key": "X-Amz-Cf-Id",
+									"value": "v_bIt-Ewx-Wl72TU8NZCrPbtAlAJfgr89352LQhSltZ5nAlJVEltow=="
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"address\": \"149 Front Street\\nBath, ME 04530\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 2, \n      \"img\": \"https://images.unsplash.com/photo-1495556650867-99590cea3657?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b37de0c33fc4709959e640e0ea309a8a&auto=format&fit=crop&w=1350&q=80\", \n      \"mission\": \"Pine Tree Society helps people in Maine with disabilities lead richer, more socially connected lives. Too often, people with disabilities feel left out, even isolated. With the help of Pine Tree Society, they're not alone! We share a spirit of innovation and desire to discover new ways to break down barriers that many find insurmountable. It started as a bold new idea in 1936 and that commitment continues every day. Whether it's a young girl with Cerebral Palsy discovering her first best friend at Pine Tr\", \n      \"name\": \"Pine Tree Society\", \n      \"rating\": 4, \n      \"state\": \"Maine\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.pinetreesociety.org/\"\n    }, \n    {\n      \"address\": \"330 Sun Valley Circle\\nFenton, MO 63049\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 9, \n      \"img\": \"https://images.unsplash.com/photo-1474649107449-ea4f014b7e9f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ee665399b33bc893141af2bc7bb87333&auto=format&fit=crop&w=1350&q=80\", \n      \"mission\": \"H.E.R.O.E.S. Care is a collaborative effort among well established non-governmental organizations (NGOs) designed to provide complete and proactive support for members of all branches of the military and their families through pre-deployment, deployment, family reintegration and post-deployment. The program consists of a network of tens of thousands of trained caregivers and thousands of professional mental health care and service providers working together to provide an unprecedented system of support fo\", \n      \"name\": \"H.E.R.O.E.S. Care\", \n      \"rating\": 4, \n      \"state\": \"Missouri\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"https://heroescare.org/\"\n    }, \n    {\n      \"address\": \"25 Walker Street\\nConcord, NH 03301\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 13, \n      \"img\": \"https://logo.clearbit.com/sightcenter.org/\", \n      \"mission\": \"The New Hampshire Association for the Blind is the statewide leader in providing vision rehabilitation services for New Hampshire people of all ages who are blind and visually impaired. Founded in 1912, it provides services in virtually every community statewide and at the McGreal Sight Center in Concord. The Association provides support through information, education, informed choice, and help through a range of specialized professional vision rehabilitation services which are available at the McGreal Si\", \n      \"name\": \"New Hampshire Association for the Blind\", \n      \"rating\": 2, \n      \"state\": \"New Hampshire\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.sightcenter.org/\"\n    }, \n    {\n      \"address\": \"200 East Wells Street\\nBaltimore, MD 21230\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 15, \n      \"img\": \"https://logo.clearbit.com/nfb.org\", \n      \"mission\": \"The mission of the National Federation of the Blind is to serve as a means for blind people to come together to work collectively to improve our lives. By providing public education about blindness, information and referral services, scholarships, literature and materials about blindness, specialized aids and appliances, adaptive equipment, and support for blind people and their families, the members of the National Federation of the Blind strive to spread the word that the blind are normal individuals wh\", \n      \"name\": \"National Federation of the Blind\", \n      \"rating\": 4, \n      \"state\": \"Maryland\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.nfb.org\"\n    }, \n    {\n      \"address\": \"14 Grove Street\\nNorth Conway, NH 03860\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 16, \n      \"img\": \"https://images.pexels.com/photos/1260293/pexels-photo-1260293.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260\", \n      \"mission\": \"The Gibson Center for Senior Services has provided services to senior citizens of Northern Carroll County since 1979. Our goal is to enable seniors to remain in their homes, while maintaining a high level of independence and quality of life through the offering of an evolving array of programs and services. Our programs are designed to serve the needs of these active and passive senior residents through nutrition programs (home delivery, congregate meals and nutrition education), transportation programs f\", \n      \"name\": \"The Gibson Center for Senior Services\", \n      \"rating\": 3, \n      \"state\": \"New Hampshire\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.gibsoncenter.org\"\n    }, \n    {\n      \"address\": \"2 Quincy Street\\nPO Box 3116\\nNashua, NH 03061\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 17, \n      \"img\": \"https://logo.clearbit.com/nsks.org/\", \n      \"mission\": \"The Nashua Soup Kitchen & Shelter (NSK&S) is dedicated to providing shelter and food to those in need. The overall objective of the agency is to advocate, create, and operate programs and services that promote dignity and self-sufficiency for those we serve. To ensure that basic needs are addressed, the NSK&S is committed to joining with others in a community-wide ethic of caring.\", \n      \"name\": \"Nashua Soup Kitchen & Shelter\", \n      \"rating\": 3, \n      \"state\": \"New Hampshire\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.nsks.org/\"\n    }, \n    {\n      \"address\": \"266 Pine Street\\nBurlington, VT 05401\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 26, \n      \"img\": \"https://logo.clearbit.com/resourcevt.org/\", \n      \"mission\": \"In 1991 in Burlington, Vermont, ReCycle North began an innovative program of repairing and reselling household items that otherwise would have gone to the dump. Out of that founding vision, more than 750 people have received job training and skills essential to gainful employment, 10,000 low-income people have received needed household goods and building materials, more than 10,000 tons of materials have been kept from the landfill, and 50 people now have secure employment through income earned largely fr\", \n      \"name\": \"ReSOURCE\", \n      \"rating\": 3, \n      \"state\": \"Vermont\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://resourcevt.org/\"\n    }, \n    {\n      \"address\": \"55 West 39th Street\\nSuite 600\\nNew York, NY 10018\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 27, \n      \"img\": \"https://logo.clearbit.com/joetorre.org\", \n      \"mission\": \"Our mission statement, educating to end the cycle of domestic violence and save lives, speaks to our commitment and focus to help children that are victims and witnesses of domestic violence to navigate a difficult path. In the late 1990's, Joe and Ali Torre attended a life-changing seminar that proved to be a turning point for Joe, prompting him to begin speaking openly about his childhood experience with domestic violence. <br><br>Growing more aware that millions of children live with violence in their \", \n      \"name\": \"The Joe Torre Safe At Home Foundation\", \n      \"rating\": 3, \n      \"state\": \"New York\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.joetorre.org\"\n    }, \n    {\n      \"address\": \"2030 Main Street\\nSuite A\\nForest Grove, OR 97116\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 28, \n      \"img\": \"https://logo.clearbit.com/adelantemujeres.org/\", \n      \"mission\": \"Adelante Mujeres educates and empowers Latina women and their families through holistic programs that ensure their full participation and active leadership in the community. As our organization continues to grow, our programs and services have expanded to serve Latino youth, children, and men as well as women, especially through our microenterprise and agriculture services and the Forest Grove Farmers Market. At Adelante Mujeres, we endeavor to strengthen Latino families as a whole because we believe a st\", \n      \"name\": \"Adelante Mujeres\", \n      \"rating\": 4, \n      \"state\": \"Oregon\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.adelantemujeres.org/\"\n    }, \n    {\n      \"address\": \"105 Spring Street\\nCambridge, MA 02141\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 36, \n      \"img\": \"https://logo.clearbit.com/eastendhouse.org/\", \n      \"mission\": \"Since 1875, East End House is a dynamic community center which works to meet community needs through innovative programs that support families and individuals of every age and ability. Our innovative and outcome-driven programs support families and individuals through evidence-based curriculum that prepares preschoolers for Kindergarten and gives school age and middle school youth the skills to become successful adults. Programming supports the whole family with comprehensive services like the Food Pantry\", \n      \"name\": \"East End House\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.eastendhouse.org/\"\n    }, \n    {\n      \"address\": \"75 Federal Street\\nBoston, MA 02110\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 38, \n      \"img\": \"https://logo.clearbit.com/jvs-boston.org/\", \n      \"mission\": \"JVS Boston empowers individuals from diverse communities to find employment and build careers, and partners with employers to hire, develop, and retain productive workforces. For over 75 years JVS has helped people secure financial independence. Last year, JVS empowered nearly 17,000 individuals to build their skills, advance their education, and find employment. JVS offers over 35 different programs to help individuals from all backgrounds on their way toward achieving the American Dream.<br>Strengthenin\", \n      \"name\": \"Jewish Vocational Service of Boston\", \n      \"rating\": 4, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://jvs-boston.org/\"\n    }, \n    {\n      \"address\": \"88 Saint Stephen Street\\nBoston, MA 02115\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 42, \n      \"img\": \"https://logo.clearbit.com/nbp.org/\", \n      \"mission\": \"National Braille Press (NBP) was founded in 1927 to provide a newspaper to blind individuals - who at that time - were dependent on family and friends to tell them about the events of the world. NBP's dedication to providing tools and resources to empower blind and visually impaired to actively engage in the world around them still continues.<br><br>Today, NBP not only provides Syndicated Columnists Weekly - a 36-page braille edition that contains some of the best editorials of the week from prestigious p\", \n      \"name\": \"National Braille Press\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.nbp.org/\"\n    }, \n    {\n      \"address\": \"136 H Street\\nSouth Boston, MA 02127\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 43, \n      \"img\": \"https://logo.clearbit.com/sbnh.org/\", \n      \"mission\": \"Founded in 1907, The South Boston Neighborhood House impacts the lives of 2000 individuals each year from infants to nonagenarians. Our focus is families and our five program and service areas, Early Education & Care Preschool, School Age Programs, Education & Career Development, Senior Programs and Family Engagement, are designed to work together to strengthen the fabric of family and community life through education and opportunity. The South Boston Neighborhood House is the oldest continually operating\", \n      \"name\": \"South Boston Neighborhood House\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"https://sbnh.org/\"\n    }, \n    {\n      \"address\": \"105 Adams Street\\nQuincy, MA 02169\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 44, \n      \"img\": \"https://logo.clearbit.com/interfaithsocialservices.org/\", \n      \"mission\": \"Founded in 1947, Interfaith Social Services is dedicated to improving life for South Shore families and individuals in need. Our unique approach relies on a team of volunteers, donors and community partners to deliver compassionate, client-centered programs focused on hunger, mental health and emergency assistance. \", \n      \"name\": \"Interfaith Social Services\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.interfaithsocialservices.org/\"\n    }, \n    {\n      \"address\": \"770 Centre Street\\nNewton, MA 02458\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 48, \n      \"img\": \"https://logo.clearbit.com/carroll.org/\", \n      \"mission\": \"The Carroll Center for the Blind serves the needs of blind and visually-impaired persons by providing rehabilitation, skills training, and educational opportunities to achieve independence, self-sufficiency, and self-fulfillment and by educating the public regarding the potential of persons who are blind and visually-impaired. Established in 1936, the Center has pioneered innovative methods for blind persons to gain independence in their homes, in class settings, and in their work places. New and evolving\", \n      \"name\": \"The Carroll Center for the Blind\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.carroll.org/\"\n    }, \n    {\n      \"address\": \"1010 Harrison Avenue\\nBoston, MA 02119\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 49, \n      \"img\": \"https://logo.clearbit.com/goodwillmass.org/\", \n      \"mission\": \"Morgan Memorial Goodwill Industries' mission is to help individuals with barriers to self-sufficiency to achieve independence and dignity through work. Not charity, but a chance.<br><br>Goodwill's vision is to be recognized throughout eastern and central Massachusetts as a leader in helping individuals with barriers to self-sufficiency to enter and succeed in the workplace. Goodwill empowers people to build on their strengths to transform their lives through work. It actively engages businesses in all asp\", \n      \"name\": \"Morgan Memorial Goodwill Industries\", \n      \"rating\": 4, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.goodwillmass.org/\"\n    }, \n    {\n      \"address\": \"52 High Street\\nWorcester, MA 01609\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 56, \n      \"img\": \"https://logo.clearbit.com/abbyshouse.org/\", \n      \"mission\": \"Abby Kelley Foster House, Inc. (Abby's House) opened in 1976 as one of the first overnight emergency shelters for women -- with or without children -- in the U.S. Since 1976, Abby Kelley Foster House, Inc. (Abby's House) has provided more than 11,500 homeless women and children with a safe place to stay, regroup, and rebuild. At present, it is one of two family shelters in the area that does not require its guests to be on welfare. With 78 units, Abby's House is the largest provider of affordable housing \", \n      \"name\": \"Abby's House\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://abbyshouse.org/\"\n    }, \n    {\n      \"address\": \"P.O. Box 540024\\nWaltham, MA 02454\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 62, \n      \"img\": \"https://logo.clearbit.com/reachma.org/\", \n      \"mission\": \"REACH Beyond Domestic Violence is building healthy communities by ending domestic violence. We are committed to advancing the safety, healing and empowerment of those who experience domestic or relationship violence through direct services and education while promoting social justice for individuals and families of all backgrounds. Our name, REACH (Refuge, Education, Advocacy, CHange) reflects our commitment to providing individuals and communities with the resources and tools necessary to heal from abuse\", \n      \"name\": \"REACH Beyond Domestic Violence\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.reachma.org/\"\n    }, \n    {\n      \"address\": \"19 Brewster Cross Road\\nOrleans, MA 02653\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 68, \n      \"img\": \"https://logo.clearbit.com/lcoutreach.org/\", \n      \"mission\": \"Founded in 1984, the mission of the Lower Cape Outreach Council is to provide emergency assistance of food clothing and financial support to individuals and families in Brewster, Chatham, Eastham, Harwich, Orleans, Provincetown, Truro and Wellfleet which will lead to healthy, productive and self-sustaining lives as part of the Cape Cod community. We also run Katy's Korner, a free clothing store in Orleans, where qualified clients from each of these 8 towns may come and receive quality clothing and bedding\", \n      \"name\": \"Lower Cape Outreach Council\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://lcoutreach.org/\"\n    }, \n    {\n      \"address\": \"394 Taugwonk Road\\nStonington, CT 06378\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 69, \n      \"img\": \"https://logo.clearbit.com/coastguardfoundation.org/\", \n      \"mission\": \"The Coast Guard Foundation is a national nonprofit organization dedicated to enhancing the lives of the men and women of the Coast Guard and their families. Founded more than 40 years ago, the Coast Guard Foundation provides education, support and relief for the brave men and women, who enforce maritime law, protect our homeland and preserve the environment. The Coast Guard Foundation aims to strengthen their service to our nation by encouraging them to excel on- and off-duty. Program support includes col\", \n      \"name\": \"Coast Guard Foundation\", \n      \"rating\": 3, \n      \"state\": \"Connecticut\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.coastguardfoundation.org/\"\n    }, \n    {\n      \"address\": \"145 Border Street\\nEast Boston, MA 02128\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 70, \n      \"img\": \"https://logo.clearbit.com/projectbread.org/\", \n      \"mission\": \"Project Bread is an anti-hunger organization committed to providing people of all ages, cultures, and walks of life with sustainable, reliable access to nutritious food. From community-based meal programs, to early childhood and school nutrition initiatives, to improved access to farm-to-table resources, Project Bread approaches hunger as a complex problem with multiple solutions. With funds raised through The Walk for Hunger, the oldest continual pledge walk in the country, and other sources, Project Bre\", \n      \"name\": \"Project Bread\", \n      \"rating\": 2, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.projectbread.org/\"\n    }, \n    {\n      \"address\": \"One State Street, Suite 800\\nBoston, MA 02109\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 72, \n      \"img\": \"https://logo.clearbit.com/iiicenter.org/\", \n      \"mission\": \"The Irish International Immigrant Center assists immigrants from Ireland and from around the world as they integrate into American society, and with partner organizations, promotes reconciliation in Ireland. We are a vibrant welcome center that provides legal, wellness and education services, advocates for systemic change, and facilitates cross-cultural community building. Our vision is of a shared society where all people are welcomed and valued and enjoy equal opportunities, and protections.\", \n      \"name\": \"Irish International Immigrant Center\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.iiicenter.org/\"\n    }, \n    {\n      \"address\": \"P.O. Box 338\\nEaston, MA 02356\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 74, \n      \"img\": \"https://images.pexels.com/photos/1493374/pexels-photo-1493374.jpeg?auto=compress&cs=tinysrgb&h=350\", \n      \"mission\": \"My Brother's Keeper is committed to providing furniture household items ancillary services and food to the needy individuals and families who seek assistance in the communities of southeastern Massachusetts. Our mission is \\\"To bring the Love and Hope of Jesus Christ to those we serve.\\\" The agency provided and delivered food to over 3600 families as well as provided food to local food pantries.\", \n      \"name\": \"My Brother's Keeper\", \n      \"rating\": 4, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.mybrotherskeeper.org/\"\n    }, \n    {\n      \"address\": \"804 East 138th Street\\n2nd Floor\\nBronx, NY 10454\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 79, \n      \"img\": \"https://logo.clearbit.com/perscholas.org/\", \n      \"mission\": \"Per Scholas' mission is to open doors to technology careers for individuals from often overlooked communities. We envision a future where individuals from any community can access well-paying career positions, and where talent is recognized and recruited from many diverse sources. <br><br>Founded in 1995, Per Scholas first worked to bridge the digital divide for families and children in New York by increasing access to personal computers. Since 1998, we have focused on ensuring the opportunity for adults \", \n      \"name\": \"Per Scholas\", \n      \"rating\": 4, \n      \"state\": \"New York\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.perscholas.org/\"\n    }, \n    {\n      \"address\": \"35 Park Street\\nBeverly, MA 01915\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 80, \n      \"img\": \"https://logo.clearbit.com/beverlybootstraps.org/\", \n      \"mission\": \"Beverly Bootstraps was first established in 1992 as a food pantry in the basement of the First Baptist Church. With the generous support of our donors, volunteers and the community at large, we have grown to be a leading social service agency on the North Shore. We are unique in our approach to the issues of hunger. While recognizing that people need food in hand to stem immediate hunger, our clients also need the opportunity to be embraced by the community, educated about the resources available and empo\", \n      \"name\": \"Beverly Bootstrap\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://beverlybootstraps.org/\"\n    }, \n    {\n      \"address\": \"51 Water Street, Suite 206\\nWatertown, MA 02472\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 85, \n      \"img\": \"https://logo.clearbit.com/aane.org/\", \n      \"mission\": \"The Asperger/Autism Network (AANE) works with individuals, families, and professionals to help people with Asperger Syndrome and similar autism spectrum profiles build meaningful, connected lives. We do this by providing information, education, community, support, and advocacy, all in an atmosphere of validation and respect. While our primary mission is to assist individuals affected by AS, AANE is an inclusive organization that also serves people who have other neurological differences or who feel our se\", \n      \"name\": \"The Asperger-Autism Network\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://aane.org/\"\n    }, \n    {\n      \"address\": \"2055 Oak Industrial Drive\\nSuite C\\nGrand Rapids, MI 49505\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 87, \n      \"img\": \"https://images.unsplash.com/photo-1527833296831-2dcbf098d66f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=48525d2cd5d799ae0c19cbdb40442c45&auto=format&fit=crop&w=1350&q=80\", \n      \"mission\": \"Kids' Food Basket is a force for \\\"Attacking Childhood Hunger.\\\" Our mission is to ensure children in our community do not go to bed hungry. We began over ten years ago by serving 125 kids each school day through our Sack Supper program and now serve nearly 6,000 kids each day in greater Grand Rapids and Muskegon. Sack Suppers are evening meals that provide a well-rounded nutritious meal, nutrition that's critical to the development of kids' brains and bodies.\", \n      \"name\": \"Kids' Food Basket\", \n      \"rating\": 4, \n      \"state\": \"Michigan\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.kidsfoodbasket.org/\"\n    }, \n    {\n      \"address\": \"87-91 144th Street\\nJamaica, NY 11435\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 88, \n      \"img\": \"https://logo.clearbit.com/icnarelief.org/\", \n      \"mission\": \"ICNA Relief USA seeks to alleviate human suffering by providing caring and compassionate service to victims of adversities and survivors of disasters. ICNA Relief USA strives to build healthy communities, strengthen families and create opportunities for those in despair while maintaining dignity and advocating for basic human needs.\", \n      \"name\": \"ICNA Relief USA\", \n      \"rating\": 4, \n      \"state\": \"New York\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://icnarelief.org/\"\n    }, \n    {\n      \"address\": \"P.O. Box 916\\n458 Main Street\\nNorwell, MA 02061\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 90, \n      \"img\": \"https://logo.clearbit.com/friendshiphome.net\", \n      \"mission\": \"Friendship Home's mission is to enrich the lives of individuals with developmental disabilities and their families by providing quality respite care and support services in a safe and caring environment. Our programs build self-esteem and community involvement for our participants, while providing support for their families who may become overwhelmed and isolated by the daily demands of caring for their family members. While our programs directly address the needs of individuals with developmental disabil\", \n      \"name\": \"Friendship Home, Massachusetts\", \n      \"rating\": 3, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.friendshiphome.net\"\n    }, \n    {\n      \"address\": \"43 Jefferson Boulevard\\nWarwick, RI 02888\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 92, \n      \"img\": \"https://logo.clearbit.com/in-sight.org/\", \n      \"mission\": \"INSIGHT works to inspire confidence, build skills, and empower people who are blind and visually impaired to become full integrated, equally valued members of society by providing diverse services that produce opportunities and choices. Vision rehabilitation is the key piece of INSIGHT's mission of inspiring confidence, building skills, and empowering people who are blind and visually impaired. Our team of trained professionals work with people to identify their needs, interests, and goals and then establ\", \n      \"name\": \"INSIGHT\", \n      \"rating\": 4, \n      \"state\": \"Rhode Island\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.in-sight.org/\"\n    }, \n    {\n      \"address\": \"11760 Commonwealth Drive\\nLouisville, KY 40299\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 97, \n      \"img\": \"https://logo.clearbit.com/usacares.org\", \n      \"mission\": \"USA Cares exists to help bear the burdens of service by providing post-9/11 military families with financial and advocacy support in their time of need.\", \n      \"name\": \"USA Cares\", \n      \"rating\": 3, \n      \"state\": \"Kentucky\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.usacares.org\"\n    }, \n    {\n      \"address\": \"331 Main Street\\nNorwich, CT 06360\", \n      \"affiliation\": \"Subordinate\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 98, \n      \"img\": \"https://images.unsplash.com/photo-1474649107449-ea4f014b7e9f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ee665399b33bc893141af2bc7bb87333&auto=format&fit=crop&w=1350&q=80\", \n      \"mission\": \"The Catholic Charities, Diocese of Norwich works to respond to Christ's call to care for those in need by providing compassionate social services for individuals and families living in the Diocese of Norwich. Founded in 1954, our services have expanded from meeting basic needs, providing emergency services and assisting with adoptions to include behavioral health counseling and housing/foreclosure assistance. We continue to strive to be innovative in order to meet the needs of all people in our community,\", \n      \"name\": \"Catholic Charities, Diocese of Norwich\", \n      \"rating\": 3, \n      \"state\": \"Connecticut\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.ccfsn.org\"\n    }, \n    {\n      \"address\": \"2121 Spar Avenue Anchorage, AK 99501\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 293, \n      \"img\": \"http://alaskafood.org/wp-content/uploads/2015/01/Alaska-Food-Coalition-logo-square.jpg\", \n      \"mission\": \"The Alaska Food Coalition (AFC) was founded in 1996, with encouragement from Alaska\\u2019s Department of Health and Human Services (now DHSS). The AFC was started as a method to get resources to agencies and village councils who distribute food. The coalition has never been a 501(c) (3), an IRS requirement for most grant applications, but instead has a fiscal agent which can apply for grants on behalf of the AFC. Beans Caf\\u00e9 was the first fiscal agent; Food Bank of Alaska has been the fiscal agent since 2001. A\", \n      \"name\": \"Alaska Food Coalition\", \n      \"rating\": 3, \n      \"state\": \"Alaska\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://alaskafood.org/\"\n    }, \n    {\n      \"address\": \"110 N. Hotel Street Honolulu, Hawaii, USA 96817 \", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 294, \n      \"img\": \"http://consuelo.org/asset/img/site/layout/logo.png\", \n      \"mission\": \"The Mission of Consuelo Foundation is to promote the wellbeing of at-risk children, women and families in the Philippines and Hawai\\u2018i, and to prevent and treat their abuse, neglect, and exploitation. We do this through innovative and effective strategies and services that engage and empower individuals, families, and communities.\", \n      \"name\": \"Consuelo Foundation\", \n      \"rating\": 3, \n      \"state\": \"Hawaii\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://consuelo.org/\"\n    }, \n    {\n      \"address\": \"704 S Latah St Boise, ID 83705\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 295, \n      \"img\": \"http://www.hfhboise.org/sites/all/themes/site-specific-themes/hfh2/logo.png\", \n      \"mission\": \"Seeking to put God\\u2019s love into action; Habitat for Humanity brings people together to build homes, communities and hope.\", \n      \"name\": \"Boise Valley Habitat for Humanity\", \n      \"rating\": 3, \n      \"state\": \"Idaho\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.hfhboise.org/\"\n    }, \n    {\n      \"address\": \"440 W. Beatty Street Jackson MS 39201\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 296, \n      \"img\": \"http://msfoodnet.wpengine.com/wp-content/uploads/2016/07/header-logo-fa.png\", \n      \"mission\": \"Our mission is to relieve poverty-related hunger in our service area by distributing donated and purchased food and grocery products through a network of member churches and nonprofit organizations. We provide nutrition education to our needy clients. We also emphasize advocacy and related needs.\", \n      \"name\": \"Mississippi Food Network\", \n      \"rating\": 3, \n      \"state\": \"Mississippi\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.msfoodnet.org/\"\n    }, \n    {\n      \"address\": \"2112 4TH AVE N, BILLINGS, MT 59101\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 297, \n      \"img\": \"https://billingsfoodbank.com/wp-content/uploads/2017/06/logo-newer.png\", \n      \"mission\": \"The Billings Food Bank gathers food and other essentials to meet the needs of the under privileged in our community. The food bank accepts donations of food all year around and each and every donation is greatly appreciated. The Billings Food Bank is always looking for volunteers to help with processing and distribution of the food that is collected.\", \n      \"name\": \"Billings Food Bank\", \n      \"rating\": 3, \n      \"state\": \"Montana\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"https://billingsfoodbank.com\"\n    }, \n    {\n      \"address\": \"4840 Doris Bair Cr. Ste. A Lincoln, NE 68504\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 298, \n      \"img\": \"http://www.lincolnfoodbank.org/images/logo.gif\", \n      \"mission\": \"To alleviate hunger in Southeast Nebraska.\", \n      \"name\": \"Food Bank of Lincoln\", \n      \"rating\": 3, \n      \"state\": \"Nebraska\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.lincolnfoodbank.org/\"\n    }, \n    {\n      \"address\": \"2305 Renard Place S.E. Suite 200 Albuquerque, NM 87106\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 299, \n      \"img\": \"http://www.ndnm.org/images/uploads/DayOfGiving_2018_-_EndBanner_2.jpg\", \n      \"mission\": \"Our mission is critical: to authentically connect young people to safety, community and themselves.\", \n      \"name\": \"New Day\", \n      \"rating\": 3, \n      \"state\": \"New Mexico\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.ndnm.org/\"\n    }, \n    {\n      \"address\": \"1385 West Indiana Avenue Salt Lake City, UT  84104\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 300, \n      \"img\": \"https://www.crossroadsurbancenter.org/uploads/5/2/3/8/52385067/published/cr-logowide3.jpg?1515602634\", \n      \"mission\": \"Crossroads Urban Center is a nonprofit, grassroots organization that assists and organizes Utahns with low incomes, those with disabilities, and people of color to meet basic survival needs and to address essential issues affecting quality of life. Established in 1966, Crossroads is a multi-faith, community based project that is in a covenant relationship with the United Methodist Women national office.  \", \n      \"name\": \"Crossroads Urban Center\", \n      \"rating\": 3, \n      \"state\": \"Utah\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"https://www.crossroadsurbancenter.org\"\n    }, \n    {\n      \"address\": \"1605 W Washington St, Charleston, WV 25387\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 301, \n      \"img\": \"http://www.wvdawg.org/wp-content/uploads/2011/05/pi-104-300x203.jpg\", \n      \"mission\": \"Direct Action Welfare Group (DAWG) is a statewide grassroots organization comprised of current and former public assistance recipients, low wage workers, people living in poverty, and concerned individuals who come together to share information and ideas and to advocate for each other, their neighbors, and themselves.  Direct Action Welfare Group\\u2019s vision is the end of poverty in West Virginia.  In order to make this vision a reality, we advocate with low-income families for economic justice\", \n      \"name\": \"Direct Action Welfare Group (DAWG)\", \n      \"rating\": 3, \n      \"state\": \"West Virginia\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.wvdawg.org/\"\n    }\n  ], \n  \"total\": 41\n}"
+						},
+						{
 							"name": "Filter by state",
 							"originalRequest": {
 								"method": "GET",
@@ -714,6 +1415,74 @@
 							"header": [],
 							"cookie": [],
 							"body": "[\n  {\n    \"address\": \"230 COLLINS RD\\nRICHMOND, TX\\n 77469-2914\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 150, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=452401548&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Attack Poverty\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 84904\\nPEARLAND, TX\\n 77584-0008\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 177, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=473422453&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Sock Out Poverty\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 23025\\nWACO, TX\\n 76702-3025\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 207, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=161699211&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Heart of Texas Homeless Coalition\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 86\\nLONGVIEW, TX\\n 75606-0086\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 222, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=384012391&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"North East Texas Homeless Consortium\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 980935\\nHOUSTON, TX\\n 77098-0935\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 240, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=474612125&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Homeless Gay Kids - Houston\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"2471 FM 1237\\nTEMPLE, TX\\n 76501-0000\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 261, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=311658126&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Happy Endings-Homeless Animal Aid\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"2816 SWISS AVE\\nDALLAS, TX\\n 75204-5958\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 273, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=752461679&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Metro Dallas Homeless Alliance\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 55607\\nHOUSTON, TX\\n 77255-5607\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 280, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760447678&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Westside Homeless Partnership Inc.\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"501 N MAPLE ST\\nATHENS, TX\\n 75751-4233\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 284, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=611849774&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Henderson County Homeless Ministry\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 273331\\nHOUSTON, TX\\n 77277-3331\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 286, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760618317&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Homeless & Orphaned Pets Endeavor\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"PO BOX 273027\\nHOUSTON, TX\\n 77277-3027\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 287, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=760283479&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Homeless Pet Placement League Inc.\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }, \n  {\n    \"address\": \"12320 BEECHNUT ST\\nHOUSTON, TX\\n 77072-3945\", \n    \"affiliation\": \"Independent - the organization is an independent organization or an independent auxiliary (i.e., not affiliated with a National, Regional, or Geographic grouping of organizations).\", \n    \"cause_name\": \"null\", \n    \"id\": 294, \n    \"img\": \"logo.clearbit.com/charitynavigator.org/?bay=search.profile&ein=812775766&utm_source=DataAPI&utm_content=9af5afa3\", \n    \"mission\": null, \n    \"name\": \"Alief Coalition for the Homeless\", \n    \"state\": \"Texas\", \n    \"tax_classification\": \"501(c)(3)\"\n  }\n]"
+						},
+						{
+							"name": "Filter by rating",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/charities?rating=2",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"charities"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "(Optional) Filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "state",
+											"value": "{{state}}",
+											"description": "(Optional) Filters by state",
+											"disabled": true
+										},
+										{
+											"key": "rating",
+											"value": "2",
+											"description": "(Optional) Filters by rating"
+										},
+										{
+											"key": "affiliation",
+											"value": "{{affiliation}}",
+											"description": "(Optional) Filters by affiliation",
+											"disabled": true
+										},
+										{
+											"key": "tax_classification",
+											"value": "{{tax_classification}}",
+											"description": "(Optional) Filters by tax_classification",
+											"disabled": true
+										},
+										{
+											"key": "cause",
+											"value": "{{cause}}",
+											"description": "(Optional) Filters by cause",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"address\": \"25 Walker Street\\nConcord, NH 03301\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 13, \n      \"img\": \"https://logo.clearbit.com/sightcenter.org/\", \n      \"mission\": \"The New Hampshire Association for the Blind is the statewide leader in providing vision rehabilitation services for New Hampshire people of all ages who are blind and visually impaired. Founded in 1912, it provides services in virtually every community statewide and at the McGreal Sight Center in Concord. The Association provides support through information, education, informed choice, and help through a range of specialized professional vision rehabilitation services which are available at the McGreal Si\", \n      \"name\": \"New Hampshire Association for the Blind\", \n      \"rating\": 2, \n      \"state\": \"New Hampshire\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.sightcenter.org/\"\n    }, \n    {\n      \"address\": \"333 Nahanton Street\\nNewton, MA 02459\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n      \"id\": 37, \n      \"img\": \"https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=e6daa4b6ab26a89c93cd9b84fee487fe&auto=format&fit=crop&w=1350&q=80\", \n      \"mission\": \"At Jewish Big Brothers Big Sisters of Greater Boston (JBBBS), we help to connect children in need to adult mentors, and we introduce adults who have disabilities to new friends in their communities. In this way, and in the spirit of chazak v'nithazaik (strengthening one another), we seek to support and empower individuals and families to engage, to participate actively in the life of their communities, to live inspired and to inspire others that none may be lost to us. Jewish Big Brothers Big Sisters of G\", \n      \"name\": \"Jewish Big Brothers Big Sisters of Greater Boston\", \n      \"rating\": 2, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.jbbbs.org/\"\n    }, \n    {\n      \"address\": \"2 Merrimac Street\\nWoburn, MA 01801\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Children's and Family Services\", \n      \"id\": 53, \n      \"img\": \"https://images.pexels.com/photos/1260293/pexels-photo-1260293.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260\", \n      \"mission\": \"Founded in 1969, the Council of Social Concern is a charitable, community-based agency responding to the basic needs of people of all ages, providing early childhood education and care, helping individuals develop their potential, creating positive family and community relationships, and fostering respect for diversity. We envision a viable agency providing quality services that meet basic and changing community needs in-line with our mission.\", \n      \"name\": \"Council of Social Concern\", \n      \"rating\": 2, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://socialconcern.org/\"\n    }, \n    {\n      \"address\": \"145 Border Street\\nEast Boston, MA 02128\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Social Services\", \n      \"id\": 70, \n      \"img\": \"https://logo.clearbit.com/projectbread.org/\", \n      \"mission\": \"Project Bread is an anti-hunger organization committed to providing people of all ages, cultures, and walks of life with sustainable, reliable access to nutritious food. From community-based meal programs, to early childhood and school nutrition initiatives, to improved access to farm-to-table resources, Project Bread approaches hunger as a complex problem with multiple solutions. With funds raised through The Walk for Hunger, the oldest continual pledge walk in the country, and other sources, Project Bre\", \n      \"name\": \"Project Bread\", \n      \"rating\": 2, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.projectbread.org/\"\n    }, \n    {\n      \"address\": \"25 Kingston Street\\n6th Floor\\nBoston, MA 02111\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Youth Development, Shelter, and Crisis Services\", \n      \"id\": 84, \n      \"img\": \"https://logo.clearbit.com/peacefirst.org/\", \n      \"mission\": \"Peace First teaches young people the critical skills of peacemaking - the social-emotional skills of cooperation, communication, conflict resolution, and empathy as well as the core tools for civic engagement - as a core part of their school day, alongside reading and math. The heart of our program is a Pre-K-8 curriculum integrated weekly into the academic frameworks of the school, taught by AmeriCorps members in partnership with the classroom teacher. The program begins by teaching basic communication a\", \n      \"name\": \"Peace First\", \n      \"rating\": 2, \n      \"state\": \"Massachusetts\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://peacefirst.org/\"\n    }, \n    {\n      \"address\": \"627 Cranston Street\\nP.O. Box 72753\\nProvidence, RI 02907\", \n      \"affiliation\": \"Independent\", \n      \"cause_name\": \"Homeless Services\", \n      \"id\": 96, \n      \"img\": \"https://logo.clearbit.com/providencerescuemission.org/\", \n      \"mission\": \"The Providence Rescue Mission works to reach the homeless and needy of Rhode Island's urban centers with the Gospel of Jesus Christ while providing physical, emotional, educational and rehabilitative services at no expense to those in need. We conduct chapel service followed by an evening meal seven nights a week, provide overnight shelter for homeless men and women, a food pantry, clothing room, education and career center, and a one-year discipleship program for homeless men. Each of these services prov\", \n      \"name\": \"Providence Rescue Mission\", \n      \"rating\": 2, \n      \"state\": \"Rhode Island\", \n      \"tax_classification\": \"501(c)(3)\", \n      \"url\": \"http://www.providencerescuemission.org/\"\n    }\n  ], \n  \"total\": 6\n}"
 						}
 					]
 				}
@@ -733,12 +1502,12 @@
 								"exec": [
 									"pm.globals.set(\"state\", \"texas\");",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Body is correct\", function () {",
 									"    var body = {",
 									"        \"below_poverty_rate\": \"15.6\",",
@@ -818,12 +1587,12 @@
 								"exec": [
 									"pm.globals.set(\"page\", \"1\");",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});",
 									"",
-									"// @Evan@",
+									"// Evan",
 									"pm.test(\"Body is correct\", function () {",
 									"    var body = {",
 									"        \"data\": [",
@@ -951,7 +1720,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "https://api.relievepoverty.me/v1/states?page={{page}}",
+							"raw": "https://api.relievepoverty.me/v1/states?page={{page}}&median_income_low={{mi_low}}&median_income_high={{mi_high}}&below_poverty_rate_low={{bpv_low}}&below_poverty_rate_high={{bpv_high}}&child_poverty_rate_low={{cpv_low}}&child_poverty_rate_high={{cpv_high}}&q={{query}}",
 							"protocol": "https",
 							"host": [
 								"api",
@@ -967,12 +1736,267 @@
 									"key": "page",
 									"value": "{{page}}",
 									"description": "(Optional) Filters by page number"
+								},
+								{
+									"key": "median_income_low",
+									"value": "{{mi_low}}",
+									"description": "(Optional) Filters by a median income range"
+								},
+								{
+									"key": "median_income_high",
+									"value": "{{mi_high}}",
+									"description": "(Optional) Filters by a median income range"
+								},
+								{
+									"key": "below_poverty_rate_low",
+									"value": "{{bpv_low}}",
+									"description": "(Optional) Filters by a below poverty rate range"
+								},
+								{
+									"key": "below_poverty_rate_high",
+									"value": "{{bpv_high}}",
+									"description": "(Optional) Filters by a below poverty rate range"
+								},
+								{
+									"key": "child_poverty_rate_low",
+									"value": "{{cpv_low}}",
+									"description": "(Optional) Filters by a child poverty rate range"
+								},
+								{
+									"key": "child_poverty_rate_high",
+									"value": "{{cpv_high}}",
+									"description": "(Optional) Filters by a child poverty rate range"
+								},
+								{
+									"key": "q",
+									"value": "{{query}}",
+									"description": "(Optional) Search"
 								}
 							]
 						},
-						"description": "Gets all states. The caller may also filter by page."
+						"description": "Gets all states. The caller may also filter by page, median_income, below_poverty_rate, and child_poverty_rate. Queries are also supported."
 					},
 					"response": [
+						{
+							"name": "Filter by a median income range",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/states?median_income_low=45000&median_income_high=50000",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"states"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "(Optional) Filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "median_income_low",
+											"value": "45000",
+											"description": "(Optional) Filters by a median income range"
+										},
+										{
+											"key": "median_income_high",
+											"value": "50000",
+											"description": "(Optional) Filters by a median income range"
+										},
+										{
+											"key": "below_poverty_rate_low",
+											"value": "{{bpv_low}}",
+											"description": "(Optional) Filters by a below poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "below_poverty_rate_high",
+											"value": "{{bpv_high}}",
+											"description": "(Optional) Filters by a below poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "child_poverty_rate_low",
+											"value": "{{cpv_low}}",
+											"description": "(Optional) Filters by a child poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "child_poverty_rate_high",
+											"value": "{{cpv_high}}",
+											"description": "(Optional) Filters by a child poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"below_poverty_rate\": \"20.1\", \n      \"child_poverty_rate\": \"28.4\", \n      \"counties\": \"East Carroll Parish\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/louisiana-flag.jpg\", \n      \"median_income\": \"45374\", \n      \"name\": \"Louisiana\", \n      \"rank\": 2\n    }, \n    {\n      \"below_poverty_rate\": \"19.1\", \n      \"child_poverty_rate\": \"27.8\", \n      \"counties\": \"McKinley County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/newmexico-flag.jpg\", \n      \"median_income\": \"46844\", \n      \"name\": \"New Mexico\", \n      \"rank\": 3\n    }, \n    {\n      \"below_poverty_rate\": \"18.2\", \n      \"child_poverty_rate\": \"24.4\", \n      \"counties\": \"Owsley County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/kentucky-flag.jpg\", \n      \"median_income\": \"46610\", \n      \"name\": \"Kentucky\", \n      \"rank\": 4\n    }, \n    {\n      \"below_poverty_rate\": \"17.2\", \n      \"child_poverty_rate\": \"24.7\", \n      \"counties\": \"Dallas County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/alabama-flag.jpg\", \n      \"median_income\": \"46309\", \n      \"name\": \"Alabama\", \n      \"rank\": 7\n    }, \n    {\n      \"below_poverty_rate\": \"16.1\", \n      \"child_poverty_rate\": \"22.5\", \n      \"counties\": \"Adair County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/oklahoma-flag.jpg\", \n      \"median_income\": \"49204\", \n      \"name\": \"Oklahoma\", \n      \"rank\": 9\n    }, \n    {\n      \"below_poverty_rate\": \"15.8\", \n      \"child_poverty_rate\": \"22.6\", \n      \"counties\": \"Lake County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/tennessee-flag.jpg\", \n      \"median_income\": \"48506\", \n      \"name\": \"Tennessee\", \n      \"rank\": 11\n    }, \n    {\n      \"below_poverty_rate\": \"15.3\", \n      \"child_poverty_rate\": \"23\", \n      \"counties\": \"Allendale County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/southcarolina-flag.jpg\", \n      \"median_income\": \"49587\", \n      \"name\": \"South Carolina\", \n      \"rank\": 14\n    }\n  ], \n  \"total\": 7\n}"
+						},
+						{
+							"name": "Search",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/states?q=star",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"states"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "(Optional) Filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "median_income_low",
+											"value": "{{mi_low}}",
+											"description": "(Optional) Filters by a median income range",
+											"disabled": true
+										},
+										{
+											"key": "median_income_high",
+											"value": "{{mi_high}}",
+											"description": "(Optional) Filters by a median income range",
+											"disabled": true
+										},
+										{
+											"key": "below_poverty_rate_low",
+											"value": "{{bpv_low}}",
+											"description": "(Optional) Filters by a below poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "below_poverty_rate_high",
+											"value": "{{bpv_high}}",
+											"description": "(Optional) Filters by a below poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "child_poverty_rate_low",
+											"value": "{{cpv_low}}",
+											"description": "(Optional) Filters by a child poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "child_poverty_rate_high",
+											"value": "{{cpv_high}}",
+											"description": "(Optional) Filters by a child poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "star",
+											"description": "(Optional) Search"
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"below_poverty_rate\": \"15.6\", \n      \"child_poverty_rate\": \"22.4\", \n      \"counties\": \"Starr County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/texas-flag.jpg\", \n      \"median_income\": \"56583\", \n      \"name\": \"Texas\", \n      \"rank\": 12\n    }\n  ], \n  \"total\": 1\n}"
+						},
+						{
+							"name": "Filter by a child poverty rate range",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/states?child_poverty_rate_low=5&child_poverty_rate_high=15",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"states"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "(Optional) Filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "median_income_low",
+											"value": "{{mi_low}}",
+											"description": "(Optional) Filters by a median income range",
+											"disabled": true
+										},
+										{
+											"key": "median_income_high",
+											"value": "{{mi_high}}",
+											"description": "(Optional) Filters by a median income range",
+											"disabled": true
+										},
+										{
+											"key": "below_poverty_rate_low",
+											"value": "{{bpv_low}}",
+											"description": "(Optional) Filters by a below poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "below_poverty_rate_high",
+											"value": "{{bpv_high}}",
+											"description": "(Optional) Filters by a below poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "child_poverty_rate_low",
+											"value": "5",
+											"description": "(Optional) Filters by a child poverty rate range"
+										},
+										{
+											"key": "child_poverty_rate_high",
+											"value": "15",
+											"description": "(Optional) Filters by a child poverty rate range"
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"below_poverty_rate\": \"12.2\", \n      \"child_poverty_rate\": \"14.3\", \n      \"counties\": \"Crawford County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/kansas-flag.jpg\", \n      \"median_income\": \"54828\", \n      \"name\": \"Kansas\", \n      \"rank\": 31\n    }, \n    {\n      \"below_poverty_rate\": \"11.7\", \n      \"child_poverty_rate\": \"14.6\", \n      \"counties\": \"Decatur County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/iowa-flag.jpg\", \n      \"median_income\": \"56354\", \n      \"name\": \"Iowa\", \n      \"rank\": 34\n    }, \n    {\n      \"below_poverty_rate\": \"11.3\", \n      \"child_poverty_rate\": \"13.9\", \n      \"counties\": \"Whitman County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/washington-flag.jpg\", \n      \"median_income\": \"67064\", \n      \"name\": \"Washington\", \n      \"rank\": 35\n    }, \n    {\n      \"below_poverty_rate\": \"11.3\", \n      \"child_poverty_rate\": \"13.5\", \n      \"counties\": \"Essex County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/vermont-flag.jpg\", \n      \"median_income\": \"57661\", \n      \"name\": \"Vermont\", \n      \"rank\": 36\n    }, \n    {\n      \"below_poverty_rate\": \"11.3\", \n      \"child_poverty_rate\": \"13.9\", \n      \"counties\": \"Thurston County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/nebraska-flag.jpg\", \n      \"median_income\": \"56979\", \n      \"name\": \"Nebraska\", \n      \"rank\": 37\n    }, \n    {\n      \"below_poverty_rate\": \"11\", \n      \"child_poverty_rate\": \"14.3\", \n      \"counties\": \"Lee County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/virginia-flag.jpg\", \n      \"median_income\": \"68127\", \n      \"name\": \"Virginia\", \n      \"rank\": 38\n    }, \n    {\n      \"below_poverty_rate\": \"11\", \n      \"child_poverty_rate\": \"13.4\", \n      \"counties\": \"Crowley County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/colorado-flag.jpg\", \n      \"median_income\": \"65718\", \n      \"name\": \"Colorado\", \n      \"rank\": 39\n    }, \n    {\n      \"below_poverty_rate\": \"10.9\", \n      \"child_poverty_rate\": \"11.6\", \n      \"counties\": \"Albany County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/wyoming-flag.jpg\", \n      \"median_income\": \"61686\", \n      \"name\": \"Wyoming\", \n      \"rank\": 40\n    }, \n    {\n      \"below_poverty_rate\": \"10.5\", \n      \"child_poverty_rate\": \"11.9\", \n      \"counties\": \"Sioux County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/northdakota-flag.jpg\", \n      \"median_income\": \"61898\", \n      \"name\": \"North Dakota\", \n      \"rank\": 41\n    }, \n    {\n      \"below_poverty_rate\": \"10.5\", \n      \"child_poverty_rate\": \"13.6\", \n      \"counties\": \"Suffolk County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/massachusetts-flag.jpg\", \n      \"median_income\": \"75207\", \n      \"name\": \"Massachusetts\", \n      \"rank\": 42\n    }, \n    {\n      \"below_poverty_rate\": \"10.4\", \n      \"child_poverty_rate\": \"14.5\", \n      \"counties\": \"Cumberland County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/newjersey-flag.jpg\", \n      \"median_income\": \"76212\", \n      \"name\": \"New Jersey\", \n      \"rank\": 43\n    }, \n    {\n      \"below_poverty_rate\": \"10.2\", \n      \"child_poverty_rate\": \"11\", \n      \"counties\": \"San Juan County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/utah-flag.jpg\", \n      \"median_income\": \"65931\", \n      \"name\": \"Utah\", \n      \"rank\": 44\n    }, \n    {\n      \"below_poverty_rate\": \"9.9\", \n      \"child_poverty_rate\": \"12.5\", \n      \"counties\": \"Beltrami County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/minnesota-flag.jpg\", \n      \"median_income\": \"65583\", \n      \"name\": \"Minnesota\", \n      \"rank\": 45\n    }, \n    {\n      \"below_poverty_rate\": \"9.9\", \n      \"child_poverty_rate\": \"13.1\", \n      \"counties\": \"Windham County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/connecticut-flag.jpg\", \n      \"median_income\": \"73380\", \n      \"name\": \"Connecticut\", \n      \"rank\": 46\n    }, \n    {\n      \"below_poverty_rate\": \"9.9\", \n      \"child_poverty_rate\": \"13.6\", \n      \"counties\": \"Kusilvak Census Area\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/alaska-flag.jpg\", \n      \"median_income\": \"76144\", \n      \"name\": \"Alaska\", \n      \"rank\": 47\n    }, \n    {\n      \"below_poverty_rate\": \"9.7\", \n      \"child_poverty_rate\": \"13\", \n      \"counties\": \"Somerset County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/maryland-flag.jpg\", \n      \"median_income\": \"78787\", \n      \"name\": \"Maryland\", \n      \"rank\": 48\n    }, \n    {\n      \"below_poverty_rate\": \"9.5\", \n      \"child_poverty_rate\": \"11.2\", \n      \"counties\": \"Hawaii County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/hawaii-flag.jpg\", \n      \"median_income\": \"74659\", \n      \"name\": \"Hawaii\", \n      \"rank\": 49\n    }, \n    {\n      \"below_poverty_rate\": \"7.6\", \n      \"child_poverty_rate\": \"8.5\", \n      \"counties\": \"Coos County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/newhampshire-flag.jpg\", \n      \"median_income\": \"70986\", \n      \"name\": \"New Hampshire\", \n      \"rank\": 50\n    }\n  ], \n  \"total\": 18\n}"
+						},
 						{
 							"name": "Filter by page",
 							"originalRequest": {
@@ -1005,6 +2029,79 @@
 							"header": [],
 							"cookie": [],
 							"body": "[\n  {\n    \"below_poverty_rate\": \"10.4\", \n    \"child_poverty_rate\": \"14.5\", \n    \"counties\": \"Cumberland County\", \n    \"flag\": \"http://www.theus50.com/images/state-flags/newjersey-flag.jpg\", \n    \"median_income\": \"76212\", \n    \"name\": \"New Jersey\", \n    \"rank\": 49\n  }, \n  {\n    \"below_poverty_rate\": \"10.2\", \n    \"child_poverty_rate\": \"11\", \n    \"counties\": \"San Juan County\", \n    \"flag\": \"http://www.theus50.com/images/state-flags/utah-flag.jpg\", \n    \"median_income\": \"65931\", \n    \"name\": \"Utah\", \n    \"rank\": 50\n  }\n]"
+						},
+						{
+							"name": "Filter by a below poverty rate range",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "https://api.relievepoverty.me/v1/states?below_poverty_rate_low=5&below_poverty_rate_high=10",
+									"protocol": "https",
+									"host": [
+										"api",
+										"relievepoverty",
+										"me"
+									],
+									"path": [
+										"v1",
+										"states"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "{{page}}",
+											"description": "(Optional) Filters by page number",
+											"disabled": true
+										},
+										{
+											"key": "median_income_low",
+											"value": "{{mi_low}}",
+											"description": "(Optional) Filters by a median income range",
+											"disabled": true
+										},
+										{
+											"key": "median_income_high",
+											"value": "{{mi_high}}",
+											"description": "(Optional) Filters by a median income range",
+											"disabled": true
+										},
+										{
+											"key": "below_poverty_rate_low",
+											"value": "5",
+											"description": "(Optional) Filters by a below poverty rate range"
+										},
+										{
+											"key": "below_poverty_rate_high",
+											"value": "10",
+											"description": "(Optional) Filters by a below poverty rate range"
+										},
+										{
+											"key": "child_poverty_rate_low",
+											"value": "{{cpv_low}}",
+											"description": "(Optional) Filters by a child poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "child_poverty_rate_high",
+											"value": "{{cpv_high}}",
+											"description": "(Optional) Filters by a child poverty rate range",
+											"disabled": true
+										},
+										{
+											"key": "q",
+											"value": "{{query}}",
+											"description": "(Optional) Search",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n  \"data\": [\n    {\n      \"below_poverty_rate\": \"9.9\", \n      \"child_poverty_rate\": \"12.5\", \n      \"counties\": \"Beltrami County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/minnesota-flag.jpg\", \n      \"median_income\": \"65583\", \n      \"name\": \"Minnesota\", \n      \"rank\": 45\n    }, \n    {\n      \"below_poverty_rate\": \"9.9\", \n      \"child_poverty_rate\": \"13.1\", \n      \"counties\": \"Windham County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/connecticut-flag.jpg\", \n      \"median_income\": \"73380\", \n      \"name\": \"Connecticut\", \n      \"rank\": 46\n    }, \n    {\n      \"below_poverty_rate\": \"9.9\", \n      \"child_poverty_rate\": \"13.6\", \n      \"counties\": \"Kusilvak Census Area\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/alaska-flag.jpg\", \n      \"median_income\": \"76144\", \n      \"name\": \"Alaska\", \n      \"rank\": 47\n    }, \n    {\n      \"below_poverty_rate\": \"9.7\", \n      \"child_poverty_rate\": \"13\", \n      \"counties\": \"Somerset County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/maryland-flag.jpg\", \n      \"median_income\": \"78787\", \n      \"name\": \"Maryland\", \n      \"rank\": 48\n    }, \n    {\n      \"below_poverty_rate\": \"9.5\", \n      \"child_poverty_rate\": \"11.2\", \n      \"counties\": \"Hawaii County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/hawaii-flag.jpg\", \n      \"median_income\": \"74659\", \n      \"name\": \"Hawaii\", \n      \"rank\": 49\n    }, \n    {\n      \"below_poverty_rate\": \"7.6\", \n      \"child_poverty_rate\": \"8.5\", \n      \"counties\": \"Coos County\", \n      \"flag\": \"http://www.theus50.com/images/state-flags/newhampshire-flag.jpg\", \n      \"median_income\": \"70986\", \n      \"name\": \"New Hampshire\", \n      \"rank\": 50\n    }\n  ], \n  \"total\": 6\n}"
 						}
 					]
 				}
