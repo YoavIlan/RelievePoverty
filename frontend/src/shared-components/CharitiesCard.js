@@ -5,13 +5,6 @@ import Highlighter from "react-highlight-words";
 
 
 class CharitiesCard extends Component {
-
-    snippet(stringToSearch, phrase)
-    {
-            var regExp = eval("/(\\S+\\s){0,3}\\S*" + phrase + "\\S*(\\s\\S+){0,3}/g")
-            // returns an array containing all matches
-            return stringToSearch.match(regExp)
-    }  
     render() {
         console.log(this.props.query);
         let query = (this.props.query === "" || this.props.query === undefined) ? [] : this.props.query.slice(2).split(" ");
