@@ -123,7 +123,7 @@ class News extends Component {
         this.accessAPI()
     }
 
-    accessAPI = () => {
+    async accessAPI() {
         let args = [this.state.sort, this.state.reverse, this.state.query].concat(this.state.filters);
         let api = this.state.api + this.state.page + "&";
         for (let i = 0; i < args.length; i++) {
@@ -134,7 +134,7 @@ class News extends Component {
             api += this.state.filters[Object.keys(this.state.filters)[i]] + "&";
         }
         api = api.substring(0, api.length - 1);
-        this.getJSON(api).then(response => {
+        await this.getJSON(api).then(response => {
             this.setState(JSON.parse(JSON.stringify(response)))
         })
     }
