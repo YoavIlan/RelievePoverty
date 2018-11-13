@@ -297,6 +297,8 @@ def charities_search(query):
         x = "%" + s + "%"
         updatePoints(200, points, Charities.query.filter(Charities.name.like(x)).all())
         updatePoints(99, points, Charities.query.filter(Charities.state.like(x)).all())
+        updatePoints(50, points, Charities.query.filter(Charities.mission.like(x)).all())
+
 
     # Turning list of points with index=id into sorted list of ids
     ids = getIDsByPoints(points)
