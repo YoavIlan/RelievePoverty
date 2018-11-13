@@ -6,7 +6,7 @@ import Highlighter from "react-highlight-words";
 
 class CharitiesCard extends Component {
     render() {
-        let query = this.props.query === undefined ? [] : this.props.query.split(" ");
+        let query = this.props.query === undefined ? [] : this.props.query.slice(2).split(" ");
         let image = this.props.image;
         let title = this.props.title;
         let affiliation = this.props.affiliation;
