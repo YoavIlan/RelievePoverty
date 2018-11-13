@@ -4,6 +4,8 @@ import flask_restless
 import sqlalchemy
 from flask import request
 from re import sub
+import datetime
+
 
 INSTANCES_PER_PAGE = 12
 SEARCH_ALL_INSTANCES_PER_PAGE = 3
@@ -112,8 +114,16 @@ def getAllNews():
 
     # Searing for filters as arguments and filtering out those that don't mach the filter
     # Year requires a special filter due to the DateTime type
-    if 'year' in request.args:
-        news = filter(lambda n: News.serialize(n)['published_date'].year == int(request.args['year']), news)
+    now = datetime.datetime.now()
+    days = 0
+    if 'date' in request.args:
+        if(request.args['date'] == 'year'):
+            days = 365
+        elif(request.args['date'] == 'month'):
+            days = 30
+        else:
+            days = 1
+        news = filter(lambda n: (now - News.serialize(n)['published_date']).days < days, news)
     filters = ['state', 'author', 'source']
     for fil in filters:
         if(fil in request.args):
@@ -270,7 +280,7 @@ def state_search(query):
     # Grabbing instances by id in order
     results = []
     for i in ids:
-        results.append(States.query.get(i + 1))
+        results.append(States.query.getPoints(i + 1))
 
     return results
 
