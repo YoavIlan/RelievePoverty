@@ -127,7 +127,7 @@ def getAllNews():
     filters = ['state', 'author', 'source']
     for fil in filters:
         if(fil in request.args):
-            news = filter(lambda n: str(News.serialize(n)[fil]) == request.args[fil], news)
+            news = filter(lambda n: str(News.serialize(n)[fil]).lower() == request.args[fil].lower(), news)
 
     # Sort by the sort_by variable, reverse only if reverse is true
     if "sort_by" in request.args:
@@ -165,7 +165,7 @@ def getAllCharities():
     filters = ['state', 'rating', 'affiliation','tax_classification', 'cause']
     for fil in filters:
         if(fil in request.args):
-            charities = filter(lambda n: str(Charities.serialize(n)[fil]) == request.args[fil], charities)
+            charities = filter(lambda n: str(Charities.serialize(n)[fil]).lower() == request.args[fil].lower(), charities)
 
     # Sorts the instances by the given variable in sort_by
     if "sort_by" in request.args :
