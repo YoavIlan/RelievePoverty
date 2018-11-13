@@ -26,7 +26,6 @@ describe('<States />', () => {
 
     // @Uriel@
     it('shows reset button', async () => {
-<<<<<<< Updated upstream
         const wrapper = await shallow(<States />);
         const reset = wrapper.find("#reset");
         expect(reset.length).toBe(1);
@@ -37,11 +36,46 @@ describe('<States />', () => {
         const wrapper = await shallow(<States />);
         const statesSearch = wrapper.find(".search-bar");
         expect(statesSearch.length).toBe(1);
-=======
-        const wrapper = await shallow(<News />);
-        const filters = wrapper.find("#reset");
-        expect(filters.length).toBe(1);
->>>>>>> Stashed changes
+    });
+
+    // @Yoav@
+    it('renders Texas when searching for it', async () =>{
+        const wrapper = await shallow(<States />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({query: "q=Texas"});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(1);
+    });
+
+    // @Yoav@
+    it('filters by median income correctly', async () =>{
+        const wrapper = await shallow(<States />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "median_income_low" : "median_income_low=40000", "median_income_high": "median_income_high=50000"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(10);
+    });
+
+    // @Yoav@
+    it('filters by poverty rate correctly', async () =>{
+        const wrapper = await shallow(<States />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "below_poverty_rate_low" : "below_poverty_rate_low=05", "below_poverty_rate_high": "below_poverty_rate_high=10"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(6);
+    });
+
+    // @Yoav@
+    it('filters by child poverty rate correctly', async () =>{
+        const wrapper = await shallow(<States />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "child_poverty_rate_low" : "child_poverty_rate_low=05", "child_poverty_rate_high": "child_poverty_rate_high=15"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(18);
     });
 });
 
@@ -56,7 +90,6 @@ describe('<Charities />', () =>{
 
     // @Uriel@
     it('shows reset button', async () => {
-<<<<<<< Updated upstream
         const wrapper = await shallow(<Charities />);
         const reset = wrapper.find("#reset");
         expect(reset.length).toBe(1);
@@ -67,11 +100,56 @@ describe('<Charities />', () =>{
         const wrapper = await shallow(<Charities />);
         const charitiesSearch = wrapper.find(".search-bar");
         expect(charitiesSearch.length).toBe(1);
-=======
-        const wrapper = await shallow(<News />);
-        const filters = wrapper.find("#reset");
-        expect(filters.length).toBe(1);
->>>>>>> Stashed changes
+    });
+
+    // @Yoav@
+    it('renders correct responses on search', async () =>{
+        const wrapper = await shallow(<Charities />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({query: "q=Pine"});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(3);
+    });
+
+    // @Yoav@
+    it('filters by affiliation correctly', async () =>{
+        const wrapper = await shallow(<Charities />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "affiliation" : "affiliation=Central"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(2);
+    });
+
+    // @Yoav@
+    it('filters by State correctly', async () =>{
+        const wrapper = await shallow(<Charities />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "state" : "state=Alabama"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(1);
+    });
+
+    // @Yoav@
+    it('filters by tax code correctly', async () =>{
+        const wrapper = await shallow(<Charities />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "tax_classification" : "tax_classification=501(c)(8)"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(1);
+    });
+
+    // @Yoav@
+    it('filters by rating correctly', async () =>{
+        const wrapper = await shallow(<Charities />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "rating" : "rating=2"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(6);
     });
 });
 
@@ -87,7 +165,6 @@ describe('<News />', () =>{
     // @Uriel@
     it('shows reset button', async () => {
         const wrapper = await shallow(<News />);
-<<<<<<< Updated upstream
         const reset = wrapper.find("#reset");
         expect(reset.length).toBe(1);
     });
@@ -97,10 +174,36 @@ describe('<News />', () =>{
         const wrapper = await shallow(<News />);
         const newsSearch = wrapper.find(".search-bar");
         expect(newsSearch.length).toBe(1);
-=======
-        const filters = wrapper.find("#reset");
-        expect(filters.length).toBe(1);
->>>>>>> Stashed changes
+    });
+
+    // @Yoav@
+    it('renders correct responses on search', async () =>{
+        const wrapper = await shallow(<News />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({query: "q=million"});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(15);
+    });
+
+    // @Yoav@
+    it('filters by source correctly', async () =>{
+        const wrapper = await shallow(<News />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "source" : "source=The Huffington Post"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(3);
+    });
+
+    // @Yoav@
+    it('filters by date correctly', async () =>{
+        const wrapper = await shallow(<News />);
+        const inst = wrapper.instance();
+        await inst.componentWillMount();
+        inst.setState({filters: { "date" : "date=past_month"}});
+        await inst.accessAPI();
+        expect(wrapper.state().total).toEqual(44);
     });
 });
 
@@ -165,4 +268,3 @@ describe('<CharitiesCard />', () => {
         expect(actualState.html()).toBe("<img class=\"card-img-top d-flex\" src=\"my_image\" alt=\"Card\"/>");
     });
 });
-
