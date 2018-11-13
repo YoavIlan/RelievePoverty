@@ -156,11 +156,6 @@ class News extends Component {
                                 <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
                             }
                         </div>
-                        <div className="col-md-4 d-flex flex-column">
-                            {prompt &&
-                                <NativeSelects reset={this.state.reset} data={["past_week", "past_month", "past_year"]} prompt={"Filter by Date"} onChange={this.handleFilterDate}></NativeSelects>
-                            }
-                        </div>
                         <div className="d-flex flex-column search-form">
                             {prompt &&
                                 <form onSubmit={this.handleSearch}>
@@ -179,6 +174,11 @@ class News extends Component {
                         <div className="col-md-3 d-flex flex-column" id="reset">
                             {prompt &&
                                 <button className="reset-button" onClick={this.reset}>Reset</button>
+                            }
+                        </div>
+                        <div className="col-md-4 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={["past_week", "past_month", "past_year"]} prompt={"Filter by Date"} onChange={this.handleFilterDate}></NativeSelects>
                             }
                         </div>
                     </div>
