@@ -33,9 +33,16 @@ describe('<States />', () => {
 
     // @Uriel@
     it('shows reset button', async () => {
-        const wrapper = await shallow(<News />);
-        const filters = wrapper.find("#reset");
-        expect(filters.length).toBe(1);
+        const wrapper = await shallow(<States />);
+        const reset = wrapper.find("#reset");
+        expect(reset.length).toBe(1);
+    });
+
+    // @Uriel@
+    it('shows search field', async () => {
+        const wrapper = await shallow(<States />);
+        const statesSearch = wrapper.find(".search-bar");
+        expect(statesSearch.length).toBe(1);
     });
 });
 
@@ -50,9 +57,16 @@ describe('<Charities />', () =>{
 
     // @Uriel@
     it('shows reset button', async () => {
-        const wrapper = await shallow(<News />);
-        const filters = wrapper.find("#reset");
-        expect(filters.length).toBe(1);
+        const wrapper = await shallow(<Charities />);
+        const reset = wrapper.find("#reset");
+        expect(reset.length).toBe(1);
+    });
+
+    // @Uriel@
+    it('shows search field', async () => {
+        const wrapper = await shallow(<Charities />);
+        const charitiesSearch = wrapper.find(".search-bar");
+        expect(charitiesSearch.length).toBe(1);
     });
 });
 
@@ -68,8 +82,15 @@ describe('<News />', () =>{
     // @Uriel@
     it('shows reset button', async () => {
         const wrapper = await shallow(<News />);
-        const filters = wrapper.find("#reset");
-        expect(filters.length).toBe(1);
+        const reset = wrapper.find("#reset");
+        expect(reset.length).toBe(1);
+    });
+
+    // @Uriel@
+    it('shows search field', async () => {
+        const wrapper = await shallow(<News />);
+        const newsSearch = wrapper.find(".search-bar");
+        expect(newsSearch.length).toBe(1);
     });
 });
 
