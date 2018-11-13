@@ -16,7 +16,7 @@ class CharitiesCard extends Component {
         let rating = <Highlighter searchWords={query} textToHighlight={String(this.props.rating)}/>;
         let mission = '';
         query.forEach(word => {
-            if (word != null && mission.length == 0 && this.props.mission.includes(word)) {
+            if (this.props.mission != null && mission.length == 0 && this.props.mission.includes(word)) {
                 mission += "..." + this.props.mission.match(eval("/(\\S+\\s){0,3}\\S*" + word + "\\S*(\\s\\S+){0,3}/g")) + "...";
             }
         });
