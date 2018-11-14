@@ -50,5 +50,21 @@ Evan - 56 hours
 Uriel - 57 hours  
 Yoav - 52 hours  
 
+## Estimated Completion Time for Phase 3:
+Albert - 10 hours  
+Colin - 15 hours  
+Daniel - 20 hours  
+Evan - 15 hours  
+Uriel - 10 hours  
+Yoav - 10 hours  
+
+## Actual Completion Time for Phase 3:
+Albert - 12 hours  
+Colin - 20 hours  
+Daniel - 16 hours  
+Evan - 11 hours  
+Uriel - 15 hours  
+Yoav - 13 hours 
+
 ## Comments
 We counted completion time as time spent developing with other members of the team
