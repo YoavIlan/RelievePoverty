@@ -196,15 +196,6 @@ describe('<News />', () =>{
         expect(wrapper.state().total).toEqual(3);
     });
 
-    // @Yoav@
-    it('filters by date correctly', async () =>{
-        const wrapper = await shallow(<News />);
-        const inst = wrapper.instance();
-        await inst.componentWillMount();
-        inst.setState({filters: { "date" : "date=past_month"}});
-        await inst.accessAPI();
-        expect(wrapper.state().total).toEqual(44);
-    });
 });
 
 describe('<Jumbotron />', () => {
