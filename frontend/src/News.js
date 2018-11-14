@@ -25,6 +25,59 @@ class News extends Component {
         }
     }
 
+    allStates = [
+        "Alabama",
+        "Alaska",
+        "Arizona",
+        "Arkansas",
+        "California",
+        "Colorado",
+        "Connecticut",
+        "Delaware",
+        "Florida",
+        "Georgia",
+        "Hawaii",
+        "Idaho",
+        "Illinois",
+        "Indiana",
+        "Iowa",
+        "Kansas",
+        "Kentucky",
+        "Louisiana",
+        "Maine",
+        "Maryland",
+        "Massachusetts",
+        "Michigan",
+        "Minnesota",
+        "Mississippi",
+        "Missouri",
+        "Montana",
+        "Nebraska",
+        "Nevada",
+        "New Hampshire",
+        "New Jersey",
+        "New Mexico",
+        "New York",
+        "North Carolina",
+        "North Dakota",
+        "Ohio",
+        "Oklahoma",
+        "Oregon",
+        "Pennsylvania",
+        "Rhode Island",
+        "South Carolina",
+        "South Dakota",
+        "Tennessee",
+        "Texas",
+        "Utah",
+        "Vermont",
+        "Virginia",
+        "Washington",
+        "West Virginia",
+        "Wisconsin",
+        "Wyoming"
+    ]
+
     sorts = [
         "Title",
         "Source",
@@ -140,16 +193,16 @@ class News extends Component {
                 <Jumbotron title={"Read Articles About Poverty in the US"} description={"Our news sources include The New York Times, CNN and others."} search={this.handleSearch} modelName={"news"} filters={[]} prompt={"blah"} />
                 <div className="container-fluid fss">
                     <div className="row fss-bar">
-                        <div className="col-md-4 d-flex flex-column">
+                        <div className="col-md-3 d-flex flex-column">
                             {prompt &&
                                 <NativeSelects reset={this.state.reset} data={this.sorts} prompt={"Sort By"} onChange={this.handleSort}></NativeSelects>
                             }
                         </div>
-                        <div className="col-md-4 d-flex flex-column">
+                        <div className="col-md-3 d-flex flex-column">
                             {prompt &&
                                 <NativeSelects reset={this.state.reset} data={["Associated Press", "ABC News", "CNN", "The New York Times", "The Huffington Post"]} prompt={"Filter by Source"} onChange={this.handleFilterSource}></NativeSelects>
                             }
-                        </div>  
+                        </div>
                         <div className="d-flex flex-column search-form">
                             {prompt &&
                                 <form onSubmit={this.handleSearch}>
@@ -160,7 +213,7 @@ class News extends Component {
                         </div>
                     </div>
                     <div className="row fss-bar">
-                        <div className="col-md-4 d-flex flex-column">
+                        <div className="col-md-3 d-flex flex-column">
                             {prompt &&
                                 <NativeSelects reset={this.state.reset} data={["Ascending", "Descending"]} prompt={"Sort Order"} onChange={this.handleReverse}></NativeSelects>
                             }
@@ -171,9 +224,14 @@ class News extends Component {
                                 <button className="reset-button" onClick={this.reset}>Reset</button>
                             }
                         </div>
-                        <div className="col-md-4 d-flex flex-column">
+                        <div className="col-md-3 d-flex flex-column">
                             {prompt &&
                                 <NativeSelects reset={this.state.reset} data={["Past Week", "Past Month", "Past Year"]} prompt={"Filter by Date"} onChange={this.handleFilterDate}></NativeSelects>
+                            }
+                        </div>
+                        <div className="col-sm-3 d-flex flex-column">
+                            {prompt &&
+                                <NativeSelects reset={this.state.reset} data={this.allStates} prompt={"Filter by State"} onChange={this.handleFilterState}></NativeSelects>
                             }
                         </div>
                     </div>
