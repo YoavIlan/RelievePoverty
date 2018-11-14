@@ -75,7 +75,7 @@ def add_state_information():
         pprint.pprint(s)
         curr_state = States(name=s['NAME'], rank=50-(states.index(s)), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties="temp", flag='http://www.theus50.com/images/state-flags/' + s['NAME'].lower().replace(" ", "") + '-flag.jpg')
         db.session.add(curr_state)
-        db.session.commit()
+        # db.session.commit()
 
 if __name__ == "__main__":
     add_state_information()

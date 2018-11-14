@@ -8,11 +8,25 @@ nav.navbar, .navbar-default {
 }
 
 .navbar-header {
-    width: 20%
+    width: 20%;
+}
+
+.navbar-brand{
+  display: table;
 }
 
 .navbar-brand>img {
-  width: 25%;
+  width: 20%;
+}
+
+.navbar-search-bar {
+  border: 0px;
+  background-color: #1c1c1c;
+  color: #e2e2e2;
+}
+
+#search-submit{
+  background-color: #b35c22;
 }
 
 .navitem{
@@ -31,4 +45,12 @@ nav.navbar, .navbar-default {
 
 .navbar-default .navbar-brand {
   color: #b35c22;
+}
+
+.navbar > .container {
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 100%;  
 }

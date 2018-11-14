@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import NativeSelects from './Dropdown';
 
 
 class Jumbotron extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {query: ""}
+     }
+
     render() {
         const hasTitle = this.props.title != null;
         const hasDescription = this.props.description != null;
+        const filters = this.props.filters;
+        const prompt = this.props.prompt;
         if (hasTitle)
         {
             if (hasDescription)
@@ -17,7 +25,7 @@ class Jumbotron extends Component {
                     <p className="lead">{this.props.description}</p>
                     </div>
                     </section>
-                    );
+                );
             } else {
                 return (
                     <section className="jumbotron text-center flex-fill">

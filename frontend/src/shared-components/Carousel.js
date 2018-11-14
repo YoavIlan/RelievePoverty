@@ -17,7 +17,7 @@ class CustomCarousel extends Component {
         <div style = {usMap}>
           <iframe title="map" src="https://createaclickablemap.com/map.php?&id=75691&maplocation=false&online=true" height="100%" width="100%"></iframe>
             <p className="legend">
-            <Link to="/states">States</Link>
+            <Link to="/states">Learn more about poverty in the different states</Link>
             </p>
         </div>
         <div>
@@ -25,14 +25,14 @@ class CustomCarousel extends Component {
           <img className="d-block w-100" src={require('./../img/Charities.jpg')} alt="Second slide"/>
           </Link>
           <p className="legend">
-          <Link to="/charities">Charities</Link>
+          <Link to="/charities">Learn more about charities</Link>
           </p>
         </div>
         <div>
           <Link to="/news"><img className="d-block w-100" src={require('./../img/News.jpeg')} alt="Third slide"/>
           </Link>
           <p className="legend">
-          <Link to="/news">News</Link>
+          <Link to="/news">News articles related to poverty and charities</Link>
           </p>
         </div>
       </Carousel>

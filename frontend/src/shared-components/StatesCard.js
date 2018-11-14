@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Highlighter from 'react-highlight-words';
 
 
 function getRank(rank) {
@@ -20,19 +21,21 @@ function getRank(rank) {
 
 class StatesCard extends Component {
     render() {
-        let median_income = this.props.median_income;
+        let median_income = (this.props.median_income.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"));
         let counties = this.props.counties;
         let child_poverty_rate = this.props.child_poverty_rate;
         let below_poverty_rate = this.props.below_poverty_rate;
         let image = this.props.image;
         let state = this.props.state;
         let rank = this.props.rank;
+        let query = this.props.query === undefined ? [] : this.props.query.replace("q=", "").split(" ");
+
         return(
             <div className="col-md-4 d-flex">
               <div className="card mb-4 box-shadow">
                 <img className="card-img-top d-flex" id="developer-img" src={image} alt="Card image cap" styles="height: 212px !important; width:320px !important"></img>
                 <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{state}</h5>
+                  <h5 className="card-title"><Highlighter searchWords={query} textToHighlight={state}/> </h5>
                       <div className="card-text">
                       <b>Ranking</b>
                         <p>{rank}{getRank(rank)} out of 50 states for its poverty rate</p>
@@ -41,9 +44,9 @@ class StatesCard extends Component {
                         <b>Under 18 and Below Poverty Rate</b>
                         <p>{child_poverty_rate}% of all children</p>
                         <b>Median Income</b>
-                        <p>${(median_income.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))}</p>
+                        <p>${median_income}</p>
                         <b>County with the highest poverty rates</b>
-                        <p>{counties}</p>
+                        <p><Highlighter searchWords={query} textToHighlight={counties}/></p>
                       </div>
                   <Link to={`/states/${state}`}  className="btn btn-primary mt-auto">More Information</Link>
                 </div>
