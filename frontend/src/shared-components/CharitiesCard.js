@@ -82,7 +82,6 @@ class CharitiesCard extends Component {
                   <b>Classification:</b> {tax_classification}
                 </li>
               )}
-              // Displays the mission only if it contains query keywords
               {query.length > 0 &&
                 mission.length > 0 && (
                   <li>

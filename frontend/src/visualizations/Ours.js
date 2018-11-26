@@ -24,7 +24,7 @@ class Ours extends Component {
       let counter = 1;
       obj.data.sort((a,b) => parseInt(a.median_income, 10) - parseInt(b.median_income, 10));
       obj.data.forEach(state => {
-        newList.push({"id": counter, "title": state.name, "value": "$" + state.median_income});
+        newList.push({"id": counter, "title": state.name, "value": "$" + (state.median_income.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,"))});
         counter++;
 
       });
