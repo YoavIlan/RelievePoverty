@@ -45,11 +45,11 @@ class About extends Component{
 		              <li className="list-group-item">Total # of commits: {this.state.total.commits}</li>
 		              <li className="list-group-item">Total # of issues: {this.state.total.issues}</li>
 		              <li className="list-group-item">Total # of unit tests: {this.state.total.tests}</li>
-									<li className="list-group-item">Total # of acceptance tests: {this.state.total.acceptance_tests}</li>
+		              <li className="list-group-item">Total # of acceptance tests: {this.state.total.acceptance_tests}</li>
 		            </ul>
 		          </div>
 			    	<div className="row">
-			    	    {this.state.team.map(obj => <AboutCard data={obj}/> )}
+			    	  {this.state.team.map(obj => <AboutCard data={obj}/>)}
 			    	</div>
 		          <div className="card mb-4 box-shadow">
 		            <div className="card-body">
