@@ -34,7 +34,7 @@ class Ours extends Component {
 
   render() {
    if (this.state.data["children"].length == 0) {
-     return(<div/>);
+     return(<p>Loading...</p>);
    }
    return (
       <div className='App'>
