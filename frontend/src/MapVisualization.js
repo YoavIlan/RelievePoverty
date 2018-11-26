@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './Visualizations.css';
+import './MapVisualization.css';
 import {Link} from 'react-router-dom';
 
-class Visualizations extends Component {
+class MapVisualization extends Component {
     render() {
         return (
             <div>

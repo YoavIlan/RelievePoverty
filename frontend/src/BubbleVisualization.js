@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './Visualizations.css';
+import './BubbleVisualization.css';
 import {Link} from 'react-router-dom';
 
-class Visualizations extends Component {
+class BubbleVisualization extends Component {
     render() {
         return (
             <div>
