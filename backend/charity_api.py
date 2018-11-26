@@ -142,7 +142,6 @@ def get_image(url):
 
 
 def build_address(address):
-    # return "HI"
     if(address is None):
         return "No Address Available"
 
