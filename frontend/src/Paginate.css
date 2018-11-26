@@ -1,44 +1,44 @@
-.pagination{
-    display: block;
-    text-align:center !important;
+.pagination {
+  display: block;
+  text-align: center !important;
 }
 
-.jumbotron{
-    margin-bottom: 0;
+.jumbotron {
+  margin-bottom: 0;
 }
 
-.album{
-    background-color: #121212 !important;
+.album {
+  background-color: #121212 !important;
 }
 
 .btn.btn-primary.mt-auto {
-    background-color: #b35c22;
-    outline-color: #b35c22;
-    border-color: #b35c22;
+  background-color: #b35c22;
+  outline-color: #b35c22;
+  border-color: #b35c22;
 }
 
 .pagination ul {
-    display: inline-block;
-    text-align: center !important;
+  display: inline-block;
+  text-align: center !important;
 }
 
 .pagination li {
-    display: inline-block;
-    text-align: center !important;
-    cursor: pointer;
+  display: inline-block;
+  text-align: center !important;
+  cursor: pointer;
 }
 
 .pagination li.active {
-    font-size: 20px;
-     border-bottom:1px solid #000;
-     border-bottom-color: #b35c22;
+  font-size: 20px;
+  border-bottom: 1px solid #000;
+  border-bottom-color: #b35c22;
 }
 
 .pagination a {
-    color: #b35c22;
-    display: inline-block;
-    text-align: center !important;
-    padding: 8px 16px;
-    text-decoration: none;
-    outline: none;
+  color: #b35c22;
+  display: inline-block;
+  text-align: center !important;
+  padding: 8px 16px;
+  text-decoration: none;
+  outline: none;
 }
