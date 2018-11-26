@@ -9,13 +9,13 @@ class CharitiesCard extends Component {
         console.log(this.props.query);
         let query = (this.props.query === "" || this.props.query === undefined) ? [] : this.props.query.replace("q=", "").split(" ");
         let image = this.props.image;
-        let title = this.props.title;
         let affiliation = <Highlighter searchWords={query} textToHighlight={this.props.affiliation}/>
         let tax_classification = <Highlighter searchWords={query} textToHighlight={this.props.tax_classification}/>;
         let state = <Highlighter searchWords={query} textToHighlight={this.props.state}/>;
         let rating = <Highlighter searchWords={query} textToHighlight={String(this.props.rating)}/>;
         let mission = '';
         query.forEach(word => {
+            // Adds the text surrounding the keyword in ellipses to the mission
             if (this.props.mission != null && mission.length == 0 && this.props.mission.includes(word)) {
                 mission += "..." + this.props.mission.match(eval("/(\\S+\\s){0,3}\\S*" + word + "\\S*(\\s\\S+){0,3}/g")) + "...";
             }
@@ -26,12 +26,13 @@ class CharitiesCard extends Component {
             <div className="card mb-4 box-shadow">
                 <img className="card-img-top d-flex" src={image} alt="Card"/>
                 <div className="card-body d-flex flex-column">
-                    <h5 className="card-title"><Highlighter searchWords={query} textToHighlight={title}/></h5>
+                    <h5 className="card-title"><Highlighter searchWords={query} textToHighlight={this.props.title}/></h5>
                     <ul className="card-text">
                         <li><b>State:</b> {state}</li>
                         {rating !== undefined && <li><b>Rating:</b> {rating}</li>}
                         {affiliation !== undefined && <li><b>Affiliation:</b> {affiliation}</li>}
                         {tax_classification !== undefined && <li><b>Classification:</b> {tax_classification}</li>}
+                        // Displays the mission only if it contains query keywords
                         {query.length > 0 && mission.length > 0 && <li><b>Mission:</b> {missionHighlighted}</li>}
                     </ul>
                     <Link to={`/charities/${id}`}  className="btn btn-primary mt-auto">More Information</Link>
