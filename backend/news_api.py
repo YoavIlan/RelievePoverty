@@ -106,6 +106,8 @@ def image_exists(url):
         return False
 
 # Returns the given image if it is a good image, else returns a default image
+
+
 def get_image(image):
     if(image_exists(image)):
         return image
@@ -115,6 +117,8 @@ def get_image(image):
         return default_images[seed]
 
 # Returns a list of articles that are associated with a given state
+
+
 def find_articles_for_state(state):
     parameters['q'] = 'poverty' + '&' + state
     response = requests.get(url, params=parameters)
