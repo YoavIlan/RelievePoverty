@@ -3,6 +3,7 @@ import pprint
 import flask
 import flask_sqlalchemy
 import flask_restless
+from sys import stdout
 
 
 # http://127.0.0.1:5000/api/v1/news
@@ -36,20 +37,22 @@ def get_county(state) :
 
     response = requests.get(url, params=parameters)
     lists = response.json()
+
+    # get column headers for each column e.g. NAME, COUNTY, etc.
     keys = lists[0]
     lists.remove(keys)
+
     counties = []
     for l in lists :
-        it = iter(keys)
         c = {}
-        for i in l :
-            c[next(it)] = i
+        for (key, item) in zip(keys, l) :
+            c[key] = item
         counties.append(c)
 
-    max_poverty_rate = 0
+    max_poverty_rate = 0.0
     poorest_county_name = ""
     for county in counties:
-        if county["SAEPOVRTALL_PT"] is not None and float(county["SAEPOVRTALL_PT"]) > float(max_poverty_rate):
+        if county["SAEPOVRTALL_PT"] is not None and float(county["SAEPOVRTALL_PT"]) > max_poverty_rate:
             max_poverty_rate = county["SAEPOVRTALL_PT"]
             poorest_county_name = county["NAME"]
     print(poorest_county_name)
@@ -60,15 +63,18 @@ def get_county(state) :
 def add_state_information():
     response = requests.get(url, params=parameters)
     lists = response.json()
+    print("TESTING")
+    pprint.pprint(lists);
+    # get column headers for each column e.g. NAME, COUNTY, etc.
     keys = lists[0]
     lists.remove(keys)
+
     states = []
     for l in lists :
-        it = iter(keys)
         state = {}
         if(l[0] != 'District of Columbia') :
-            for i in l :
-                state[next(it)] = i
+            for (key, item) in zip(keys, l) :
+                state[key] = item
             states.append(state)
     states.sort(key=lambda obj: float(obj['SAEPOVRTALL_PT']))
     for s in states:
