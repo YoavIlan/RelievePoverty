@@ -37,8 +37,12 @@ class App extends Component {
                     <Route path="/news" component={News} />
                     <Route path="/charities" component={Charities} />
                     <Route path="/states" component={States} />
-                    <Route path="/visualizations/relievepoverty" component={Ours} />
-                    <Route path="/visualizations/npolink" component={Theirs} />
+                    <Route path="/visualizations/relievepoverty1" component={Ours} />
+                    <Route path="/visualizations/relievepoverty2" component={Ours} />
+                    <Route path="/visualizations/relievepoverty3" component={Ours} />
+                    <Route path="/visualizations/npolink1" component={Theirs} />
+                    <Route path="/visualizations/npolink2" component={Theirs} />
+                    <Route path="/visualizations/npolink3" component={Theirs} />
                     <Route path="/visualizations" component={Visualizations} />
                 </Switch>
               </div>
