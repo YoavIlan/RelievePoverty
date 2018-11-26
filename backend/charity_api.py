@@ -111,7 +111,6 @@ def truncate_url(url):
     url = url.replace("www.", "")
     url = url.replace("://", "")
     url = url.replace("charitynavigator", "SKIP THIS URL")
-    print(temp + "-->" + url)
     return url
 
 # Returns true if an image exists at the url
@@ -137,7 +136,6 @@ def get_image(url):
         seed = random.randint(0, len(default_images) - 1)
         assert(seed < len(default_images))
         img = default_images[seed]
-    print(img)
     return img
 
 # build complete address from separate fields
