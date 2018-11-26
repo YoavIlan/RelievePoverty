@@ -337,8 +337,6 @@ def state_search(query):
     return results
 
 # Search for charity instances given a query
-
-
 def charities_search(query):
     # Turn the query into a list of searach strings and remove bad characters
     searches = query.split(" ")
@@ -373,8 +371,6 @@ def charities_search(query):
     return results
 
 # Search for charity instances given a query
-
-
 def news_search(query):
     # Turn the query into a list of searach strings and remove bad characters
     searches = query.split(" ")
@@ -400,7 +396,6 @@ def news_search(query):
         results.append(News.query.get(i + 1))
 
     return results
-
 
 # Returns a json with three inner jsons one for each category
 @app.route("/v1/search/<query>", methods=['GET'])
@@ -456,7 +451,6 @@ def all_search(query):
 
     return flask.jsonify({'states': states_json, 'charities': charities_json,
                           'news': news_json})
-
 
 @app.after_request
 def after_request(response):

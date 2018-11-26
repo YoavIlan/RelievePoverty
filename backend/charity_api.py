@@ -102,7 +102,6 @@ default_images = [
     "https://images.unsplash.com/photo-1527833296831-2dcbf098d66f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=48525d2cd5d799ae0c19cbdb40442c45&auto=format&fit=crop&w=1350&q=80",
     "https://images.unsplash.com/photo-1474649107449-ea4f014b7e9f?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ee665399b33bc893141af2bc7bb87333&auto=format&fit=crop&w=1350&q=80"]
 
-
 # Truncates url to help with clearbit's url
 def truncate_url(url):
     temp = url
@@ -114,8 +113,6 @@ def truncate_url(url):
     return url
 
 # Returns true if an image exists at the url
-
-
 def image_exists(url):
     if(url == "NULL"):
         return False
@@ -127,8 +124,6 @@ def image_exists(url):
 
 # Returns an image using clearbit from a given url, returns a defualt
 # image if the clearbit one does not exist
-
-
 def get_image(url):
     img = "https://logo.clearbit.com/" + truncate_url(url)
     # If img does not exist select a default image at random
@@ -139,8 +134,6 @@ def get_image(url):
     return img
 
 # build complete address from separate fields
-
-
 def build_address(address):
     if(address is None):
         return "No Address Available"
@@ -164,8 +157,6 @@ def build_address(address):
     return builder.getvalue()
 
 # Adds a json format of charities to the database. Handles missing information
-
-
 def add_charities(charities):
     # Loop through all of the charities that match the query
     for charity in charities:
@@ -221,7 +212,6 @@ def add_charities(charities):
         # Add the new charity to the database
         db.session.merge(charity_row)
 
-
 # Returns a list of charities given a query, uses the search function from
 # Charity navigator
 def get_charities_by_query(query):
@@ -237,7 +227,6 @@ def get_charities_by_query(query):
         add_charities(response.json())
     else:
         print("Could not reach endpoint")
-
 
 # Returns a list of charities that match categoryID of 6 which is for
 # poverty related charities
