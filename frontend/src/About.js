@@ -14,11 +14,11 @@ class About extends Component{
     		total: {
     			commits: 0,
     			issues: 0,
-					tests: 0,
-					acceptance_tests: 0,
+    			tests: 0,
+    			acceptance_tests: 0,
     		}
     	};
-   }
+    }
 
 	/**
  	 * Calls subfunctions to get all stats when the about page is loaded
@@ -59,13 +59,10 @@ class About extends Component{
 		              <li className="list-group-item"><a href="https://www.census.gov/programs-surveys/saipe/data/api.html" target="_blank" rel="noopener noreferrer">US Census Bureau (State Poverty)</a> - Used The US Census Bureau''s restful SAIPE API to find information on poverty rates by state </li>
 		              <li className="list-group-item"><a href="https://newsapi.org/" target="_blank" rel="noopener noreferrer">NewsAPI</a> - Scraped by using their API with states as filters</li>
 		              <li className="list-group-item"><a href="https://charity.3scale.net/docs/data-api/reference" target="_blank" rel="noopener noreferrer">Charity Navigator</a> - Scraped by using their API by searching for poverty related charities</li>
-									<li className="list-group-item"><a href="https://clearbit.com/logo" target="_blank" rel="noopener noreferrer">Clearbit</a> - Used the API on clearbit to retrieve images from charity websites</li>
-									<li className="list-group-item"><a href="http://www.theus50.com/" target="_blank" rel="noopener noreferrer">The US50</a> - Retrieved images of all 50 state flags from URL of this website</li>
-									<li className="list-group-item"><a href="https://createaclickablemap.com/" target="_blank" rel="noopener noreferrer">Create a Clickable Map</a> - Placed a clickable US map on the home page of this wesite</li>
-									<li className="list-group-item"><a href="https://developers.google.com/maps/documentation/" target="_blank" rel="noopener noreferrer">Google Maps API</a> - Used to place maps in instance pages</li>
-
-
-
+					  <li className="list-group-item"><a href="https://clearbit.com/logo" target="_blank" rel="noopener noreferrer">Clearbit</a> - Used the API on clearbit to retrieve images from charity websites</li>
+					  <li className="list-group-item"><a href="http://www.theus50.com/" target="_blank" rel="noopener noreferrer">The US50</a> - Retrieved images of all 50 state flags from URL of this website</li>
+					  <li className="list-group-item"><a href="https://createaclickablemap.com/" target="_blank" rel="noopener noreferrer">Create a Clickable Map</a> - Placed a clickable US map on the home page of this wesite</li>
+					  <li className="list-group-item"><a href="https://developers.google.com/maps/documentation/" target="_blank" rel="noopener noreferrer">Google Maps API</a> - Used to place maps in instance pages</li>
 		            </ul>
 		          </div>
 		          <div className="card mb-4 box-shadow">
