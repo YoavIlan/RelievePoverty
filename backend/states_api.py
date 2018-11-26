@@ -30,12 +30,12 @@ db.create_all()
 url = "https://api.census.gov/data/timeseries/poverty/saipe/"
 parameters = {"get":"NAME,STATE,SAEPOVRTALL_PT,SAEPOVRT0_17_PT,SAEMHI_PT", "for":"state:*", "time":2016}
 
-
 def get_county(state) :
     state_param = "state:" + state
     parameters = {"get":"NAME,COUNTY,SAEPOVRTALL_PT,SAEPOVRT0_17_PT,SAEMHI_PT", "for":"county:*", "in":state_param, "time":2016}
 
     response = requests.get(url, params=parameters)
+    print(response)
     lists = response.json()
 
     # get column headers for each column e.g. NAME, COUNTY, etc.
@@ -58,13 +58,10 @@ def get_county(state) :
     print(poorest_county_name)
     return poorest_county_name
 
-
-
 def add_state_information():
     response = requests.get(url, params=parameters)
     lists = response.json()
-    print("TESTING")
-    pprint.pprint(lists);
+    
     # get column headers for each column e.g. NAME, COUNTY, etc.
     keys = lists[0]
     lists.remove(keys)
@@ -81,7 +78,6 @@ def add_state_information():
         pprint.pprint(s)
         curr_state = States(name=s['NAME'], rank=50-(states.index(s)), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties="temp", flag='http://www.theus50.com/images/state-flags/' + s['NAME'].lower().replace(" ", "") + '-flag.jpg')
         db.session.add(curr_state)
-        # db.session.commit()
 
 if __name__ == "__main__":
     add_state_information()

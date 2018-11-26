@@ -94,7 +94,6 @@ default_images = [
      "https://images.pexels.com/photos/97050/pexels-photo-97050.jpeg?auto=compress&cs=tinysrgb&h=350",
      "https://images.pexels.com/photos/6335/man-coffee-cup-pen.jpg?auto=compress&cs=tinysrgb&h=350"]
 
-
 # Returns true if url holds an image
 def image_exists(url):
     if(url is None):
@@ -106,8 +105,6 @@ def image_exists(url):
         return False
 
 # Returns the given image if it is a good image, else returns a default image
-
-
 def get_image(image):
     if(image_exists(image)):
         return image
@@ -117,8 +114,6 @@ def get_image(image):
         return default_images[seed]
 
 # Returns a list of articles that are associated with a given state
-
-
 def find_articles_for_state(state):
     parameters['q'] = 'poverty' + '&' + state
     response = requests.get(url, params=parameters)
@@ -126,7 +121,6 @@ def find_articles_for_state(state):
         articles = [article for article in response.json()['data']]
         return articles
     return None
-
 
 # Add news articles about poverty from every state to the database
 def add_states_to_table():
