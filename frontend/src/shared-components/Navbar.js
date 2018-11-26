@@ -64,13 +64,10 @@ class CustomNavbar extends Component {
             >
               States
             </NavItem>
-            <NavItem
-              eventKey={5}
-              className="navitem"
-              componentClass={Link}
-              href="/about"
-              to="/about"
-            >
+            <NavItem eventKey={5} className='navitem' componentClass={Link} href="/visualizations" to="/visualizations">
+              Visualizations
+            </NavItem>
+            <NavItem eventKey={6} className='navitem' componentClass={Link} href="/about" to="/about">
               About
             </NavItem>
           </Nav>
