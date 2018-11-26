@@ -10,7 +10,7 @@ import Charities from './Charities';
 import States from './States';
 import Navbar from './shared-components/Navbar';
 import Search from './Search';
-import Visualizations from './Visualizations';
+import Visualizations from './visualizations/Visualization';
 import Ours from './visualizations/Ours';
 import Theirs from './visualizations/Theirs';
 
@@ -37,9 +37,9 @@ class App extends Component {
                     <Route path="/news" component={News} />
                     <Route path="/charities" component={Charities} />
                     <Route path="/states" component={States} />
+                    <Route path="/visualizations/relievepoverty" component={Ours} />
+                    <Route path="/visualizations/npolink" component={Theirs} />
                     <Route path="/visualizations" component={Visualizations} />
-                    <Route path="/ours" component={Ours} />
-                    <Route path="/theirs" component={Theirs} />
                 </Switch>
               </div>
             </Router>
