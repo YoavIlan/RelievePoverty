@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import * as d3 from "d3";
 import { select } from 'd3-selection';
+import './Visualization.css';
 
 class BubbleChart extends Component {
    constructor(props) {
@@ -71,7 +72,7 @@ class BubbleChart extends Component {
 
     render(){
       return(
-        <svg ref={node => this.node = node} width={750} height={750}></svg>
+        <svg className="visualization-container" ref={node => this.node = node} width={750} height={750}></svg>
       );
     }
 }

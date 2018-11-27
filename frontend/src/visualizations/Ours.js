@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import BubbleChart from './BubbleChart'
+import BubbleChart from './BubbleChart';
+import Jumbotron from './../shared-components/Jumbotron';
 
 class Ours extends Component {
   constructor(props) {
@@ -39,6 +40,7 @@ class Ours extends Component {
    return (
       <div className='App'>
       <div>
+      <Jumbotron title={'States displayed by their Median Income'}/>
       <BubbleChart data={this.state.data}/>
       </div>
       </div>
