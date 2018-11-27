@@ -13,7 +13,7 @@ import Search from './Search';
 import Visualizations from './visualizations/Visualization';
 import Ours1 from './visualizations/Ours1';
 import Ours2 from './visualizations/Ours2';
-import PieChart from './visualizations/PieChart';
+import Ours3 from './visualizations/Ours3';
 import Theirs from './visualizations/Theirs';
 
 class App extends Component {
@@ -40,7 +40,7 @@ class App extends Component {
                     <Route path="/states" component={States} />
                     <Route path="/visualizations/relievepoverty1" component={Ours1} />
                     <Route path="/visualizations/relievepoverty2" component={Ours2} />
-                    <Route path="/visualizations/relievepoverty3" component={PieChart} />
+                    <Route path="/visualizations/relievepoverty3" component={Ours3} />
                     <Route path="/visualizations/npolink1" component={Theirs} />
                     <Route path="/visualizations/npolink2" component={Theirs} />
                     <Route path="/visualizations/npolink3" component={Theirs} />

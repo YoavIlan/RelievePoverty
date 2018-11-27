@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Jumbotron from './../shared-components/Jumbotron';
-import CharityBarChart from './CharityBarChart';
+import NewsBarChart from './NewsBarChart';
 
 var states = {
     'Alabama': 0,
@@ -54,7 +54,7 @@ var states = {
      'Wisconsin': 0,
      'Wyoming': 0}
 
-class Ours extends Component {
+class Ours3 extends Component {
   constructor(props) {
     super(props);
     for (var s in states) {
@@ -72,7 +72,7 @@ class Ours extends Component {
   }
 
   async componentWillMount() {
-    await this.getJSON("https://api.relievepoverty.me/v1/charities").then(response => {
+    await this.getJSON("https://api.relievepoverty.me/v1/news").then(response => {
       let obj = JSON.parse(JSON.stringify(response));
       let newList = [];
       let counter = 1;
@@ -91,12 +91,12 @@ class Ours extends Component {
    return (
       <div className='App'>
       <div>
-      <Jumbotron title={'Number of Charities per State'}/>
-      <CharityBarChart names={Object.keys(this.state.state_dict)} data={Object.values(this.state.state_dict)} size={[500,500]}/>
+      <Jumbotron title={'Number of Articles per State'}/>
+      <NewsBarChart names={Object.keys(this.state.state_dict)} data={Object.values(this.state.state_dict)} size={[500,500]}/>
       </div>
       </div>
    )
   }
 }
 
-export default Ours;
+export default Ours3;

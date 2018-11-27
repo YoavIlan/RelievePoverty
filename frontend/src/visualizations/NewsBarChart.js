@@ -8,11 +8,11 @@ import './Visualization.css'
 
 const color = d3.scaleOrdinal(d3.schemeCategory10);
 
-function getCharities(d) {
+function getNews(d) {
     if (d > 1) {
-        return " charities.";
+        return " articles.";
     } else {
-        return " charity."
+        return " article."
     }
 }
 
@@ -43,19 +43,19 @@ class BarChart extends Component {
       const yScale = scaleLinear()
          .domain([0, dataMax])
          .range([0, this.props.size[1]])
-    
+
    select(node)
       .selectAll('rect')
       .data(this.props.data)
       .enter()
       .append('rect')
- 
+
     select(node)
       .selectAll('rect')
       .data((this.props.data))
       .exit()
       .remove()
-   
+
    select(node)
       .selectAll('rect')
       .data(this.props.data)
@@ -67,7 +67,7 @@ class BarChart extends Component {
       .text(function(d, i) {
         return names[i];
       })
-      .on("mouseover", function(d, i){tooltip.text(names[i] + " has " + d + getCharities(d)); return tooltip.style("visibility", "visible");})
+      .on("mouseover", function(d, i){tooltip.text(names[i] + " has " + d + getNews(d)); return tooltip.style("visibility", "visible");})
       .on("mouseout", function(){return tooltip.style("visibility", "hidden");})
 
    }
