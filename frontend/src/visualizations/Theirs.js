@@ -5,6 +5,7 @@ class Theirs extends Component {
         return (
             <div>
                 <p>I am a placeholder!</p>
+                <img className="placeholder"src={require("./../img/albert.jpg")}/>
             </div>
         );
     }
