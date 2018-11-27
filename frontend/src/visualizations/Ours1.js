@@ -57,6 +57,9 @@ var states = {
 class Ours extends Component {
   constructor(props) {
     super(props);
+    for (var s in states) {
+        states[s] = 0;
+    }
     this.state = {
         state_dict: {}
     };
