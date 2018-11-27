@@ -3,6 +3,7 @@ import { scaleLinear } from 'd3-scale'
 import { max } from 'd3-array'
 import { select } from 'd3-selection'
 import * as d3 from "d3";
+import './Visualization.css'
 
 
 const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -67,10 +68,13 @@ class BarChart extends Component {
         return names[i];
       })
       .on("mouseover", function(d, i){tooltip.text(names[i] + " has " + d + getCharities(d)); return tooltip.style("visibility", "visible");})
+      .on("mouseout", function(){return tooltip.style("visibility", "hidden");})
+
    }
 
 render() {
-      return <svg ref={node => this.node = node}
+      return <svg className="visualization-container"
+       ref={node => this.node = node}
       width={1250} height={550}>
       </svg>
    }
