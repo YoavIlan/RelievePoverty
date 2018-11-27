@@ -25,8 +25,8 @@ class BubbleChart extends Component {
      const data = this.state.data;
      const format = d3.format(",d");
      const svg = d3.select("svg"),
-        width = +svg.attr("width"),
-        height = +svg.attr("height");
+        width = svg.attr("width"),
+        height = svg.attr("height");
 
      const color = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -58,21 +58,21 @@ class BubbleChart extends Component {
 
     getSelect.append("text")
         .attr("dy", ".3em")
-        .attr("font-size","10px")
+        .attr("font-size","16px")
         .style("text-anchor", "middle")
         .text(function(d) {
             return d.data.title;
         });
 
     getSelect.append("title")
-        .text(function(d) { return d.data.value; });
+        .text(function(d) { return d.data.title + "\n" + d.data.value; });
 
 
     }
 
     render(){
       return(
-        <svg className="visualization-container" ref={node => this.node = node} width={750} height={750}></svg>
+        <svg className="visualization-container" ref={node => this.node = node} width={1000} height={1000}></svg>
       );
     }
 }

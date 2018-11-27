@@ -11,8 +11,8 @@ import States from './States';
 import Navbar from './shared-components/Navbar';
 import Search from './Search';
 import Visualizations from './visualizations/Visualization';
-import Ours from './visualizations/Ours';
 import Ours1 from './visualizations/Ours1';
+import Ours2 from './visualizations/Ours2';
 import Theirs from './visualizations/Theirs';
 
 
@@ -38,9 +38,9 @@ class App extends Component {
                     <Route path="/news" component={News} />
                     <Route path="/charities" component={Charities} />
                     <Route path="/states" component={States} />
-                    <Route path="/visualizations/relievepoverty1" component={Ours} />
-                    <Route path="/visualizations/relievepoverty2" component={Ours1} />
-                    <Route path="/visualizations/relievepoverty3" component={Ours} />
+                    <Route path="/visualizations/relievepoverty1" component={Ours1} />
+                    <Route path="/visualizations/relievepoverty2" component={Ours2} />
+                    <Route path="/visualizations/relievepoverty3" component={Ours1} />
                     <Route path="/visualizations/npolink1" component={Theirs} />
                     <Route path="/visualizations/npolink2" component={Theirs} />
                     <Route path="/visualizations/npolink3" component={Theirs} />
