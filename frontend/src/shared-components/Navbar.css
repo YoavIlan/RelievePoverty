@@ -1,21 +1,22 @@
-nav.navbar, .navbar-default {
+nav.navbar,
+.navbar-default {
   background-color: #232323 !important;
 }
-.navbar-nav{
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
+.navbar-nav {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .navbar-header {
-    width: 20%;
+  width: 20%;
 }
 
-.navbar-brand{
+.navbar-brand {
   display: table;
 }
 
-.navbar-brand>img {
+.navbar-brand > img {
   width: 20%;
 }
 
@@ -25,12 +26,12 @@ nav.navbar, .navbar-default {
   color: #e2e2e2;
 }
 
-#search-submit{
+#search-submit {
   background-color: #b35c22;
 }
 
-.navitem{
-    margin: 0px 15px;
+.navitem {
+  margin: 0px 15px;
 }
 
 .navbar-default {
@@ -52,5 +53,5 @@ nav.navbar, .navbar-default {
   margin-right: 0px;
   padding-left: 0px;
   padding-right: 0px;
-  max-width: 100%;  
+  max-width: 100%;
 }

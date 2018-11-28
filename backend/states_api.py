@@ -3,6 +3,7 @@ import pprint
 import flask
 import flask_sqlalchemy
 import flask_restless
+from sys import stdout
 
 
 # http://127.0.0.1:5000/api/v1/news
@@ -29,53 +30,54 @@ db.create_all()
 url = "https://api.census.gov/data/timeseries/poverty/saipe/"
 parameters = {"get":"NAME,STATE,SAEPOVRTALL_PT,SAEPOVRT0_17_PT,SAEMHI_PT", "for":"state:*", "time":2016}
 
-
 def get_county(state) :
     state_param = "state:" + state
     parameters = {"get":"NAME,COUNTY,SAEPOVRTALL_PT,SAEPOVRT0_17_PT,SAEMHI_PT", "for":"county:*", "in":state_param, "time":2016}
 
     response = requests.get(url, params=parameters)
+    print(response)
     lists = response.json()
+
+    # get column headers for each column e.g. NAME, COUNTY, etc.
     keys = lists[0]
     lists.remove(keys)
+
     counties = []
     for l in lists :
-        it = iter(keys)
         c = {}
-        for i in l :
-            c[next(it)] = i
+        for (key, item) in zip(keys, l) :
+            c[key] = item
         counties.append(c)
 
-    max_poverty_rate = 0
+    max_poverty_rate = 0.0
     poorest_county_name = ""
     for county in counties:
-        if county["SAEPOVRTALL_PT"] is not None and float(county["SAEPOVRTALL_PT"]) > float(max_poverty_rate):
+        if county["SAEPOVRTALL_PT"] is not None and float(county["SAEPOVRTALL_PT"]) > max_poverty_rate:
             max_poverty_rate = county["SAEPOVRTALL_PT"]
             poorest_county_name = county["NAME"]
     print(poorest_county_name)
     return poorest_county_name
 
-
-
 def add_state_information():
     response = requests.get(url, params=parameters)
     lists = response.json()
+    
+    # get column headers for each column e.g. NAME, COUNTY, etc.
     keys = lists[0]
     lists.remove(keys)
+
     states = []
     for l in lists :
-        it = iter(keys)
         state = {}
         if(l[0] != 'District of Columbia') :
-            for i in l :
-                state[next(it)] = i
+            for (key, item) in zip(keys, l) :
+                state[key] = item
             states.append(state)
     states.sort(key=lambda obj: float(obj['SAEPOVRTALL_PT']))
     for s in states:
         pprint.pprint(s)
         curr_state = States(name=s['NAME'], rank=50-(states.index(s)), below_poverty_rate=s['SAEPOVRTALL_PT'], child_poverty_rate=s['SAEPOVRT0_17_PT'], median_income=s['SAEMHI_PT'], counties="temp", flag='http://www.theus50.com/images/state-flags/' + s['NAME'].lower().replace(" ", "") + '-flag.jpg')
         db.session.add(curr_state)
-        # db.session.commit()
 
 if __name__ == "__main__":
     add_state_information()

@@ -1,0 +1,18 @@
+.team-logo {
+    color: #b35c22;
+    background-color: inherit;
+}
+
+.team-img {
+    max-width: 250px;
+    margin: auto;
+}
+
+.placeholder {
+    max-width: 150px;
+}
+
+.visualization-container {
+    display: block;
+    margin: auto;
+}
